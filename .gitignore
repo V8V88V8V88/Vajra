@@ -1,0 +1,36 @@
+# Node/Bun dependencies
+node_modules/
+bun.lockb
+
+# Output/build artifacts
+.next/
+out/
+build/
+dist/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Env files
+.env*
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Test coverage
+coverage/
+.next/cache/
+
+# Misc
+*.local

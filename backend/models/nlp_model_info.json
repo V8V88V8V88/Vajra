@@ -1,0 +1,5 @@
+{
+  "model_name": "distilbert-base-uncased",
+  "samples_processed": 1000,
+  "status": "ready"
+}

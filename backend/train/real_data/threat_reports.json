@@ -1,0 +1,4502 @@
+[
+  {
+    "id": "THREAT-0001",
+    "timestamp": "2025-07-07T17:26:22.295767",
+    "title": "Sandworm linked to IcedID attacks on financial supply chain",
+    "severity": "critical",
+    "risk_score": 0.929,
+    "confidence": "medium",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0002",
+    "timestamp": "2024-12-24T17:26:22.295852",
+    "title": "Coordinated APT41 campaign using LockBit and credential theft",
+    "severity": "high",
+    "risk_score": 0.642,
+    "confidence": "high",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0003",
+    "timestamp": "2025-10-27T17:26:22.295876",
+    "title": "Lazarus linked to Emotet attacks on healthcare supply chain",
+    "severity": "critical",
+    "risk_score": 0.998,
+    "confidence": "medium",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0004",
+    "timestamp": "2025-08-27T17:26:22.295898",
+    "title": "Zero-day CVE-2024-4383 discovered in Microsoft Exchange, actively exploited by APT28",
+    "severity": "critical",
+    "risk_score": 0.94,
+    "confidence": "low",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0005",
+    "timestamp": "2025-08-05T17:26:22.295917",
+    "title": "Critical CVE-2024-6785 vulnerability being exploited by Sandworm in government attacks",
+    "severity": "critical",
+    "risk_score": 0.949,
+    "confidence": "low",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0006",
+    "timestamp": "2025-10-04T17:26:22.295934",
+    "title": "Zero-day CVE-2024-9659 discovered in VMware vCenter, actively exploited by Sandworm",
+    "severity": "critical",
+    "risk_score": 0.983,
+    "confidence": "high",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0007",
+    "timestamp": "2024-11-23T17:26:22.295954",
+    "title": "CVE-2024-7521 vulnerability in Fortinet VPN enables Emotet deployment",
+    "severity": "high",
+    "risk_score": 0.819,
+    "confidence": "high",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0008",
+    "timestamp": "2025-08-17T17:26:22.295969",
+    "title": "New variant of Emotet spreading via zero-day exploits targeting manufacturing",
+    "severity": "critical",
+    "risk_score": 0.834,
+    "confidence": "medium",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0009",
+    "timestamp": "2025-06-05T17:26:22.295988",
+    "title": "Coordinated APT41 campaign using Emotet and spear phishing",
+    "severity": "high",
+    "risk_score": 0.661,
+    "confidence": "high",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0010",
+    "timestamp": "2024-12-22T17:26:22.296005",
+    "title": "Nobelium APT group conducting espionage against energy using ransomware deployment",
+    "severity": "critical",
+    "risk_score": 0.992,
+    "confidence": "medium",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0011",
+    "timestamp": "2024-11-23T17:26:22.296020",
+    "title": "Critical CVE-2024-5391 vulnerability being exploited by DarkSide in retail attacks",
+    "severity": "critical",
+    "risk_score": 0.912,
+    "confidence": "medium",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0012",
+    "timestamp": "2025-03-11T17:26:22.296040",
+    "title": "Nobelium targeting technology organizations with IcedID using lateral movement",
+    "severity": "medium",
+    "risk_score": 0.446,
+    "confidence": "high",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0013",
+    "timestamp": "2025-02-28T17:26:22.296070",
+    "title": "Massive BlackCat botnet targeting energy infrastructure",
+    "severity": "medium",
+    "risk_score": 0.44,
+    "confidence": "high",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0014",
+    "timestamp": "2025-04-13T17:26:22.296084",
+    "title": "IcedID ransomware campaign targeting energy sector via credential theft",
+    "severity": "critical",
+    "risk_score": 0.831,
+    "confidence": "medium",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0015",
+    "timestamp": "2025-03-31T17:26:22.296096",
+    "title": "Nobelium targeting technology organizations with Emotet using credential theft",
+    "severity": "medium",
+    "risk_score": 0.447,
+    "confidence": "high",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0016",
+    "timestamp": "2025-05-26T17:26:22.296108",
+    "title": "Coordinated Sandworm campaign using Cobalt Strike and credential theft",
+    "severity": "medium",
+    "risk_score": 0.585,
+    "confidence": "high",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0017",
+    "timestamp": "2025-02-13T17:26:22.296118",
+    "title": "Massive QakBot botnet targeting technology infrastructure",
+    "severity": "medium",
+    "risk_score": 0.68,
+    "confidence": "high",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0018",
+    "timestamp": "2025-07-06T17:26:22.296129",
+    "title": "Conti APT group conducting espionage against financial using supply chain compromise",
+    "severity": "critical",
+    "risk_score": 0.871,
+    "confidence": "low",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0019",
+    "timestamp": "2024-12-01T17:26:22.296140",
+    "title": "New variant of Ryuk spreading via data exfiltration targeting financial",
+    "severity": "medium",
+    "risk_score": 0.443,
+    "confidence": "medium",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0020",
+    "timestamp": "2025-05-25T17:26:22.296152",
+    "title": "New variant of Emotet spreading via living off the land targeting technology",
+    "severity": "medium",
+    "risk_score": 0.432,
+    "confidence": "low",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0021",
+    "timestamp": "2025-11-03T17:26:22.296162",
+    "title": "DarkSide linked to IcedID attacks on healthcare supply chain",
+    "severity": "critical",
+    "risk_score": 0.912,
+    "confidence": "high",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0022",
+    "timestamp": "2025-09-11T17:26:22.296172",
+    "title": "Critical CVE-2024-4502 vulnerability being exploited by APT28 in technology attacks",
+    "severity": "critical",
+    "risk_score": 0.97,
+    "confidence": "low",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0023",
+    "timestamp": "2025-08-22T17:26:22.296184",
+    "title": "DarkSide targeting healthcare organizations with QakBot using credential theft",
+    "severity": "medium",
+    "risk_score": 0.593,
+    "confidence": "low",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0024",
+    "timestamp": "2025-01-31T17:26:22.296194",
+    "title": "Lazarus linked to Ryuk attacks on technology supply chain",
+    "severity": "critical",
+    "risk_score": 0.988,
+    "confidence": "high",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0025",
+    "timestamp": "2025-04-23T17:26:22.296204",
+    "title": "APT41 targeting manufacturing organizations with QakBot using lateral movement",
+    "severity": "high",
+    "risk_score": 0.688,
+    "confidence": "medium",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0026",
+    "timestamp": "2024-11-16T17:26:22.296216",
+    "title": "Coordinated Nobelium campaign using Ryuk and data exfiltration",
+    "severity": "medium",
+    "risk_score": 0.429,
+    "confidence": "low",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0027",
+    "timestamp": "2025-06-13T17:26:22.296227",
+    "title": "FIN7 targeting telecom organizations with IcedID using supply chain compromise",
+    "severity": "critical",
+    "risk_score": 0.897,
+    "confidence": "high",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0028",
+    "timestamp": "2025-10-01T17:26:22.296237",
+    "title": "DarkSide linked to Ryuk attacks on manufacturing supply chain",
+    "severity": "critical",
+    "risk_score": 0.94,
+    "confidence": "high",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0029",
+    "timestamp": "2025-05-11T17:26:22.296247",
+    "title": "Critical CVE-2024-9170 vulnerability being exploited by FIN7 in retail attacks",
+    "severity": "critical",
+    "risk_score": 0.92,
+    "confidence": "low",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0030",
+    "timestamp": "2025-05-08T17:26:22.296257",
+    "title": "Critical CVE-2024-6364 vulnerability being exploited by APT41 in energy attacks",
+    "severity": "critical",
+    "risk_score": 0.95,
+    "confidence": "medium",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0031",
+    "timestamp": "2025-02-19T17:26:22.296268",
+    "title": "New variant of IcedID spreading via spear phishing targeting technology",
+    "severity": "medium",
+    "risk_score": 0.603,
+    "confidence": "low",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0032",
+    "timestamp": "2025-05-23T17:26:22.296279",
+    "title": "Coordinated Sandworm campaign using TrickBot and supply chain compromise",
+    "severity": "critical",
+    "risk_score": 0.837,
+    "confidence": "low",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0033",
+    "timestamp": "2025-07-18T17:26:22.296290",
+    "title": "CVE-2024-6445 vulnerability in VMware vCenter enables Cobalt Strike deployment",
+    "severity": "high",
+    "risk_score": 0.803,
+    "confidence": "medium",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0034",
+    "timestamp": "2025-03-29T17:26:22.296302",
+    "title": "CVE-2024-8501 vulnerability in Fortinet VPN enables BlackCat deployment",
+    "severity": "high",
+    "risk_score": 0.807,
+    "confidence": "low",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0035",
+    "timestamp": "2025-01-05T17:26:22.296312",
+    "title": "Sandworm APT group conducting espionage against telecom using supply chain compromise",
+    "severity": "critical",
+    "risk_score": 0.943,
+    "confidence": "low",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0036",
+    "timestamp": "2024-12-26T17:26:22.296323",
+    "title": "Critical CVE-2024-5874 vulnerability being exploited by Conti in government attacks",
+    "severity": "critical",
+    "risk_score": 0.985,
+    "confidence": "low",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0037",
+    "timestamp": "2024-11-08T17:26:22.296336",
+    "title": "FIN7 targeting financial organizations with IcedID using lateral movement",
+    "severity": "medium",
+    "risk_score": 0.521,
+    "confidence": "high",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0038",
+    "timestamp": "2025-07-31T17:26:22.296345",
+    "title": "Zero-day CVE-2024-2998 discovered in Linux kernel, actively exploited by Volt Typhoon",
+    "severity": "critical",
+    "risk_score": 0.984,
+    "confidence": "low",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0039",
+    "timestamp": "2025-10-18T17:26:22.296355",
+    "title": "Zero-day CVE-2024-4569 discovered in VMware vCenter, actively exploited by Volt Typhoon",
+    "severity": "critical",
+    "risk_score": 0.846,
+    "confidence": "low",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0040",
+    "timestamp": "2025-03-03T17:26:22.296365",
+    "title": "Massive TrickBot botnet targeting manufacturing infrastructure",
+    "severity": "medium",
+    "risk_score": 0.551,
+    "confidence": "low",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0041",
+    "timestamp": "2025-02-22T17:26:22.296375",
+    "title": "Coordinated Conti campaign using QakBot and ransomware deployment",
+    "severity": "critical",
+    "risk_score": 0.833,
+    "confidence": "high",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0042",
+    "timestamp": "2025-03-02T17:26:22.296385",
+    "title": "Critical CVE-2024-9624 vulnerability being exploited by Conti in financial attacks",
+    "severity": "critical",
+    "risk_score": 0.923,
+    "confidence": "medium",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0043",
+    "timestamp": "2025-06-18T17:26:22.296395",
+    "title": "Emotet ransomware campaign targeting government sector via living off the land",
+    "severity": "critical",
+    "risk_score": 0.899,
+    "confidence": "medium",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0044",
+    "timestamp": "2025-03-11T17:26:22.296406",
+    "title": "New variant of BlackCat spreading via lateral movement targeting telecom",
+    "severity": "medium",
+    "risk_score": 0.576,
+    "confidence": "low",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0045",
+    "timestamp": "2025-06-13T17:26:22.296417",
+    "title": "Massive LockBit botnet targeting energy infrastructure",
+    "severity": "medium",
+    "risk_score": 0.687,
+    "confidence": "medium",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0046",
+    "timestamp": "2025-11-03T17:26:22.296428",
+    "title": "New variant of IcedID spreading via spear phishing targeting financial",
+    "severity": "medium",
+    "risk_score": 0.473,
+    "confidence": "high",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0047",
+    "timestamp": "2025-07-30T17:26:22.296437",
+    "title": "IcedID ransomware campaign targeting healthcare sector via living off the land",
+    "severity": "critical",
+    "risk_score": 0.974,
+    "confidence": "medium",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0048",
+    "timestamp": "2025-03-12T17:26:22.296447",
+    "title": "FIN7 linked to Emotet attacks on retail supply chain",
+    "severity": "critical",
+    "risk_score": 0.896,
+    "confidence": "medium",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0049",
+    "timestamp": "2025-09-07T17:26:22.296459",
+    "title": "APT41 APT group conducting espionage against retail using living off the land",
+    "severity": "high",
+    "risk_score": 0.676,
+    "confidence": "low",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0050",
+    "timestamp": "2025-04-11T17:26:22.296468",
+    "title": "Lazarus APT group conducting espionage against telecom using ransomware deployment",
+    "severity": "critical",
+    "risk_score": 0.845,
+    "confidence": "low",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0051",
+    "timestamp": "2025-09-03T17:26:22.296478",
+    "title": "New variant of QakBot spreading via ransomware deployment targeting telecom",
+    "severity": "critical",
+    "risk_score": 0.968,
+    "confidence": "high",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0052",
+    "timestamp": "2025-02-04T17:26:22.296487",
+    "title": "Conti APT group conducting espionage against retail using supply chain compromise",
+    "severity": "critical",
+    "risk_score": 0.954,
+    "confidence": "low",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0053",
+    "timestamp": "2025-10-16T17:26:22.296497",
+    "title": "Cobalt Strike ransomware campaign targeting financial sector via zero-day exploits",
+    "severity": "critical",
+    "risk_score": 0.978,
+    "confidence": "high",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0054",
+    "timestamp": "2025-03-05T17:26:22.296508",
+    "title": "New variant of QakBot spreading via lateral movement targeting telecom",
+    "severity": "medium",
+    "risk_score": 0.559,
+    "confidence": "high",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0055",
+    "timestamp": "2025-01-06T17:26:22.296519",
+    "title": "New variant of BlackCat spreading via living off the land targeting telecom",
+    "severity": "medium",
+    "risk_score": 0.497,
+    "confidence": "low",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0056",
+    "timestamp": "2025-06-24T17:26:22.296530",
+    "title": "New variant of Emotet spreading via lateral movement targeting technology",
+    "severity": "medium",
+    "risk_score": 0.537,
+    "confidence": "medium",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0057",
+    "timestamp": "2025-10-26T17:26:22.296539",
+    "title": "Critical CVE-2024-6895 vulnerability being exploited by APT41 in technology attacks",
+    "severity": "critical",
+    "risk_score": 0.972,
+    "confidence": "medium",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0058",
+    "timestamp": "2025-06-01T17:26:22.296550",
+    "title": "CVE-2024-8705 vulnerability in Apache enables Ryuk deployment",
+    "severity": "high",
+    "risk_score": 0.79,
+    "confidence": "medium",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0059",
+    "timestamp": "2025-02-10T17:26:22.296561",
+    "title": "New variant of Emotet spreading via living off the land targeting retail",
+    "severity": "medium",
+    "risk_score": 0.528,
+    "confidence": "medium",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0060",
+    "timestamp": "2025-05-05T17:26:22.296572",
+    "title": "DarkSide APT group conducting espionage against manufacturing using data exfiltration",
+    "severity": "high",
+    "risk_score": 0.742,
+    "confidence": "high",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0061",
+    "timestamp": "2025-09-11T17:26:22.296583",
+    "title": "Zero-day CVE-2024-7784 discovered in Citrix ADC, actively exploited by Conti",
+    "severity": "critical",
+    "risk_score": 0.824,
+    "confidence": "medium",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0062",
+    "timestamp": "2025-07-04T17:26:22.296594",
+    "title": "CVE-2024-4800 vulnerability in Linux kernel enables Ryuk deployment",
+    "severity": "high",
+    "risk_score": 0.708,
+    "confidence": "high",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0063",
+    "timestamp": "2025-01-21T17:26:22.296604",
+    "title": "TrickBot ransomware campaign targeting technology sector via lateral movement",
+    "severity": "critical",
+    "risk_score": 0.873,
+    "confidence": "low",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0064",
+    "timestamp": "2025-09-20T17:26:22.296614",
+    "title": "New variant of Ryuk spreading via ransomware deployment targeting retail",
+    "severity": "critical",
+    "risk_score": 0.908,
+    "confidence": "high",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0065",
+    "timestamp": "2025-06-03T17:26:22.296624",
+    "title": "New variant of Emotet spreading via supply chain compromise targeting healthcare",
+    "severity": "critical",
+    "risk_score": 0.994,
+    "confidence": "high",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0066",
+    "timestamp": "2025-08-11T17:26:22.296635",
+    "title": "New variant of IcedID spreading via living off the land targeting telecom",
+    "severity": "medium",
+    "risk_score": 0.448,
+    "confidence": "high",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0067",
+    "timestamp": "2025-07-08T17:26:22.296645",
+    "title": "Emotet ransomware campaign targeting government sector via zero-day exploits",
+    "severity": "critical",
+    "risk_score": 0.879,
+    "confidence": "high",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0068",
+    "timestamp": "2024-11-25T17:26:22.296655",
+    "title": "Nobelium APT group conducting espionage against government using supply chain compromise",
+    "severity": "critical",
+    "risk_score": 0.818,
+    "confidence": "medium",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0069",
+    "timestamp": "2025-05-28T17:26:22.296666",
+    "title": "New variant of QakBot spreading via living off the land targeting financial",
+    "severity": "medium",
+    "risk_score": 0.556,
+    "confidence": "medium",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0070",
+    "timestamp": "2025-02-25T17:26:22.296676",
+    "title": "Zero-day CVE-2024-7966 discovered in Citrix ADC, actively exploited by Volt Typhoon",
+    "severity": "critical",
+    "risk_score": 0.829,
+    "confidence": "low",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0071",
+    "timestamp": "2025-02-22T17:26:22.296686",
+    "title": "APT41 targeting financial organizations with Emotet using data exfiltration",
+    "severity": "high",
+    "risk_score": 0.676,
+    "confidence": "medium",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0072",
+    "timestamp": "2025-08-11T17:26:22.296696",
+    "title": "CVE-2024-1106 vulnerability in Windows enables Cobalt Strike deployment",
+    "severity": "high",
+    "risk_score": 0.673,
+    "confidence": "high",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0073",
+    "timestamp": "2025-10-16T17:26:22.296706",
+    "title": "Volt Typhoon APT group conducting espionage against retail using zero-day exploits",
+    "severity": "critical",
+    "risk_score": 0.811,
+    "confidence": "high",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0074",
+    "timestamp": "2025-02-13T17:26:22.296716",
+    "title": "New variant of LockBit spreading via living off the land targeting retail",
+    "severity": "medium",
+    "risk_score": 0.654,
+    "confidence": "high",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0075",
+    "timestamp": "2025-03-24T17:26:22.296726",
+    "title": "Ryuk ransomware campaign targeting technology sector via spear phishing",
+    "severity": "critical",
+    "risk_score": 0.845,
+    "confidence": "medium",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0076",
+    "timestamp": "2024-12-18T17:26:22.296736",
+    "title": "Conti linked to IcedID attacks on healthcare supply chain",
+    "severity": "critical",
+    "risk_score": 0.998,
+    "confidence": "low",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0077",
+    "timestamp": "2025-04-11T17:26:22.296747",
+    "title": "CVE-2024-5530 vulnerability in Microsoft Exchange enables QakBot deployment",
+    "severity": "high",
+    "risk_score": 0.798,
+    "confidence": "low",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0078",
+    "timestamp": "2024-12-19T17:26:22.296756",
+    "title": "Zero-day CVE-2024-7065 discovered in Linux kernel, actively exploited by Conti",
+    "severity": "critical",
+    "risk_score": 0.878,
+    "confidence": "low",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0079",
+    "timestamp": "2025-01-30T17:26:22.296765",
+    "title": "QakBot ransomware campaign targeting healthcare sector via spear phishing",
+    "severity": "critical",
+    "risk_score": 0.91,
+    "confidence": "low",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0080",
+    "timestamp": "2025-10-05T17:26:22.296776",
+    "title": "DarkSide targeting manufacturing organizations with BlackCat using supply chain compromise",
+    "severity": "critical",
+    "risk_score": 0.81,
+    "confidence": "low",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0081",
+    "timestamp": "2025-10-23T17:26:22.296786",
+    "title": "Coordinated Volt Typhoon campaign using BlackCat and living off the land",
+    "severity": "medium",
+    "risk_score": 0.599,
+    "confidence": "low",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0082",
+    "timestamp": "2025-09-17T17:26:22.296797",
+    "title": "New variant of Ryuk spreading via spear phishing targeting technology",
+    "severity": "medium",
+    "risk_score": 0.417,
+    "confidence": "high",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0083",
+    "timestamp": "2025-03-11T17:26:22.296808",
+    "title": "CVE-2024-1628 vulnerability in Citrix ADC enables LockBit deployment",
+    "severity": "high",
+    "risk_score": 0.647,
+    "confidence": "high",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0084",
+    "timestamp": "2025-07-28T17:26:22.296816",
+    "title": "APT28 APT group conducting espionage against manufacturing using ransomware deployment",
+    "severity": "critical",
+    "risk_score": 0.903,
+    "confidence": "medium",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0085",
+    "timestamp": "2025-07-26T17:26:22.296825",
+    "title": "CVE-2024-5011 vulnerability in Windows enables IcedID deployment",
+    "severity": "high",
+    "risk_score": 0.827,
+    "confidence": "high",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0086",
+    "timestamp": "2025-08-20T17:26:22.296836",
+    "title": "Nobelium linked to Cobalt Strike attacks on manufacturing supply chain",
+    "severity": "critical",
+    "risk_score": 0.931,
+    "confidence": "medium",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0087",
+    "timestamp": "2025-10-16T17:26:22.296843",
+    "title": "Coordinated APT28 campaign using Ryuk and ransomware deployment",
+    "severity": "critical",
+    "risk_score": 0.91,
+    "confidence": "high",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0088",
+    "timestamp": "2025-04-27T17:26:22.296851",
+    "title": "APT28 linked to QakBot attacks on telecom supply chain",
+    "severity": "critical",
+    "risk_score": 0.93,
+    "confidence": "low",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0089",
+    "timestamp": "2025-05-28T17:26:22.296857",
+    "title": "Zero-day CVE-2024-9107 discovered in Citrix ADC, actively exploited by APT41",
+    "severity": "critical",
+    "risk_score": 0.983,
+    "confidence": "medium",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0090",
+    "timestamp": "2024-12-05T17:26:22.296864",
+    "title": "APT41 linked to Ryuk attacks on energy supply chain",
+    "severity": "critical",
+    "risk_score": 0.8,
+    "confidence": "high",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0091",
+    "timestamp": "2024-11-21T17:26:22.296871",
+    "title": "LockBit ransomware campaign targeting financial sector via zero-day exploits",
+    "severity": "critical",
+    "risk_score": 0.942,
+    "confidence": "medium",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0092",
+    "timestamp": "2025-07-29T17:26:22.296879",
+    "title": "CVE-2024-8275 vulnerability in Windows enables TrickBot deployment",
+    "severity": "high",
+    "risk_score": 0.775,
+    "confidence": "low",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0093",
+    "timestamp": "2025-01-20T17:26:22.296886",
+    "title": "New variant of IcedID spreading via living off the land targeting manufacturing",
+    "severity": "medium",
+    "risk_score": 0.474,
+    "confidence": "low",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0094",
+    "timestamp": "2025-04-08T17:26:22.296895",
+    "title": "New variant of TrickBot spreading via living off the land targeting energy",
+    "severity": "medium",
+    "risk_score": 0.459,
+    "confidence": "high",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0095",
+    "timestamp": "2025-02-13T17:26:22.296904",
+    "title": "Nobelium targeting financial organizations with BlackCat using spear phishing",
+    "severity": "medium",
+    "risk_score": 0.46,
+    "confidence": "medium",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0096",
+    "timestamp": "2025-09-18T17:26:22.296911",
+    "title": "Coordinated Nobelium campaign using QakBot and ransomware deployment",
+    "severity": "critical",
+    "risk_score": 0.997,
+    "confidence": "low",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0097",
+    "timestamp": "2025-03-21T17:26:22.296917",
+    "title": "Zero-day CVE-2024-2696 discovered in Citrix ADC, actively exploited by Sandworm",
+    "severity": "critical",
+    "risk_score": 0.97,
+    "confidence": "high",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0098",
+    "timestamp": "2025-07-17T17:26:22.296925",
+    "title": "Zero-day CVE-2024-9048 discovered in Microsoft Exchange, actively exploited by APT41",
+    "severity": "critical",
+    "risk_score": 0.816,
+    "confidence": "high",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0099",
+    "timestamp": "2025-09-12T17:26:22.296932",
+    "title": "Critical CVE-2024-2192 vulnerability being exploited by Volt Typhoon in retail attacks",
+    "severity": "critical",
+    "risk_score": 0.876,
+    "confidence": "low",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0100",
+    "timestamp": "2025-10-02T17:26:22.296939",
+    "title": "New variant of Ryuk spreading via ransomware deployment targeting retail",
+    "severity": "critical",
+    "risk_score": 0.804,
+    "confidence": "medium",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0101",
+    "timestamp": "2025-08-25T17:26:22.296946",
+    "title": "FIN7 linked to LockBit attacks on financial supply chain",
+    "severity": "critical",
+    "risk_score": 0.823,
+    "confidence": "high",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0102",
+    "timestamp": "2025-09-25T17:26:22.296954",
+    "title": "CVE-2024-2451 vulnerability in Fortinet VPN enables Ryuk deployment",
+    "severity": "high",
+    "risk_score": 0.637,
+    "confidence": "high",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0103",
+    "timestamp": "2024-11-11T17:26:22.296962",
+    "title": "New variant of Ryuk spreading via spear phishing targeting technology",
+    "severity": "medium",
+    "risk_score": 0.67,
+    "confidence": "high",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0104",
+    "timestamp": "2025-04-14T17:26:22.296969",
+    "title": "LockBit ransomware campaign targeting manufacturing sector via ransomware deployment",
+    "severity": "critical",
+    "risk_score": 0.932,
+    "confidence": "high",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0105",
+    "timestamp": "2025-05-20T17:26:22.296977",
+    "title": "Coordinated Lazarus campaign using Cobalt Strike and data exfiltration",
+    "severity": "medium",
+    "risk_score": 0.514,
+    "confidence": "medium",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0106",
+    "timestamp": "2024-11-05T17:26:22.296985",
+    "title": "Massive Emotet botnet targeting energy infrastructure",
+    "severity": "medium",
+    "risk_score": 0.623,
+    "confidence": "low",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0107",
+    "timestamp": "2025-04-14T17:26:22.296992",
+    "title": "New variant of TrickBot spreading via zero-day exploits targeting telecom",
+    "severity": "critical",
+    "risk_score": 0.966,
+    "confidence": "low",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0108",
+    "timestamp": "2025-01-02T17:26:22.297000",
+    "title": "Volt Typhoon targeting technology organizations with BlackCat using living off the land",
+    "severity": "medium",
+    "risk_score": 0.484,
+    "confidence": "low",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0109",
+    "timestamp": "2025-09-29T17:26:22.297009",
+    "title": "CVE-2024-3316 vulnerability in Microsoft Exchange enables TrickBot deployment",
+    "severity": "high",
+    "risk_score": 0.714,
+    "confidence": "medium",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0110",
+    "timestamp": "2025-02-03T17:26:22.297017",
+    "title": "New variant of Emotet spreading via living off the land targeting technology",
+    "severity": "medium",
+    "risk_score": 0.539,
+    "confidence": "medium",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0111",
+    "timestamp": "2025-06-01T17:26:22.297024",
+    "title": "Critical CVE-2024-6896 vulnerability being exploited by APT28 in manufacturing attacks",
+    "severity": "critical",
+    "risk_score": 0.84,
+    "confidence": "high",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0112",
+    "timestamp": "2025-05-09T17:26:22.297032",
+    "title": "Coordinated APT41 campaign using Ryuk and credential theft",
+    "severity": "high",
+    "risk_score": 0.799,
+    "confidence": "high",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0113",
+    "timestamp": "2025-01-07T17:26:22.297039",
+    "title": "APT41 linked to IcedID attacks on telecom supply chain",
+    "severity": "critical",
+    "risk_score": 0.823,
+    "confidence": "low",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0114",
+    "timestamp": "2025-01-05T17:26:22.297057",
+    "title": "CVE-2024-3678 vulnerability in Windows enables Cobalt Strike deployment",
+    "severity": "high",
+    "risk_score": 0.651,
+    "confidence": "medium",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0115",
+    "timestamp": "2025-10-19T17:26:22.297065",
+    "title": "Zero-day CVE-2024-4965 discovered in VMware vCenter, actively exploited by FIN7",
+    "severity": "critical",
+    "risk_score": 0.992,
+    "confidence": "low",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0116",
+    "timestamp": "2025-09-29T17:26:22.297074",
+    "title": "Lazarus APT group conducting espionage against government using living off the land",
+    "severity": "high",
+    "risk_score": 0.792,
+    "confidence": "high",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0117",
+    "timestamp": "2025-02-17T17:26:22.297083",
+    "title": "APT28 targeting government organizations with IcedID using supply chain compromise",
+    "severity": "critical",
+    "risk_score": 0.879,
+    "confidence": "high",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0118",
+    "timestamp": "2025-07-13T17:26:22.297091",
+    "title": "FIN7 linked to BlackCat attacks on technology supply chain",
+    "severity": "critical",
+    "risk_score": 0.882,
+    "confidence": "low",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0119",
+    "timestamp": "2024-12-14T17:26:22.297098",
+    "title": "Volt Typhoon linked to QakBot attacks on financial supply chain",
+    "severity": "critical",
+    "risk_score": 0.889,
+    "confidence": "low",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0120",
+    "timestamp": "2025-02-06T17:26:22.297106",
+    "title": "Massive Ryuk botnet targeting manufacturing infrastructure",
+    "severity": "medium",
+    "risk_score": 0.599,
+    "confidence": "medium",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0121",
+    "timestamp": "2025-07-20T17:26:22.297114",
+    "title": "Critical CVE-2024-7735 vulnerability being exploited by Lazarus in manufacturing attacks",
+    "severity": "critical",
+    "risk_score": 0.938,
+    "confidence": "medium",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0122",
+    "timestamp": "2025-02-27T17:26:22.297121",
+    "title": "Massive QakBot botnet targeting healthcare infrastructure",
+    "severity": "medium",
+    "risk_score": 0.428,
+    "confidence": "low",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0123",
+    "timestamp": "2025-10-25T17:26:22.297131",
+    "title": "Nobelium targeting manufacturing organizations with IcedID using lateral movement",
+    "severity": "medium",
+    "risk_score": 0.634,
+    "confidence": "high",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0124",
+    "timestamp": "2025-09-19T17:26:22.297139",
+    "title": "CVE-2024-6608 vulnerability in Windows enables Ryuk deployment",
+    "severity": "high",
+    "risk_score": 0.632,
+    "confidence": "medium",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0125",
+    "timestamp": "2025-02-15T17:26:22.297147",
+    "title": "APT28 APT group conducting espionage against government using credential theft",
+    "severity": "high",
+    "risk_score": 0.812,
+    "confidence": "high",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0126",
+    "timestamp": "2025-07-20T17:26:22.297154",
+    "title": "Emotet ransomware campaign targeting telecom sector via zero-day exploits",
+    "severity": "critical",
+    "risk_score": 0.902,
+    "confidence": "high",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0127",
+    "timestamp": "2025-07-09T17:26:22.297161",
+    "title": "Cobalt Strike ransomware campaign targeting financial sector via data exfiltration",
+    "severity": "critical",
+    "risk_score": 0.84,
+    "confidence": "high",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0128",
+    "timestamp": "2024-12-11T17:26:22.297167",
+    "title": "Critical CVE-2024-5760 vulnerability being exploited by Sandworm in government attacks",
+    "severity": "critical",
+    "risk_score": 0.835,
+    "confidence": "medium",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0129",
+    "timestamp": "2025-10-16T17:26:22.297175",
+    "title": "Sandworm linked to BlackCat attacks on telecom supply chain",
+    "severity": "critical",
+    "risk_score": 0.933,
+    "confidence": "high",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0130",
+    "timestamp": "2025-06-05T17:26:22.297182",
+    "title": "Critical CVE-2024-9996 vulnerability being exploited by FIN7 in healthcare attacks",
+    "severity": "critical",
+    "risk_score": 0.862,
+    "confidence": "high",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0131",
+    "timestamp": "2025-05-09T17:26:22.297189",
+    "title": "APT41 linked to Cobalt Strike attacks on telecom supply chain",
+    "severity": "critical",
+    "risk_score": 0.973,
+    "confidence": "high",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0132",
+    "timestamp": "2025-01-22T17:26:22.297196",
+    "title": "Volt Typhoon linked to QakBot attacks on healthcare supply chain",
+    "severity": "critical",
+    "risk_score": 0.943,
+    "confidence": "low",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0133",
+    "timestamp": "2025-03-22T17:26:22.297205",
+    "title": "New variant of BlackCat spreading via data exfiltration targeting manufacturing",
+    "severity": "medium",
+    "risk_score": 0.634,
+    "confidence": "medium",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0134",
+    "timestamp": "2025-01-12T17:26:22.297213",
+    "title": "LockBit ransomware campaign targeting manufacturing sector via credential theft",
+    "severity": "critical",
+    "risk_score": 0.841,
+    "confidence": "low",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0135",
+    "timestamp": "2025-09-27T17:26:22.297221",
+    "title": "Massive BlackCat botnet targeting technology infrastructure",
+    "severity": "medium",
+    "risk_score": 0.535,
+    "confidence": "low",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0136",
+    "timestamp": "2025-10-08T17:26:22.297228",
+    "title": "Zero-day CVE-2024-1728 discovered in Fortinet VPN, actively exploited by APT28",
+    "severity": "critical",
+    "risk_score": 0.992,
+    "confidence": "high",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0137",
+    "timestamp": "2025-01-09T17:26:22.297234",
+    "title": "Zero-day CVE-2024-6175 discovered in Linux kernel, actively exploited by APT28",
+    "severity": "critical",
+    "risk_score": 0.856,
+    "confidence": "high",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0138",
+    "timestamp": "2024-11-12T17:26:22.297242",
+    "title": "Ryuk ransomware campaign targeting energy sector via lateral movement",
+    "severity": "critical",
+    "risk_score": 0.964,
+    "confidence": "low",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0139",
+    "timestamp": "2025-04-08T17:26:22.297249",
+    "title": "Zero-day CVE-2024-9453 discovered in Apache, actively exploited by Volt Typhoon",
+    "severity": "critical",
+    "risk_score": 0.925,
+    "confidence": "low",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0140",
+    "timestamp": "2025-09-30T17:26:22.297257",
+    "title": "DarkSide targeting government organizations with Emotet using data exfiltration",
+    "severity": "medium",
+    "risk_score": 0.454,
+    "confidence": "low",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0141",
+    "timestamp": "2025-02-05T17:26:22.297265",
+    "title": "New variant of LockBit spreading via spear phishing targeting financial",
+    "severity": "medium",
+    "risk_score": 0.511,
+    "confidence": "low",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0142",
+    "timestamp": "2025-04-14T17:26:22.297272",
+    "title": "Zero-day CVE-2024-9976 discovered in Linux kernel, actively exploited by Lazarus",
+    "severity": "critical",
+    "risk_score": 0.897,
+    "confidence": "medium",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0143",
+    "timestamp": "2025-08-09T17:26:22.297278",
+    "title": "Emotet ransomware campaign targeting technology sector via zero-day exploits",
+    "severity": "critical",
+    "risk_score": 0.895,
+    "confidence": "low",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0144",
+    "timestamp": "2025-05-12T17:26:22.297286",
+    "title": "APT28 APT group conducting espionage against technology using living off the land",
+    "severity": "high",
+    "risk_score": 0.733,
+    "confidence": "medium",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0145",
+    "timestamp": "2025-07-10T17:26:22.297294",
+    "title": "Coordinated DarkSide campaign using LockBit and living off the land",
+    "severity": "medium",
+    "risk_score": 0.409,
+    "confidence": "medium",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0146",
+    "timestamp": "2025-09-25T17:26:22.297301",
+    "title": "Coordinated APT41 campaign using Cobalt Strike and supply chain compromise",
+    "severity": "critical",
+    "risk_score": 0.837,
+    "confidence": "low",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0147",
+    "timestamp": "2025-02-24T17:26:22.297309",
+    "title": "Volt Typhoon targeting telecom organizations with Ryuk using supply chain compromise",
+    "severity": "critical",
+    "risk_score": 0.903,
+    "confidence": "high",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0148",
+    "timestamp": "2025-07-02T17:26:22.297317",
+    "title": "Cobalt Strike ransomware campaign targeting telecom sector via data exfiltration",
+    "severity": "critical",
+    "risk_score": 0.972,
+    "confidence": "low",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0149",
+    "timestamp": "2025-09-08T17:26:22.297324",
+    "title": "Sandworm linked to TrickBot attacks on government supply chain",
+    "severity": "critical",
+    "risk_score": 0.865,
+    "confidence": "high",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0150",
+    "timestamp": "2024-12-18T17:26:22.297331",
+    "title": "Zero-day CVE-2024-6217 discovered in Fortinet VPN, actively exploited by Volt Typhoon",
+    "severity": "critical",
+    "risk_score": 0.882,
+    "confidence": "low",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0151",
+    "timestamp": "2025-10-01T17:26:22.297338",
+    "title": "CVE-2024-7873 vulnerability in Citrix ADC enables QakBot deployment",
+    "severity": "high",
+    "risk_score": 0.828,
+    "confidence": "low",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0152",
+    "timestamp": "2024-12-22T17:26:22.297346",
+    "title": "Massive QakBot botnet targeting retail infrastructure",
+    "severity": "medium",
+    "risk_score": 0.679,
+    "confidence": "medium",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0153",
+    "timestamp": "2025-02-26T17:26:22.297353",
+    "title": "Critical CVE-2024-8269 vulnerability being exploited by Lazarus in energy attacks",
+    "severity": "critical",
+    "risk_score": 0.811,
+    "confidence": "low",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0154",
+    "timestamp": "2025-08-30T17:26:22.297360",
+    "title": "Zero-day CVE-2024-9680 discovered in Citrix ADC, actively exploited by Lazarus",
+    "severity": "critical",
+    "risk_score": 0.81,
+    "confidence": "medium",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0155",
+    "timestamp": "2025-09-19T17:26:22.297367",
+    "title": "FIN7 linked to IcedID attacks on manufacturing supply chain",
+    "severity": "critical",
+    "risk_score": 0.951,
+    "confidence": "high",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0156",
+    "timestamp": "2025-09-22T17:26:22.297374",
+    "title": "Critical CVE-2024-2455 vulnerability being exploited by DarkSide in government attacks",
+    "severity": "critical",
+    "risk_score": 0.881,
+    "confidence": "low",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0157",
+    "timestamp": "2025-02-25T17:26:22.297381",
+    "title": "Sandworm APT group conducting espionage against retail using ransomware deployment",
+    "severity": "critical",
+    "risk_score": 0.824,
+    "confidence": "medium",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0158",
+    "timestamp": "2025-01-25T17:26:22.297390",
+    "title": "Coordinated Volt Typhoon campaign using LockBit and spear phishing",
+    "severity": "medium",
+    "risk_score": 0.568,
+    "confidence": "low",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0159",
+    "timestamp": "2025-07-16T17:26:22.297397",
+    "title": "Coordinated APT41 campaign using Emotet and zero-day exploits",
+    "severity": "critical",
+    "risk_score": 0.994,
+    "confidence": "medium",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0160",
+    "timestamp": "2025-11-03T17:26:22.297405",
+    "title": "CVE-2024-9727 vulnerability in VMware vCenter enables Ryuk deployment",
+    "severity": "high",
+    "risk_score": 0.619,
+    "confidence": "medium",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0161",
+    "timestamp": "2025-10-25T17:26:22.297412",
+    "title": "APT41 linked to Emotet attacks on healthcare supply chain",
+    "severity": "critical",
+    "risk_score": 0.857,
+    "confidence": "high",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0162",
+    "timestamp": "2025-09-26T17:26:22.297420",
+    "title": "CVE-2024-3821 vulnerability in Windows enables QakBot deployment",
+    "severity": "high",
+    "risk_score": 0.681,
+    "confidence": "low",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0163",
+    "timestamp": "2025-05-26T17:26:22.297428",
+    "title": "Volt Typhoon linked to Ryuk attacks on financial supply chain",
+    "severity": "critical",
+    "risk_score": 0.834,
+    "confidence": "medium",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0164",
+    "timestamp": "2025-05-22T17:26:22.297434",
+    "title": "Critical CVE-2024-5345 vulnerability being exploited by Nobelium in manufacturing attacks",
+    "severity": "critical",
+    "risk_score": 0.834,
+    "confidence": "high",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0165",
+    "timestamp": "2025-01-27T17:26:22.297442",
+    "title": "DarkSide linked to Cobalt Strike attacks on government supply chain",
+    "severity": "critical",
+    "risk_score": 0.945,
+    "confidence": "high",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0166",
+    "timestamp": "2025-07-02T17:26:22.297450",
+    "title": "Massive TrickBot botnet targeting financial infrastructure",
+    "severity": "medium",
+    "risk_score": 0.437,
+    "confidence": "low",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0167",
+    "timestamp": "2025-06-17T17:26:22.297456",
+    "title": "Zero-day CVE-2024-7785 discovered in Apache, actively exploited by FIN7",
+    "severity": "critical",
+    "risk_score": 0.998,
+    "confidence": "medium",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0168",
+    "timestamp": "2025-02-03T17:26:22.297464",
+    "title": "CVE-2024-5312 vulnerability in Linux kernel enables QakBot deployment",
+    "severity": "high",
+    "risk_score": 0.773,
+    "confidence": "medium",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0169",
+    "timestamp": "2025-02-22T17:26:22.297471",
+    "title": "Zero-day CVE-2024-1951 discovered in Windows, actively exploited by Nobelium",
+    "severity": "critical",
+    "risk_score": 0.81,
+    "confidence": "high",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0170",
+    "timestamp": "2025-08-05T17:26:22.297479",
+    "title": "APT28 targeting technology organizations with Emotet using data exfiltration",
+    "severity": "high",
+    "risk_score": 0.626,
+    "confidence": "high",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0171",
+    "timestamp": "2025-01-12T17:26:22.297487",
+    "title": "Emotet ransomware campaign targeting financial sector via ransomware deployment",
+    "severity": "critical",
+    "risk_score": 0.808,
+    "confidence": "high",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0172",
+    "timestamp": "2025-11-02T17:26:22.297495",
+    "title": "Lazarus linked to LockBit attacks on retail supply chain",
+    "severity": "critical",
+    "risk_score": 0.933,
+    "confidence": "high",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0173",
+    "timestamp": "2025-09-04T17:26:22.297503",
+    "title": "CVE-2024-8303 vulnerability in Microsoft Exchange enables Emotet deployment",
+    "severity": "high",
+    "risk_score": 0.796,
+    "confidence": "low",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0174",
+    "timestamp": "2025-03-24T17:26:22.297511",
+    "title": "Critical CVE-2024-7426 vulnerability being exploited by Lazarus in manufacturing attacks",
+    "severity": "critical",
+    "risk_score": 0.857,
+    "confidence": "medium",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0175",
+    "timestamp": "2025-10-07T17:26:22.297520",
+    "title": "DarkSide APT group conducting espionage against government using lateral movement",
+    "severity": "high",
+    "risk_score": 0.736,
+    "confidence": "medium",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0176",
+    "timestamp": "2025-02-01T17:26:22.297527",
+    "title": "Zero-day CVE-2024-7480 discovered in Microsoft Exchange, actively exploited by APT41",
+    "severity": "critical",
+    "risk_score": 0.917,
+    "confidence": "low",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0177",
+    "timestamp": "2025-07-28T17:26:22.297535",
+    "title": "Nobelium linked to Ryuk attacks on government supply chain",
+    "severity": "critical",
+    "risk_score": 0.861,
+    "confidence": "low",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0178",
+    "timestamp": "2025-04-02T17:26:22.297542",
+    "title": "Volt Typhoon targeting healthcare organizations with Cobalt Strike using zero-day exploits",
+    "severity": "critical",
+    "risk_score": 0.972,
+    "confidence": "high",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0179",
+    "timestamp": "2025-07-15T17:26:22.297549",
+    "title": "DarkSide targeting energy organizations with Cobalt Strike using zero-day exploits",
+    "severity": "critical",
+    "risk_score": 0.887,
+    "confidence": "medium",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0180",
+    "timestamp": "2025-01-07T17:26:22.297557",
+    "title": "Coordinated APT41 campaign using LockBit and credential theft",
+    "severity": "high",
+    "risk_score": 0.779,
+    "confidence": "medium",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0181",
+    "timestamp": "2025-01-16T17:26:22.297565",
+    "title": "FIN7 targeting financial organizations with BlackCat using living off the land",
+    "severity": "medium",
+    "risk_score": 0.466,
+    "confidence": "low",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0182",
+    "timestamp": "2025-04-21T17:26:22.297572",
+    "title": "BlackCat ransomware campaign targeting healthcare sector via supply chain compromise",
+    "severity": "critical",
+    "risk_score": 0.801,
+    "confidence": "high",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0183",
+    "timestamp": "2025-10-13T17:26:22.297579",
+    "title": "Zero-day CVE-2024-3515 discovered in Linux kernel, actively exploited by APT41",
+    "severity": "critical",
+    "risk_score": 0.984,
+    "confidence": "high",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0184",
+    "timestamp": "2024-12-16T17:26:22.297588",
+    "title": "Coordinated Lazarus campaign using Ryuk and living off the land",
+    "severity": "medium",
+    "risk_score": 0.401,
+    "confidence": "high",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0185",
+    "timestamp": "2025-05-08T17:26:22.297595",
+    "title": "IcedID ransomware campaign targeting manufacturing sector via credential theft",
+    "severity": "critical",
+    "risk_score": 0.952,
+    "confidence": "medium",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0186",
+    "timestamp": "2024-12-14T17:26:22.297602",
+    "title": "Emotet ransomware campaign targeting healthcare sector via supply chain compromise",
+    "severity": "critical",
+    "risk_score": 0.876,
+    "confidence": "low",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0187",
+    "timestamp": "2025-04-17T17:26:22.297610",
+    "title": "CVE-2024-4548 vulnerability in VMware vCenter enables BlackCat deployment",
+    "severity": "high",
+    "risk_score": 0.738,
+    "confidence": "low",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0188",
+    "timestamp": "2025-02-14T17:26:22.297617",
+    "title": "Zero-day CVE-2024-5934 discovered in Citrix ADC, actively exploited by Conti",
+    "severity": "critical",
+    "risk_score": 0.928,
+    "confidence": "medium",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0189",
+    "timestamp": "2025-04-24T17:26:22.297625",
+    "title": "APT28 linked to QakBot attacks on financial supply chain",
+    "severity": "critical",
+    "risk_score": 0.94,
+    "confidence": "medium",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0190",
+    "timestamp": "2025-08-25T17:26:22.297632",
+    "title": "QakBot ransomware campaign targeting financial sector via zero-day exploits",
+    "severity": "critical",
+    "risk_score": 0.939,
+    "confidence": "low",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0191",
+    "timestamp": "2025-10-12T17:26:22.297640",
+    "title": "Conti targeting financial organizations with TrickBot using lateral movement",
+    "severity": "medium",
+    "risk_score": 0.545,
+    "confidence": "low",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0192",
+    "timestamp": "2025-10-19T17:26:22.297648",
+    "title": "CVE-2024-3497 vulnerability in VMware vCenter enables Emotet deployment",
+    "severity": "high",
+    "risk_score": 0.821,
+    "confidence": "medium",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0193",
+    "timestamp": "2025-01-12T17:26:22.297655",
+    "title": "CVE-2024-1974 vulnerability in Linux kernel enables QakBot deployment",
+    "severity": "high",
+    "risk_score": 0.629,
+    "confidence": "medium",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0194",
+    "timestamp": "2024-11-08T17:26:22.297662",
+    "title": "FIN7 linked to QakBot attacks on telecom supply chain",
+    "severity": "critical",
+    "risk_score": 0.809,
+    "confidence": "high",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0195",
+    "timestamp": "2024-12-22T17:26:22.297670",
+    "title": "New variant of BlackCat spreading via spear phishing targeting healthcare",
+    "severity": "medium",
+    "risk_score": 0.67,
+    "confidence": "medium",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0196",
+    "timestamp": "2025-07-16T17:26:22.297678",
+    "title": "CVE-2024-7494 vulnerability in Microsoft Exchange enables BlackCat deployment",
+    "severity": "high",
+    "risk_score": 0.667,
+    "confidence": "medium",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0197",
+    "timestamp": "2025-10-20T17:26:22.297684",
+    "title": "Zero-day CVE-2024-5488 discovered in Microsoft Exchange, actively exploited by Sandworm",
+    "severity": "critical",
+    "risk_score": 0.836,
+    "confidence": "medium",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0198",
+    "timestamp": "2025-07-24T17:26:22.297692",
+    "title": "New variant of Cobalt Strike spreading via credential theft targeting government",
+    "severity": "medium",
+    "risk_score": 0.586,
+    "confidence": "high",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0199",
+    "timestamp": "2025-01-23T17:26:22.297700",
+    "title": "Emotet ransomware campaign targeting government sector via lateral movement",
+    "severity": "critical",
+    "risk_score": 0.852,
+    "confidence": "high",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0200",
+    "timestamp": "2024-12-31T17:26:22.297707",
+    "title": "Critical CVE-2024-5898 vulnerability being exploited by APT41 in energy attacks",
+    "severity": "critical",
+    "risk_score": 0.843,
+    "confidence": "high",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0201",
+    "timestamp": "2025-06-24T17:26:22.297715",
+    "title": "Massive Cobalt Strike botnet targeting energy infrastructure",
+    "severity": "medium",
+    "risk_score": 0.62,
+    "confidence": "high",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0202",
+    "timestamp": "2025-08-15T17:26:22.297723",
+    "title": "Coordinated Volt Typhoon campaign using Emotet and ransomware deployment",
+    "severity": "critical",
+    "risk_score": 0.893,
+    "confidence": "high",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0203",
+    "timestamp": "2025-04-21T17:26:22.297731",
+    "title": "CVE-2024-4023 vulnerability in VMware vCenter enables BlackCat deployment",
+    "severity": "high",
+    "risk_score": 0.654,
+    "confidence": "high",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0204",
+    "timestamp": "2025-09-06T17:26:22.297738",
+    "title": "TrickBot ransomware campaign targeting technology sector via ransomware deployment",
+    "severity": "critical",
+    "risk_score": 0.942,
+    "confidence": "low",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0205",
+    "timestamp": "2025-04-15T17:26:22.297746",
+    "title": "New variant of Cobalt Strike spreading via lateral movement targeting financial",
+    "severity": "medium",
+    "risk_score": 0.52,
+    "confidence": "high",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0206",
+    "timestamp": "2025-06-28T17:26:22.297753",
+    "title": "Critical CVE-2024-2870 vulnerability being exploited by Volt Typhoon in energy attacks",
+    "severity": "critical",
+    "risk_score": 0.82,
+    "confidence": "low",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0207",
+    "timestamp": "2025-05-14T17:26:22.297761",
+    "title": "Coordinated Lazarus campaign using BlackCat and supply chain compromise",
+    "severity": "critical",
+    "risk_score": 0.889,
+    "confidence": "medium",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0208",
+    "timestamp": "2025-06-06T17:26:22.297769",
+    "title": "Coordinated FIN7 campaign using Emotet and living off the land",
+    "severity": "medium",
+    "risk_score": 0.446,
+    "confidence": "medium",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0209",
+    "timestamp": "2024-12-21T17:26:22.297777",
+    "title": "Conti targeting energy organizations with TrickBot using lateral movement",
+    "severity": "medium",
+    "risk_score": 0.545,
+    "confidence": "low",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0210",
+    "timestamp": "2025-02-14T17:26:22.297785",
+    "title": "New variant of BlackCat spreading via living off the land targeting retail",
+    "severity": "medium",
+    "risk_score": 0.449,
+    "confidence": "medium",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0211",
+    "timestamp": "2024-12-06T17:26:22.297794",
+    "title": "FIN7 targeting financial organizations with Emotet using lateral movement",
+    "severity": "medium",
+    "risk_score": 0.473,
+    "confidence": "low",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0212",
+    "timestamp": "2024-11-09T17:26:22.297802",
+    "title": "Coordinated APT41 campaign using QakBot and living off the land",
+    "severity": "high",
+    "risk_score": 0.607,
+    "confidence": "low",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0213",
+    "timestamp": "2025-06-23T17:26:22.297810",
+    "title": "Sandworm APT group conducting espionage against energy using spear phishing",
+    "severity": "high",
+    "risk_score": 0.832,
+    "confidence": "low",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0214",
+    "timestamp": "2025-04-19T17:26:22.297819",
+    "title": "DarkSide targeting retail organizations with TrickBot using lateral movement",
+    "severity": "medium",
+    "risk_score": 0.503,
+    "confidence": "high",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0215",
+    "timestamp": "2025-04-21T17:26:22.297826",
+    "title": "Zero-day CVE-2024-5810 discovered in Apache, actively exploited by APT41",
+    "severity": "critical",
+    "risk_score": 0.911,
+    "confidence": "high",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0216",
+    "timestamp": "2025-03-03T17:26:22.297833",
+    "title": "Coordinated APT28 campaign using LockBit and supply chain compromise",
+    "severity": "critical",
+    "risk_score": 0.831,
+    "confidence": "medium",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0217",
+    "timestamp": "2025-10-12T17:26:22.297841",
+    "title": "CVE-2024-8344 vulnerability in Apache enables Cobalt Strike deployment",
+    "severity": "high",
+    "risk_score": 0.793,
+    "confidence": "low",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0218",
+    "timestamp": "2025-01-13T17:26:22.297848",
+    "title": "Conti linked to QakBot attacks on government supply chain",
+    "severity": "critical",
+    "risk_score": 0.889,
+    "confidence": "medium",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0219",
+    "timestamp": "2025-06-07T17:26:22.297856",
+    "title": "New variant of BlackCat spreading via lateral movement targeting retail",
+    "severity": "medium",
+    "risk_score": 0.455,
+    "confidence": "medium",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0220",
+    "timestamp": "2025-07-06T17:26:22.297863",
+    "title": "New variant of TrickBot spreading via zero-day exploits targeting technology",
+    "severity": "critical",
+    "risk_score": 0.966,
+    "confidence": "medium",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0221",
+    "timestamp": "2025-11-03T17:26:22.297870",
+    "title": "New variant of IcedID spreading via supply chain compromise targeting energy",
+    "severity": "critical",
+    "risk_score": 0.892,
+    "confidence": "low",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0222",
+    "timestamp": "2024-12-30T17:26:22.297877",
+    "title": "Critical CVE-2024-5693 vulnerability being exploited by Sandworm in government attacks",
+    "severity": "critical",
+    "risk_score": 0.914,
+    "confidence": "low",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0223",
+    "timestamp": "2025-07-13T17:26:22.297884",
+    "title": "Critical CVE-2024-7990 vulnerability being exploited by APT41 in telecom attacks",
+    "severity": "critical",
+    "risk_score": 0.902,
+    "confidence": "medium",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0224",
+    "timestamp": "2025-04-20T17:26:22.297891",
+    "title": "Critical CVE-2024-2665 vulnerability being exploited by FIN7 in telecom attacks",
+    "severity": "critical",
+    "risk_score": 0.928,
+    "confidence": "low",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0225",
+    "timestamp": "2024-11-26T17:26:22.297897",
+    "title": "Zero-day CVE-2024-5797 discovered in Windows, actively exploited by Sandworm",
+    "severity": "critical",
+    "risk_score": 0.96,
+    "confidence": "low",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0226",
+    "timestamp": "2024-12-10T17:26:22.297905",
+    "title": "Coordinated APT28 campaign using Ryuk and living off the land",
+    "severity": "high",
+    "risk_score": 0.649,
+    "confidence": "low",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0227",
+    "timestamp": "2024-11-07T17:26:22.297912",
+    "title": "DarkSide linked to Emotet attacks on technology supply chain",
+    "severity": "critical",
+    "risk_score": 0.822,
+    "confidence": "medium",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0228",
+    "timestamp": "2025-03-10T17:26:22.297920",
+    "title": "New variant of TrickBot spreading via credential theft targeting telecom",
+    "severity": "medium",
+    "risk_score": 0.466,
+    "confidence": "medium",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0229",
+    "timestamp": "2025-03-02T17:26:22.297927",
+    "title": "Sandworm APT group conducting espionage against healthcare using supply chain compromise",
+    "severity": "critical",
+    "risk_score": 0.87,
+    "confidence": "low",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0230",
+    "timestamp": "2025-09-28T17:26:22.297935",
+    "title": "CVE-2024-3949 vulnerability in Apache enables BlackCat deployment",
+    "severity": "high",
+    "risk_score": 0.697,
+    "confidence": "high",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0231",
+    "timestamp": "2025-01-14T17:26:22.297942",
+    "title": "Sandworm APT group conducting espionage against manufacturing using zero-day exploits",
+    "severity": "critical",
+    "risk_score": 0.862,
+    "confidence": "high",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0232",
+    "timestamp": "2025-02-19T17:26:22.297950",
+    "title": "New variant of Ryuk spreading via credential theft targeting healthcare",
+    "severity": "medium",
+    "risk_score": 0.686,
+    "confidence": "medium",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0233",
+    "timestamp": "2025-10-17T17:26:22.297957",
+    "title": "Coordinated Sandworm campaign using TrickBot and ransomware deployment",
+    "severity": "critical",
+    "risk_score": 0.968,
+    "confidence": "medium",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0234",
+    "timestamp": "2024-12-02T17:26:22.297965",
+    "title": "Critical CVE-2024-6281 vulnerability being exploited by Volt Typhoon in technology attacks",
+    "severity": "critical",
+    "risk_score": 0.879,
+    "confidence": "high",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0235",
+    "timestamp": "2025-06-29T17:26:22.297972",
+    "title": "Coordinated DarkSide campaign using TrickBot and lateral movement",
+    "severity": "medium",
+    "risk_score": 0.527,
+    "confidence": "high",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0236",
+    "timestamp": "2025-04-17T17:26:22.297980",
+    "title": "Massive IcedID botnet targeting healthcare infrastructure",
+    "severity": "medium",
+    "risk_score": 0.551,
+    "confidence": "medium",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0237",
+    "timestamp": "2025-06-25T17:26:22.297988",
+    "title": "FIN7 targeting financial organizations with Ryuk using credential theft",
+    "severity": "medium",
+    "risk_score": 0.687,
+    "confidence": "low",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0238",
+    "timestamp": "2025-09-25T17:26:22.297995",
+    "title": "Massive BlackCat botnet targeting manufacturing infrastructure",
+    "severity": "medium",
+    "risk_score": 0.467,
+    "confidence": "high",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0239",
+    "timestamp": "2025-05-06T17:26:22.298003",
+    "title": "APT41 APT group conducting espionage against healthcare using living off the land",
+    "severity": "high",
+    "risk_score": 0.749,
+    "confidence": "low",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0240",
+    "timestamp": "2025-08-07T17:26:22.298010",
+    "title": "Sandworm APT group conducting espionage against financial using ransomware deployment",
+    "severity": "critical",
+    "risk_score": 0.855,
+    "confidence": "medium",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0241",
+    "timestamp": "2025-05-03T17:26:22.298018",
+    "title": "Volt Typhoon APT group conducting espionage against financial using credential theft",
+    "severity": "high",
+    "risk_score": 0.812,
+    "confidence": "high",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0242",
+    "timestamp": "2025-06-07T17:26:22.298025",
+    "title": "FIN7 targeting government organizations with IcedID using data exfiltration",
+    "severity": "medium",
+    "risk_score": 0.555,
+    "confidence": "high",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0243",
+    "timestamp": "2025-07-15T17:26:22.298032",
+    "title": "Critical CVE-2024-4094 vulnerability being exploited by APT41 in retail attacks",
+    "severity": "critical",
+    "risk_score": 0.987,
+    "confidence": "low",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0244",
+    "timestamp": "2025-10-22T17:26:22.298040",
+    "title": "Coordinated Lazarus campaign using IcedID and credential theft",
+    "severity": "medium",
+    "risk_score": 0.602,
+    "confidence": "high",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0245",
+    "timestamp": "2025-06-19T17:26:22.298053",
+    "title": "Coordinated Conti campaign using QakBot and supply chain compromise",
+    "severity": "critical",
+    "risk_score": 0.894,
+    "confidence": "high",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0246",
+    "timestamp": "2024-11-08T17:26:22.298061",
+    "title": "DarkSide targeting manufacturing organizations with Emotet using data exfiltration",
+    "severity": "medium",
+    "risk_score": 0.411,
+    "confidence": "high",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0247",
+    "timestamp": "2025-05-04T17:26:22.298069",
+    "title": "CVE-2024-1815 vulnerability in Windows enables Cobalt Strike deployment",
+    "severity": "high",
+    "risk_score": 0.65,
+    "confidence": "low",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0248",
+    "timestamp": "2025-02-11T17:26:22.298075",
+    "title": "Zero-day CVE-2024-6969 discovered in Linux kernel, actively exploited by Lazarus",
+    "severity": "critical",
+    "risk_score": 0.88,
+    "confidence": "medium",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0249",
+    "timestamp": "2024-12-01T17:26:22.298083",
+    "title": "Conti targeting financial organizations with BlackCat using supply chain compromise",
+    "severity": "critical",
+    "risk_score": 0.963,
+    "confidence": "high",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0250",
+    "timestamp": "2025-02-07T17:26:22.298090",
+    "title": "DarkSide linked to LockBit attacks on financial supply chain",
+    "severity": "critical",
+    "risk_score": 0.807,
+    "confidence": "low",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0251",
+    "timestamp": "2025-02-17T17:26:22.298097",
+    "title": "Coordinated FIN7 campaign using IcedID and supply chain compromise",
+    "severity": "critical",
+    "risk_score": 0.875,
+    "confidence": "medium",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0252",
+    "timestamp": "2025-08-15T17:26:22.298104",
+    "title": "Cobalt Strike ransomware campaign targeting government sector via credential theft",
+    "severity": "critical",
+    "risk_score": 0.907,
+    "confidence": "high",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0253",
+    "timestamp": "2025-03-20T17:26:22.298111",
+    "title": "Cobalt Strike ransomware campaign targeting energy sector via lateral movement",
+    "severity": "critical",
+    "risk_score": 0.933,
+    "confidence": "low",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0254",
+    "timestamp": "2025-06-03T17:26:22.298118",
+    "title": "FIN7 APT group conducting espionage against government using data exfiltration",
+    "severity": "high",
+    "risk_score": 0.623,
+    "confidence": "low",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0255",
+    "timestamp": "2024-11-08T17:26:22.298125",
+    "title": "LockBit ransomware campaign targeting telecom sector via data exfiltration",
+    "severity": "critical",
+    "risk_score": 0.82,
+    "confidence": "high",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0256",
+    "timestamp": "2025-08-30T17:26:22.298133",
+    "title": "CVE-2024-3715 vulnerability in Linux kernel enables Emotet deployment",
+    "severity": "high",
+    "risk_score": 0.751,
+    "confidence": "high",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0257",
+    "timestamp": "2025-09-01T17:26:22.298141",
+    "title": "CVE-2024-2798 vulnerability in Citrix ADC enables QakBot deployment",
+    "severity": "high",
+    "risk_score": 0.608,
+    "confidence": "low",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0258",
+    "timestamp": "2025-02-24T17:26:22.298148",
+    "title": "Zero-day CVE-2024-5383 discovered in Microsoft Exchange, actively exploited by DarkSide",
+    "severity": "critical",
+    "risk_score": 0.895,
+    "confidence": "low",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0259",
+    "timestamp": "2025-09-04T17:26:22.298154",
+    "title": "DarkSide APT group conducting espionage against energy using zero-day exploits",
+    "severity": "critical",
+    "risk_score": 0.816,
+    "confidence": "high",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0260",
+    "timestamp": "2025-08-14T17:26:22.298161",
+    "title": "Critical CVE-2024-6076 vulnerability being exploited by Sandworm in energy attacks",
+    "severity": "critical",
+    "risk_score": 0.932,
+    "confidence": "low",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0261",
+    "timestamp": "2025-05-22T17:26:22.298169",
+    "title": "Coordinated APT28 campaign using LockBit and lateral movement",
+    "severity": "high",
+    "risk_score": 0.742,
+    "confidence": "low",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0262",
+    "timestamp": "2024-11-27T17:26:22.298175",
+    "title": "Zero-day CVE-2024-2824 discovered in Apache, actively exploited by APT41",
+    "severity": "critical",
+    "risk_score": 0.993,
+    "confidence": "low",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0263",
+    "timestamp": "2025-10-29T17:26:22.298182",
+    "title": "Critical CVE-2024-1809 vulnerability being exploited by Sandworm in retail attacks",
+    "severity": "critical",
+    "risk_score": 0.816,
+    "confidence": "low",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0264",
+    "timestamp": "2025-07-26T17:26:22.298190",
+    "title": "Volt Typhoon APT group conducting espionage against telecom using living off the land",
+    "severity": "high",
+    "risk_score": 0.607,
+    "confidence": "low",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0265",
+    "timestamp": "2025-02-09T17:26:22.298198",
+    "title": "Conti targeting manufacturing organizations with IcedID using living off the land",
+    "severity": "medium",
+    "risk_score": 0.593,
+    "confidence": "medium",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0266",
+    "timestamp": "2025-05-17T17:26:22.298207",
+    "title": "New variant of TrickBot spreading via living off the land targeting technology",
+    "severity": "medium",
+    "risk_score": 0.529,
+    "confidence": "medium",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0267",
+    "timestamp": "2025-04-02T17:26:22.298214",
+    "title": "Massive Ryuk botnet targeting manufacturing infrastructure",
+    "severity": "medium",
+    "risk_score": 0.505,
+    "confidence": "high",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0268",
+    "timestamp": "2025-08-23T17:26:22.298223",
+    "title": "APT41 targeting telecom organizations with QakBot using lateral movement",
+    "severity": "high",
+    "risk_score": 0.835,
+    "confidence": "medium",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0269",
+    "timestamp": "2025-08-09T17:26:22.298231",
+    "title": "Volt Typhoon APT group conducting espionage against energy using spear phishing",
+    "severity": "high",
+    "risk_score": 0.802,
+    "confidence": "low",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0270",
+    "timestamp": "2025-01-02T17:26:22.298240",
+    "title": "Nobelium APT group conducting espionage against government using data exfiltration",
+    "severity": "high",
+    "risk_score": 0.781,
+    "confidence": "low",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0271",
+    "timestamp": "2025-04-20T17:26:22.298248",
+    "title": "New variant of TrickBot spreading via ransomware deployment targeting energy",
+    "severity": "critical",
+    "risk_score": 0.906,
+    "confidence": "medium",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0272",
+    "timestamp": "2025-09-11T17:26:22.298255",
+    "title": "Zero-day CVE-2024-2316 discovered in Apache, actively exploited by Nobelium",
+    "severity": "critical",
+    "risk_score": 0.996,
+    "confidence": "high",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0273",
+    "timestamp": "2025-04-23T17:26:22.298262",
+    "title": "BlackCat ransomware campaign targeting retail sector via supply chain compromise",
+    "severity": "critical",
+    "risk_score": 0.876,
+    "confidence": "medium",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0274",
+    "timestamp": "2025-10-14T17:26:22.298270",
+    "title": "Volt Typhoon targeting telecom organizations with Emotet using living off the land",
+    "severity": "medium",
+    "risk_score": 0.401,
+    "confidence": "medium",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0275",
+    "timestamp": "2025-06-11T17:26:22.298278",
+    "title": "New variant of LockBit spreading via lateral movement targeting manufacturing",
+    "severity": "medium",
+    "risk_score": 0.426,
+    "confidence": "low",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0276",
+    "timestamp": "2025-01-25T17:26:22.298285",
+    "title": "Emotet ransomware campaign targeting manufacturing sector via credential theft",
+    "severity": "critical",
+    "risk_score": 0.856,
+    "confidence": "high",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0277",
+    "timestamp": "2025-02-18T17:26:22.298293",
+    "title": "Massive Cobalt Strike botnet targeting healthcare infrastructure",
+    "severity": "medium",
+    "risk_score": 0.666,
+    "confidence": "medium",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0278",
+    "timestamp": "2025-05-25T17:26:22.298301",
+    "title": "New variant of Cobalt Strike spreading via spear phishing targeting technology",
+    "severity": "medium",
+    "risk_score": 0.457,
+    "confidence": "medium",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0279",
+    "timestamp": "2025-07-11T17:26:22.298308",
+    "title": "Coordinated APT41 campaign using IcedID and lateral movement",
+    "severity": "high",
+    "risk_score": 0.754,
+    "confidence": "low",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0280",
+    "timestamp": "2025-05-05T17:26:22.298316",
+    "title": "Massive LockBit botnet targeting manufacturing infrastructure",
+    "severity": "medium",
+    "risk_score": 0.485,
+    "confidence": "low",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0281",
+    "timestamp": "2025-04-28T17:26:22.298324",
+    "title": "APT28 targeting healthcare organizations with Cobalt Strike using data exfiltration",
+    "severity": "high",
+    "risk_score": 0.848,
+    "confidence": "low",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0282",
+    "timestamp": "2024-11-22T17:26:22.298331",
+    "title": "Zero-day CVE-2024-6442 discovered in Fortinet VPN, actively exploited by APT28",
+    "severity": "critical",
+    "risk_score": 0.923,
+    "confidence": "medium",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0283",
+    "timestamp": "2025-03-01T17:26:22.298338",
+    "title": "Critical CVE-2024-7578 vulnerability being exploited by APT41 in retail attacks",
+    "severity": "critical",
+    "risk_score": 0.959,
+    "confidence": "high",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0284",
+    "timestamp": "2025-11-02T17:26:22.298346",
+    "title": "CVE-2024-1671 vulnerability in Windows enables Ryuk deployment",
+    "severity": "high",
+    "risk_score": 0.842,
+    "confidence": "high",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0285",
+    "timestamp": "2025-02-10T17:26:22.298352",
+    "title": "Zero-day CVE-2024-4398 discovered in Apache, actively exploited by APT28",
+    "severity": "critical",
+    "risk_score": 0.948,
+    "confidence": "medium",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0286",
+    "timestamp": "2025-06-15T17:26:22.298359",
+    "title": "Zero-day CVE-2024-2818 discovered in VMware vCenter, actively exploited by FIN7",
+    "severity": "critical",
+    "risk_score": 0.849,
+    "confidence": "low",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0287",
+    "timestamp": "2025-01-14T17:26:22.298367",
+    "title": "Massive QakBot botnet targeting retail infrastructure",
+    "severity": "medium",
+    "risk_score": 0.674,
+    "confidence": "high",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0288",
+    "timestamp": "2025-08-23T17:26:22.298374",
+    "title": "APT41 linked to TrickBot attacks on retail supply chain",
+    "severity": "critical",
+    "risk_score": 0.964,
+    "confidence": "low",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0289",
+    "timestamp": "2025-02-20T17:26:22.298380",
+    "title": "Critical CVE-2024-9611 vulnerability being exploited by APT41 in telecom attacks",
+    "severity": "critical",
+    "risk_score": 0.811,
+    "confidence": "low",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0290",
+    "timestamp": "2025-04-20T17:26:22.298388",
+    "title": "Coordinated Nobelium campaign using Cobalt Strike and spear phishing",
+    "severity": "medium",
+    "risk_score": 0.673,
+    "confidence": "medium",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0291",
+    "timestamp": "2025-09-29T17:26:22.298396",
+    "title": "Conti APT group conducting espionage against energy using spear phishing",
+    "severity": "high",
+    "risk_score": 0.664,
+    "confidence": "low",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0292",
+    "timestamp": "2025-07-10T17:26:22.298404",
+    "title": "Coordinated Lazarus campaign using Emotet and spear phishing",
+    "severity": "medium",
+    "risk_score": 0.467,
+    "confidence": "medium",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0293",
+    "timestamp": "2025-10-23T17:26:22.298412",
+    "title": "DarkSide targeting healthcare organizations with Ryuk using data exfiltration",
+    "severity": "medium",
+    "risk_score": 0.503,
+    "confidence": "high",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0294",
+    "timestamp": "2025-03-31T17:26:22.298419",
+    "title": "Massive Emotet botnet targeting telecom infrastructure",
+    "severity": "medium",
+    "risk_score": 0.592,
+    "confidence": "medium",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0295",
+    "timestamp": "2025-05-11T17:26:22.298426",
+    "title": "BlackCat ransomware campaign targeting financial sector via ransomware deployment",
+    "severity": "critical",
+    "risk_score": 0.997,
+    "confidence": "high",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0296",
+    "timestamp": "2025-08-30T17:26:22.298433",
+    "title": "Coordinated Sandworm campaign using TrickBot and ransomware deployment",
+    "severity": "critical",
+    "risk_score": 0.931,
+    "confidence": "low",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0297",
+    "timestamp": "2024-11-11T17:26:22.298441",
+    "title": "Massive TrickBot botnet targeting technology infrastructure",
+    "severity": "medium",
+    "risk_score": 0.427,
+    "confidence": "high",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0298",
+    "timestamp": "2025-08-02T17:26:22.298449",
+    "title": "CVE-2024-4798 vulnerability in Windows enables Ryuk deployment",
+    "severity": "high",
+    "risk_score": 0.712,
+    "confidence": "low",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0299",
+    "timestamp": "2025-09-22T17:26:22.298456",
+    "title": "Volt Typhoon targeting technology organizations with LockBit using ransomware deployment",
+    "severity": "critical",
+    "risk_score": 0.863,
+    "confidence": "medium",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0300",
+    "timestamp": "2025-09-02T17:26:22.298464",
+    "title": "New variant of BlackCat spreading via living off the land targeting healthcare",
+    "severity": "medium",
+    "risk_score": 0.53,
+    "confidence": "high",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0301",
+    "timestamp": "2024-11-16T17:26:22.298471",
+    "title": "CVE-2024-7715 vulnerability in Citrix ADC enables TrickBot deployment",
+    "severity": "high",
+    "risk_score": 0.684,
+    "confidence": "medium",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0302",
+    "timestamp": "2024-12-26T17:26:22.298478",
+    "title": "DarkSide linked to QakBot attacks on telecom supply chain",
+    "severity": "critical",
+    "risk_score": 0.978,
+    "confidence": "low",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0303",
+    "timestamp": "2025-07-05T17:26:22.298485",
+    "title": "Zero-day CVE-2024-8407 discovered in VMware vCenter, actively exploited by APT28",
+    "severity": "critical",
+    "risk_score": 0.982,
+    "confidence": "high",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0304",
+    "timestamp": "2025-09-24T17:26:22.298491",
+    "title": "Zero-day CVE-2024-9369 discovered in Apache, actively exploited by Volt Typhoon",
+    "severity": "critical",
+    "risk_score": 0.835,
+    "confidence": "medium",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0305",
+    "timestamp": "2025-04-07T17:26:22.298498",
+    "title": "Zero-day CVE-2024-6002 discovered in Windows, actively exploited by Lazarus",
+    "severity": "critical",
+    "risk_score": 0.982,
+    "confidence": "medium",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0306",
+    "timestamp": "2025-07-06T17:26:22.298505",
+    "title": "Critical CVE-2024-7386 vulnerability being exploited by FIN7 in healthcare attacks",
+    "severity": "critical",
+    "risk_score": 0.904,
+    "confidence": "medium",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0307",
+    "timestamp": "2025-05-19T17:26:22.298512",
+    "title": "Massive Cobalt Strike botnet targeting financial infrastructure",
+    "severity": "medium",
+    "risk_score": 0.591,
+    "confidence": "medium",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0308",
+    "timestamp": "2025-03-29T17:26:22.298519",
+    "title": "Critical CVE-2024-4667 vulnerability being exploited by APT28 in manufacturing attacks",
+    "severity": "critical",
+    "risk_score": 0.946,
+    "confidence": "high",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0309",
+    "timestamp": "2025-01-16T17:26:22.298525",
+    "title": "Critical CVE-2024-1147 vulnerability being exploited by Conti in financial attacks",
+    "severity": "critical",
+    "risk_score": 0.924,
+    "confidence": "medium",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0310",
+    "timestamp": "2025-05-26T17:26:22.298533",
+    "title": "Volt Typhoon targeting financial organizations with BlackCat using zero-day exploits",
+    "severity": "critical",
+    "risk_score": 0.971,
+    "confidence": "high",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0311",
+    "timestamp": "2025-05-01T17:26:22.298540",
+    "title": "CVE-2024-2804 vulnerability in Citrix ADC enables IcedID deployment",
+    "severity": "high",
+    "risk_score": 0.77,
+    "confidence": "low",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0312",
+    "timestamp": "2025-04-24T17:26:22.298547",
+    "title": "New variant of BlackCat spreading via supply chain compromise targeting financial",
+    "severity": "critical",
+    "risk_score": 0.826,
+    "confidence": "medium",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0313",
+    "timestamp": "2025-09-28T17:26:22.298554",
+    "title": "Cobalt Strike ransomware campaign targeting energy sector via living off the land",
+    "severity": "critical",
+    "risk_score": 0.877,
+    "confidence": "low",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0314",
+    "timestamp": "2025-04-26T17:26:22.298561",
+    "title": "Cobalt Strike ransomware campaign targeting telecom sector via lateral movement",
+    "severity": "critical",
+    "risk_score": 0.985,
+    "confidence": "high",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0315",
+    "timestamp": "2025-01-24T17:26:22.298567",
+    "title": "Zero-day CVE-2024-3027 discovered in Microsoft Exchange, actively exploited by APT28",
+    "severity": "critical",
+    "risk_score": 0.871,
+    "confidence": "medium",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0316",
+    "timestamp": "2024-11-23T17:26:22.298575",
+    "title": "CVE-2024-9238 vulnerability in Linux kernel enables Cobalt Strike deployment",
+    "severity": "high",
+    "risk_score": 0.642,
+    "confidence": "high",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0317",
+    "timestamp": "2025-05-04T17:26:22.298581",
+    "title": "Lazarus targeting government organizations with Emotet using zero-day exploits",
+    "severity": "critical",
+    "risk_score": 0.909,
+    "confidence": "medium",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0318",
+    "timestamp": "2025-07-14T17:26:22.298589",
+    "title": "Conti APT group conducting espionage against technology using lateral movement",
+    "severity": "high",
+    "risk_score": 0.687,
+    "confidence": "medium",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0319",
+    "timestamp": "2024-12-15T17:26:22.298597",
+    "title": "New variant of BlackCat spreading via spear phishing targeting government",
+    "severity": "medium",
+    "risk_score": 0.427,
+    "confidence": "medium",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0320",
+    "timestamp": "2024-11-30T17:26:22.298603",
+    "title": "Cobalt Strike ransomware campaign targeting energy sector via zero-day exploits",
+    "severity": "critical",
+    "risk_score": 0.929,
+    "confidence": "medium",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0321",
+    "timestamp": "2025-09-28T17:26:22.298611",
+    "title": "Sandworm linked to TrickBot attacks on financial supply chain",
+    "severity": "critical",
+    "risk_score": 0.82,
+    "confidence": "medium",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0322",
+    "timestamp": "2025-04-13T17:26:22.298618",
+    "title": "Sandworm linked to LockBit attacks on healthcare supply chain",
+    "severity": "critical",
+    "risk_score": 0.895,
+    "confidence": "high",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0323",
+    "timestamp": "2025-06-22T17:26:22.298624",
+    "title": "Zero-day CVE-2024-2814 discovered in Fortinet VPN, actively exploited by Lazarus",
+    "severity": "critical",
+    "risk_score": 0.829,
+    "confidence": "high",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0324",
+    "timestamp": "2025-10-09T17:26:22.298632",
+    "title": "Massive BlackCat botnet targeting telecom infrastructure",
+    "severity": "medium",
+    "risk_score": 0.446,
+    "confidence": "medium",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0325",
+    "timestamp": "2025-09-10T17:26:22.298640",
+    "title": "Massive Ryuk botnet targeting financial infrastructure",
+    "severity": "medium",
+    "risk_score": 0.456,
+    "confidence": "low",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0326",
+    "timestamp": "2025-06-06T17:26:22.298647",
+    "title": "APT41 linked to TrickBot attacks on manufacturing supply chain",
+    "severity": "critical",
+    "risk_score": 0.971,
+    "confidence": "high",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0327",
+    "timestamp": "2025-01-06T17:26:22.298655",
+    "title": "DarkSide APT group conducting espionage against financial using data exfiltration",
+    "severity": "high",
+    "risk_score": 0.825,
+    "confidence": "high",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0328",
+    "timestamp": "2024-11-21T17:26:22.298662",
+    "title": "LockBit ransomware campaign targeting telecom sector via credential theft",
+    "severity": "critical",
+    "risk_score": 0.916,
+    "confidence": "high",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0329",
+    "timestamp": "2025-01-20T17:26:22.298671",
+    "title": "New variant of QakBot spreading via data exfiltration targeting technology",
+    "severity": "medium",
+    "risk_score": 0.404,
+    "confidence": "medium",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0330",
+    "timestamp": "2025-07-18T17:26:22.298678",
+    "title": "Cobalt Strike ransomware campaign targeting telecom sector via ransomware deployment",
+    "severity": "critical",
+    "risk_score": 0.978,
+    "confidence": "medium",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0331",
+    "timestamp": "2025-03-30T17:26:22.298685",
+    "title": "APT41 targeting financial organizations with LockBit using supply chain compromise",
+    "severity": "critical",
+    "risk_score": 0.925,
+    "confidence": "medium",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0332",
+    "timestamp": "2025-05-14T17:26:22.298693",
+    "title": "CVE-2024-7816 vulnerability in Citrix ADC enables Emotet deployment",
+    "severity": "high",
+    "risk_score": 0.734,
+    "confidence": "high",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0333",
+    "timestamp": "2025-10-05T17:26:22.298701",
+    "title": "Conti targeting retail organizations with Cobalt Strike using spear phishing",
+    "severity": "medium",
+    "risk_score": 0.469,
+    "confidence": "low",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0334",
+    "timestamp": "2024-12-19T17:26:22.298709",
+    "title": "Conti APT group conducting espionage against telecom using living off the land",
+    "severity": "high",
+    "risk_score": 0.681,
+    "confidence": "low",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0335",
+    "timestamp": "2024-12-05T17:26:22.298716",
+    "title": "Coordinated Volt Typhoon campaign using Ryuk and spear phishing",
+    "severity": "medium",
+    "risk_score": 0.643,
+    "confidence": "low",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0336",
+    "timestamp": "2025-08-25T17:26:22.298724",
+    "title": "Lazarus linked to TrickBot attacks on technology supply chain",
+    "severity": "critical",
+    "risk_score": 0.878,
+    "confidence": "medium",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0337",
+    "timestamp": "2025-05-03T17:26:22.298730",
+    "title": "Nobelium linked to IcedID attacks on telecom supply chain",
+    "severity": "critical",
+    "risk_score": 0.975,
+    "confidence": "low",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0338",
+    "timestamp": "2025-02-08T17:26:22.298738",
+    "title": "APT28 APT group conducting espionage against energy using credential theft",
+    "severity": "high",
+    "risk_score": 0.702,
+    "confidence": "high",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0339",
+    "timestamp": "2024-11-09T17:26:22.298745",
+    "title": "Zero-day CVE-2024-2758 discovered in Linux kernel, actively exploited by Nobelium",
+    "severity": "critical",
+    "risk_score": 0.829,
+    "confidence": "high",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0340",
+    "timestamp": "2025-09-26T17:26:22.298752",
+    "title": "CVE-2024-7661 vulnerability in Microsoft Exchange enables Emotet deployment",
+    "severity": "high",
+    "risk_score": 0.767,
+    "confidence": "high",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0341",
+    "timestamp": "2025-08-05T17:26:22.298760",
+    "title": "Massive BlackCat botnet targeting healthcare infrastructure",
+    "severity": "medium",
+    "risk_score": 0.417,
+    "confidence": "medium",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0342",
+    "timestamp": "2025-05-28T17:26:22.298766",
+    "title": "Zero-day CVE-2024-6120 discovered in VMware vCenter, actively exploited by Conti",
+    "severity": "critical",
+    "risk_score": 0.838,
+    "confidence": "medium",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0343",
+    "timestamp": "2025-09-06T17:26:22.298773",
+    "title": "Zero-day CVE-2024-9469 discovered in VMware vCenter, actively exploited by APT28",
+    "severity": "critical",
+    "risk_score": 0.953,
+    "confidence": "high",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0344",
+    "timestamp": "2025-08-08T17:26:22.298781",
+    "title": "Massive BlackCat botnet targeting manufacturing infrastructure",
+    "severity": "medium",
+    "risk_score": 0.67,
+    "confidence": "medium",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0345",
+    "timestamp": "2025-01-14T17:26:22.298788",
+    "title": "APT41 APT group conducting espionage against government using lateral movement",
+    "severity": "high",
+    "risk_score": 0.67,
+    "confidence": "medium",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0346",
+    "timestamp": "2025-10-25T17:26:22.298795",
+    "title": "LockBit ransomware campaign targeting retail sector via spear phishing",
+    "severity": "critical",
+    "risk_score": 0.885,
+    "confidence": "high",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0347",
+    "timestamp": "2025-09-13T17:26:22.298802",
+    "title": "Coordinated APT41 campaign using Cobalt Strike and zero-day exploits",
+    "severity": "critical",
+    "risk_score": 0.859,
+    "confidence": "low",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0348",
+    "timestamp": "2025-10-09T17:26:22.298809",
+    "title": "Critical CVE-2024-5078 vulnerability being exploited by DarkSide in technology attacks",
+    "severity": "critical",
+    "risk_score": 0.815,
+    "confidence": "medium",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0349",
+    "timestamp": "2024-12-09T17:26:22.298816",
+    "title": "CVE-2024-7244 vulnerability in Linux kernel enables Ryuk deployment",
+    "severity": "high",
+    "risk_score": 0.664,
+    "confidence": "low",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0350",
+    "timestamp": "2025-07-29T17:26:22.298823",
+    "title": "Nobelium targeting energy organizations with IcedID using ransomware deployment",
+    "severity": "critical",
+    "risk_score": 0.935,
+    "confidence": "high",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0351",
+    "timestamp": "2025-10-11T17:26:22.298830",
+    "title": "Zero-day CVE-2024-5720 discovered in Microsoft Exchange, actively exploited by Conti",
+    "severity": "critical",
+    "risk_score": 0.977,
+    "confidence": "medium",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0352",
+    "timestamp": "2025-07-05T17:26:22.298837",
+    "title": "Coordinated APT41 campaign using IcedID and lateral movement",
+    "severity": "high",
+    "risk_score": 0.798,
+    "confidence": "low",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0353",
+    "timestamp": "2025-03-27T17:26:22.298844",
+    "title": "Critical CVE-2024-6203 vulnerability being exploited by Volt Typhoon in technology attacks",
+    "severity": "critical",
+    "risk_score": 0.924,
+    "confidence": "medium",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0354",
+    "timestamp": "2025-05-13T17:26:22.298852",
+    "title": "Critical CVE-2024-3291 vulnerability being exploited by APT28 in manufacturing attacks",
+    "severity": "critical",
+    "risk_score": 0.999,
+    "confidence": "low",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0355",
+    "timestamp": "2025-07-25T17:26:22.298859",
+    "title": "IcedID ransomware campaign targeting energy sector via spear phishing",
+    "severity": "critical",
+    "risk_score": 0.956,
+    "confidence": "high",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0356",
+    "timestamp": "2025-07-31T17:26:22.298866",
+    "title": "Critical CVE-2024-2488 vulnerability being exploited by Conti in financial attacks",
+    "severity": "critical",
+    "risk_score": 0.888,
+    "confidence": "high",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0357",
+    "timestamp": "2025-03-31T17:26:22.298872",
+    "title": "Critical CVE-2024-3896 vulnerability being exploited by Volt Typhoon in retail attacks",
+    "severity": "critical",
+    "risk_score": 0.98,
+    "confidence": "low",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0358",
+    "timestamp": "2024-12-17T17:26:22.298880",
+    "title": "Volt Typhoon linked to Cobalt Strike attacks on manufacturing supply chain",
+    "severity": "critical",
+    "risk_score": 0.909,
+    "confidence": "high",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0359",
+    "timestamp": "2025-07-29T17:26:22.298887",
+    "title": "Critical CVE-2024-2022 vulnerability being exploited by DarkSide in technology attacks",
+    "severity": "critical",
+    "risk_score": 0.825,
+    "confidence": "medium",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0360",
+    "timestamp": "2025-01-05T17:26:22.298894",
+    "title": "APT28 linked to Ryuk attacks on healthcare supply chain",
+    "severity": "critical",
+    "risk_score": 0.872,
+    "confidence": "low",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0361",
+    "timestamp": "2025-03-03T17:26:22.298901",
+    "title": "Critical CVE-2024-4366 vulnerability being exploited by Lazarus in energy attacks",
+    "severity": "critical",
+    "risk_score": 0.817,
+    "confidence": "low",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0362",
+    "timestamp": "2025-07-11T17:26:22.298908",
+    "title": "Critical CVE-2024-4420 vulnerability being exploited by APT41 in energy attacks",
+    "severity": "critical",
+    "risk_score": 0.834,
+    "confidence": "high",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0363",
+    "timestamp": "2025-01-24T17:26:22.298915",
+    "title": "Conti linked to LockBit attacks on government supply chain",
+    "severity": "critical",
+    "risk_score": 0.965,
+    "confidence": "low",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0364",
+    "timestamp": "2025-09-17T17:26:22.298923",
+    "title": "Massive QakBot botnet targeting government infrastructure",
+    "severity": "medium",
+    "risk_score": 0.464,
+    "confidence": "low",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0365",
+    "timestamp": "2025-07-19T17:26:22.298931",
+    "title": "Sandworm APT group conducting espionage against financial using supply chain compromise",
+    "severity": "critical",
+    "risk_score": 0.806,
+    "confidence": "high",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0366",
+    "timestamp": "2025-08-18T17:26:22.298938",
+    "title": "Cobalt Strike ransomware campaign targeting energy sector via supply chain compromise",
+    "severity": "critical",
+    "risk_score": 0.996,
+    "confidence": "high",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0367",
+    "timestamp": "2025-01-02T17:26:22.298945",
+    "title": "APT28 APT group conducting espionage against technology using supply chain compromise",
+    "severity": "critical",
+    "risk_score": 0.929,
+    "confidence": "low",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0368",
+    "timestamp": "2025-01-08T17:26:22.298952",
+    "title": "APT41 linked to Cobalt Strike attacks on energy supply chain",
+    "severity": "critical",
+    "risk_score": 0.977,
+    "confidence": "low",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0369",
+    "timestamp": "2025-05-23T17:26:22.298958",
+    "title": "IcedID ransomware campaign targeting retail sector via zero-day exploits",
+    "severity": "critical",
+    "risk_score": 0.901,
+    "confidence": "medium",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0370",
+    "timestamp": "2025-07-22T17:26:22.298966",
+    "title": "Massive QakBot botnet targeting energy infrastructure",
+    "severity": "medium",
+    "risk_score": 0.477,
+    "confidence": "medium",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0371",
+    "timestamp": "2025-05-06T17:26:22.298973",
+    "title": "Massive TrickBot botnet targeting telecom infrastructure",
+    "severity": "medium",
+    "risk_score": 0.542,
+    "confidence": "high",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0372",
+    "timestamp": "2025-02-17T17:26:22.298981",
+    "title": "CVE-2024-3937 vulnerability in Fortinet VPN enables TrickBot deployment",
+    "severity": "high",
+    "risk_score": 0.604,
+    "confidence": "high",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0373",
+    "timestamp": "2025-03-26T17:26:22.298987",
+    "title": "Zero-day CVE-2024-7279 discovered in Fortinet VPN, actively exploited by Conti",
+    "severity": "critical",
+    "risk_score": 0.847,
+    "confidence": "low",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0374",
+    "timestamp": "2025-09-12T17:26:22.298995",
+    "title": "CVE-2024-4827 vulnerability in Microsoft Exchange enables Ryuk deployment",
+    "severity": "high",
+    "risk_score": 0.743,
+    "confidence": "high",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0375",
+    "timestamp": "2024-11-03T17:26:22.299003",
+    "title": "Coordinated DarkSide campaign using Cobalt Strike and lateral movement",
+    "severity": "medium",
+    "risk_score": 0.431,
+    "confidence": "medium",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0376",
+    "timestamp": "2025-05-05T17:26:22.299010",
+    "title": "CVE-2024-2372 vulnerability in Apache enables Emotet deployment",
+    "severity": "high",
+    "risk_score": 0.832,
+    "confidence": "low",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0377",
+    "timestamp": "2025-01-12T17:26:22.299018",
+    "title": "LockBit ransomware campaign targeting financial sector via supply chain compromise",
+    "severity": "critical",
+    "risk_score": 0.922,
+    "confidence": "high",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0378",
+    "timestamp": "2024-11-17T17:26:22.299025",
+    "title": "Coordinated Sandworm campaign using TrickBot and ransomware deployment",
+    "severity": "critical",
+    "risk_score": 0.867,
+    "confidence": "high",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0379",
+    "timestamp": "2024-11-05T17:26:22.299033",
+    "title": "BlackCat ransomware campaign targeting manufacturing sector via lateral movement",
+    "severity": "critical",
+    "risk_score": 0.879,
+    "confidence": "medium",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0380",
+    "timestamp": "2025-10-08T17:26:22.299040",
+    "title": "Ryuk ransomware campaign targeting government sector via credential theft",
+    "severity": "critical",
+    "risk_score": 0.897,
+    "confidence": "low",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0381",
+    "timestamp": "2025-05-15T17:26:22.299050",
+    "title": "Critical CVE-2024-8158 vulnerability being exploited by Volt Typhoon in technology attacks",
+    "severity": "critical",
+    "risk_score": 0.852,
+    "confidence": "low",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0382",
+    "timestamp": "2025-08-21T17:26:22.299063",
+    "title": "Critical CVE-2024-5647 vulnerability being exploited by Conti in retail attacks",
+    "severity": "critical",
+    "risk_score": 0.937,
+    "confidence": "high",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0383",
+    "timestamp": "2025-08-08T17:26:22.299070",
+    "title": "Nobelium linked to TrickBot attacks on retail supply chain",
+    "severity": "critical",
+    "risk_score": 0.889,
+    "confidence": "medium",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0384",
+    "timestamp": "2025-06-03T17:26:22.299078",
+    "title": "Conti APT group conducting espionage against retail using spear phishing",
+    "severity": "high",
+    "risk_score": 0.732,
+    "confidence": "low",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0385",
+    "timestamp": "2025-06-21T17:26:22.299085",
+    "title": "FIN7 targeting technology organizations with BlackCat using ransomware deployment",
+    "severity": "critical",
+    "risk_score": 0.966,
+    "confidence": "low",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0386",
+    "timestamp": "2025-03-29T17:26:22.299092",
+    "title": "Emotet ransomware campaign targeting healthcare sector via credential theft",
+    "severity": "critical",
+    "risk_score": 0.911,
+    "confidence": "medium",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0387",
+    "timestamp": "2024-12-04T17:26:22.299099",
+    "title": "Critical CVE-2024-4813 vulnerability being exploited by Conti in energy attacks",
+    "severity": "critical",
+    "risk_score": 0.931,
+    "confidence": "low",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0388",
+    "timestamp": "2025-03-02T17:26:22.299106",
+    "title": "BlackCat ransomware campaign targeting telecom sector via lateral movement",
+    "severity": "critical",
+    "risk_score": 0.831,
+    "confidence": "low",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0389",
+    "timestamp": "2025-02-28T17:26:22.299115",
+    "title": "New variant of Emotet spreading via credential theft targeting technology",
+    "severity": "medium",
+    "risk_score": 0.49,
+    "confidence": "medium",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0390",
+    "timestamp": "2025-03-09T17:26:22.299122",
+    "title": "Zero-day CVE-2024-3580 discovered in Windows, actively exploited by FIN7",
+    "severity": "critical",
+    "risk_score": 0.906,
+    "confidence": "low",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0391",
+    "timestamp": "2025-06-04T17:26:22.299129",
+    "title": "Lazarus linked to Ryuk attacks on healthcare supply chain",
+    "severity": "critical",
+    "risk_score": 0.842,
+    "confidence": "low",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0392",
+    "timestamp": "2024-11-27T17:26:22.299136",
+    "title": "Critical CVE-2024-6122 vulnerability being exploited by APT41 in technology attacks",
+    "severity": "critical",
+    "risk_score": 0.862,
+    "confidence": "medium",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0393",
+    "timestamp": "2025-01-11T17:26:22.299143",
+    "title": "Massive IcedID botnet targeting energy infrastructure",
+    "severity": "medium",
+    "risk_score": 0.503,
+    "confidence": "low",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0394",
+    "timestamp": "2025-06-21T17:26:22.299150",
+    "title": "Lazarus targeting financial organizations with TrickBot using supply chain compromise",
+    "severity": "critical",
+    "risk_score": 0.805,
+    "confidence": "high",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0395",
+    "timestamp": "2025-01-29T17:26:22.299158",
+    "title": "Emotet ransomware campaign targeting technology sector via credential theft",
+    "severity": "critical",
+    "risk_score": 0.911,
+    "confidence": "high",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0396",
+    "timestamp": "2025-06-11T17:26:22.299165",
+    "title": "Zero-day CVE-2024-9486 discovered in VMware vCenter, actively exploited by FIN7",
+    "severity": "critical",
+    "risk_score": 0.873,
+    "confidence": "low",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0397",
+    "timestamp": "2025-06-02T17:26:22.299172",
+    "title": "Coordinated Conti campaign using BlackCat and credential theft",
+    "severity": "medium",
+    "risk_score": 0.567,
+    "confidence": "medium",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0398",
+    "timestamp": "2025-08-07T17:26:22.299181",
+    "title": "CVE-2024-9547 vulnerability in Fortinet VPN enables IcedID deployment",
+    "severity": "high",
+    "risk_score": 0.754,
+    "confidence": "medium",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0399",
+    "timestamp": "2024-12-17T17:26:22.299189",
+    "title": "FIN7 targeting government organizations with QakBot using supply chain compromise",
+    "severity": "critical",
+    "risk_score": 0.812,
+    "confidence": "high",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0400",
+    "timestamp": "2025-07-22T17:26:22.299197",
+    "title": "Conti targeting government organizations with Cobalt Strike using data exfiltration",
+    "severity": "medium",
+    "risk_score": 0.619,
+    "confidence": "medium",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0401",
+    "timestamp": "2025-04-21T17:26:22.299205",
+    "title": "CVE-2024-6693 vulnerability in Microsoft Exchange enables Emotet deployment",
+    "severity": "high",
+    "risk_score": 0.739,
+    "confidence": "medium",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0402",
+    "timestamp": "2025-02-28T17:26:22.299214",
+    "title": "Lazarus APT group conducting espionage against energy using lateral movement",
+    "severity": "high",
+    "risk_score": 0.641,
+    "confidence": "high",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0403",
+    "timestamp": "2025-03-20T17:26:22.299222",
+    "title": "Conti linked to Cobalt Strike attacks on government supply chain",
+    "severity": "critical",
+    "risk_score": 0.825,
+    "confidence": "low",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0404",
+    "timestamp": "2025-07-24T17:26:22.299229",
+    "title": "Ryuk ransomware campaign targeting manufacturing sector via ransomware deployment",
+    "severity": "critical",
+    "risk_score": 0.975,
+    "confidence": "medium",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0405",
+    "timestamp": "2025-10-29T17:26:22.299236",
+    "title": "Coordinated Sandworm campaign using Emotet and ransomware deployment",
+    "severity": "critical",
+    "risk_score": 0.955,
+    "confidence": "high",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0406",
+    "timestamp": "2025-08-12T17:26:22.299244",
+    "title": "APT41 APT group conducting espionage against financial using data exfiltration",
+    "severity": "high",
+    "risk_score": 0.712,
+    "confidence": "high",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0407",
+    "timestamp": "2024-12-25T17:26:22.299251",
+    "title": "Critical CVE-2024-2630 vulnerability being exploited by APT41 in manufacturing attacks",
+    "severity": "critical",
+    "risk_score": 0.865,
+    "confidence": "high",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0408",
+    "timestamp": "2025-07-11T17:26:22.299258",
+    "title": "APT41 targeting retail organizations with IcedID using supply chain compromise",
+    "severity": "critical",
+    "risk_score": 0.993,
+    "confidence": "low",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0409",
+    "timestamp": "2025-09-22T17:26:22.299266",
+    "title": "Cobalt Strike ransomware campaign targeting manufacturing sector via lateral movement",
+    "severity": "critical",
+    "risk_score": 0.939,
+    "confidence": "high",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0410",
+    "timestamp": "2025-02-13T17:26:22.299274",
+    "title": "New variant of QakBot spreading via ransomware deployment targeting energy",
+    "severity": "critical",
+    "risk_score": 0.821,
+    "confidence": "high",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0411",
+    "timestamp": "2024-11-11T17:26:22.299281",
+    "title": "Volt Typhoon targeting energy organizations with IcedID using ransomware deployment",
+    "severity": "critical",
+    "risk_score": 0.948,
+    "confidence": "low",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0412",
+    "timestamp": "2025-09-09T17:26:22.299289",
+    "title": "Massive TrickBot botnet targeting energy infrastructure",
+    "severity": "medium",
+    "risk_score": 0.567,
+    "confidence": "low",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0413",
+    "timestamp": "2025-05-08T17:26:22.299296",
+    "title": "Critical CVE-2024-9420 vulnerability being exploited by Conti in healthcare attacks",
+    "severity": "critical",
+    "risk_score": 0.904,
+    "confidence": "medium",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0414",
+    "timestamp": "2025-08-02T17:26:22.299304",
+    "title": "Coordinated DarkSide campaign using QakBot and lateral movement",
+    "severity": "medium",
+    "risk_score": 0.403,
+    "confidence": "low",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0415",
+    "timestamp": "2025-05-25T17:26:22.299313",
+    "title": "New variant of LockBit spreading via living off the land targeting technology",
+    "severity": "medium",
+    "risk_score": 0.648,
+    "confidence": "low",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0416",
+    "timestamp": "2024-12-22T17:26:22.299320",
+    "title": "Lazarus targeting financial organizations with BlackCat using supply chain compromise",
+    "severity": "critical",
+    "risk_score": 0.855,
+    "confidence": "low",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0417",
+    "timestamp": "2025-05-08T17:26:22.299327",
+    "title": "Lazarus linked to Ryuk attacks on government supply chain",
+    "severity": "critical",
+    "risk_score": 0.835,
+    "confidence": "medium",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0418",
+    "timestamp": "2025-04-18T17:26:22.299336",
+    "title": "New variant of LockBit spreading via living off the land targeting technology",
+    "severity": "medium",
+    "risk_score": 0.618,
+    "confidence": "low",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0419",
+    "timestamp": "2025-06-08T17:26:22.299343",
+    "title": "Zero-day CVE-2024-1203 discovered in Apache, actively exploited by Conti",
+    "severity": "critical",
+    "risk_score": 0.874,
+    "confidence": "low",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0420",
+    "timestamp": "2025-05-05T17:26:22.299351",
+    "title": "Emotet ransomware campaign targeting financial sector via spear phishing",
+    "severity": "critical",
+    "risk_score": 0.996,
+    "confidence": "low",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0421",
+    "timestamp": "2025-08-19T17:26:22.299359",
+    "title": "Massive Emotet botnet targeting energy infrastructure",
+    "severity": "medium",
+    "risk_score": 0.645,
+    "confidence": "low",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0422",
+    "timestamp": "2024-12-11T17:26:22.299367",
+    "title": "Conti APT group conducting espionage against telecom using credential theft",
+    "severity": "high",
+    "risk_score": 0.736,
+    "confidence": "high",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0423",
+    "timestamp": "2025-04-19T17:26:22.299376",
+    "title": "Massive Ryuk botnet targeting healthcare infrastructure",
+    "severity": "medium",
+    "risk_score": 0.492,
+    "confidence": "low",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0424",
+    "timestamp": "2025-02-04T17:26:22.299384",
+    "title": "Coordinated APT28 campaign using IcedID and spear phishing",
+    "severity": "high",
+    "risk_score": 0.647,
+    "confidence": "medium",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0425",
+    "timestamp": "2025-04-17T17:26:22.299392",
+    "title": "CVE-2024-7757 vulnerability in Fortinet VPN enables BlackCat deployment",
+    "severity": "high",
+    "risk_score": 0.815,
+    "confidence": "low",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0426",
+    "timestamp": "2025-07-26T17:26:22.299399",
+    "title": "Sandworm linked to QakBot attacks on financial supply chain",
+    "severity": "critical",
+    "risk_score": 0.979,
+    "confidence": "medium",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0427",
+    "timestamp": "2025-04-21T17:26:22.299407",
+    "title": "CVE-2024-8558 vulnerability in Apache enables Ryuk deployment",
+    "severity": "high",
+    "risk_score": 0.694,
+    "confidence": "high",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0428",
+    "timestamp": "2025-03-07T17:26:22.299416",
+    "title": "Coordinated Conti campaign using IcedID and credential theft",
+    "severity": "medium",
+    "risk_score": 0.423,
+    "confidence": "high",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0429",
+    "timestamp": "2025-01-23T17:26:22.299424",
+    "title": "New variant of Emotet spreading via lateral movement targeting technology",
+    "severity": "medium",
+    "risk_score": 0.582,
+    "confidence": "medium",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0430",
+    "timestamp": "2025-02-20T17:26:22.299431",
+    "title": "Critical CVE-2024-9430 vulnerability being exploited by Conti in healthcare attacks",
+    "severity": "critical",
+    "risk_score": 0.826,
+    "confidence": "low",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0431",
+    "timestamp": "2024-11-15T17:26:22.299439",
+    "title": "Massive Cobalt Strike botnet targeting government infrastructure",
+    "severity": "medium",
+    "risk_score": 0.474,
+    "confidence": "high",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0432",
+    "timestamp": "2025-01-07T17:26:22.299446",
+    "title": "New variant of QakBot spreading via supply chain compromise targeting telecom",
+    "severity": "critical",
+    "risk_score": 0.827,
+    "confidence": "medium",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0433",
+    "timestamp": "2024-11-27T17:26:22.299454",
+    "title": "New variant of BlackCat spreading via credential theft targeting technology",
+    "severity": "medium",
+    "risk_score": 0.432,
+    "confidence": "low",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0434",
+    "timestamp": "2025-01-13T17:26:22.299461",
+    "title": "Zero-day CVE-2024-4248 discovered in Fortinet VPN, actively exploited by Nobelium",
+    "severity": "critical",
+    "risk_score": 0.817,
+    "confidence": "medium",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0435",
+    "timestamp": "2025-08-10T17:26:22.299468",
+    "title": "Coordinated Sandworm campaign using Emotet and ransomware deployment",
+    "severity": "critical",
+    "risk_score": 0.874,
+    "confidence": "medium",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0436",
+    "timestamp": "2025-08-07T17:26:22.299476",
+    "title": "Volt Typhoon targeting manufacturing organizations with LockBit using data exfiltration",
+    "severity": "medium",
+    "risk_score": 0.57,
+    "confidence": "high",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0437",
+    "timestamp": "2025-09-27T17:26:22.299483",
+    "title": "Nobelium linked to TrickBot attacks on financial supply chain",
+    "severity": "critical",
+    "risk_score": 0.858,
+    "confidence": "high",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0438",
+    "timestamp": "2025-07-15T17:26:22.299491",
+    "title": "Critical CVE-2024-8112 vulnerability being exploited by Nobelium in retail attacks",
+    "severity": "critical",
+    "risk_score": 0.868,
+    "confidence": "low",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0439",
+    "timestamp": "2025-10-31T17:26:22.299499",
+    "title": "Volt Typhoon APT group conducting espionage against telecom using spear phishing",
+    "severity": "high",
+    "risk_score": 0.78,
+    "confidence": "low",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0440",
+    "timestamp": "2025-08-31T17:26:22.299507",
+    "title": "APT41 targeting manufacturing organizations with IcedID using ransomware deployment",
+    "severity": "critical",
+    "risk_score": 0.978,
+    "confidence": "low",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0441",
+    "timestamp": "2025-02-20T17:26:22.299514",
+    "title": "Zero-day CVE-2024-7627 discovered in Microsoft Exchange, actively exploited by APT41",
+    "severity": "critical",
+    "risk_score": 0.901,
+    "confidence": "low",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0442",
+    "timestamp": "2024-12-23T17:26:22.299521",
+    "title": "TrickBot ransomware campaign targeting telecom sector via credential theft",
+    "severity": "critical",
+    "risk_score": 0.997,
+    "confidence": "medium",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0443",
+    "timestamp": "2025-07-04T17:26:22.299528",
+    "title": "Sandworm targeting financial organizations with BlackCat using ransomware deployment",
+    "severity": "critical",
+    "risk_score": 0.958,
+    "confidence": "low",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0444",
+    "timestamp": "2025-04-27T17:26:22.299535",
+    "title": "Massive Cobalt Strike botnet targeting technology infrastructure",
+    "severity": "medium",
+    "risk_score": 0.611,
+    "confidence": "high",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0445",
+    "timestamp": "2024-11-09T17:26:22.299543",
+    "title": "Conti APT group conducting espionage against energy using supply chain compromise",
+    "severity": "critical",
+    "risk_score": 0.88,
+    "confidence": "high",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0446",
+    "timestamp": "2025-05-05T17:26:22.299551",
+    "title": "New variant of Emotet spreading via data exfiltration targeting retail",
+    "severity": "medium",
+    "risk_score": 0.655,
+    "confidence": "medium",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0447",
+    "timestamp": "2025-05-05T17:26:22.299558",
+    "title": "Zero-day CVE-2024-9725 discovered in Fortinet VPN, actively exploited by Conti",
+    "severity": "critical",
+    "risk_score": 0.962,
+    "confidence": "low",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0448",
+    "timestamp": "2024-11-22T17:26:22.299564",
+    "title": "Zero-day CVE-2024-8412 discovered in Microsoft Exchange, actively exploited by Conti",
+    "severity": "critical",
+    "risk_score": 0.819,
+    "confidence": "medium",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0449",
+    "timestamp": "2024-12-23T17:26:22.299572",
+    "title": "CVE-2024-1008 vulnerability in Linux kernel enables Emotet deployment",
+    "severity": "high",
+    "risk_score": 0.813,
+    "confidence": "medium",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0450",
+    "timestamp": "2024-11-10T17:26:22.299578",
+    "title": "Zero-day CVE-2024-3743 discovered in Apache, actively exploited by Nobelium",
+    "severity": "critical",
+    "risk_score": 0.897,
+    "confidence": "low",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0451",
+    "timestamp": "2025-02-07T17:26:22.299585",
+    "title": "FIN7 linked to TrickBot attacks on energy supply chain",
+    "severity": "critical",
+    "risk_score": 0.971,
+    "confidence": "low",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0452",
+    "timestamp": "2025-08-31T17:26:22.299592",
+    "title": "Coordinated FIN7 campaign using Cobalt Strike and zero-day exploits",
+    "severity": "critical",
+    "risk_score": 0.939,
+    "confidence": "low",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0453",
+    "timestamp": "2025-03-09T17:26:22.299600",
+    "title": "Critical CVE-2024-6198 vulnerability being exploited by Volt Typhoon in technology attacks",
+    "severity": "critical",
+    "risk_score": 0.988,
+    "confidence": "medium",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0454",
+    "timestamp": "2025-01-01T17:26:22.299608",
+    "title": "Lazarus APT group conducting espionage against energy using ransomware deployment",
+    "severity": "critical",
+    "risk_score": 0.931,
+    "confidence": "low",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0455",
+    "timestamp": "2025-07-01T17:26:22.299617",
+    "title": "Coordinated Sandworm campaign using Ryuk and living off the land",
+    "severity": "medium",
+    "risk_score": 0.654,
+    "confidence": "high",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0456",
+    "timestamp": "2025-08-25T17:26:22.299624",
+    "title": "Critical CVE-2024-2683 vulnerability being exploited by DarkSide in financial attacks",
+    "severity": "critical",
+    "risk_score": 0.951,
+    "confidence": "medium",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0457",
+    "timestamp": "2025-01-24T17:26:22.299631",
+    "title": "LockBit ransomware campaign targeting retail sector via lateral movement",
+    "severity": "critical",
+    "risk_score": 0.855,
+    "confidence": "high",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0458",
+    "timestamp": "2024-11-18T17:26:22.299639",
+    "title": "Critical CVE-2024-8729 vulnerability being exploited by APT28 in energy attacks",
+    "severity": "critical",
+    "risk_score": 0.94,
+    "confidence": "medium",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0459",
+    "timestamp": "2025-01-23T17:26:22.299646",
+    "title": "Zero-day CVE-2024-8234 discovered in VMware vCenter, actively exploited by Lazarus",
+    "severity": "critical",
+    "risk_score": 0.86,
+    "confidence": "low",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0460",
+    "timestamp": "2025-05-30T17:26:22.299653",
+    "title": "DarkSide APT group conducting espionage against manufacturing using zero-day exploits",
+    "severity": "critical",
+    "risk_score": 0.981,
+    "confidence": "high",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0461",
+    "timestamp": "2025-09-18T17:26:22.299660",
+    "title": "Volt Typhoon APT group conducting espionage against telecom using zero-day exploits",
+    "severity": "critical",
+    "risk_score": 0.926,
+    "confidence": "low",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0462",
+    "timestamp": "2025-08-06T17:26:22.299668",
+    "title": "Massive TrickBot botnet targeting government infrastructure",
+    "severity": "medium",
+    "risk_score": 0.424,
+    "confidence": "low",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0463",
+    "timestamp": "2025-05-29T17:26:22.299675",
+    "title": "CVE-2024-3685 vulnerability in Apache enables QakBot deployment",
+    "severity": "high",
+    "risk_score": 0.613,
+    "confidence": "high",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0464",
+    "timestamp": "2025-05-07T17:26:22.299682",
+    "title": "APT41 linked to LockBit attacks on retail supply chain",
+    "severity": "critical",
+    "risk_score": 0.85,
+    "confidence": "medium",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0465",
+    "timestamp": "2024-11-30T17:26:22.299690",
+    "title": "New variant of IcedID spreading via living off the land targeting government",
+    "severity": "medium",
+    "risk_score": 0.557,
+    "confidence": "medium",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0466",
+    "timestamp": "2025-04-09T17:26:22.299698",
+    "title": "Lazarus APT group conducting espionage against retail using data exfiltration",
+    "severity": "high",
+    "risk_score": 0.633,
+    "confidence": "high",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0467",
+    "timestamp": "2025-04-11T17:26:22.299706",
+    "title": "Lazarus APT group conducting espionage against manufacturing using lateral movement",
+    "severity": "high",
+    "risk_score": 0.616,
+    "confidence": "low",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0468",
+    "timestamp": "2025-09-15T17:26:22.299713",
+    "title": "LockBit ransomware campaign targeting healthcare sector via lateral movement",
+    "severity": "critical",
+    "risk_score": 0.836,
+    "confidence": "high",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0469",
+    "timestamp": "2025-02-11T17:26:22.299720",
+    "title": "CVE-2024-8186 vulnerability in Fortinet VPN enables Emotet deployment",
+    "severity": "high",
+    "risk_score": 0.813,
+    "confidence": "medium",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0470",
+    "timestamp": "2025-07-26T17:26:22.299728",
+    "title": "Sandworm linked to BlackCat attacks on retail supply chain",
+    "severity": "critical",
+    "risk_score": 0.838,
+    "confidence": "medium",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0471",
+    "timestamp": "2024-12-01T17:26:22.299736",
+    "title": "Coordinated Volt Typhoon campaign using BlackCat and living off the land",
+    "severity": "medium",
+    "risk_score": 0.699,
+    "confidence": "medium",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0472",
+    "timestamp": "2025-06-01T17:26:22.299743",
+    "title": "Zero-day CVE-2024-2742 discovered in Windows, actively exploited by Conti",
+    "severity": "critical",
+    "risk_score": 0.974,
+    "confidence": "high",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0473",
+    "timestamp": "2025-06-26T17:26:22.299750",
+    "title": "CVE-2024-8832 vulnerability in Windows enables Cobalt Strike deployment",
+    "severity": "high",
+    "risk_score": 0.606,
+    "confidence": "medium",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0474",
+    "timestamp": "2025-02-26T17:26:22.299759",
+    "title": "FIN7 APT group conducting espionage against manufacturing using credential theft",
+    "severity": "high",
+    "risk_score": 0.762,
+    "confidence": "high",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0475",
+    "timestamp": "2025-10-17T17:26:22.299766",
+    "title": "Emotet ransomware campaign targeting manufacturing sector via data exfiltration",
+    "severity": "critical",
+    "risk_score": 0.943,
+    "confidence": "medium",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0476",
+    "timestamp": "2024-12-10T17:26:22.299773",
+    "title": "Coordinated APT41 campaign using Cobalt Strike and ransomware deployment",
+    "severity": "critical",
+    "risk_score": 0.953,
+    "confidence": "low",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0477",
+    "timestamp": "2025-02-02T17:26:22.299779",
+    "title": "FIN7 APT group conducting espionage against energy using zero-day exploits",
+    "severity": "critical",
+    "risk_score": 0.807,
+    "confidence": "low",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0478",
+    "timestamp": "2025-01-30T17:26:22.299787",
+    "title": "New variant of Cobalt Strike spreading via data exfiltration targeting financial",
+    "severity": "medium",
+    "risk_score": 0.63,
+    "confidence": "high",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0479",
+    "timestamp": "2025-08-24T17:26:22.299796",
+    "title": "New variant of TrickBot spreading via lateral movement targeting retail",
+    "severity": "medium",
+    "risk_score": 0.533,
+    "confidence": "high",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0480",
+    "timestamp": "2025-07-11T17:26:22.299804",
+    "title": "CVE-2024-5421 vulnerability in Windows enables Ryuk deployment",
+    "severity": "high",
+    "risk_score": 0.788,
+    "confidence": "medium",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0481",
+    "timestamp": "2025-06-30T17:26:22.299810",
+    "title": "Zero-day CVE-2024-9738 discovered in Apache, actively exploited by Lazarus",
+    "severity": "critical",
+    "risk_score": 0.867,
+    "confidence": "low",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0482",
+    "timestamp": "2025-03-23T17:26:22.299817",
+    "title": "Zero-day CVE-2024-1691 discovered in Windows, actively exploited by Sandworm",
+    "severity": "critical",
+    "risk_score": 0.989,
+    "confidence": "medium",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0483",
+    "timestamp": "2024-12-01T17:26:22.299824",
+    "title": "FIN7 linked to IcedID attacks on technology supply chain",
+    "severity": "critical",
+    "risk_score": 0.958,
+    "confidence": "low",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0484",
+    "timestamp": "2024-11-07T17:26:22.299831",
+    "title": "Zero-day CVE-2024-9508 discovered in Linux kernel, actively exploited by Conti",
+    "severity": "critical",
+    "risk_score": 0.94,
+    "confidence": "high",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0485",
+    "timestamp": "2025-04-18T17:26:22.299839",
+    "title": "CVE-2024-5340 vulnerability in Apache enables QakBot deployment",
+    "severity": "high",
+    "risk_score": 0.642,
+    "confidence": "high",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0486",
+    "timestamp": "2025-10-01T17:26:22.299846",
+    "title": "Nobelium APT group conducting espionage against financial using lateral movement",
+    "severity": "high",
+    "risk_score": 0.648,
+    "confidence": "medium",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0487",
+    "timestamp": "2025-11-01T17:26:22.299854",
+    "title": "Coordinated Sandworm campaign using BlackCat and data exfiltration",
+    "severity": "medium",
+    "risk_score": 0.517,
+    "confidence": "medium",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0488",
+    "timestamp": "2025-02-08T17:26:22.299862",
+    "title": "Coordinated Nobelium campaign using Ryuk and lateral movement",
+    "severity": "medium",
+    "risk_score": 0.545,
+    "confidence": "low",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0489",
+    "timestamp": "2025-01-21T17:26:22.299871",
+    "title": "CVE-2024-3667 vulnerability in VMware vCenter enables TrickBot deployment",
+    "severity": "high",
+    "risk_score": 0.627,
+    "confidence": "medium",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0490",
+    "timestamp": "2025-06-05T17:26:22.299878",
+    "title": "Nobelium APT group conducting espionage against telecom using ransomware deployment",
+    "severity": "critical",
+    "risk_score": 0.848,
+    "confidence": "low",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0491",
+    "timestamp": "2025-04-30T17:26:22.299885",
+    "title": "APT41 linked to LockBit attacks on energy supply chain",
+    "severity": "critical",
+    "risk_score": 0.858,
+    "confidence": "high",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0492",
+    "timestamp": "2025-03-30T17:26:22.299893",
+    "title": "Nobelium targeting energy organizations with TrickBot using lateral movement",
+    "severity": "medium",
+    "risk_score": 0.683,
+    "confidence": "low",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0493",
+    "timestamp": "2025-01-20T17:26:22.299901",
+    "title": "Zero-day CVE-2024-1290 discovered in Windows, actively exploited by Conti",
+    "severity": "critical",
+    "risk_score": 0.971,
+    "confidence": "medium",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0494",
+    "timestamp": "2024-11-14T17:26:22.299908",
+    "title": "APT41 APT group conducting espionage against government using spear phishing",
+    "severity": "high",
+    "risk_score": 0.759,
+    "confidence": "low",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0495",
+    "timestamp": "2025-03-11T17:26:22.299915",
+    "title": "Zero-day CVE-2024-3602 discovered in Citrix ADC, actively exploited by Sandworm",
+    "severity": "critical",
+    "risk_score": 0.803,
+    "confidence": "low",
+    "source": "ISAC"
+  },
+  {
+    "id": "THREAT-0496",
+    "timestamp": "2025-09-15T17:26:22.299922",
+    "title": "Critical CVE-2024-4601 vulnerability being exploited by Lazarus in telecom attacks",
+    "severity": "critical",
+    "risk_score": 0.873,
+    "confidence": "low",
+    "source": "Internal"
+  },
+  {
+    "id": "THREAT-0497",
+    "timestamp": "2025-08-21T17:26:22.299930",
+    "title": "Massive Cobalt Strike botnet targeting energy infrastructure",
+    "severity": "medium",
+    "risk_score": 0.661,
+    "confidence": "low",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0498",
+    "timestamp": "2024-11-24T17:26:22.299937",
+    "title": "Coordinated Conti campaign using QakBot and ransomware deployment",
+    "severity": "critical",
+    "risk_score": 0.991,
+    "confidence": "low",
+    "source": "Vendor"
+  },
+  {
+    "id": "THREAT-0499",
+    "timestamp": "2025-01-28T17:26:22.299945",
+    "title": "APT28 APT group conducting espionage against technology using data exfiltration",
+    "severity": "high",
+    "risk_score": 0.646,
+    "confidence": "low",
+    "source": "OSINT"
+  },
+  {
+    "id": "THREAT-0500",
+    "timestamp": "2025-03-29T17:26:22.299951",
+    "title": "Zero-day CVE-2024-6650 discovered in Windows, actively exploited by Sandworm",
+    "severity": "critical",
+    "risk_score": 0.816,
+    "confidence": "medium",
+    "source": "Vendor"
+  }
+]

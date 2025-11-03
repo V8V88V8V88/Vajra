@@ -1,5 +1,6 @@
-// Mock API layer for cyber threat forecaster
-// TODO: Replace with actual backend API calls using process.env.API_URL
+// API layer for cyber threat forecaster
+// Backend API URL
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'
 
 export interface Threat {
   id: string
@@ -193,8 +194,20 @@ export async function getThreatById(id: string): Promise<Threat | null> {
 }
 
 export async function getStats(): Promise<ThreatStats> {
-  await new Promise((resolve) => setTimeout(resolve, 200))
-  return mockStats
+  try {
+    const response = await fetch(`${API_BASE_URL}/api/stats`)
+    if (!response.ok) throw new Error('API request failed')
+    const data = await response.json()
+    return {
+      totalThreats: data.totalThreats,
+      criticalThreats: data.criticalThreats,
+      activeCampaigns: data.activeCampaigns,
+      lastUpdate: new Date(data.lastUpdate)
+    }
+  } catch (error) {
+    console.error('Failed to fetch stats, using mock data:', error)
+    return mockStats
+  }
 }
 
 export async function startCrawler(): Promise<CrawlerLog[]> {

@@ -216,13 +216,8 @@ export async function getThreats(page = 1, limit = 10): Promise<{ threats: Threa
     
     return { threats, total: data.total }
   } catch (error) {
-    console.error('Failed to fetch threats from API, using mock data:', error)
-    const start = (page - 1) * limit
-    const end = start + limit
-    return {
-      threats: mockThreats.slice(start, end),
-      total: mockThreats.length,
-    }
+    console.error('Failed to fetch threats from API:', error)
+    throw error
   }
 }
 
@@ -244,8 +239,8 @@ export async function getThreatById(id: string): Promise<Threat | null> {
       recommendation: data.recommendation
     }
   } catch (error) {
-    console.error('Failed to fetch threat details, using mock data:', error)
-    return mockThreats.find((t) => t.id === id) || null
+    console.error('Failed to fetch threat details:', error)
+    throw error
   }
 }
 
@@ -261,8 +256,8 @@ export async function getStats(): Promise<ThreatStats> {
       lastUpdate: new Date(data.lastUpdate)
     }
   } catch (error) {
-    console.error('Failed to fetch stats, using mock data:', error)
-    return mockStats
+    console.error('Failed to fetch stats:', error)
+    throw error
   }
 }
 
@@ -420,8 +415,8 @@ export async function getTrendData(days: number = 10): Promise<TrendDataPoint[]>
     const data = await response.json()
     return data.data || []
   } catch (error) {
-    console.error('Failed to fetch trend data from API, using mock data:', error)
-    return mockTrendData
+    console.error('Failed to fetch trend data from API:', error)
+    throw error
   }
 }
 
@@ -432,8 +427,8 @@ export async function getSeverityData(): Promise<SeverityDataPoint[]> {
     const data = await response.json()
     return data.data || []
   } catch (error) {
-    console.error('Failed to fetch severity data from API, using mock data:', error)
-    return mockSeverityData
+    console.error('Failed to fetch severity data from API:', error)
+    throw error
   }
 }
 

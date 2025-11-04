@@ -14,10 +14,12 @@ export default function Dashboard() {
   const [severityData, setSeverityData] = useState([])
   const [sourceData, setSourceData] = useState([])
   const [isLoading, setIsLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
     const loadData = async () => {
       setIsLoading(true)
+      setError(null)
       try {
         // Load all data in parallel
         const [statsData, trend, severity, sources] = await Promise.all([
@@ -32,6 +34,7 @@ export default function Dashboard() {
         setSourceData(sources)
       } catch (error) {
         console.error('Failed to load dashboard data:', error)
+        setError('Backend is not running. Please start the backend server on port 8000.')
       } finally {
         setIsLoading(false)
       }
@@ -46,6 +49,14 @@ export default function Dashboard() {
         <h1 className="text-4xl font-bold text-foreground mb-2">Threat Intelligence Dashboard</h1>
         <p className="text-muted-foreground">Real-time AI-powered threat analysis and forecasting</p>
       </div>
+
+      {/* Error Message */}
+      {error && (
+        <div className="bg-destructive/10 border border-destructive/20 text-destructive px-4 py-3 rounded-lg">
+          <p className="font-semibold">⚠️ Backend Connection Error</p>
+          <p className="text-sm mt-1">{error}</p>
+        </div>
+      )}
 
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

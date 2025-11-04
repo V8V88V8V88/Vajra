@@ -174,6 +174,25 @@ export const mockSourceData = [
   { name: "Malware Analysis", value: 234 },
 ]
 
+// Chart data interfaces
+export interface TrendDataPoint {
+  date: string
+  threats: number
+  critical: number
+  high: number
+}
+
+export interface SeverityDataPoint {
+  name: string
+  value: number
+  fill: string
+}
+
+export interface SourceDataPoint {
+  name: string
+  value: number
+}
+
 // API functions
 export async function getThreats(page = 1, limit = 10): Promise<{ threats: Threat[]; total: number }> {
   try {
@@ -390,5 +409,43 @@ export async function getHealthStatus() {
   } catch (error) {
     console.error('Health check error:', error)
     return { status: 'offline', message: 'Backend unavailable' }
+  }
+}
+
+// Chart data API functions
+export async function getTrendData(days: number = 10): Promise<TrendDataPoint[]> {
+  try {
+    const response = await fetch(`${API_BASE_URL}/api/charts/trend?days=${days}`)
+    if (!response.ok) throw new Error('Failed to fetch trend data')
+    const data = await response.json()
+    return data.data || []
+  } catch (error) {
+    console.error('Failed to fetch trend data from API, using mock data:', error)
+    return mockTrendData
+  }
+}
+
+export async function getSeverityData(): Promise<SeverityDataPoint[]> {
+  try {
+    const response = await fetch(`${API_BASE_URL}/api/charts/severity`)
+    if (!response.ok) throw new Error('Failed to fetch severity data')
+    const data = await response.json()
+    return data.data || []
+  } catch (error) {
+    console.error('Failed to fetch severity data from API, using mock data:', error)
+    return mockSeverityData
+  }
+}
+
+export async function getSourceData(): Promise<SourceDataPoint[]> {
+  try {
+    const response = await fetch(`${API_BASE_URL}/api/charts/sources`)
+    if (!response.ok) throw new Error('Failed to fetch source data')
+    const data = await response.json()
+    return data.data || []
+  } catch (error) {
+    console.error('Failed to fetch source data from API:', error)
+    // Return empty array instead of mock data - let backend handle fallback
+    return []
   }
 }

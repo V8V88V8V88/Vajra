@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { getStats, mockTrendData, mockSeverityData, mockSourceData } from "@/lib/api"
+import { getStats, getTrendData, getSeverityData, getSourceData } from "@/lib/api"
 import { StatsCard } from "@/components/dashboard/stats-card"
 import { ThreatTrendChart } from "@/components/dashboard/threat-trend-chart"
 import { SeverityChart } from "@/components/dashboard/severity-chart"
@@ -10,16 +10,33 @@ import { AlertCircle, TrendingUp, Activity } from "lucide-react"
 
 export default function Dashboard() {
   const [stats, setStats] = useState(null)
+  const [trendData, setTrendData] = useState([])
+  const [severityData, setSeverityData] = useState([])
+  const [sourceData, setSourceData] = useState([])
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    const loadStats = async () => {
+    const loadData = async () => {
       setIsLoading(true)
-      const data = await getStats()
-      setStats(data)
-      setIsLoading(false)
+      try {
+        // Load all data in parallel
+        const [statsData, trend, severity, sources] = await Promise.all([
+          getStats(),
+          getTrendData(10),
+          getSeverityData(),
+          getSourceData()
+        ])
+        setStats(statsData)
+        setTrendData(trend)
+        setSeverityData(severity)
+        setSourceData(sources)
+      } catch (error) {
+        console.error('Failed to load dashboard data:', error)
+      } finally {
+        setIsLoading(false)
+      }
     }
-    loadStats()
+    loadData()
   }, [])
 
   return (
@@ -67,16 +84,16 @@ export default function Dashboard() {
       {/* Charts */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="lg:col-span-2">
-          <ThreatTrendChart data={mockTrendData} />
+          <ThreatTrendChart data={trendData} />
         </div>
         <div>
-          <SeverityChart data={mockSeverityData} />
+          <SeverityChart data={severityData} />
         </div>
       </div>
 
       {/* Source Chart */}
       <div>
-        <SourceChart data={mockSourceData} />
+        <SourceChart data={sourceData} />
       </div>
     </div>
   )

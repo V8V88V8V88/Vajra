@@ -1,8 +1,20 @@
-# Vajra
-
-AI-Powered Cyber Threat Forecaster for Critical Infrastructure Protection
-
-Vajra is a real-time threat intelligence platform that collects, analyzes, and forecasts cyber threats using machine learning. It crawls multiple OSINT sources, processes threats with AI models, and presents actionable intelligence through a modern web interface.
+<div align="center">
+    <br/>
+    <p>
+        <img src="VajraLogo.png"
+            title="Vajra" alt="Helium logo" width="120" />
+        <h1>Vajra</h1>
+    </p>
+    <p width="120">
+        AI-Powered Cyber Threat Forecaster for Critical Infrastructure Protection.
+        <br>
+        Made by<a href="https://v8v88v8v88.com/">
+        Vaibhav
+    </a> and Suryansh for minor project.
+    </p>
+    
+   
+</div>
 
 ## Features
 

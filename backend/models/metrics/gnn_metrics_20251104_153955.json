@@ -1,0 +1,19 @@
+{
+  "model": "GNN",
+  "timestamp": "2025-11-04T15:39:55.080245",
+  "config": {
+    "input_dim": 256,
+    "hidden_dim": 512,
+    "output_dim": 256,
+    "num_layers": 3,
+    "dropout": 0.3,
+    "epochs": 300,
+    "lr": 0.001,
+    "batch_size": 64
+  },
+  "nodes": 1718,
+  "edges": 5000,
+  "embedding_dim": 256,
+  "training_time": 0.18804597854614258,
+  "device": "cuda"
+}

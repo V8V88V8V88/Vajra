@@ -50,8 +50,10 @@ class LSTMForecaster(nn.Module):
         self.fc = nn.Linear(hidden_dim, output_dim)
         
     def forward(self, x):
-        h0 = torch.zeros(self.num_layers, x.size(0), self.hidden_dim)
-        c0 = torch.zeros(self.num_layers, x.size(0), self.hidden_dim)
+        # Create hidden states on the same device as input
+        device = x.device
+        h0 = torch.zeros(self.num_layers, x.size(0), self.hidden_dim).to(device)
+        c0 = torch.zeros(self.num_layers, x.size(0), self.hidden_dim).to(device)
         
         out, _ = self.lstm(x, (h0, c0))
         out = self.fc(out[:, -1, :])
@@ -119,6 +121,11 @@ class ThreatForecaster:
         X_tensor = torch.FloatTensor(X).unsqueeze(-1)
         y_tensor = torch.FloatTensor(y).unsqueeze(-1)
         
+        # Move tensors to the same device as model
+        device = next(self.model.parameters()).device
+        X_tensor = X_tensor.to(device)
+        y_tensor = y_tensor.to(device)
+        
         self.model.train()
         for epoch in range(epochs):
             self.optimizer.zero_grad()
@@ -143,14 +150,17 @@ class ThreatForecaster:
         values = np.array([s.value for s in sorted_signals[-self.sequence_length:]])
         values = (values - self.mean) / self.std
         
+        # Get model device
+        device = next(self.model.parameters()).device
+        
         self.model.eval()
         predictions = []
         current_sequence = values.copy()
         
         with torch.no_grad():
             for _ in range(self.forecast_horizon):
-                x = torch.FloatTensor(current_sequence).unsqueeze(0).unsqueeze(-1)
-                pred = self.model(x).item()
+                x = torch.FloatTensor(current_sequence).unsqueeze(0).unsqueeze(-1).to(device)
+                pred = self.model(x).cpu().item()  # Move back to CPU to get value
                 predictions.append(pred)
                 current_sequence = np.append(current_sequence[1:], pred)
                 

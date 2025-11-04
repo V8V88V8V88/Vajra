@@ -1,0 +1,15 @@
+{
+  "model": "Anomaly Detector",
+  "timestamp": "2025-11-04T15:35:41.643832",
+  "config": {
+    "contamination": 0.1,
+    "n_estimators": 200,
+    "max_samples": "auto",
+    "max_features": 1.0
+  },
+  "training_time": 0.1449604034423828,
+  "total_events": 2510,
+  "anomaly_rate": 0.1,
+  "avg_anomaly_score": 0.21793307527118205,
+  "device": "cpu"
+}

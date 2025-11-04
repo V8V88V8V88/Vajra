@@ -1,0 +1,27 @@
+{
+  "timestamp": "2025-11-04T15:48:41.311758",
+  "summary": {
+    "mitre_attack": {
+      "enterprise": 24773,
+      "mobile": 2534,
+      "ics": 1825,
+      "pre-attack": 268
+    },
+    "cisa_kev": 1453,
+    "exploitdb": 46922,
+    "threat_intel": {
+      "alienvault_reputation": 616,
+      "abuse_ch_urlhaus": 0,
+      "abuse_ch_threatfox": 0
+    },
+    "malware": 0,
+    "apt_groups": 187,
+    "cve_data": 0,
+    "ioc_feeds": {
+      "blocklist_de_ssh": 5439,
+      "blocklist_de_bruteforce": 2659,
+      "phishtank": 0
+    },
+    "time_series": 1825
+  }
+}

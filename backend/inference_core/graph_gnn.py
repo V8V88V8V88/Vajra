@@ -125,13 +125,18 @@ class GraphThreatAnalyzer:
         features = self.build_feature_matrix()
         adj = self.build_adjacency_matrix()
         
+        # Move tensors to the same device as the model
+        device = next(self.model.parameters()).device
+        features = features.to(device)
+        adj = adj.to(device)
+        
         self.model.eval()
         with torch.no_grad():
             embeddings = self.model(features, adj)
             
         result = {}
         for idx, node_id in enumerate(self.nodes.keys()):
-            result[node_id] = embeddings[idx].numpy()
+            result[node_id] = embeddings[idx].cpu().numpy()  # Move to CPU before converting to numpy
             
         logger.info("Threat graph analysis complete")
         return result

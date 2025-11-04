@@ -1,0 +1,36 @@
+# AI-Powered Cyber Threat Forecaster
+# Requirements for Inference Core and Data Layer modules
+
+# Core ML/AI libraries
+torch>=2.0.0
+numpy>=1.24.0
+scikit-learn>=1.3.0
+
+# NLP and Transformers
+transformers>=4.30.0
+sentencepiece>=0.1.99
+
+# Explainable AI
+shap>=0.42.0
+lime>=0.2.0
+
+# Graph databases
+neo4j>=5.12.0
+
+# Vector databases
+faiss-cpu>=1.7.4  # Use faiss-gpu for GPU support
+# Alternative: pymilvus>=2.3.0
+
+# Time-series databases
+influxdb-client>=1.38.0
+pandas>=2.0.0
+
+# Utilities
+pyyaml>=6.0
+rich>=13.0.0
+python-dateutil>=2.8.2
+
+# Optional dependencies (uncomment if needed)
+# torch-geometric>=2.3.0  # For advanced GNN features
+# pinecone-client>=2.2.0  # Alternative vector DB
+# psycopg2-binary>=2.9.0  # PostgreSQL/TimescaleDB support

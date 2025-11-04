@@ -34,3 +34,16 @@ coverage/
 
 # Misc
 *.local
+# Python Backend
+backend/venv/
+backend/__pycache__/
+backend/**/__pycache__/
+backend/**/*.pyc
+backend/.env
+backend/logs/
+backend/cache/
+backend/data/
+*.pt
+*.pth
+*.joblib
+.DS_Store

@@ -1,5 +1,6 @@
-// Mock API layer for cyber threat forecaster
-// TODO: Replace with actual backend API calls using process.env.API_URL
+// API layer for cyber threat forecaster
+// Backend API URL
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'
 
 export interface Threat {
   id: string
@@ -175,62 +176,219 @@ export const mockSourceData = [
 
 // API functions
 export async function getThreats(page = 1, limit = 10): Promise<{ threats: Threat[]; total: number }> {
-  // Simulate API delay
-  await new Promise((resolve) => setTimeout(resolve, 300))
-
-  const start = (page - 1) * limit
-  const end = start + limit
-
-  return {
-    threats: mockThreats.slice(start, end),
-    total: mockThreats.length,
+  try {
+    const response = await fetch(`${API_BASE_URL}/api/threats?page=${page}&limit=${limit}`)
+    if (!response.ok) throw new Error('API request failed')
+    const data = await response.json()
+    
+    // Transform backend data to frontend format
+    const threats = data.threats.map((t: any) => ({
+      id: t.id,
+      title: t.title,
+      severity: t.severity,
+      timestamp: new Date(t.timestamp),
+      summary: t.summary,
+      description: t.description,
+      source: t.source,
+      indicators: t.indicators || [],
+      affectedSystems: t.affectedSystems || [],
+      recommendation: t.recommendation
+    }))
+    
+    return { threats, total: data.total }
+  } catch (error) {
+    console.error('Failed to fetch threats from API, using mock data:', error)
+    const start = (page - 1) * limit
+    const end = start + limit
+    return {
+      threats: mockThreats.slice(start, end),
+      total: mockThreats.length,
+    }
   }
 }
 
 export async function getThreatById(id: string): Promise<Threat | null> {
-  await new Promise((resolve) => setTimeout(resolve, 200))
-  return mockThreats.find((t) => t.id === id) || null
+  try {
+    const response = await fetch(`${API_BASE_URL}/api/threats/${id}`)
+    if (!response.ok) throw new Error('API request failed')
+    const data = await response.json()
+    return {
+      id: data.id,
+      title: data.title,
+      severity: data.severity,
+      timestamp: new Date(data.timestamp),
+      summary: data.summary,
+      description: data.description,
+      source: data.source,
+      indicators: data.indicators || [],
+      affectedSystems: data.affectedSystems || [],
+      recommendation: data.recommendation
+    }
+  } catch (error) {
+    console.error('Failed to fetch threat details, using mock data:', error)
+    return mockThreats.find((t) => t.id === id) || null
+  }
 }
 
 export async function getStats(): Promise<ThreatStats> {
-  await new Promise((resolve) => setTimeout(resolve, 200))
-  return mockStats
+  try {
+    const response = await fetch(`${API_BASE_URL}/api/stats`)
+    if (!response.ok) throw new Error('API request failed')
+    const data = await response.json()
+    return {
+      totalThreats: data.totalThreats,
+      criticalThreats: data.criticalThreats,
+      activeCampaigns: data.activeCampaigns,
+      lastUpdate: new Date(data.lastUpdate)
+    }
+  } catch (error) {
+    console.error('Failed to fetch stats, using mock data:', error)
+    return mockStats
+  }
 }
 
 export async function startCrawler(): Promise<CrawlerLog[]> {
-  // Simulate crawler logs
-  const logs: CrawlerLog[] = []
-  const sources = [
-    "OSINT Feed - Threat Intelligence",
-    "CVE Database",
-    "Dark Web Marketplace",
-    "Malware Analysis Repository",
-    "Network Monitoring System",
-  ]
-
-  for (let i = 0; i < 15; i++) {
-    await new Promise((resolve) => setTimeout(resolve, 200))
-    logs.push({
-      id: `log-${i}`,
-      timestamp: new Date(),
-      message: `Syncing data from ${sources[Math.floor(Math.random() * sources.length)]}...`,
-      type: Math.random() > 0.1 ? "info" : "success",
+  try {
+    const response = await fetch(`${API_BASE_URL}/api/crawler/start`, {
+      method: 'POST'
     })
+    if (!response.ok) throw new Error('API request failed')
+    const data = await response.json()
+    
+    // Transform logs from backend
+    return data.logs.map((log: any) => ({
+      id: log.id || `log-${Date.now()}`,
+      timestamp: new Date(log.timestamp),
+      message: log.message,
+      type: log.type || 'info'
+    }))
+  } catch (error) {
+    console.error('Failed to start crawler via API, using simulation:', error)
+    // Fallback to simulated crawler
+    const logs: CrawlerLog[] = []
+    const sources = [
+      "OSINT Feed - Threat Intelligence",
+      "CVE Database",
+      "Dark Web Marketplace",
+      "Malware Analysis Repository",
+      "Network Monitoring System",
+    ]
+
+    for (let i = 0; i < 15; i++) {
+      await new Promise((resolve) => setTimeout(resolve, 200))
+      logs.push({
+        id: `log-${i}`,
+        timestamp: new Date(),
+        message: `Syncing data from ${sources[Math.floor(Math.random() * sources.length)]}...`,
+        type: Math.random() > 0.1 ? "info" : "success",
+      })
+    }
+
+    logs.push({
+      id: "log-final",
+      timestamp: new Date(),
+      message: "Crawler completed. 2,847 threats indexed.",
+      type: "success",
+    })
+
+    return logs
   }
-
-  logs.push({
-    id: "log-final",
-    timestamp: new Date(),
-    message: "Crawler completed. 2,847 threats indexed.",
-    type: "success",
-  })
-
-  return logs
 }
 
 export async function searchThreats(query: string): Promise<Threat[]> {
-  await new Promise((resolve) => setTimeout(resolve, 300))
-  return mockThreats.filter(
-    (t) => t.title.toLowerCase().includes(query.toLowerCase()) || t.summary.toLowerCase().includes(query.toLowerCase()),
-  )
+  try {
+    const response = await fetch(`${API_BASE_URL}/api/threats/search?q=${encodeURIComponent(query)}`)
+    if (!response.ok) throw new Error('API request failed')
+    const data = await response.json()
+    
+    return data.threats.map((t: any) => ({
+      id: t.id,
+      title: t.title,
+      severity: t.severity,
+      timestamp: new Date(t.timestamp),
+      summary: t.summary,
+      description: t.description,
+      source: t.source,
+      indicators: t.indicators || [],
+      affectedSystems: t.affectedSystems || [],
+      recommendation: t.recommendation
+    }))
+  } catch (error) {
+    console.error('Failed to search threats via API, using mock data:', error)
+    return mockThreats.filter(
+      (t) => t.title.toLowerCase().includes(query.toLowerCase()) || t.summary.toLowerCase().includes(query.toLowerCase()),
+    )
+  }
+}
+
+// New API functions for backend AI inference endpoints
+export async function analyzeWithGNN(data: any) {
+  try {
+    const response = await fetch(`${API_BASE_URL}/analyze/graph`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    })
+    if (!response.ok) throw new Error('GNN analysis failed')
+    return await response.json()
+  } catch (error) {
+    console.error('GNN analysis error:', error)
+    throw error
+  }
+}
+
+export async function analyzeWithNLP(text: string) {
+  try {
+    const response = await fetch(`${API_BASE_URL}/analyze/nlp`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ text })
+    })
+    if (!response.ok) throw new Error('NLP analysis failed')
+    return await response.json()
+  } catch (error) {
+    console.error('NLP analysis error:', error)
+    throw error
+  }
+}
+
+export async function analyzeWithTemporal(data: any) {
+  try {
+    const response = await fetch(`${API_BASE_URL}/analyze/temporal`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    })
+    if (!response.ok) throw new Error('Temporal analysis failed')
+    return await response.json()
+  } catch (error) {
+    console.error('Temporal analysis error:', error)
+    throw error
+  }
+}
+
+export async function detectAnomalies(data: any) {
+  try {
+    const response = await fetch(`${API_BASE_URL}/analyze/anomaly`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    })
+    if (!response.ok) throw new Error('Anomaly detection failed')
+    return await response.json()
+  } catch (error) {
+    console.error('Anomaly detection error:', error)
+    throw error
+  }
+}
+
+export async function getHealthStatus() {
+  try {
+    const response = await fetch(`${API_BASE_URL}/health`)
+    if (!response.ok) throw new Error('Health check failed')
+    return await response.json()
+  } catch (error) {
+    console.error('Health check error:', error)
+    return { status: 'offline', message: 'Backend unavailable' }
+  }
 }

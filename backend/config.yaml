@@ -1,0 +1,165 @@
+# =========================================================
+# AI Cyber Threat Forecaster - Configuration File
+# =========================================================
+
+# Database Configurations
+databases:
+  neo4j:
+    uri: "bolt://localhost:7687"
+    username: "neo4j"
+    password: "threat_forecaster_2025"  # Change this!
+    database: "threat_intel"
+    enabled: true
+    fallback_to_memory: true
+
+  influxdb:
+    url: "http://localhost:8086"
+    token: "your-influxdb-token-here"  # Generate after setup
+    org: "cyber_threat_org"
+    bucket: "threat_metrics"
+    enabled: true
+    fallback_to_pandas: true
+
+  faiss:
+    index_type: "IndexFlatL2"  # Options: IndexFlatL2, IndexIVFFlat
+    dimension: 768  # BERT embedding dimension
+    index_path: "./data/faiss_index.bin"
+    metadata_path: "./data/faiss_metadata.json"
+    enabled: true
+    fallback_to_numpy: true
+
+# Model Configurations
+models:
+  graph_gnn:
+    input_dim: 128
+    hidden_dim: 256
+    output_dim: 128
+    num_layers: 3
+    dropout: 0.3
+    learning_rate: 0.001
+    epochs: 100
+    batch_size: 32
+    model_path: "./models/graph_gnn.pth"
+    checkpoint_path: "./models/checkpoints/gnn/"
+
+  transformer_nlp:
+    model_name: "bert-base-uncased"
+    max_length: 512
+    batch_size: 16
+    cache_dir: "./models/transformers_cache"
+    device: "cuda"  # or "cpu"
+
+  temporal_lstm:
+    input_size: 10
+    hidden_size: 128
+    num_layers: 2
+    dropout: 0.2
+    sequence_length: 30
+    forecast_horizon: 7
+    learning_rate: 0.001
+    epochs: 50
+    batch_size: 64
+    model_path: "./models/lstm_forecaster.pth"
+    checkpoint_path: "./models/checkpoints/lstm/"
+
+  anomaly_detector:
+    contamination: 0.1
+    n_estimators: 100
+    max_samples: 256
+    model_path: "./models/isolation_forest.pkl"
+
+  explainable_ai:
+    shap_samples: 100
+    lime_samples: 5000
+    feature_names: []  # Auto-generated
+
+# Training Data Paths
+data:
+  threat_graphs: "./data/threat_graphs.json"
+  threat_descriptions: "./data/threat_descriptions.txt"
+  time_series: "./data/time_series_threats.csv"
+  normal_behavior: "./data/normal_activity.csv"
+  anomaly_examples: "./data/anomaly_examples.csv"
+  mitre_attack: "./data/mitre_attack.json"
+  cve_database: "./data/cve_database.json"
+
+# OSINT Crawler Configuration
+crawler:
+  enabled: false  # Set to true when ready
+  interval_hours: 6
+  sources:
+    - name: "CVE Database"
+      url: "https://cve.mitre.org/data/downloads/"
+      enabled: true
+    - name: "NVD Feed"
+      url: "https://nvd.nist.gov/vuln/data/feeds"
+      enabled: true
+    - name: "AlienVault OTX"
+      url: "https://otx.alienvault.com/api/v1/pulses"
+      enabled: false  # Requires API key
+    - name: "Threat Intelligence Feeds"
+      url: "custom"
+      enabled: false
+  user_agent: "AI-Cyber-Threat-Forecaster/1.0"
+  timeout: 30
+  max_retries: 3
+
+# API Configuration (for future integration)
+api:
+  host: "0.0.0.0"
+  port: 8000
+  reload: true
+  cors_origins:
+    - "http://localhost:3000"
+    - "http://localhost:3001"
+  log_level: "info"
+
+# Logging Configuration
+logging:
+  level: "INFO"  # DEBUG, INFO, WARNING, ERROR, CRITICAL
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: "./logs/forecaster.log"
+  console: true
+
+# System Settings
+system:
+  random_seed: 42
+  num_workers: 4
+  gpu_enabled: true
+  mixed_precision: false
+  checkpoint_interval: 10  # Save every N epochs
+
+# Feature Engineering
+features:
+  text_features:
+    - "tfidf"
+    - "word2vec"
+    - "bert_embeddings"
+  
+  graph_features:
+    - "degree_centrality"
+    - "betweenness_centrality"
+    - "pagerank"
+    - "clustering_coefficient"
+  
+  temporal_features:
+    - "moving_average"
+    - "exponential_smoothing"
+    - "trend"
+    - "seasonality"
+
+# Alert Thresholds
+thresholds:
+  critical: 0.9
+  high: 0.7
+  medium: 0.5
+  low: 0.3
+
+# Directory Structure
+directories:
+  models: "./models"
+  data: "./data"
+  logs: "./logs"
+  checkpoints: "./models/checkpoints"
+  exports: "./exports"
+  cache: "./cache"

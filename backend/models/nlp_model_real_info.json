@@ -1,0 +1,8 @@
+{
+  "model_name": "distilbert-base-uncased",
+  "training_data": "MITRE ATT&CK, NVD CVEs, Threat Reports",
+  "samples_analyzed": 1509,
+  "avg_risk_score": 0.5240248448774218,
+  "trained_date": "2025-11-04T15:20:38.021897",
+  "status": "production_ready"
+}

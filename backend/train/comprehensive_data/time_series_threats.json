@@ -1,0 +1,10952 @@
+[
+  {
+    "date": "2020-11-05",
+    "threat_level": 53.22,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2020-11-06",
+    "threat_level": 52.91,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2020-11-07",
+    "threat_level": 63.56,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2020-11-08",
+    "threat_level": 50.52,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2020-11-09",
+    "threat_level": 42.82,
+    "incidents": 2,
+    "anomaly": 0
+  },
+  {
+    "date": "2020-11-10",
+    "threat_level": 43.89,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2020-11-11",
+    "threat_level": 33.27,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2020-11-12",
+    "threat_level": 64.48,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2020-11-13",
+    "threat_level": 60.82,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2020-11-14",
+    "threat_level": 69.87,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2020-11-15",
+    "threat_level": 58.28,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2020-11-16",
+    "threat_level": 49.66,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2020-11-17",
+    "threat_level": 30.02,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2020-11-18",
+    "threat_level": 51.67,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2020-11-19",
+    "threat_level": 51.27,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2020-11-20",
+    "threat_level": 55.67,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2020-11-21",
+    "threat_level": 54.96,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2020-11-22",
+    "threat_level": 62.22,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2020-11-23",
+    "threat_level": 52.74,
+    "incidents": 1,
+    "anomaly": 0
+  },
+  {
+    "date": "2020-11-24",
+    "threat_level": 31.54,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2020-11-25",
+    "threat_level": 48.48,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2020-11-26",
+    "threat_level": 94.15,
+    "incidents": 13,
+    "anomaly": 1
+  },
+  {
+    "date": "2020-11-27",
+    "threat_level": 53.7,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2020-11-28",
+    "threat_level": 61.26,
+    "incidents": 15,
+    "anomaly": 0
+  },
+  {
+    "date": "2020-11-29",
+    "threat_level": 59.95,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2020-11-30",
+    "threat_level": 50.23,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2020-12-01",
+    "threat_level": 41.78,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2020-12-02",
+    "threat_level": 47.34,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2020-12-03",
+    "threat_level": 57.98,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2020-12-04",
+    "threat_level": 60.03,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2020-12-05",
+    "threat_level": 52.61,
+    "incidents": 2,
+    "anomaly": 0
+  },
+  {
+    "date": "2020-12-06",
+    "threat_level": 63.31,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2020-12-07",
+    "threat_level": 49.57,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2020-12-08",
+    "threat_level": 43.0,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2020-12-09",
+    "threat_level": 39.72,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2020-12-10",
+    "threat_level": 56.05,
+    "incidents": 2,
+    "anomaly": 0
+  },
+  {
+    "date": "2020-12-11",
+    "threat_level": 58.5,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2020-12-12",
+    "threat_level": 63.7,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2020-12-13",
+    "threat_level": 54.95,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2020-12-14",
+    "threat_level": 47.01,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2020-12-15",
+    "threat_level": 42.95,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2020-12-16",
+    "threat_level": 43.66,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2020-12-17",
+    "threat_level": 50.13,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2020-12-18",
+    "threat_level": 67.27,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2020-12-19",
+    "threat_level": 55.6,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2020-12-20",
+    "threat_level": 55.41,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2020-12-21",
+    "threat_level": 95.51,
+    "incidents": 9,
+    "anomaly": 1
+  },
+  {
+    "date": "2020-12-22",
+    "threat_level": 32.84,
+    "incidents": 1,
+    "anomaly": 0
+  },
+  {
+    "date": "2020-12-23",
+    "threat_level": 49.61,
+    "incidents": 2,
+    "anomaly": 0
+  },
+  {
+    "date": "2020-12-24",
+    "threat_level": 52.34,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2020-12-25",
+    "threat_level": 62.62,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2020-12-26",
+    "threat_level": 74.0,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2020-12-27",
+    "threat_level": 62.51,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2020-12-28",
+    "threat_level": 49.66,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2020-12-29",
+    "threat_level": 39.98,
+    "incidents": 2,
+    "anomaly": 0
+  },
+  {
+    "date": "2020-12-30",
+    "threat_level": 44.93,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2020-12-31",
+    "threat_level": 65.36,
+    "incidents": 2,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-01-01",
+    "threat_level": 64.8,
+    "incidents": 12,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-01-02",
+    "threat_level": 55.26,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-01-03",
+    "threat_level": 63.18,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-01-04",
+    "threat_level": 47.19,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-01-05",
+    "threat_level": 38.06,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-01-06",
+    "threat_level": 44.7,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-01-07",
+    "threat_level": 49.03,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-01-08",
+    "threat_level": 64.19,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-01-09",
+    "threat_level": 67.63,
+    "incidents": 13,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-01-10",
+    "threat_level": 54.49,
+    "incidents": 11,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-01-11",
+    "threat_level": 42.06,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-01-12",
+    "threat_level": 38.2,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-01-13",
+    "threat_level": 45.81,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-01-14",
+    "threat_level": 48.42,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-01-15",
+    "threat_level": 54.77,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-01-16",
+    "threat_level": 57.76,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-01-17",
+    "threat_level": 56.68,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-01-18",
+    "threat_level": 50.84,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-01-19",
+    "threat_level": 50.69,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-01-20",
+    "threat_level": 48.47,
+    "incidents": 2,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-01-21",
+    "threat_level": 54.7,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-01-22",
+    "threat_level": 58.43,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-01-23",
+    "threat_level": 61.74,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-01-24",
+    "threat_level": 54.57,
+    "incidents": 12,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-01-25",
+    "threat_level": 51.51,
+    "incidents": 11,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-01-26",
+    "threat_level": 38.87,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-01-27",
+    "threat_level": 41.22,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-01-28",
+    "threat_level": 52.67,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-01-29",
+    "threat_level": 59.31,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-01-30",
+    "threat_level": 57.17,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-01-31",
+    "threat_level": 56.09,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-02-01",
+    "threat_level": 44.43,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-02-02",
+    "threat_level": 46.4,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-02-03",
+    "threat_level": 48.01,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-02-04",
+    "threat_level": 52.83,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-02-05",
+    "threat_level": 51.04,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-02-06",
+    "threat_level": 65.05,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-02-07",
+    "threat_level": 57.38,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-02-08",
+    "threat_level": 101.9,
+    "incidents": 12,
+    "anomaly": 1
+  },
+  {
+    "date": "2021-02-09",
+    "threat_level": 86.16,
+    "incidents": 9,
+    "anomaly": 1
+  },
+  {
+    "date": "2021-02-10",
+    "threat_level": 52.53,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-02-11",
+    "threat_level": 48.59,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-02-12",
+    "threat_level": 66.87,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-02-13",
+    "threat_level": 59.53,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-02-14",
+    "threat_level": 50.5,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-02-15",
+    "threat_level": 47.52,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-02-16",
+    "threat_level": 41.45,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-02-17",
+    "threat_level": 44.85,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-02-18",
+    "threat_level": 48.91,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-02-19",
+    "threat_level": 63.17,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-02-20",
+    "threat_level": 60.16,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-02-21",
+    "threat_level": 55.65,
+    "incidents": 1,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-02-22",
+    "threat_level": 50.1,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-02-23",
+    "threat_level": 41.67,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-02-24",
+    "threat_level": 44.52,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-02-25",
+    "threat_level": 51.16,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-02-26",
+    "threat_level": 56.48,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-02-27",
+    "threat_level": 55.28,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-02-28",
+    "threat_level": 61.6,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-03-01",
+    "threat_level": 54.88,
+    "incidents": 2,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-03-02",
+    "threat_level": 41.24,
+    "incidents": 1,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-03-03",
+    "threat_level": 44.41,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-03-04",
+    "threat_level": 57.84,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-03-05",
+    "threat_level": 70.5,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-03-06",
+    "threat_level": 64.1,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-03-07",
+    "threat_level": 58.11,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-03-08",
+    "threat_level": 47.77,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-03-09",
+    "threat_level": 38.0,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-03-10",
+    "threat_level": 38.31,
+    "incidents": 2,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-03-11",
+    "threat_level": 53.79,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-03-12",
+    "threat_level": 118.57,
+    "incidents": 15,
+    "anomaly": 1
+  },
+  {
+    "date": "2021-03-13",
+    "threat_level": 49.15,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-03-14",
+    "threat_level": 52.24,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-03-15",
+    "threat_level": 42.99,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-03-16",
+    "threat_level": 48.14,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-03-17",
+    "threat_level": 50.18,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-03-18",
+    "threat_level": 43.01,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-03-19",
+    "threat_level": 70.19,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-03-20",
+    "threat_level": 60.54,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-03-21",
+    "threat_level": 50.71,
+    "incidents": 11,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-03-22",
+    "threat_level": 48.03,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-03-23",
+    "threat_level": 47.86,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-03-24",
+    "threat_level": 44.74,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-03-25",
+    "threat_level": 43.74,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-03-26",
+    "threat_level": 62.44,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-03-27",
+    "threat_level": 58.5,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-03-28",
+    "threat_level": 61.03,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-03-29",
+    "threat_level": 55.81,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-03-30",
+    "threat_level": 42.32,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-03-31",
+    "threat_level": 42.05,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-04-01",
+    "threat_level": 62.74,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-04-02",
+    "threat_level": 62.93,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-04-03",
+    "threat_level": 58.72,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-04-04",
+    "threat_level": 61.03,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-04-05",
+    "threat_level": 55.19,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-04-06",
+    "threat_level": 43.71,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-04-07",
+    "threat_level": 45.0,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-04-08",
+    "threat_level": 65.54,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-04-09",
+    "threat_level": 57.2,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-04-10",
+    "threat_level": 69.94,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-04-11",
+    "threat_level": 54.0,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-04-12",
+    "threat_level": 56.8,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-04-13",
+    "threat_level": 46.39,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-04-14",
+    "threat_level": 40.59,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-04-15",
+    "threat_level": 41.13,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-04-16",
+    "threat_level": 66.93,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-04-17",
+    "threat_level": 66.2,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-04-18",
+    "threat_level": 49.61,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-04-19",
+    "threat_level": 48.48,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-04-20",
+    "threat_level": 55.16,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-04-21",
+    "threat_level": 52.05,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-04-22",
+    "threat_level": 58.91,
+    "incidents": 11,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-04-23",
+    "threat_level": 65.41,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-04-24",
+    "threat_level": 65.27,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-04-25",
+    "threat_level": 56.61,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-04-26",
+    "threat_level": 48.25,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-04-27",
+    "threat_level": 44.55,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-04-28",
+    "threat_level": 46.22,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-04-29",
+    "threat_level": 52.72,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-04-30",
+    "threat_level": 56.0,
+    "incidents": 13,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-05-01",
+    "threat_level": 65.75,
+    "incidents": 2,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-05-02",
+    "threat_level": 57.01,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-05-03",
+    "threat_level": 44.7,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-05-04",
+    "threat_level": 38.67,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-05-05",
+    "threat_level": 38.87,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-05-06",
+    "threat_level": 49.26,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-05-07",
+    "threat_level": 59.33,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-05-08",
+    "threat_level": 110.93,
+    "incidents": 11,
+    "anomaly": 1
+  },
+  {
+    "date": "2021-05-09",
+    "threat_level": 62.19,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-05-10",
+    "threat_level": 53.84,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-05-11",
+    "threat_level": 47.78,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-05-12",
+    "threat_level": 41.84,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-05-13",
+    "threat_level": 51.73,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-05-14",
+    "threat_level": 50.99,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-05-15",
+    "threat_level": 122.26,
+    "incidents": 15,
+    "anomaly": 1
+  },
+  {
+    "date": "2021-05-16",
+    "threat_level": 57.89,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-05-17",
+    "threat_level": 38.94,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-05-18",
+    "threat_level": 100.71,
+    "incidents": 8,
+    "anomaly": 1
+  },
+  {
+    "date": "2021-05-19",
+    "threat_level": 53.28,
+    "incidents": 2,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-05-20",
+    "threat_level": 57.63,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-05-21",
+    "threat_level": 60.43,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-05-22",
+    "threat_level": 117.04,
+    "incidents": 13,
+    "anomaly": 1
+  },
+  {
+    "date": "2021-05-23",
+    "threat_level": 59.53,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-05-24",
+    "threat_level": 51.36,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-05-25",
+    "threat_level": 37.45,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-05-26",
+    "threat_level": 43.4,
+    "incidents": 0,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-05-27",
+    "threat_level": 57.2,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-05-28",
+    "threat_level": 113.81,
+    "incidents": 9,
+    "anomaly": 1
+  },
+  {
+    "date": "2021-05-29",
+    "threat_level": 113.85,
+    "incidents": 9,
+    "anomaly": 1
+  },
+  {
+    "date": "2021-05-30",
+    "threat_level": 72.53,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-05-31",
+    "threat_level": 53.85,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-06-01",
+    "threat_level": 34.32,
+    "incidents": 1,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-06-02",
+    "threat_level": 51.98,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-06-03",
+    "threat_level": 68.22,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-06-04",
+    "threat_level": 61.36,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-06-05",
+    "threat_level": 63.75,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-06-06",
+    "threat_level": 57.3,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-06-07",
+    "threat_level": 46.57,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-06-08",
+    "threat_level": 38.46,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-06-09",
+    "threat_level": 51.03,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-06-10",
+    "threat_level": 55.27,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-06-11",
+    "threat_level": 57.4,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-06-12",
+    "threat_level": 67.53,
+    "incidents": 11,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-06-13",
+    "threat_level": 108.69,
+    "incidents": 9,
+    "anomaly": 1
+  },
+  {
+    "date": "2021-06-14",
+    "threat_level": 48.28,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-06-15",
+    "threat_level": 50.6,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-06-16",
+    "threat_level": 40.19,
+    "incidents": 2,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-06-17",
+    "threat_level": 56.42,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-06-18",
+    "threat_level": 64.59,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-06-19",
+    "threat_level": 68.0,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-06-20",
+    "threat_level": 48.09,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-06-21",
+    "threat_level": 104.53,
+    "incidents": 10,
+    "anomaly": 1
+  },
+  {
+    "date": "2021-06-22",
+    "threat_level": 40.96,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-06-23",
+    "threat_level": 45.34,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-06-24",
+    "threat_level": 51.64,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-06-25",
+    "threat_level": 112.53,
+    "incidents": 11,
+    "anomaly": 1
+  },
+  {
+    "date": "2021-06-26",
+    "threat_level": 69.44,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-06-27",
+    "threat_level": 66.78,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-06-28",
+    "threat_level": 54.59,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-06-29",
+    "threat_level": 44.86,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-06-30",
+    "threat_level": 89.23,
+    "incidents": 8,
+    "anomaly": 1
+  },
+  {
+    "date": "2021-07-01",
+    "threat_level": 60.43,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-07-02",
+    "threat_level": 58.27,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-07-03",
+    "threat_level": 60.51,
+    "incidents": 2,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-07-04",
+    "threat_level": 63.54,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-07-05",
+    "threat_level": 57.38,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-07-06",
+    "threat_level": 40.13,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-07-07",
+    "threat_level": 51.81,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-07-08",
+    "threat_level": 57.99,
+    "incidents": 11,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-07-09",
+    "threat_level": 58.36,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-07-10",
+    "threat_level": 61.43,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-07-11",
+    "threat_level": 54.03,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-07-12",
+    "threat_level": 47.58,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-07-13",
+    "threat_level": 44.09,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-07-14",
+    "threat_level": 51.26,
+    "incidents": 2,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-07-15",
+    "threat_level": 62.36,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-07-16",
+    "threat_level": 65.86,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-07-17",
+    "threat_level": 67.15,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-07-18",
+    "threat_level": 62.53,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-07-19",
+    "threat_level": 56.35,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-07-20",
+    "threat_level": 88.56,
+    "incidents": 4,
+    "anomaly": 1
+  },
+  {
+    "date": "2021-07-21",
+    "threat_level": 43.59,
+    "incidents": 1,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-07-22",
+    "threat_level": 59.43,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-07-23",
+    "threat_level": 68.13,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-07-24",
+    "threat_level": 70.35,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-07-25",
+    "threat_level": 59.06,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-07-26",
+    "threat_level": 48.04,
+    "incidents": 1,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-07-27",
+    "threat_level": 51.86,
+    "incidents": 2,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-07-28",
+    "threat_level": 53.93,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-07-29",
+    "threat_level": 57.44,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-07-30",
+    "threat_level": 58.94,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-07-31",
+    "threat_level": 57.08,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-08-01",
+    "threat_level": 66.45,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-08-02",
+    "threat_level": 58.6,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-08-03",
+    "threat_level": 41.47,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-08-04",
+    "threat_level": 50.35,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-08-05",
+    "threat_level": 44.27,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-08-06",
+    "threat_level": 68.49,
+    "incidents": 12,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-08-07",
+    "threat_level": 66.56,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-08-08",
+    "threat_level": 55.06,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-08-09",
+    "threat_level": 39.91,
+    "incidents": 2,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-08-10",
+    "threat_level": 41.85,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-08-11",
+    "threat_level": 52.13,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-08-12",
+    "threat_level": 98.9,
+    "incidents": 15,
+    "anomaly": 1
+  },
+  {
+    "date": "2021-08-13",
+    "threat_level": 56.18,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-08-14",
+    "threat_level": 67.91,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-08-15",
+    "threat_level": 49.04,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-08-16",
+    "threat_level": 41.7,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-08-17",
+    "threat_level": 46.79,
+    "incidents": 2,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-08-18",
+    "threat_level": 48.43,
+    "incidents": 2,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-08-19",
+    "threat_level": 55.42,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-08-20",
+    "threat_level": 114.39,
+    "incidents": 18,
+    "anomaly": 1
+  },
+  {
+    "date": "2021-08-21",
+    "threat_level": 70.64,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-08-22",
+    "threat_level": 62.65,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-08-23",
+    "threat_level": 41.7,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-08-24",
+    "threat_level": 35.86,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-08-25",
+    "threat_level": 50.78,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-08-26",
+    "threat_level": 55.78,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-08-27",
+    "threat_level": 66.06,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-08-28",
+    "threat_level": 60.47,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-08-29",
+    "threat_level": 64.1,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-08-30",
+    "threat_level": 41.18,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-08-31",
+    "threat_level": 54.73,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-09-01",
+    "threat_level": 49.25,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-09-02",
+    "threat_level": 54.41,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-09-03",
+    "threat_level": 56.34,
+    "incidents": 1,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-09-04",
+    "threat_level": 68.85,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-09-05",
+    "threat_level": 57.39,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-09-06",
+    "threat_level": 52.93,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-09-07",
+    "threat_level": 50.58,
+    "incidents": 2,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-09-08",
+    "threat_level": 53.92,
+    "incidents": 2,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-09-09",
+    "threat_level": 61.18,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-09-10",
+    "threat_level": 68.5,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-09-11",
+    "threat_level": 65.54,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-09-12",
+    "threat_level": 56.65,
+    "incidents": 2,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-09-13",
+    "threat_level": 60.9,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-09-14",
+    "threat_level": 37.79,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-09-15",
+    "threat_level": 51.19,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-09-16",
+    "threat_level": 55.86,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-09-17",
+    "threat_level": 65.2,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-09-18",
+    "threat_level": 62.28,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-09-19",
+    "threat_level": 56.39,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-09-20",
+    "threat_level": 98.19,
+    "incidents": 13,
+    "anomaly": 1
+  },
+  {
+    "date": "2021-09-21",
+    "threat_level": 45.35,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-09-22",
+    "threat_level": 43.39,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-09-23",
+    "threat_level": 55.05,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-09-24",
+    "threat_level": 66.44,
+    "incidents": 12,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-09-25",
+    "threat_level": 60.88,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-09-26",
+    "threat_level": 56.89,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-09-27",
+    "threat_level": 53.23,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-09-28",
+    "threat_level": 48.29,
+    "incidents": 2,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-09-29",
+    "threat_level": 44.52,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-09-30",
+    "threat_level": 64.5,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-10-01",
+    "threat_level": 73.09,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-10-02",
+    "threat_level": 71.62,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-10-03",
+    "threat_level": 47.54,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-10-04",
+    "threat_level": 52.38,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-10-05",
+    "threat_level": 47.57,
+    "incidents": 0,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-10-06",
+    "threat_level": 49.42,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-10-07",
+    "threat_level": 54.71,
+    "incidents": 2,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-10-08",
+    "threat_level": 62.66,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-10-09",
+    "threat_level": 69.75,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-10-10",
+    "threat_level": 56.53,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-10-11",
+    "threat_level": 44.49,
+    "incidents": 1,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-10-12",
+    "threat_level": 44.23,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-10-13",
+    "threat_level": 45.96,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-10-14",
+    "threat_level": 65.39,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-10-15",
+    "threat_level": 63.26,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-10-16",
+    "threat_level": 71.13,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-10-17",
+    "threat_level": 53.59,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-10-18",
+    "threat_level": 54.28,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-10-19",
+    "threat_level": 59.41,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-10-20",
+    "threat_level": 51.76,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-10-21",
+    "threat_level": 56.44,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-10-22",
+    "threat_level": 52.62,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-10-23",
+    "threat_level": 69.17,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-10-24",
+    "threat_level": 57.44,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-10-25",
+    "threat_level": 41.32,
+    "incidents": 2,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-10-26",
+    "threat_level": 101.56,
+    "incidents": 9,
+    "anomaly": 1
+  },
+  {
+    "date": "2021-10-27",
+    "threat_level": 34.93,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-10-28",
+    "threat_level": 57.94,
+    "incidents": 12,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-10-29",
+    "threat_level": 65.24,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-10-30",
+    "threat_level": 63.9,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-10-31",
+    "threat_level": 56.95,
+    "incidents": 2,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-11-01",
+    "threat_level": 57.53,
+    "incidents": 2,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-11-02",
+    "threat_level": 62.91,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-11-03",
+    "threat_level": 57.01,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-11-04",
+    "threat_level": 57.92,
+    "incidents": 2,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-11-05",
+    "threat_level": 68.31,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-11-06",
+    "threat_level": 69.01,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-11-07",
+    "threat_level": 63.96,
+    "incidents": 2,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-11-08",
+    "threat_level": 52.77,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-11-09",
+    "threat_level": 45.31,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-11-10",
+    "threat_level": 57.43,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-11-11",
+    "threat_level": 57.64,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-11-12",
+    "threat_level": 61.57,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-11-13",
+    "threat_level": 59.34,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-11-14",
+    "threat_level": 57.88,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-11-15",
+    "threat_level": 48.06,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-11-16",
+    "threat_level": 49.22,
+    "incidents": 2,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-11-17",
+    "threat_level": 52.78,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-11-18",
+    "threat_level": 57.01,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-11-19",
+    "threat_level": 62.51,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-11-20",
+    "threat_level": 58.72,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-11-21",
+    "threat_level": 61.09,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-11-22",
+    "threat_level": 59.3,
+    "incidents": 2,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-11-23",
+    "threat_level": 43.28,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-11-24",
+    "threat_level": 53.4,
+    "incidents": 2,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-11-25",
+    "threat_level": 61.36,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-11-26",
+    "threat_level": 70.32,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-11-27",
+    "threat_level": 59.88,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-11-28",
+    "threat_level": 65.4,
+    "incidents": 11,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-11-29",
+    "threat_level": 57.35,
+    "incidents": 12,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-11-30",
+    "threat_level": 58.51,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-12-01",
+    "threat_level": 48.47,
+    "incidents": 2,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-12-02",
+    "threat_level": 58.49,
+    "incidents": 11,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-12-03",
+    "threat_level": 68.37,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-12-04",
+    "threat_level": 70.72,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-12-05",
+    "threat_level": 63.62,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-12-06",
+    "threat_level": 54.76,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-12-07",
+    "threat_level": 50.68,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-12-08",
+    "threat_level": 44.21,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-12-09",
+    "threat_level": 55.3,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-12-10",
+    "threat_level": 73.46,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-12-11",
+    "threat_level": 65.88,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-12-12",
+    "threat_level": 67.15,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-12-13",
+    "threat_level": 48.09,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-12-14",
+    "threat_level": 50.18,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-12-15",
+    "threat_level": 42.49,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-12-16",
+    "threat_level": 56.65,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-12-17",
+    "threat_level": 58.92,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-12-18",
+    "threat_level": 68.47,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-12-19",
+    "threat_level": 60.75,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-12-20",
+    "threat_level": 57.5,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-12-21",
+    "threat_level": 39.33,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-12-22",
+    "threat_level": 51.9,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-12-23",
+    "threat_level": 64.23,
+    "incidents": 11,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-12-24",
+    "threat_level": 68.5,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-12-25",
+    "threat_level": 65.46,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-12-26",
+    "threat_level": 61.8,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-12-27",
+    "threat_level": 63.92,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-12-28",
+    "threat_level": 44.75,
+    "incidents": 2,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-12-29",
+    "threat_level": 107.91,
+    "incidents": 13,
+    "anomaly": 1
+  },
+  {
+    "date": "2021-12-30",
+    "threat_level": 51.89,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2021-12-31",
+    "threat_level": 61.09,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-01-01",
+    "threat_level": 73.52,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-01-02",
+    "threat_level": 60.44,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-01-03",
+    "threat_level": 50.75,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-01-04",
+    "threat_level": 52.86,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-01-05",
+    "threat_level": 52.78,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-01-06",
+    "threat_level": 62.32,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-01-07",
+    "threat_level": 70.36,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-01-08",
+    "threat_level": 71.33,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-01-09",
+    "threat_level": 64.1,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-01-10",
+    "threat_level": 46.87,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-01-11",
+    "threat_level": 54.52,
+    "incidents": 2,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-01-12",
+    "threat_level": 53.19,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-01-13",
+    "threat_level": 57.7,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-01-14",
+    "threat_level": 69.69,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-01-15",
+    "threat_level": 66.7,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-01-16",
+    "threat_level": 64.25,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-01-17",
+    "threat_level": 57.8,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-01-18",
+    "threat_level": 48.85,
+    "incidents": 2,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-01-19",
+    "threat_level": 50.02,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-01-20",
+    "threat_level": 60.62,
+    "incidents": 11,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-01-21",
+    "threat_level": 68.83,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-01-22",
+    "threat_level": 66.55,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-01-23",
+    "threat_level": 56.01,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-01-24",
+    "threat_level": 65.1,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-01-25",
+    "threat_level": 52.01,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-01-26",
+    "threat_level": 55.3,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-01-27",
+    "threat_level": 62.23,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-01-28",
+    "threat_level": 60.84,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-01-29",
+    "threat_level": 67.35,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-01-30",
+    "threat_level": 57.47,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-01-31",
+    "threat_level": 53.94,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-02-01",
+    "threat_level": 49.64,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-02-02",
+    "threat_level": 50.43,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-02-03",
+    "threat_level": 56.32,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-02-04",
+    "threat_level": 112.62,
+    "incidents": 9,
+    "anomaly": 1
+  },
+  {
+    "date": "2022-02-05",
+    "threat_level": 64.34,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-02-06",
+    "threat_level": 57.05,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-02-07",
+    "threat_level": 53.3,
+    "incidents": 1,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-02-08",
+    "threat_level": 55.23,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-02-09",
+    "threat_level": 44.96,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-02-10",
+    "threat_level": 65.53,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-02-11",
+    "threat_level": 62.89,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-02-12",
+    "threat_level": 67.87,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-02-13",
+    "threat_level": 60.87,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-02-14",
+    "threat_level": 54.16,
+    "incidents": 1,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-02-15",
+    "threat_level": 51.02,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-02-16",
+    "threat_level": 93.95,
+    "incidents": 8,
+    "anomaly": 1
+  },
+  {
+    "date": "2022-02-17",
+    "threat_level": 67.04,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-02-18",
+    "threat_level": 72.31,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-02-19",
+    "threat_level": 73.96,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-02-20",
+    "threat_level": 68.57,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-02-21",
+    "threat_level": 64.35,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-02-22",
+    "threat_level": 48.2,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-02-23",
+    "threat_level": 55.4,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-02-24",
+    "threat_level": 55.65,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-02-25",
+    "threat_level": 61.78,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-02-26",
+    "threat_level": 67.27,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-02-27",
+    "threat_level": 63.26,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-02-28",
+    "threat_level": 48.7,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-03-01",
+    "threat_level": 53.94,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-03-02",
+    "threat_level": 53.06,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-03-03",
+    "threat_level": 60.27,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-03-04",
+    "threat_level": 52.57,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-03-05",
+    "threat_level": 69.41,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-03-06",
+    "threat_level": 63.98,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-03-07",
+    "threat_level": 50.13,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-03-08",
+    "threat_level": 60.46,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-03-09",
+    "threat_level": 57.73,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-03-10",
+    "threat_level": 61.08,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-03-11",
+    "threat_level": 71.99,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-03-12",
+    "threat_level": 62.89,
+    "incidents": 14,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-03-13",
+    "threat_level": 65.88,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-03-14",
+    "threat_level": 58.73,
+    "incidents": 14,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-03-15",
+    "threat_level": 53.64,
+    "incidents": 2,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-03-16",
+    "threat_level": 52.89,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-03-17",
+    "threat_level": 65.17,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-03-18",
+    "threat_level": 71.32,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-03-19",
+    "threat_level": 63.49,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-03-20",
+    "threat_level": 61.13,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-03-21",
+    "threat_level": 102.38,
+    "incidents": 4,
+    "anomaly": 1
+  },
+  {
+    "date": "2022-03-22",
+    "threat_level": 54.67,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-03-23",
+    "threat_level": 48.12,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-03-24",
+    "threat_level": 69.78,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-03-25",
+    "threat_level": 60.52,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-03-26",
+    "threat_level": 63.16,
+    "incidents": 2,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-03-27",
+    "threat_level": 119.02,
+    "incidents": 10,
+    "anomaly": 1
+  },
+  {
+    "date": "2022-03-28",
+    "threat_level": 53.92,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-03-29",
+    "threat_level": 45.67,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-03-30",
+    "threat_level": 56.26,
+    "incidents": 11,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-03-31",
+    "threat_level": 52.28,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-04-01",
+    "threat_level": 64.32,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-04-02",
+    "threat_level": 75.14,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-04-03",
+    "threat_level": 70.38,
+    "incidents": 2,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-04-04",
+    "threat_level": 96.86,
+    "incidents": 7,
+    "anomaly": 1
+  },
+  {
+    "date": "2022-04-05",
+    "threat_level": 54.77,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-04-06",
+    "threat_level": 46.57,
+    "incidents": 12,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-04-07",
+    "threat_level": 64.71,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-04-08",
+    "threat_level": 60.87,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-04-09",
+    "threat_level": 70.76,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-04-10",
+    "threat_level": 55.38,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-04-11",
+    "threat_level": 56.29,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-04-12",
+    "threat_level": 46.31,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-04-13",
+    "threat_level": 61.53,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-04-14",
+    "threat_level": 64.46,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-04-15",
+    "threat_level": 65.18,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-04-16",
+    "threat_level": 72.38,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-04-17",
+    "threat_level": 73.69,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-04-18",
+    "threat_level": 61.75,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-04-19",
+    "threat_level": 52.92,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-04-20",
+    "threat_level": 51.23,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-04-21",
+    "threat_level": 60.12,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-04-22",
+    "threat_level": 66.98,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-04-23",
+    "threat_level": 120.54,
+    "incidents": 19,
+    "anomaly": 1
+  },
+  {
+    "date": "2022-04-24",
+    "threat_level": 64.77,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-04-25",
+    "threat_level": 46.56,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-04-26",
+    "threat_level": 55.17,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-04-27",
+    "threat_level": 57.79,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-04-28",
+    "threat_level": 70.84,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-04-29",
+    "threat_level": 69.2,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-04-30",
+    "threat_level": 68.71,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-05-01",
+    "threat_level": 71.33,
+    "incidents": 13,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-05-02",
+    "threat_level": 58.34,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-05-03",
+    "threat_level": 52.25,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-05-04",
+    "threat_level": 52.12,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-05-05",
+    "threat_level": 52.41,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-05-06",
+    "threat_level": 66.12,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-05-07",
+    "threat_level": 70.82,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-05-08",
+    "threat_level": 116.56,
+    "incidents": 11,
+    "anomaly": 1
+  },
+  {
+    "date": "2022-05-09",
+    "threat_level": 65.04,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-05-10",
+    "threat_level": 44.23,
+    "incidents": 2,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-05-11",
+    "threat_level": 53.45,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-05-12",
+    "threat_level": 118.73,
+    "incidents": 15,
+    "anomaly": 1
+  },
+  {
+    "date": "2022-05-13",
+    "threat_level": 63.74,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-05-14",
+    "threat_level": 74.07,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-05-15",
+    "threat_level": 61.74,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-05-16",
+    "threat_level": 59.12,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-05-17",
+    "threat_level": 45.41,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-05-18",
+    "threat_level": 52.78,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-05-19",
+    "threat_level": 64.61,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-05-20",
+    "threat_level": 78.17,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-05-21",
+    "threat_level": 65.74,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-05-22",
+    "threat_level": 60.89,
+    "incidents": 11,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-05-23",
+    "threat_level": 63.8,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-05-24",
+    "threat_level": 56.51,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-05-25",
+    "threat_level": 47.37,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-05-26",
+    "threat_level": 63.82,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-05-27",
+    "threat_level": 64.86,
+    "incidents": 11,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-05-28",
+    "threat_level": 69.88,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-05-29",
+    "threat_level": 67.16,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-05-30",
+    "threat_level": 56.85,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-05-31",
+    "threat_level": 52.23,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-06-01",
+    "threat_level": 55.79,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-06-02",
+    "threat_level": 109.4,
+    "incidents": 7,
+    "anomaly": 1
+  },
+  {
+    "date": "2022-06-03",
+    "threat_level": 74.29,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-06-04",
+    "threat_level": 73.59,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-06-05",
+    "threat_level": 58.06,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-06-06",
+    "threat_level": 54.58,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-06-07",
+    "threat_level": 55.76,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-06-08",
+    "threat_level": 59.27,
+    "incidents": 1,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-06-09",
+    "threat_level": 57.71,
+    "incidents": 2,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-06-10",
+    "threat_level": 70.36,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-06-11",
+    "threat_level": 76.16,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-06-12",
+    "threat_level": 64.9,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-06-13",
+    "threat_level": 55.94,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-06-14",
+    "threat_level": 48.41,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-06-15",
+    "threat_level": 58.18,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-06-16",
+    "threat_level": 62.25,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-06-17",
+    "threat_level": 62.86,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-06-18",
+    "threat_level": 65.18,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-06-19",
+    "threat_level": 63.49,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-06-20",
+    "threat_level": 52.59,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-06-21",
+    "threat_level": 59.08,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-06-22",
+    "threat_level": 59.93,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-06-23",
+    "threat_level": 57.4,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-06-24",
+    "threat_level": 64.42,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-06-25",
+    "threat_level": 78.31,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-06-26",
+    "threat_level": 64.32,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-06-27",
+    "threat_level": 53.28,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-06-28",
+    "threat_level": 47.99,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-06-29",
+    "threat_level": 53.96,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-06-30",
+    "threat_level": 62.47,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-07-01",
+    "threat_level": 61.12,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-07-02",
+    "threat_level": 71.92,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-07-03",
+    "threat_level": 66.39,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-07-04",
+    "threat_level": 62.87,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-07-05",
+    "threat_level": 45.42,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-07-06",
+    "threat_level": 61.51,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-07-07",
+    "threat_level": 67.67,
+    "incidents": 11,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-07-08",
+    "threat_level": 64.75,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-07-09",
+    "threat_level": 72.64,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-07-10",
+    "threat_level": 64.37,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-07-11",
+    "threat_level": 60.11,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-07-12",
+    "threat_level": 59.6,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-07-13",
+    "threat_level": 51.72,
+    "incidents": 1,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-07-14",
+    "threat_level": 73.4,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-07-15",
+    "threat_level": 68.02,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-07-16",
+    "threat_level": 68.77,
+    "incidents": 11,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-07-17",
+    "threat_level": 70.06,
+    "incidents": 12,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-07-18",
+    "threat_level": 67.95,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-07-19",
+    "threat_level": 59.27,
+    "incidents": 2,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-07-20",
+    "threat_level": 59.23,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-07-21",
+    "threat_level": 56.93,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-07-22",
+    "threat_level": 70.09,
+    "incidents": 12,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-07-23",
+    "threat_level": 70.05,
+    "incidents": 12,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-07-24",
+    "threat_level": 62.87,
+    "incidents": 2,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-07-25",
+    "threat_level": 63.13,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-07-26",
+    "threat_level": 50.97,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-07-27",
+    "threat_level": 57.54,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-07-28",
+    "threat_level": 65.41,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-07-29",
+    "threat_level": 71.36,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-07-30",
+    "threat_level": 68.15,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-07-31",
+    "threat_level": 70.76,
+    "incidents": 12,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-08-01",
+    "threat_level": 59.81,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-08-02",
+    "threat_level": 49.92,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-08-03",
+    "threat_level": 57.59,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-08-04",
+    "threat_level": 58.9,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-08-05",
+    "threat_level": 70.3,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-08-06",
+    "threat_level": 68.65,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-08-07",
+    "threat_level": 73.47,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-08-08",
+    "threat_level": 60.19,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-08-09",
+    "threat_level": 51.01,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-08-10",
+    "threat_level": 63.47,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-08-11",
+    "threat_level": 56.02,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-08-12",
+    "threat_level": 71.37,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-08-13",
+    "threat_level": 86.26,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-08-14",
+    "threat_level": 71.5,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-08-15",
+    "threat_level": 63.33,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-08-16",
+    "threat_level": 57.44,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-08-17",
+    "threat_level": 50.98,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-08-18",
+    "threat_level": 64.33,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-08-19",
+    "threat_level": 71.35,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-08-20",
+    "threat_level": 70.05,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-08-21",
+    "threat_level": 65.23,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-08-22",
+    "threat_level": 53.61,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-08-23",
+    "threat_level": 53.15,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-08-24",
+    "threat_level": 45.38,
+    "incidents": 1,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-08-25",
+    "threat_level": 56.87,
+    "incidents": 13,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-08-26",
+    "threat_level": 72.05,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-08-27",
+    "threat_level": 67.86,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-08-28",
+    "threat_level": 62.43,
+    "incidents": 11,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-08-29",
+    "threat_level": 62.18,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-08-30",
+    "threat_level": 55.31,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-08-31",
+    "threat_level": 52.45,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-09-01",
+    "threat_level": 63.96,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-09-02",
+    "threat_level": 74.58,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-09-03",
+    "threat_level": 71.15,
+    "incidents": 13,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-09-04",
+    "threat_level": 78.55,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-09-05",
+    "threat_level": 67.67,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-09-06",
+    "threat_level": 53.42,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-09-07",
+    "threat_level": 105.36,
+    "incidents": 16,
+    "anomaly": 1
+  },
+  {
+    "date": "2022-09-08",
+    "threat_level": 73.06,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-09-09",
+    "threat_level": 70.03,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-09-10",
+    "threat_level": 71.66,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-09-11",
+    "threat_level": 78.43,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-09-12",
+    "threat_level": 55.22,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-09-13",
+    "threat_level": 65.09,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-09-14",
+    "threat_level": 62.91,
+    "incidents": 12,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-09-15",
+    "threat_level": 61.49,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-09-16",
+    "threat_level": 67.14,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-09-17",
+    "threat_level": 123.61,
+    "incidents": 15,
+    "anomaly": 1
+  },
+  {
+    "date": "2022-09-18",
+    "threat_level": 67.97,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-09-19",
+    "threat_level": 54.87,
+    "incidents": 0,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-09-20",
+    "threat_level": 48.41,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-09-21",
+    "threat_level": 53.92,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-09-22",
+    "threat_level": 57.8,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-09-23",
+    "threat_level": 72.17,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-09-24",
+    "threat_level": 64.67,
+    "incidents": 14,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-09-25",
+    "threat_level": 64.5,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-09-26",
+    "threat_level": 55.91,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-09-27",
+    "threat_level": 47.86,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-09-28",
+    "threat_level": 52.05,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-09-29",
+    "threat_level": 65.05,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-09-30",
+    "threat_level": 74.71,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-10-01",
+    "threat_level": 71.03,
+    "incidents": 1,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-10-02",
+    "threat_level": 65.54,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-10-03",
+    "threat_level": 65.64,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-10-04",
+    "threat_level": 59.04,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-10-05",
+    "threat_level": 56.43,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-10-06",
+    "threat_level": 64.43,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-10-07",
+    "threat_level": 69.01,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-10-08",
+    "threat_level": 78.84,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-10-09",
+    "threat_level": 68.75,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-10-10",
+    "threat_level": 51.09,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-10-11",
+    "threat_level": 60.89,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-10-12",
+    "threat_level": 53.28,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-10-13",
+    "threat_level": 55.52,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-10-14",
+    "threat_level": 69.87,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-10-15",
+    "threat_level": 68.52,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-10-16",
+    "threat_level": 55.34,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-10-17",
+    "threat_level": 50.71,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-10-18",
+    "threat_level": 58.48,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-10-19",
+    "threat_level": 112.32,
+    "incidents": 6,
+    "anomaly": 1
+  },
+  {
+    "date": "2022-10-20",
+    "threat_level": 68.34,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-10-21",
+    "threat_level": 74.96,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-10-22",
+    "threat_level": 65.84,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-10-23",
+    "threat_level": 69.05,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-10-24",
+    "threat_level": 54.22,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-10-25",
+    "threat_level": 61.35,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-10-26",
+    "threat_level": 59.26,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-10-27",
+    "threat_level": 60.6,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-10-28",
+    "threat_level": 66.68,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-10-29",
+    "threat_level": 71.48,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-10-30",
+    "threat_level": 71.5,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-10-31",
+    "threat_level": 52.84,
+    "incidents": 2,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-11-01",
+    "threat_level": 48.03,
+    "incidents": 2,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-11-02",
+    "threat_level": 61.27,
+    "incidents": 11,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-11-03",
+    "threat_level": 65.1,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-11-04",
+    "threat_level": 77.26,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-11-05",
+    "threat_level": 72.0,
+    "incidents": 11,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-11-06",
+    "threat_level": 74.2,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-11-07",
+    "threat_level": 62.91,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-11-08",
+    "threat_level": 107.87,
+    "incidents": 5,
+    "anomaly": 1
+  },
+  {
+    "date": "2022-11-09",
+    "threat_level": 57.41,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-11-10",
+    "threat_level": 71.66,
+    "incidents": 12,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-11-11",
+    "threat_level": 69.72,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-11-12",
+    "threat_level": 81.64,
+    "incidents": 12,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-11-13",
+    "threat_level": 75.84,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-11-14",
+    "threat_level": 55.14,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-11-15",
+    "threat_level": 48.49,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-11-16",
+    "threat_level": 60.61,
+    "incidents": 11,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-11-17",
+    "threat_level": 56.46,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-11-18",
+    "threat_level": 69.16,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-11-19",
+    "threat_level": 74.62,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-11-20",
+    "threat_level": 65.76,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-11-21",
+    "threat_level": 56.56,
+    "incidents": 2,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-11-22",
+    "threat_level": 57.34,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-11-23",
+    "threat_level": 55.81,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-11-24",
+    "threat_level": 59.41,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-11-25",
+    "threat_level": 77.35,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-11-26",
+    "threat_level": 73.76,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-11-27",
+    "threat_level": 73.97,
+    "incidents": 11,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-11-28",
+    "threat_level": 59.23,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-11-29",
+    "threat_level": 46.1,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-11-30",
+    "threat_level": 111.72,
+    "incidents": 14,
+    "anomaly": 1
+  },
+  {
+    "date": "2022-12-01",
+    "threat_level": 64.44,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-12-02",
+    "threat_level": 71.16,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-12-03",
+    "threat_level": 74.21,
+    "incidents": 2,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-12-04",
+    "threat_level": 57.78,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-12-05",
+    "threat_level": 111.73,
+    "incidents": 13,
+    "anomaly": 1
+  },
+  {
+    "date": "2022-12-06",
+    "threat_level": 56.03,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-12-07",
+    "threat_level": 58.51,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-12-08",
+    "threat_level": 65.36,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-12-09",
+    "threat_level": 78.32,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-12-10",
+    "threat_level": 75.26,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-12-11",
+    "threat_level": 73.29,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-12-12",
+    "threat_level": 59.19,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-12-13",
+    "threat_level": 53.2,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-12-14",
+    "threat_level": 58.18,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-12-15",
+    "threat_level": 115.73,
+    "incidents": 12,
+    "anomaly": 1
+  },
+  {
+    "date": "2022-12-16",
+    "threat_level": 70.5,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-12-17",
+    "threat_level": 74.36,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-12-18",
+    "threat_level": 64.68,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-12-19",
+    "threat_level": 58.26,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-12-20",
+    "threat_level": 51.49,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-12-21",
+    "threat_level": 118.49,
+    "incidents": 14,
+    "anomaly": 1
+  },
+  {
+    "date": "2022-12-22",
+    "threat_level": 64.7,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-12-23",
+    "threat_level": 70.5,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-12-24",
+    "threat_level": 76.25,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-12-25",
+    "threat_level": 72.98,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-12-26",
+    "threat_level": 66.54,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-12-27",
+    "threat_level": 48.7,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-12-28",
+    "threat_level": 58.38,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-12-29",
+    "threat_level": 61.33,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2022-12-30",
+    "threat_level": 127.34,
+    "incidents": 7,
+    "anomaly": 1
+  },
+  {
+    "date": "2022-12-31",
+    "threat_level": 73.87,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-01-01",
+    "threat_level": 68.64,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-01-02",
+    "threat_level": 59.35,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-01-03",
+    "threat_level": 47.36,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-01-04",
+    "threat_level": 58.0,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-01-05",
+    "threat_level": 64.66,
+    "incidents": 11,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-01-06",
+    "threat_level": 78.23,
+    "incidents": 17,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-01-07",
+    "threat_level": 78.82,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-01-08",
+    "threat_level": 74.17,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-01-09",
+    "threat_level": 66.76,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-01-10",
+    "threat_level": 57.53,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-01-11",
+    "threat_level": 48.66,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-01-12",
+    "threat_level": 60.73,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-01-13",
+    "threat_level": 70.89,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-01-14",
+    "threat_level": 68.21,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-01-15",
+    "threat_level": 72.84,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-01-16",
+    "threat_level": 60.74,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-01-17",
+    "threat_level": 106.3,
+    "incidents": 11,
+    "anomaly": 1
+  },
+  {
+    "date": "2023-01-18",
+    "threat_level": 60.04,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-01-19",
+    "threat_level": 62.75,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-01-20",
+    "threat_level": 72.95,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-01-21",
+    "threat_level": 79.02,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-01-22",
+    "threat_level": 63.65,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-01-23",
+    "threat_level": 62.0,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-01-24",
+    "threat_level": 51.8,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-01-25",
+    "threat_level": 60.41,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-01-26",
+    "threat_level": 68.19,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-01-27",
+    "threat_level": 67.27,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-01-28",
+    "threat_level": 80.53,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-01-29",
+    "threat_level": 59.8,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-01-30",
+    "threat_level": 68.02,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-01-31",
+    "threat_level": 50.17,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-02-01",
+    "threat_level": 57.29,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-02-02",
+    "threat_level": 65.79,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-02-03",
+    "threat_level": 73.6,
+    "incidents": 13,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-02-04",
+    "threat_level": 75.46,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-02-05",
+    "threat_level": 79.0,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-02-06",
+    "threat_level": 59.91,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-02-07",
+    "threat_level": 57.5,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-02-08",
+    "threat_level": 48.89,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-02-09",
+    "threat_level": 60.71,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-02-10",
+    "threat_level": 71.14,
+    "incidents": 14,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-02-11",
+    "threat_level": 72.64,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-02-12",
+    "threat_level": 74.64,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-02-13",
+    "threat_level": 54.01,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-02-14",
+    "threat_level": 46.02,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-02-15",
+    "threat_level": 55.28,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-02-16",
+    "threat_level": 63.51,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-02-17",
+    "threat_level": 70.75,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-02-18",
+    "threat_level": 74.35,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-02-19",
+    "threat_level": 79.83,
+    "incidents": 13,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-02-20",
+    "threat_level": 55.62,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-02-21",
+    "threat_level": 105.44,
+    "incidents": 13,
+    "anomaly": 1
+  },
+  {
+    "date": "2023-02-22",
+    "threat_level": 53.7,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-02-23",
+    "threat_level": 61.91,
+    "incidents": 1,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-02-24",
+    "threat_level": 74.4,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-02-25",
+    "threat_level": 70.49,
+    "incidents": 12,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-02-26",
+    "threat_level": 68.99,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-02-27",
+    "threat_level": 62.99,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-02-28",
+    "threat_level": 51.54,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-03-01",
+    "threat_level": 63.92,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-03-02",
+    "threat_level": 68.49,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-03-03",
+    "threat_level": 77.09,
+    "incidents": 11,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-03-04",
+    "threat_level": 70.79,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-03-05",
+    "threat_level": 73.97,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-03-06",
+    "threat_level": 65.73,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-03-07",
+    "threat_level": 62.97,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-03-08",
+    "threat_level": 53.9,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-03-09",
+    "threat_level": 61.06,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-03-10",
+    "threat_level": 73.25,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-03-11",
+    "threat_level": 76.27,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-03-12",
+    "threat_level": 80.27,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-03-13",
+    "threat_level": 58.93,
+    "incidents": 12,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-03-14",
+    "threat_level": 67.88,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-03-15",
+    "threat_level": 109.64,
+    "incidents": 11,
+    "anomaly": 1
+  },
+  {
+    "date": "2023-03-16",
+    "threat_level": 71.96,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-03-17",
+    "threat_level": 66.92,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-03-18",
+    "threat_level": 75.02,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-03-19",
+    "threat_level": 74.27,
+    "incidents": 14,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-03-20",
+    "threat_level": 64.97,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-03-21",
+    "threat_level": 106.94,
+    "incidents": 5,
+    "anomaly": 1
+  },
+  {
+    "date": "2023-03-22",
+    "threat_level": 66.52,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-03-23",
+    "threat_level": 71.8,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-03-24",
+    "threat_level": 76.79,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-03-25",
+    "threat_level": 66.71,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-03-26",
+    "threat_level": 81.4,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-03-27",
+    "threat_level": 60.93,
+    "incidents": 13,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-03-28",
+    "threat_level": 48.32,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-03-29",
+    "threat_level": 57.72,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-03-30",
+    "threat_level": 60.38,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-03-31",
+    "threat_level": 79.48,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-04-01",
+    "threat_level": 86.1,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-04-02",
+    "threat_level": 75.78,
+    "incidents": 11,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-04-03",
+    "threat_level": 62.06,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-04-04",
+    "threat_level": 47.53,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-04-05",
+    "threat_level": 50.67,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-04-06",
+    "threat_level": 75.99,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-04-07",
+    "threat_level": 77.33,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-04-08",
+    "threat_level": 127.39,
+    "incidents": 13,
+    "anomaly": 1
+  },
+  {
+    "date": "2023-04-09",
+    "threat_level": 72.85,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-04-10",
+    "threat_level": 55.58,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-04-11",
+    "threat_level": 108.23,
+    "incidents": 11,
+    "anomaly": 1
+  },
+  {
+    "date": "2023-04-12",
+    "threat_level": 54.78,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-04-13",
+    "threat_level": 69.42,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-04-14",
+    "threat_level": 76.91,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-04-15",
+    "threat_level": 79.89,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-04-16",
+    "threat_level": 71.79,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-04-17",
+    "threat_level": 57.7,
+    "incidents": 0,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-04-18",
+    "threat_level": 55.07,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-04-19",
+    "threat_level": 62.92,
+    "incidents": 11,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-04-20",
+    "threat_level": 61.46,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-04-21",
+    "threat_level": 73.33,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-04-22",
+    "threat_level": 73.45,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-04-23",
+    "threat_level": 74.92,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-04-24",
+    "threat_level": 79.87,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-04-25",
+    "threat_level": 58.35,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-04-26",
+    "threat_level": 64.49,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-04-27",
+    "threat_level": 76.54,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-04-28",
+    "threat_level": 79.09,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-04-29",
+    "threat_level": 77.12,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-04-30",
+    "threat_level": 68.86,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-05-01",
+    "threat_level": 63.6,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-05-02",
+    "threat_level": 58.9,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-05-03",
+    "threat_level": 66.15,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-05-04",
+    "threat_level": 64.2,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-05-05",
+    "threat_level": 80.82,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-05-06",
+    "threat_level": 74.76,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-05-07",
+    "threat_level": 75.83,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-05-08",
+    "threat_level": 56.55,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-05-09",
+    "threat_level": 64.56,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-05-10",
+    "threat_level": 56.31,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-05-11",
+    "threat_level": 68.2,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-05-12",
+    "threat_level": 82.67,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-05-13",
+    "threat_level": 82.43,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-05-14",
+    "threat_level": 73.6,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-05-15",
+    "threat_level": 59.85,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-05-16",
+    "threat_level": 54.54,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-05-17",
+    "threat_level": 61.49,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-05-18",
+    "threat_level": 58.69,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-05-19",
+    "threat_level": 74.63,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-05-20",
+    "threat_level": 78.97,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-05-21",
+    "threat_level": 73.57,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-05-22",
+    "threat_level": 66.58,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-05-23",
+    "threat_level": 54.33,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-05-24",
+    "threat_level": 62.39,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-05-25",
+    "threat_level": 68.17,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-05-26",
+    "threat_level": 71.89,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-05-27",
+    "threat_level": 80.32,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-05-28",
+    "threat_level": 69.98,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-05-29",
+    "threat_level": 116.9,
+    "incidents": 8,
+    "anomaly": 1
+  },
+  {
+    "date": "2023-05-30",
+    "threat_level": 57.37,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-05-31",
+    "threat_level": 67.08,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-06-01",
+    "threat_level": 67.39,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-06-02",
+    "threat_level": 71.65,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-06-03",
+    "threat_level": 73.34,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-06-04",
+    "threat_level": 74.49,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-06-05",
+    "threat_level": 65.87,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-06-06",
+    "threat_level": 51.28,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-06-07",
+    "threat_level": 63.29,
+    "incidents": 2,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-06-08",
+    "threat_level": 63.48,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-06-09",
+    "threat_level": 82.21,
+    "incidents": 12,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-06-10",
+    "threat_level": 84.56,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-06-11",
+    "threat_level": 72.56,
+    "incidents": 11,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-06-12",
+    "threat_level": 111.39,
+    "incidents": 12,
+    "anomaly": 1
+  },
+  {
+    "date": "2023-06-13",
+    "threat_level": 61.72,
+    "incidents": 12,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-06-14",
+    "threat_level": 71.24,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-06-15",
+    "threat_level": 70.31,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-06-16",
+    "threat_level": 73.13,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-06-17",
+    "threat_level": 86.24,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-06-18",
+    "threat_level": 64.63,
+    "incidents": 15,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-06-19",
+    "threat_level": 71.92,
+    "incidents": 12,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-06-20",
+    "threat_level": 61.13,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-06-21",
+    "threat_level": 68.31,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-06-22",
+    "threat_level": 60.64,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-06-23",
+    "threat_level": 84.01,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-06-24",
+    "threat_level": 74.12,
+    "incidents": 13,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-06-25",
+    "threat_level": 79.55,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-06-26",
+    "threat_level": 62.36,
+    "incidents": 1,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-06-27",
+    "threat_level": 58.19,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-06-28",
+    "threat_level": 58.6,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-06-29",
+    "threat_level": 67.1,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-06-30",
+    "threat_level": 74.78,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-07-01",
+    "threat_level": 80.38,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-07-02",
+    "threat_level": 84.92,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-07-03",
+    "threat_level": 74.14,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-07-04",
+    "threat_level": 61.15,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-07-05",
+    "threat_level": 62.65,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-07-06",
+    "threat_level": 68.93,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-07-07",
+    "threat_level": 118.16,
+    "incidents": 13,
+    "anomaly": 1
+  },
+  {
+    "date": "2023-07-08",
+    "threat_level": 72.54,
+    "incidents": 12,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-07-09",
+    "threat_level": 73.14,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-07-10",
+    "threat_level": 68.87,
+    "incidents": 2,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-07-11",
+    "threat_level": 55.28,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-07-12",
+    "threat_level": 51.19,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-07-13",
+    "threat_level": 75.73,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-07-14",
+    "threat_level": 81.04,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-07-15",
+    "threat_level": 85.42,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-07-16",
+    "threat_level": 74.03,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-07-17",
+    "threat_level": 59.56,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-07-18",
+    "threat_level": 56.95,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-07-19",
+    "threat_level": 59.86,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-07-20",
+    "threat_level": 72.28,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-07-21",
+    "threat_level": 133.24,
+    "incidents": 21,
+    "anomaly": 1
+  },
+  {
+    "date": "2023-07-22",
+    "threat_level": 81.33,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-07-23",
+    "threat_level": 77.57,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-07-24",
+    "threat_level": 61.74,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-07-25",
+    "threat_level": 59.73,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-07-26",
+    "threat_level": 56.69,
+    "incidents": 12,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-07-27",
+    "threat_level": 62.73,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-07-28",
+    "threat_level": 81.6,
+    "incidents": 12,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-07-29",
+    "threat_level": 77.93,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-07-30",
+    "threat_level": 76.33,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-07-31",
+    "threat_level": 61.89,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-08-01",
+    "threat_level": 61.6,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-08-02",
+    "threat_level": 65.35,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-08-03",
+    "threat_level": 79.3,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-08-04",
+    "threat_level": 81.02,
+    "incidents": 11,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-08-05",
+    "threat_level": 81.52,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-08-06",
+    "threat_level": 76.47,
+    "incidents": 1,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-08-07",
+    "threat_level": 56.56,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-08-08",
+    "threat_level": 58.18,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-08-09",
+    "threat_level": 66.51,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-08-10",
+    "threat_level": 70.36,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-08-11",
+    "threat_level": 74.65,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-08-12",
+    "threat_level": 79.53,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-08-13",
+    "threat_level": 68.17,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-08-14",
+    "threat_level": 59.29,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-08-15",
+    "threat_level": 64.52,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-08-16",
+    "threat_level": 76.24,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-08-17",
+    "threat_level": 66.86,
+    "incidents": 11,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-08-18",
+    "threat_level": 79.2,
+    "incidents": 12,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-08-19",
+    "threat_level": 81.14,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-08-20",
+    "threat_level": 73.92,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-08-21",
+    "threat_level": 69.26,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-08-22",
+    "threat_level": 105.11,
+    "incidents": 12,
+    "anomaly": 1
+  },
+  {
+    "date": "2023-08-23",
+    "threat_level": 64.89,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-08-24",
+    "threat_level": 77.6,
+    "incidents": 11,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-08-25",
+    "threat_level": 76.22,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-08-26",
+    "threat_level": 85.22,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-08-27",
+    "threat_level": 79.35,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-08-28",
+    "threat_level": 68.59,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-08-29",
+    "threat_level": 65.01,
+    "incidents": 14,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-08-30",
+    "threat_level": 65.17,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-08-31",
+    "threat_level": 66.99,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-09-01",
+    "threat_level": 81.58,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-09-02",
+    "threat_level": 79.65,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-09-03",
+    "threat_level": 75.85,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-09-04",
+    "threat_level": 57.19,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-09-05",
+    "threat_level": 52.64,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-09-06",
+    "threat_level": 69.69,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-09-07",
+    "threat_level": 68.07,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-09-08",
+    "threat_level": 81.36,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-09-09",
+    "threat_level": 76.72,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-09-10",
+    "threat_level": 71.09,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-09-11",
+    "threat_level": 69.62,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-09-12",
+    "threat_level": 62.32,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-09-13",
+    "threat_level": 60.21,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-09-14",
+    "threat_level": 65.16,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-09-15",
+    "threat_level": 126.22,
+    "incidents": 9,
+    "anomaly": 1
+  },
+  {
+    "date": "2023-09-16",
+    "threat_level": 85.6,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-09-17",
+    "threat_level": 75.73,
+    "incidents": 11,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-09-18",
+    "threat_level": 59.55,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-09-19",
+    "threat_level": 67.51,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-09-20",
+    "threat_level": 71.22,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-09-21",
+    "threat_level": 71.34,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-09-22",
+    "threat_level": 73.63,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-09-23",
+    "threat_level": 90.79,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-09-24",
+    "threat_level": 67.7,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-09-25",
+    "threat_level": 68.57,
+    "incidents": 2,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-09-26",
+    "threat_level": 61.09,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-09-27",
+    "threat_level": 66.94,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-09-28",
+    "threat_level": 72.81,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-09-29",
+    "threat_level": 77.36,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-09-30",
+    "threat_level": 81.17,
+    "incidents": 11,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-10-01",
+    "threat_level": 81.02,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-10-02",
+    "threat_level": 69.92,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-10-03",
+    "threat_level": 60.8,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-10-04",
+    "threat_level": 59.59,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-10-05",
+    "threat_level": 84.2,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-10-06",
+    "threat_level": 72.67,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-10-07",
+    "threat_level": 76.55,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-10-08",
+    "threat_level": 76.65,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-10-09",
+    "threat_level": 65.69,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-10-10",
+    "threat_level": 66.88,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-10-11",
+    "threat_level": 75.57,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-10-12",
+    "threat_level": 69.25,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-10-13",
+    "threat_level": 128.59,
+    "incidents": 7,
+    "anomaly": 1
+  },
+  {
+    "date": "2023-10-14",
+    "threat_level": 88.31,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-10-15",
+    "threat_level": 74.94,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-10-16",
+    "threat_level": 68.61,
+    "incidents": 2,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-10-17",
+    "threat_level": 56.54,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-10-18",
+    "threat_level": 111.21,
+    "incidents": 19,
+    "anomaly": 1
+  },
+  {
+    "date": "2023-10-19",
+    "threat_level": 64.38,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-10-20",
+    "threat_level": 77.17,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-10-21",
+    "threat_level": 79.72,
+    "incidents": 14,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-10-22",
+    "threat_level": 68.88,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-10-23",
+    "threat_level": 61.95,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-10-24",
+    "threat_level": 59.4,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-10-25",
+    "threat_level": 67.57,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-10-26",
+    "threat_level": 72.84,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-10-27",
+    "threat_level": 74.48,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-10-28",
+    "threat_level": 82.81,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-10-29",
+    "threat_level": 74.76,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-10-30",
+    "threat_level": 61.05,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-10-31",
+    "threat_level": 60.85,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-11-01",
+    "threat_level": 55.5,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-11-02",
+    "threat_level": 74.01,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-11-03",
+    "threat_level": 77.4,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-11-04",
+    "threat_level": 78.29,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-11-05",
+    "threat_level": 69.25,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-11-06",
+    "threat_level": 64.17,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-11-07",
+    "threat_level": 68.91,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-11-08",
+    "threat_level": 67.36,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-11-09",
+    "threat_level": 76.49,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-11-10",
+    "threat_level": 82.41,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-11-11",
+    "threat_level": 81.25,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-11-12",
+    "threat_level": 79.46,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-11-13",
+    "threat_level": 73.33,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-11-14",
+    "threat_level": 63.21,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-11-15",
+    "threat_level": 70.02,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-11-16",
+    "threat_level": 66.07,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-11-17",
+    "threat_level": 74.18,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-11-18",
+    "threat_level": 75.18,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-11-19",
+    "threat_level": 124.39,
+    "incidents": 15,
+    "anomaly": 1
+  },
+  {
+    "date": "2023-11-20",
+    "threat_level": 69.7,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-11-21",
+    "threat_level": 64.26,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-11-22",
+    "threat_level": 112.86,
+    "incidents": 9,
+    "anomaly": 1
+  },
+  {
+    "date": "2023-11-23",
+    "threat_level": 70.5,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-11-24",
+    "threat_level": 79.42,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-11-25",
+    "threat_level": 87.68,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-11-26",
+    "threat_level": 71.98,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-11-27",
+    "threat_level": 68.99,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-11-28",
+    "threat_level": 65.9,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-11-29",
+    "threat_level": 64.69,
+    "incidents": 12,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-11-30",
+    "threat_level": 75.7,
+    "incidents": 13,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-12-01",
+    "threat_level": 87.93,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-12-02",
+    "threat_level": 76.24,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-12-03",
+    "threat_level": 83.28,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-12-04",
+    "threat_level": 71.91,
+    "incidents": 11,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-12-05",
+    "threat_level": 61.07,
+    "incidents": 2,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-12-06",
+    "threat_level": 117.03,
+    "incidents": 10,
+    "anomaly": 1
+  },
+  {
+    "date": "2023-12-07",
+    "threat_level": 74.61,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-12-08",
+    "threat_level": 83.89,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-12-09",
+    "threat_level": 84.07,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-12-10",
+    "threat_level": 124.79,
+    "incidents": 12,
+    "anomaly": 1
+  },
+  {
+    "date": "2023-12-11",
+    "threat_level": 64.24,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-12-12",
+    "threat_level": 61.98,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-12-13",
+    "threat_level": 62.89,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-12-14",
+    "threat_level": 62.26,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-12-15",
+    "threat_level": 75.8,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-12-16",
+    "threat_level": 83.15,
+    "incidents": 15,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-12-17",
+    "threat_level": 79.52,
+    "incidents": 12,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-12-18",
+    "threat_level": 66.0,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-12-19",
+    "threat_level": 53.31,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-12-20",
+    "threat_level": 71.34,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-12-21",
+    "threat_level": 69.55,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-12-22",
+    "threat_level": 83.47,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-12-23",
+    "threat_level": 82.46,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-12-24",
+    "threat_level": 73.18,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-12-25",
+    "threat_level": 74.96,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-12-26",
+    "threat_level": 64.01,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-12-27",
+    "threat_level": 60.04,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-12-28",
+    "threat_level": 72.5,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-12-29",
+    "threat_level": 72.79,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-12-30",
+    "threat_level": 78.02,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2023-12-31",
+    "threat_level": 118.65,
+    "incidents": 16,
+    "anomaly": 1
+  },
+  {
+    "date": "2024-01-01",
+    "threat_level": 73.04,
+    "incidents": 1,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-01-02",
+    "threat_level": 59.87,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-01-03",
+    "threat_level": 62.52,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-01-04",
+    "threat_level": 76.52,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-01-05",
+    "threat_level": 78.76,
+    "incidents": 12,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-01-06",
+    "threat_level": 135.41,
+    "incidents": 15,
+    "anomaly": 1
+  },
+  {
+    "date": "2024-01-07",
+    "threat_level": 72.41,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-01-08",
+    "threat_level": 72.27,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-01-09",
+    "threat_level": 63.36,
+    "incidents": 13,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-01-10",
+    "threat_level": 120.27,
+    "incidents": 10,
+    "anomaly": 1
+  },
+  {
+    "date": "2024-01-11",
+    "threat_level": 73.88,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-01-12",
+    "threat_level": 80.36,
+    "incidents": 13,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-01-13",
+    "threat_level": 87.44,
+    "incidents": 12,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-01-14",
+    "threat_level": 129.73,
+    "incidents": 14,
+    "anomaly": 1
+  },
+  {
+    "date": "2024-01-15",
+    "threat_level": 75.65,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-01-16",
+    "threat_level": 59.26,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-01-17",
+    "threat_level": 71.04,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-01-18",
+    "threat_level": 66.73,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-01-19",
+    "threat_level": 84.83,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-01-20",
+    "threat_level": 82.26,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-01-21",
+    "threat_level": 77.53,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-01-22",
+    "threat_level": 63.01,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-01-23",
+    "threat_level": 68.97,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-01-24",
+    "threat_level": 75.56,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-01-25",
+    "threat_level": 132.81,
+    "incidents": 16,
+    "anomaly": 1
+  },
+  {
+    "date": "2024-01-26",
+    "threat_level": 129.82,
+    "incidents": 19,
+    "anomaly": 1
+  },
+  {
+    "date": "2024-01-27",
+    "threat_level": 84.42,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-01-28",
+    "threat_level": 118.82,
+    "incidents": 9,
+    "anomaly": 1
+  },
+  {
+    "date": "2024-01-29",
+    "threat_level": 65.94,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-01-30",
+    "threat_level": 110.07,
+    "incidents": 6,
+    "anomaly": 1
+  },
+  {
+    "date": "2024-01-31",
+    "threat_level": 68.8,
+    "incidents": 13,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-02-01",
+    "threat_level": 74.95,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-02-02",
+    "threat_level": 70.86,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-02-03",
+    "threat_level": 87.96,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-02-04",
+    "threat_level": 70.29,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-02-05",
+    "threat_level": 68.49,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-02-06",
+    "threat_level": 69.27,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-02-07",
+    "threat_level": 61.53,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-02-08",
+    "threat_level": 79.15,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-02-09",
+    "threat_level": 75.81,
+    "incidents": 11,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-02-10",
+    "threat_level": 77.31,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-02-11",
+    "threat_level": 82.06,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-02-12",
+    "threat_level": 65.12,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-02-13",
+    "threat_level": 53.93,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-02-14",
+    "threat_level": 64.76,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-02-15",
+    "threat_level": 78.79,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-02-16",
+    "threat_level": 82.62,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-02-17",
+    "threat_level": 87.55,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-02-18",
+    "threat_level": 74.38,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-02-19",
+    "threat_level": 69.2,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-02-20",
+    "threat_level": 64.18,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-02-21",
+    "threat_level": 62.25,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-02-22",
+    "threat_level": 71.96,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-02-23",
+    "threat_level": 82.68,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-02-24",
+    "threat_level": 80.8,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-02-25",
+    "threat_level": 68.32,
+    "incidents": 11,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-02-26",
+    "threat_level": 65.9,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-02-27",
+    "threat_level": 69.1,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-02-28",
+    "threat_level": 62.6,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-02-29",
+    "threat_level": 74.89,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-03-01",
+    "threat_level": 133.85,
+    "incidents": 17,
+    "anomaly": 1
+  },
+  {
+    "date": "2024-03-02",
+    "threat_level": 75.96,
+    "incidents": 11,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-03-03",
+    "threat_level": 72.33,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-03-04",
+    "threat_level": 70.91,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-03-05",
+    "threat_level": 69.16,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-03-06",
+    "threat_level": 63.53,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-03-07",
+    "threat_level": 76.14,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-03-08",
+    "threat_level": 85.32,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-03-09",
+    "threat_level": 79.21,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-03-10",
+    "threat_level": 80.13,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-03-11",
+    "threat_level": 79.37,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-03-12",
+    "threat_level": 61.46,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-03-13",
+    "threat_level": 64.74,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-03-14",
+    "threat_level": 64.58,
+    "incidents": 11,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-03-15",
+    "threat_level": 78.54,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-03-16",
+    "threat_level": 80.4,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-03-17",
+    "threat_level": 76.75,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-03-18",
+    "threat_level": 72.01,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-03-19",
+    "threat_level": 61.85,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-03-20",
+    "threat_level": 71.82,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-03-21",
+    "threat_level": 121.53,
+    "incidents": 8,
+    "anomaly": 1
+  },
+  {
+    "date": "2024-03-22",
+    "threat_level": 72.34,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-03-23",
+    "threat_level": 79.77,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-03-24",
+    "threat_level": 79.85,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-03-25",
+    "threat_level": 72.13,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-03-26",
+    "threat_level": 66.86,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-03-27",
+    "threat_level": 61.77,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-03-28",
+    "threat_level": 70.39,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-03-29",
+    "threat_level": 80.17,
+    "incidents": 12,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-03-30",
+    "threat_level": 79.47,
+    "incidents": 13,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-03-31",
+    "threat_level": 76.06,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-04-01",
+    "threat_level": 66.39,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-04-02",
+    "threat_level": 69.72,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-04-03",
+    "threat_level": 74.66,
+    "incidents": 11,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-04-04",
+    "threat_level": 71.37,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-04-05",
+    "threat_level": 89.07,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-04-06",
+    "threat_level": 79.63,
+    "incidents": 12,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-04-07",
+    "threat_level": 82.49,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-04-08",
+    "threat_level": 69.8,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-04-09",
+    "threat_level": 67.13,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-04-10",
+    "threat_level": 63.21,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-04-11",
+    "threat_level": 74.34,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-04-12",
+    "threat_level": 88.58,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-04-13",
+    "threat_level": 84.76,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-04-14",
+    "threat_level": 83.34,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-04-15",
+    "threat_level": 77.95,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-04-16",
+    "threat_level": 113.28,
+    "incidents": 16,
+    "anomaly": 1
+  },
+  {
+    "date": "2024-04-17",
+    "threat_level": 69.49,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-04-18",
+    "threat_level": 76.26,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-04-19",
+    "threat_level": 81.76,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-04-20",
+    "threat_level": 82.97,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-04-21",
+    "threat_level": 77.21,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-04-22",
+    "threat_level": 73.1,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-04-23",
+    "threat_level": 69.51,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-04-24",
+    "threat_level": 69.78,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-04-25",
+    "threat_level": 68.31,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-04-26",
+    "threat_level": 82.49,
+    "incidents": 14,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-04-27",
+    "threat_level": 82.5,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-04-28",
+    "threat_level": 78.56,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-04-29",
+    "threat_level": 116.36,
+    "incidents": 10,
+    "anomaly": 1
+  },
+  {
+    "date": "2024-04-30",
+    "threat_level": 69.34,
+    "incidents": 2,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-05-01",
+    "threat_level": 61.01,
+    "incidents": 2,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-05-02",
+    "threat_level": 83.19,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-05-03",
+    "threat_level": 82.22,
+    "incidents": 11,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-05-04",
+    "threat_level": 84.56,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-05-05",
+    "threat_level": 74.36,
+    "incidents": 12,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-05-06",
+    "threat_level": 65.4,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-05-07",
+    "threat_level": 65.8,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-05-08",
+    "threat_level": 68.37,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-05-09",
+    "threat_level": 76.07,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-05-10",
+    "threat_level": 88.06,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-05-11",
+    "threat_level": 85.23,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-05-12",
+    "threat_level": 80.77,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-05-13",
+    "threat_level": 66.48,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-05-14",
+    "threat_level": 58.98,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-05-15",
+    "threat_level": 66.32,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-05-16",
+    "threat_level": 78.89,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-05-17",
+    "threat_level": 89.2,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-05-18",
+    "threat_level": 87.62,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-05-19",
+    "threat_level": 93.54,
+    "incidents": 11,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-05-20",
+    "threat_level": 67.89,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-05-21",
+    "threat_level": 57.37,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-05-22",
+    "threat_level": 74.34,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-05-23",
+    "threat_level": 80.94,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-05-24",
+    "threat_level": 83.34,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-05-25",
+    "threat_level": 84.14,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-05-26",
+    "threat_level": 81.4,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-05-27",
+    "threat_level": 64.51,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-05-28",
+    "threat_level": 67.74,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-05-29",
+    "threat_level": 65.85,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-05-30",
+    "threat_level": 77.59,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-05-31",
+    "threat_level": 85.44,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-06-01",
+    "threat_level": 82.14,
+    "incidents": 2,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-06-02",
+    "threat_level": 79.27,
+    "incidents": 11,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-06-03",
+    "threat_level": 75.13,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-06-04",
+    "threat_level": 72.37,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-06-05",
+    "threat_level": 60.95,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-06-06",
+    "threat_level": 84.16,
+    "incidents": 14,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-06-07",
+    "threat_level": 88.33,
+    "incidents": 15,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-06-08",
+    "threat_level": 84.66,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-06-09",
+    "threat_level": 88.99,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-06-10",
+    "threat_level": 69.11,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-06-11",
+    "threat_level": 71.33,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-06-12",
+    "threat_level": 62.89,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-06-13",
+    "threat_level": 68.22,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-06-14",
+    "threat_level": 87.96,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-06-15",
+    "threat_level": 83.13,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-06-16",
+    "threat_level": 85.84,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-06-17",
+    "threat_level": 68.53,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-06-18",
+    "threat_level": 76.5,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-06-19",
+    "threat_level": 66.32,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-06-20",
+    "threat_level": 81.28,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-06-21",
+    "threat_level": 85.67,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-06-22",
+    "threat_level": 77.21,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-06-23",
+    "threat_level": 77.6,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-06-24",
+    "threat_level": 75.26,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-06-25",
+    "threat_level": 66.22,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-06-26",
+    "threat_level": 58.09,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-06-27",
+    "threat_level": 133.48,
+    "incidents": 15,
+    "anomaly": 1
+  },
+  {
+    "date": "2024-06-28",
+    "threat_level": 93.66,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-06-29",
+    "threat_level": 81.94,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-06-30",
+    "threat_level": 77.51,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-07-01",
+    "threat_level": 108.07,
+    "incidents": 11,
+    "anomaly": 1
+  },
+  {
+    "date": "2024-07-02",
+    "threat_level": 71.87,
+    "incidents": 11,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-07-03",
+    "threat_level": 64.36,
+    "incidents": 11,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-07-04",
+    "threat_level": 71.62,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-07-05",
+    "threat_level": 83.22,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-07-06",
+    "threat_level": 80.7,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-07-07",
+    "threat_level": 79.53,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-07-08",
+    "threat_level": 73.26,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-07-09",
+    "threat_level": 65.27,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-07-10",
+    "threat_level": 65.86,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-07-11",
+    "threat_level": 76.72,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-07-12",
+    "threat_level": 87.31,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-07-13",
+    "threat_level": 81.32,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-07-14",
+    "threat_level": 79.41,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-07-15",
+    "threat_level": 79.38,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-07-16",
+    "threat_level": 64.45,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-07-17",
+    "threat_level": 73.09,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-07-18",
+    "threat_level": 79.53,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-07-19",
+    "threat_level": 80.98,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-07-20",
+    "threat_level": 81.86,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-07-21",
+    "threat_level": 81.71,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-07-22",
+    "threat_level": 68.64,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-07-23",
+    "threat_level": 66.44,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-07-24",
+    "threat_level": 67.06,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-07-25",
+    "threat_level": 72.37,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-07-26",
+    "threat_level": 82.2,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-07-27",
+    "threat_level": 85.42,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-07-28",
+    "threat_level": 85.76,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-07-29",
+    "threat_level": 71.32,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-07-30",
+    "threat_level": 69.25,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-07-31",
+    "threat_level": 68.17,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-08-01",
+    "threat_level": 74.71,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-08-02",
+    "threat_level": 91.08,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-08-03",
+    "threat_level": 88.48,
+    "incidents": 12,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-08-04",
+    "threat_level": 83.65,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-08-05",
+    "threat_level": 63.69,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-08-06",
+    "threat_level": 72.07,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-08-07",
+    "threat_level": 71.72,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-08-08",
+    "threat_level": 67.6,
+    "incidents": 11,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-08-09",
+    "threat_level": 71.0,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-08-10",
+    "threat_level": 84.06,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-08-11",
+    "threat_level": 84.56,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-08-12",
+    "threat_level": 73.82,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-08-13",
+    "threat_level": 70.2,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-08-14",
+    "threat_level": 126.55,
+    "incidents": 10,
+    "anomaly": 1
+  },
+  {
+    "date": "2024-08-15",
+    "threat_level": 126.05,
+    "incidents": 6,
+    "anomaly": 1
+  },
+  {
+    "date": "2024-08-16",
+    "threat_level": 81.3,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-08-17",
+    "threat_level": 78.42,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-08-18",
+    "threat_level": 72.33,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-08-19",
+    "threat_level": 70.34,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-08-20",
+    "threat_level": 64.03,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-08-21",
+    "threat_level": 71.42,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-08-22",
+    "threat_level": 76.48,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-08-23",
+    "threat_level": 93.59,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-08-24",
+    "threat_level": 100.21,
+    "incidents": 11,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-08-25",
+    "threat_level": 84.84,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-08-26",
+    "threat_level": 71.99,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-08-27",
+    "threat_level": 113.04,
+    "incidents": 8,
+    "anomaly": 1
+  },
+  {
+    "date": "2024-08-28",
+    "threat_level": 66.89,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-08-29",
+    "threat_level": 78.34,
+    "incidents": 11,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-08-30",
+    "threat_level": 84.48,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-08-31",
+    "threat_level": 89.79,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-09-01",
+    "threat_level": 79.83,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-09-02",
+    "threat_level": 64.49,
+    "incidents": 11,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-09-03",
+    "threat_level": 118.74,
+    "incidents": 13,
+    "anomaly": 1
+  },
+  {
+    "date": "2024-09-04",
+    "threat_level": 72.69,
+    "incidents": 13,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-09-05",
+    "threat_level": 82.03,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-09-06",
+    "threat_level": 84.34,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-09-07",
+    "threat_level": 92.01,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-09-08",
+    "threat_level": 83.87,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-09-09",
+    "threat_level": 74.24,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-09-10",
+    "threat_level": 71.39,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-09-11",
+    "threat_level": 75.58,
+    "incidents": 14,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-09-12",
+    "threat_level": 76.45,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-09-13",
+    "threat_level": 73.66,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-09-14",
+    "threat_level": 84.95,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-09-15",
+    "threat_level": 80.0,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-09-16",
+    "threat_level": 72.73,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-09-17",
+    "threat_level": 68.7,
+    "incidents": 1,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-09-18",
+    "threat_level": 76.75,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-09-19",
+    "threat_level": 65.34,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-09-20",
+    "threat_level": 93.48,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-09-21",
+    "threat_level": 86.81,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-09-22",
+    "threat_level": 142.44,
+    "incidents": 13,
+    "anomaly": 1
+  },
+  {
+    "date": "2024-09-23",
+    "threat_level": 70.71,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-09-24",
+    "threat_level": 71.68,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-09-25",
+    "threat_level": 64.18,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-09-26",
+    "threat_level": 75.61,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-09-27",
+    "threat_level": 85.76,
+    "incidents": 13,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-09-28",
+    "threat_level": 87.97,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-09-29",
+    "threat_level": 81.97,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-09-30",
+    "threat_level": 69.32,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-10-01",
+    "threat_level": 73.97,
+    "incidents": 2,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-10-02",
+    "threat_level": 76.23,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-10-03",
+    "threat_level": 85.21,
+    "incidents": 11,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-10-04",
+    "threat_level": 89.92,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-10-05",
+    "threat_level": 98.37,
+    "incidents": 12,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-10-06",
+    "threat_level": 81.8,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-10-07",
+    "threat_level": 75.8,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-10-08",
+    "threat_level": 57.78,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-10-09",
+    "threat_level": 63.85,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-10-10",
+    "threat_level": 87.23,
+    "incidents": 12,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-10-11",
+    "threat_level": 88.09,
+    "incidents": 12,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-10-12",
+    "threat_level": 83.7,
+    "incidents": 14,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-10-13",
+    "threat_level": 79.65,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-10-14",
+    "threat_level": 71.66,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-10-15",
+    "threat_level": 72.84,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-10-16",
+    "threat_level": 71.27,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-10-17",
+    "threat_level": 83.08,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-10-18",
+    "threat_level": 137.14,
+    "incidents": 14,
+    "anomaly": 1
+  },
+  {
+    "date": "2024-10-19",
+    "threat_level": 88.57,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-10-20",
+    "threat_level": 81.36,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-10-21",
+    "threat_level": 83.2,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-10-22",
+    "threat_level": 63.98,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-10-23",
+    "threat_level": 71.54,
+    "incidents": 11,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-10-24",
+    "threat_level": 83.25,
+    "incidents": 12,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-10-25",
+    "threat_level": 89.33,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-10-26",
+    "threat_level": 133.93,
+    "incidents": 18,
+    "anomaly": 1
+  },
+  {
+    "date": "2024-10-27",
+    "threat_level": 79.01,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-10-28",
+    "threat_level": 79.7,
+    "incidents": 14,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-10-29",
+    "threat_level": 67.03,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-10-30",
+    "threat_level": 70.25,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-10-31",
+    "threat_level": 77.44,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-11-01",
+    "threat_level": 88.54,
+    "incidents": 15,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-11-02",
+    "threat_level": 87.0,
+    "incidents": 11,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-11-03",
+    "threat_level": 86.63,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-11-04",
+    "threat_level": 71.6,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-11-05",
+    "threat_level": 74.81,
+    "incidents": 14,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-11-06",
+    "threat_level": 74.95,
+    "incidents": 12,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-11-07",
+    "threat_level": 77.33,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-11-08",
+    "threat_level": 89.44,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-11-09",
+    "threat_level": 80.36,
+    "incidents": 12,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-11-10",
+    "threat_level": 74.9,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-11-11",
+    "threat_level": 82.38,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-11-12",
+    "threat_level": 68.48,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-11-13",
+    "threat_level": 67.91,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-11-14",
+    "threat_level": 72.21,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-11-15",
+    "threat_level": 84.09,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-11-16",
+    "threat_level": 94.26,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-11-17",
+    "threat_level": 83.55,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-11-18",
+    "threat_level": 78.74,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-11-19",
+    "threat_level": 75.11,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-11-20",
+    "threat_level": 79.15,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-11-21",
+    "threat_level": 85.51,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-11-22",
+    "threat_level": 86.23,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-11-23",
+    "threat_level": 92.34,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-11-24",
+    "threat_level": 72.58,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-11-25",
+    "threat_level": 80.15,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-11-26",
+    "threat_level": 69.54,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-11-27",
+    "threat_level": 73.47,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-11-28",
+    "threat_level": 79.51,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-11-29",
+    "threat_level": 93.66,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-11-30",
+    "threat_level": 99.4,
+    "incidents": 12,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-12-01",
+    "threat_level": 82.4,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-12-02",
+    "threat_level": 75.4,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-12-03",
+    "threat_level": 63.63,
+    "incidents": 2,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-12-04",
+    "threat_level": 73.79,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-12-05",
+    "threat_level": 70.24,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-12-06",
+    "threat_level": 85.88,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-12-07",
+    "threat_level": 91.04,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-12-08",
+    "threat_level": 83.67,
+    "incidents": 11,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-12-09",
+    "threat_level": 83.31,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-12-10",
+    "threat_level": 74.05,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-12-11",
+    "threat_level": 75.02,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-12-12",
+    "threat_level": 130.87,
+    "incidents": 7,
+    "anomaly": 1
+  },
+  {
+    "date": "2024-12-13",
+    "threat_level": 89.06,
+    "incidents": 11,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-12-14",
+    "threat_level": 95.58,
+    "incidents": 15,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-12-15",
+    "threat_level": 123.32,
+    "incidents": 13,
+    "anomaly": 1
+  },
+  {
+    "date": "2024-12-16",
+    "threat_level": 73.03,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-12-17",
+    "threat_level": 61.6,
+    "incidents": 2,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-12-18",
+    "threat_level": 73.88,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-12-19",
+    "threat_level": 74.28,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-12-20",
+    "threat_level": 89.04,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-12-21",
+    "threat_level": 87.72,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-12-22",
+    "threat_level": 82.09,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-12-23",
+    "threat_level": 78.17,
+    "incidents": 13,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-12-24",
+    "threat_level": 66.61,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-12-25",
+    "threat_level": 82.52,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-12-26",
+    "threat_level": 80.27,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-12-27",
+    "threat_level": 92.16,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-12-28",
+    "threat_level": 79.59,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-12-29",
+    "threat_level": 79.86,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2024-12-30",
+    "threat_level": 124.19,
+    "incidents": 18,
+    "anomaly": 1
+  },
+  {
+    "date": "2024-12-31",
+    "threat_level": 62.94,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-01-01",
+    "threat_level": 64.57,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-01-02",
+    "threat_level": 75.84,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-01-03",
+    "threat_level": 83.04,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-01-04",
+    "threat_level": 91.54,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-01-05",
+    "threat_level": 85.27,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-01-06",
+    "threat_level": 64.47,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-01-07",
+    "threat_level": 69.33,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-01-08",
+    "threat_level": 84.68,
+    "incidents": 11,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-01-09",
+    "threat_level": 76.22,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-01-10",
+    "threat_level": 92.02,
+    "incidents": 12,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-01-11",
+    "threat_level": 144.38,
+    "incidents": 25,
+    "anomaly": 1
+  },
+  {
+    "date": "2025-01-12",
+    "threat_level": 86.11,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-01-13",
+    "threat_level": 82.21,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-01-14",
+    "threat_level": 74.21,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-01-15",
+    "threat_level": 76.97,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-01-16",
+    "threat_level": 76.85,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-01-17",
+    "threat_level": 84.23,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-01-18",
+    "threat_level": 86.98,
+    "incidents": 11,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-01-19",
+    "threat_level": 86.27,
+    "incidents": 12,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-01-20",
+    "threat_level": 73.09,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-01-21",
+    "threat_level": 71.57,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-01-22",
+    "threat_level": 74.76,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-01-23",
+    "threat_level": 79.7,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-01-24",
+    "threat_level": 84.29,
+    "incidents": 13,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-01-25",
+    "threat_level": 86.65,
+    "incidents": 12,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-01-26",
+    "threat_level": 87.15,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-01-27",
+    "threat_level": 75.21,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-01-28",
+    "threat_level": 58.22,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-01-29",
+    "threat_level": 122.38,
+    "incidents": 12,
+    "anomaly": 1
+  },
+  {
+    "date": "2025-01-30",
+    "threat_level": 84.48,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-01-31",
+    "threat_level": 88.46,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-02-01",
+    "threat_level": 89.6,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-02-02",
+    "threat_level": 90.95,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-02-03",
+    "threat_level": 80.73,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-02-04",
+    "threat_level": 74.19,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-02-05",
+    "threat_level": 74.28,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-02-06",
+    "threat_level": 82.73,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-02-07",
+    "threat_level": 86.14,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-02-08",
+    "threat_level": 92.24,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-02-09",
+    "threat_level": 83.16,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-02-10",
+    "threat_level": 80.89,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-02-11",
+    "threat_level": 77.76,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-02-12",
+    "threat_level": 73.91,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-02-13",
+    "threat_level": 80.41,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-02-14",
+    "threat_level": 82.63,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-02-15",
+    "threat_level": 87.51,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-02-16",
+    "threat_level": 86.87,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-02-17",
+    "threat_level": 78.02,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-02-18",
+    "threat_level": 72.58,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-02-19",
+    "threat_level": 67.15,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-02-20",
+    "threat_level": 81.15,
+    "incidents": 11,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-02-21",
+    "threat_level": 94.46,
+    "incidents": 11,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-02-22",
+    "threat_level": 96.27,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-02-23",
+    "threat_level": 85.75,
+    "incidents": 11,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-02-24",
+    "threat_level": 123.18,
+    "incidents": 10,
+    "anomaly": 1
+  },
+  {
+    "date": "2025-02-25",
+    "threat_level": 62.74,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-02-26",
+    "threat_level": 81.95,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-02-27",
+    "threat_level": 73.5,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-02-28",
+    "threat_level": 97.02,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-03-01",
+    "threat_level": 99.66,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-03-02",
+    "threat_level": 85.71,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-03-03",
+    "threat_level": 72.73,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-03-04",
+    "threat_level": 72.89,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-03-05",
+    "threat_level": 75.73,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-03-06",
+    "threat_level": 80.82,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-03-07",
+    "threat_level": 83.61,
+    "incidents": 12,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-03-08",
+    "threat_level": 90.61,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-03-09",
+    "threat_level": 84.78,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-03-10",
+    "threat_level": 92.73,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-03-11",
+    "threat_level": 80.13,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-03-12",
+    "threat_level": 87.25,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-03-13",
+    "threat_level": 83.14,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-03-14",
+    "threat_level": 90.34,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-03-15",
+    "threat_level": 95.11,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-03-16",
+    "threat_level": 83.31,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-03-17",
+    "threat_level": 71.34,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-03-18",
+    "threat_level": 123.25,
+    "incidents": 9,
+    "anomaly": 1
+  },
+  {
+    "date": "2025-03-19",
+    "threat_level": 73.78,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-03-20",
+    "threat_level": 89.46,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-03-21",
+    "threat_level": 87.12,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-03-22",
+    "threat_level": 96.54,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-03-23",
+    "threat_level": 79.62,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-03-24",
+    "threat_level": 77.05,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-03-25",
+    "threat_level": 65.07,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-03-26",
+    "threat_level": 67.81,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-03-27",
+    "threat_level": 84.63,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-03-28",
+    "threat_level": 87.9,
+    "incidents": 13,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-03-29",
+    "threat_level": 87.67,
+    "incidents": 12,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-03-30",
+    "threat_level": 82.8,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-03-31",
+    "threat_level": 81.86,
+    "incidents": 12,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-04-01",
+    "threat_level": 76.69,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-04-02",
+    "threat_level": 75.97,
+    "incidents": 13,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-04-03",
+    "threat_level": 81.12,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-04-04",
+    "threat_level": 142.07,
+    "incidents": 14,
+    "anomaly": 1
+  },
+  {
+    "date": "2025-04-05",
+    "threat_level": 98.89,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-04-06",
+    "threat_level": 87.59,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-04-07",
+    "threat_level": 76.01,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-04-08",
+    "threat_level": 66.87,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-04-09",
+    "threat_level": 80.06,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-04-10",
+    "threat_level": 75.36,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-04-11",
+    "threat_level": 93.6,
+    "incidents": 16,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-04-12",
+    "threat_level": 95.94,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-04-13",
+    "threat_level": 85.85,
+    "incidents": 13,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-04-14",
+    "threat_level": 74.12,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-04-15",
+    "threat_level": 62.65,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-04-16",
+    "threat_level": 76.21,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-04-17",
+    "threat_level": 79.3,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-04-18",
+    "threat_level": 90.46,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-04-19",
+    "threat_level": 103.3,
+    "incidents": 12,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-04-20",
+    "threat_level": 85.88,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-04-21",
+    "threat_level": 79.88,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-04-22",
+    "threat_level": 122.49,
+    "incidents": 13,
+    "anomaly": 1
+  },
+  {
+    "date": "2025-04-23",
+    "threat_level": 80.03,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-04-24",
+    "threat_level": 82.17,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-04-25",
+    "threat_level": 89.62,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-04-26",
+    "threat_level": 141.28,
+    "incidents": 9,
+    "anomaly": 1
+  },
+  {
+    "date": "2025-04-27",
+    "threat_level": 88.32,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-04-28",
+    "threat_level": 76.71,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-04-29",
+    "threat_level": 79.06,
+    "incidents": 11,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-04-30",
+    "threat_level": 73.19,
+    "incidents": 13,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-05-01",
+    "threat_level": 81.29,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-05-02",
+    "threat_level": 88.9,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-05-03",
+    "threat_level": 92.17,
+    "incidents": 11,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-05-04",
+    "threat_level": 84.59,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-05-05",
+    "threat_level": 76.62,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-05-06",
+    "threat_level": 71.99,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-05-07",
+    "threat_level": 68.37,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-05-08",
+    "threat_level": 85.98,
+    "incidents": 15,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-05-09",
+    "threat_level": 88.76,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-05-10",
+    "threat_level": 93.27,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-05-11",
+    "threat_level": 82.36,
+    "incidents": 12,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-05-12",
+    "threat_level": 86.2,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-05-13",
+    "threat_level": 79.33,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-05-14",
+    "threat_level": 78.14,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-05-15",
+    "threat_level": 92.67,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-05-16",
+    "threat_level": 91.04,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-05-17",
+    "threat_level": 94.79,
+    "incidents": 13,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-05-18",
+    "threat_level": 91.59,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-05-19",
+    "threat_level": 81.69,
+    "incidents": 16,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-05-20",
+    "threat_level": 77.31,
+    "incidents": 11,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-05-21",
+    "threat_level": 75.63,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-05-22",
+    "threat_level": 82.84,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-05-23",
+    "threat_level": 140.89,
+    "incidents": 17,
+    "anomaly": 1
+  },
+  {
+    "date": "2025-05-24",
+    "threat_level": 95.03,
+    "incidents": 12,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-05-25",
+    "threat_level": 95.16,
+    "incidents": 13,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-05-26",
+    "threat_level": 78.08,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-05-27",
+    "threat_level": 72.84,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-05-28",
+    "threat_level": 77.58,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-05-29",
+    "threat_level": 79.49,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-05-30",
+    "threat_level": 90.65,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-05-31",
+    "threat_level": 92.11,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-06-01",
+    "threat_level": 92.14,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-06-02",
+    "threat_level": 82.12,
+    "incidents": 11,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-06-03",
+    "threat_level": 80.94,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-06-04",
+    "threat_level": 79.85,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-06-05",
+    "threat_level": 93.51,
+    "incidents": 12,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-06-06",
+    "threat_level": 95.2,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-06-07",
+    "threat_level": 93.16,
+    "incidents": 14,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-06-08",
+    "threat_level": 89.79,
+    "incidents": 17,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-06-09",
+    "threat_level": 78.27,
+    "incidents": 11,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-06-10",
+    "threat_level": 83.23,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-06-11",
+    "threat_level": 73.45,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-06-12",
+    "threat_level": 87.69,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-06-13",
+    "threat_level": 92.83,
+    "incidents": 14,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-06-14",
+    "threat_level": 98.32,
+    "incidents": 11,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-06-15",
+    "threat_level": 86.03,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-06-16",
+    "threat_level": 81.54,
+    "incidents": 11,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-06-17",
+    "threat_level": 74.09,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-06-18",
+    "threat_level": 75.95,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-06-19",
+    "threat_level": 89.73,
+    "incidents": 14,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-06-20",
+    "threat_level": 86.62,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-06-21",
+    "threat_level": 94.33,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-06-22",
+    "threat_level": 88.77,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-06-23",
+    "threat_level": 71.29,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-06-24",
+    "threat_level": 69.14,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-06-25",
+    "threat_level": 75.42,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-06-26",
+    "threat_level": 87.66,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-06-27",
+    "threat_level": 91.84,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-06-28",
+    "threat_level": 104.33,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-06-29",
+    "threat_level": 88.39,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-06-30",
+    "threat_level": 77.88,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-07-01",
+    "threat_level": 72.58,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-07-02",
+    "threat_level": 72.61,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-07-03",
+    "threat_level": 82.63,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-07-04",
+    "threat_level": 91.03,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-07-05",
+    "threat_level": 99.2,
+    "incidents": 12,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-07-06",
+    "threat_level": 92.41,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-07-07",
+    "threat_level": 77.66,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-07-08",
+    "threat_level": 73.12,
+    "incidents": 11,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-07-09",
+    "threat_level": 74.1,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-07-10",
+    "threat_level": 79.0,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-07-11",
+    "threat_level": 91.69,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-07-12",
+    "threat_level": 93.97,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-07-13",
+    "threat_level": 145.09,
+    "incidents": 16,
+    "anomaly": 1
+  },
+  {
+    "date": "2025-07-14",
+    "threat_level": 74.72,
+    "incidents": 11,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-07-15",
+    "threat_level": 73.79,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-07-16",
+    "threat_level": 72.76,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-07-17",
+    "threat_level": 96.36,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-07-18",
+    "threat_level": 94.25,
+    "incidents": 15,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-07-19",
+    "threat_level": 99.24,
+    "incidents": 12,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-07-20",
+    "threat_level": 137.12,
+    "incidents": 21,
+    "anomaly": 1
+  },
+  {
+    "date": "2025-07-21",
+    "threat_level": 86.97,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-07-22",
+    "threat_level": 61.36,
+    "incidents": 4,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-07-23",
+    "threat_level": 74.04,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-07-24",
+    "threat_level": 71.27,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-07-25",
+    "threat_level": 86.75,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-07-26",
+    "threat_level": 90.48,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-07-27",
+    "threat_level": 83.34,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-07-28",
+    "threat_level": 82.76,
+    "incidents": 12,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-07-29",
+    "threat_level": 79.76,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-07-30",
+    "threat_level": 77.36,
+    "incidents": 11,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-07-31",
+    "threat_level": 80.95,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-08-01",
+    "threat_level": 89.25,
+    "incidents": 1,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-08-02",
+    "threat_level": 94.87,
+    "incidents": 11,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-08-03",
+    "threat_level": 93.18,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-08-04",
+    "threat_level": 77.84,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-08-05",
+    "threat_level": 90.38,
+    "incidents": 11,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-08-06",
+    "threat_level": 79.4,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-08-07",
+    "threat_level": 88.06,
+    "incidents": 13,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-08-08",
+    "threat_level": 102.71,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-08-09",
+    "threat_level": 95.58,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-08-10",
+    "threat_level": 79.36,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-08-11",
+    "threat_level": 83.85,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-08-12",
+    "threat_level": 70.09,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-08-13",
+    "threat_level": 78.87,
+    "incidents": 11,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-08-14",
+    "threat_level": 84.88,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-08-15",
+    "threat_level": 93.53,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-08-16",
+    "threat_level": 95.2,
+    "incidents": 11,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-08-17",
+    "threat_level": 92.14,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-08-18",
+    "threat_level": 82.1,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-08-19",
+    "threat_level": 82.65,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-08-20",
+    "threat_level": 75.64,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-08-21",
+    "threat_level": 85.93,
+    "incidents": 11,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-08-22",
+    "threat_level": 89.51,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-08-23",
+    "threat_level": 82.11,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-08-24",
+    "threat_level": 85.69,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-08-25",
+    "threat_level": 82.17,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-08-26",
+    "threat_level": 113.98,
+    "incidents": 11,
+    "anomaly": 1
+  },
+  {
+    "date": "2025-08-27",
+    "threat_level": 74.56,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-08-28",
+    "threat_level": 82.59,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-08-29",
+    "threat_level": 96.52,
+    "incidents": 13,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-08-30",
+    "threat_level": 88.27,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-08-31",
+    "threat_level": 92.21,
+    "incidents": 12,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-09-01",
+    "threat_level": 81.81,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-09-02",
+    "threat_level": 77.97,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-09-03",
+    "threat_level": 116.17,
+    "incidents": 15,
+    "anomaly": 1
+  },
+  {
+    "date": "2025-09-04",
+    "threat_level": 84.73,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-09-05",
+    "threat_level": 77.51,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-09-06",
+    "threat_level": 91.9,
+    "incidents": 15,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-09-07",
+    "threat_level": 92.34,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-09-08",
+    "threat_level": 76.41,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-09-09",
+    "threat_level": 81.68,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-09-10",
+    "threat_level": 79.9,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-09-11",
+    "threat_level": 92.42,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-09-12",
+    "threat_level": 139.09,
+    "incidents": 18,
+    "anomaly": 1
+  },
+  {
+    "date": "2025-09-13",
+    "threat_level": 96.17,
+    "incidents": 13,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-09-14",
+    "threat_level": 93.83,
+    "incidents": 11,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-09-15",
+    "threat_level": 80.96,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-09-16",
+    "threat_level": 76.65,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-09-17",
+    "threat_level": 75.82,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-09-18",
+    "threat_level": 140.18,
+    "incidents": 21,
+    "anomaly": 1
+  },
+  {
+    "date": "2025-09-19",
+    "threat_level": 99.61,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-09-20",
+    "threat_level": 85.81,
+    "incidents": 13,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-09-21",
+    "threat_level": 92.39,
+    "incidents": 11,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-09-22",
+    "threat_level": 80.11,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-09-23",
+    "threat_level": 75.99,
+    "incidents": 2,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-09-24",
+    "threat_level": 76.84,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-09-25",
+    "threat_level": 83.45,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-09-26",
+    "threat_level": 86.63,
+    "incidents": 15,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-09-27",
+    "threat_level": 94.33,
+    "incidents": 11,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-09-28",
+    "threat_level": 96.75,
+    "incidents": 13,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-09-29",
+    "threat_level": 76.73,
+    "incidents": 3,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-09-30",
+    "threat_level": 73.48,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-10-01",
+    "threat_level": 72.73,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-10-02",
+    "threat_level": 88.95,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-10-03",
+    "threat_level": 93.49,
+    "incidents": 13,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-10-04",
+    "threat_level": 90.05,
+    "incidents": 14,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-10-05",
+    "threat_level": 92.51,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-10-06",
+    "threat_level": 87.45,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-10-07",
+    "threat_level": 79.35,
+    "incidents": 16,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-10-08",
+    "threat_level": 69.61,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-10-09",
+    "threat_level": 86.52,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-10-10",
+    "threat_level": 103.9,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-10-11",
+    "threat_level": 97.41,
+    "incidents": 12,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-10-12",
+    "threat_level": 90.85,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-10-13",
+    "threat_level": 82.91,
+    "incidents": 13,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-10-14",
+    "threat_level": 79.33,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-10-15",
+    "threat_level": 83.07,
+    "incidents": 13,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-10-16",
+    "threat_level": 82.38,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-10-17",
+    "threat_level": 86.0,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-10-18",
+    "threat_level": 97.95,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-10-19",
+    "threat_level": 89.84,
+    "incidents": 5,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-10-20",
+    "threat_level": 80.09,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-10-21",
+    "threat_level": 73.79,
+    "incidents": 8,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-10-22",
+    "threat_level": 80.85,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-10-23",
+    "threat_level": 84.03,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-10-24",
+    "threat_level": 99.56,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-10-25",
+    "threat_level": 94.56,
+    "incidents": 11,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-10-26",
+    "threat_level": 84.43,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-10-27",
+    "threat_level": 76.94,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-10-28",
+    "threat_level": 88.92,
+    "incidents": 10,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-10-29",
+    "threat_level": 76.57,
+    "incidents": 9,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-10-30",
+    "threat_level": 86.38,
+    "incidents": 6,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-10-31",
+    "threat_level": 145.82,
+    "incidents": 11,
+    "anomaly": 1
+  },
+  {
+    "date": "2025-11-01",
+    "threat_level": 88.17,
+    "incidents": 7,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-11-02",
+    "threat_level": 93.46,
+    "incidents": 12,
+    "anomaly": 0
+  },
+  {
+    "date": "2025-11-03",
+    "threat_level": 83.03,
+    "incidents": 16,
+    "anomaly": 0
+  }
+]

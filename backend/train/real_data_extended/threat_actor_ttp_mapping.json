@@ -1,0 +1,293 @@
+[
+  {
+    "actor": "APT29 (Cozy Bear)",
+    "origin": "Russia - SVR",
+    "sophistication": "very_high",
+    "targets": [
+      "government",
+      "think_tanks",
+      "healthcare",
+      "energy"
+    ],
+    "ttps": {
+      "initial_access": [
+        "spear_phishing",
+        "supply_chain",
+        "exploit_public_apps"
+      ],
+      "execution": [
+        "powershell",
+        "wmi",
+        "rundll32"
+      ],
+      "persistence": [
+        "registry_run_keys",
+        "scheduled_tasks",
+        "create_account"
+      ],
+      "privilege_escalation": [
+        "valid_accounts",
+        "access_token_manipulation"
+      ],
+      "defense_evasion": [
+        "obfuscated_files",
+        "masquerading",
+        "disable_security_tools"
+      ],
+      "credential_access": [
+        "os_credential_dumping",
+        "brute_force"
+      ],
+      "discovery": [
+        "account_discovery",
+        "network_service_scanning"
+      ],
+      "lateral_movement": [
+        "remote_services",
+        "use_alternate_authentication"
+      ],
+      "collection": [
+        "data_staged",
+        "email_collection"
+      ],
+      "exfiltration": [
+        "exfiltration_over_c2",
+        "exfiltration_to_cloud"
+      ]
+    },
+    "malware": [
+      "WellMess",
+      "WellMail",
+      "Sunburst",
+      "EnvyScout"
+    ],
+    "campaigns": [
+      "SolarWinds",
+      "COVID-19 Vaccine Research Targeting"
+    ]
+  },
+  {
+    "actor": "Lazarus Group",
+    "origin": "North Korea - RGB",
+    "sophistication": "high",
+    "targets": [
+      "cryptocurrency",
+      "financial",
+      "defense",
+      "government"
+    ],
+    "ttps": {
+      "initial_access": [
+        "spear_phishing",
+        "supply_chain",
+        "exploit_public_apps"
+      ],
+      "execution": [
+        "user_execution",
+        "scheduled_task"
+      ],
+      "persistence": [
+        "create_account",
+        "registry_run_keys"
+      ],
+      "privilege_escalation": [
+        "valid_accounts",
+        "exploitation_for_privilege"
+      ],
+      "defense_evasion": [
+        "disable_security_tools",
+        "masquerading"
+      ],
+      "credential_access": [
+        "input_capture",
+        "credentials_from_password_stores"
+      ],
+      "lateral_movement": [
+        "remote_desktop_protocol",
+        "smb_windows_admin_shares"
+      ],
+      "impact": [
+        "data_encrypted_for_impact",
+        "financial_theft"
+      ]
+    },
+    "malware": [
+      "AppleJeus",
+      "Dacls",
+      "Volgmer",
+      "NukeSped",
+      "ThreatNeedle"
+    ],
+    "campaigns": [
+      "WannaCry",
+      "Sony Pictures",
+      "Bangladesh Bank Heist",
+      "3CX Supply Chain"
+    ]
+  },
+  {
+    "actor": "APT28 (Fancy Bear)",
+    "origin": "Russia - GRU",
+    "sophistication": "high",
+    "targets": [
+      "government",
+      "military",
+      "media",
+      "olympics"
+    ],
+    "ttps": {
+      "initial_access": [
+        "spear_phishing",
+        "exploit_public_apps"
+      ],
+      "execution": [
+        "powershell",
+        "command_line_interface"
+      ],
+      "persistence": [
+        "registry_run_keys",
+        "scheduled_task"
+      ],
+      "privilege_escalation": [
+        "exploitation_for_privilege_escalation"
+      ],
+      "defense_evasion": [
+        "obfuscated_files",
+        "software_packing"
+      ],
+      "credential_access": [
+        "credential_dumping"
+      ],
+      "lateral_movement": [
+        "remote_services",
+        "rdp"
+      ],
+      "collection": [
+        "data_staged",
+        "screen_capture"
+      ],
+      "exfiltration": [
+        "exfiltration_over_c2"
+      ]
+    },
+    "malware": [
+      "X-Agent",
+      "Sofacy",
+      "Zebrocy",
+      "CHOPSTICK"
+    ],
+    "campaigns": [
+      "DNC Hack",
+      "Olympic Destroyer",
+      "France TV5Monde"
+    ]
+  },
+  {
+    "actor": "FIN7",
+    "origin": "Eastern Europe",
+    "sophistication": "high",
+    "targets": [
+      "retail",
+      "hospitality",
+      "restaurant",
+      "financial"
+    ],
+    "ttps": {
+      "initial_access": [
+        "spear_phishing",
+        "valid_accounts"
+      ],
+      "execution": [
+        "user_execution",
+        "powershell"
+      ],
+      "persistence": [
+        "registry_run_keys",
+        "create_account"
+      ],
+      "defense_evasion": [
+        "masquerading",
+        "obfuscated_files"
+      ],
+      "credential_access": [
+        "input_capture",
+        "credentials_in_files"
+      ],
+      "lateral_movement": [
+        "remote_services",
+        "internal_spearphishing"
+      ],
+      "collection": [
+        "data_staged"
+      ],
+      "exfiltration": [
+        "exfiltration_over_c2"
+      ]
+    },
+    "malware": [
+      "Carbanak",
+      "AveMaria",
+      "GRIFFON",
+      "BOOSTWRITE"
+    ],
+    "campaigns": [
+      "POS Malware Operations",
+      "Carbanak Banking Attacks"
+    ]
+  },
+  {
+    "actor": "Volt Typhoon",
+    "origin": "China - PLA",
+    "sophistication": "very_high",
+    "targets": [
+      "critical_infrastructure",
+      "communications",
+      "energy",
+      "utilities"
+    ],
+    "ttps": {
+      "initial_access": [
+        "exploit_public_apps",
+        "valid_accounts"
+      ],
+      "execution": [
+        "command_line_interface",
+        "native_api"
+      ],
+      "persistence": [
+        "create_account",
+        "valid_accounts"
+      ],
+      "privilege_escalation": [
+        "valid_accounts"
+      ],
+      "defense_evasion": [
+        "living_off_the_land",
+        "masquerading"
+      ],
+      "credential_access": [
+        "os_credential_dumping",
+        "network_sniffing"
+      ],
+      "discovery": [
+        "network_service_scanning",
+        "remote_system_discovery"
+      ],
+      "lateral_movement": [
+        "remote_services",
+        "use_alternate_authentication"
+      ],
+      "command_and_control": [
+        "proxy",
+        "protocol_tunneling"
+      ]
+    },
+    "malware": [
+      "Custom Web Shells",
+      "Living-off-the-Land Binaries"
+    ],
+    "campaigns": [
+      "US Critical Infrastructure Targeting"
+    ]
+  }
+]

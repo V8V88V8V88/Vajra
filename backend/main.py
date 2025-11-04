@@ -147,8 +147,10 @@ async def start_crawler():
     try:
         from scripts.crawler_orchestrator import run_crawler
 
-        logs = run_crawler()
-        return {"logs": logs}
+        result = run_crawler()
+        if isinstance(result, dict):
+            return result
+        return {"logs": result}
     except Exception as e:
         logger.warning("Crawler orchestrator missing, returning simulated logs: %s", e)
         logs = []

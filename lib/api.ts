@@ -29,6 +29,29 @@ export interface CrawlerLog {
   type: "info" | "success" | "warning" | "error"
 }
 
+export interface CrawlerRecord {
+  id: string
+  source: string
+  title: string
+  url: string
+  summary: string
+  published?: Date | null
+  severity?: string | null
+  metadata?: Record<string, string>
+}
+
+export interface CrawlerStats {
+  sources: number
+  itemsTotal: number
+  itemsUnique: number
+}
+
+export interface CrawlerResult {
+  logs: CrawlerLog[]
+  records: CrawlerRecord[]
+  stats: CrawlerStats
+}
+
 // Mock threat data
 const mockThreats: Threat[] = [
   {
@@ -261,51 +284,47 @@ export async function getStats(): Promise<ThreatStats> {
   }
 }
 
-export async function startCrawler(): Promise<CrawlerLog[]> {
+export async function startCrawler(signal?: AbortSignal): Promise<CrawlerResult> {
   try {
     const response = await fetch(`${API_BASE_URL}/api/crawler/start`, {
-      method: 'POST'
+      method: 'POST',
+      signal
     })
     if (!response.ok) throw new Error('API request failed')
     const data = await response.json()
-    
-    // Transform logs from backend
-    return data.logs.map((log: any) => ({
-      id: log.id || `log-${Date.now()}`,
-      timestamp: new Date(log.timestamp),
-      message: log.message,
-      type: log.type || 'info'
-    }))
-  } catch (error) {
-    console.error('Failed to start crawler via API, using simulation:', error)
-    // Fallback to simulated crawler
-    const logs: CrawlerLog[] = []
-    const sources = [
-      "OSINT Feed - Threat Intelligence",
-      "CVE Database",
-      "Dark Web Marketplace",
-      "Malware Analysis Repository",
-      "Network Monitoring System",
-    ]
 
-    for (let i = 0; i < 15; i++) {
-      await new Promise((resolve) => setTimeout(resolve, 200))
-      logs.push({
-        id: `log-${i}`,
-        timestamp: new Date(),
-        message: `Syncing data from ${sources[Math.floor(Math.random() * sources.length)]}...`,
-        type: Math.random() > 0.1 ? "info" : "success",
-      })
+    const logs: CrawlerLog[] = (data.logs || []).map((log: any, index: number) => ({
+      id: log.id || `log-${index}-${Date.now()}`,
+      timestamp: log.timestamp ? new Date(log.timestamp) : new Date(),
+      message: log.message ?? '',
+      type: (log.type as CrawlerLog['type']) || 'info'
+    }))
+
+    const records: CrawlerRecord[] = (data.records || []).map((record: any, index: number) => ({
+      id: record.id ?? `record-${index}-${Date.now()}`,
+      source: record.source ?? 'unknown',
+      title: record.title ?? 'Untitled',
+      url: record.url ?? '',
+      summary: record.summary ?? '',
+      published: record.published ? new Date(record.published) : null,
+      severity: record.severity ?? null,
+      metadata: record.metadata ?? {}
+    }))
+
+    const stats: CrawlerStats = {
+      sources: data.stats?.sources ?? 0,
+      itemsTotal: data.stats?.items_total ?? data.stats?.itemsTotal ?? records.length,
+      itemsUnique:
+        data.stats?.items_unique ?? data.stats?.itemsUnique ?? new Set(records.map((r) => `${r.source}:${r.id}`)).size,
     }
 
-    logs.push({
-      id: "log-final",
-      timestamp: new Date(),
-      message: "Crawler completed. 2,847 threats indexed.",
-      type: "success",
-    })
-
-    return logs
+    return { logs, records, stats }
+  } catch (error: any) {
+    if (error?.name === 'AbortError') {
+      throw error
+    }
+    console.error('Failed to start crawler via API:', error)
+    throw error
   }
 }
 

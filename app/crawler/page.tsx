@@ -2,29 +2,215 @@
 
 import type React from "react"
 
-import { useState } from "react"
-import { startCrawler, type CrawlerLog } from "@/lib/api"
+import { useCallback, useEffect, useMemo, useRef, useState } from "react"
+import {
+  startCrawler,
+  type CrawlerLog,
+  type CrawlerRecord,
+  type CrawlerResult,
+  type CrawlerStats,
+} from "@/lib/api"
 import { CrawlerLogs } from "@/components/crawler/crawler-logs"
 import { Play, Search, X } from "lucide-react"
 
+function deriveSourceSummary(records: CrawlerRecord[]) {
+  const bySource = new Map<string, { count: number; latest?: Date | null }>()
+  records.forEach((record) => {
+    const entry = bySource.get(record.source) ?? { count: 0, latest: null }
+    entry.count += 1
+    if (record.published && (!entry.latest || record.published > entry.latest)) {
+      entry.latest = record.published
+    }
+    bySource.set(record.source, entry)
+  })
+  return Array.from(bySource.entries()).map(([source, value]) => ({
+    source,
+    count: value.count,
+    latest: value.latest ?? null,
+  }))
+}
+
+function CrawlerSummary({ records, logs }: { records: CrawlerRecord[]; logs: CrawlerLog[] }) {
+  const summary = useMemo(() => deriveSourceSummary(records), [records])
+  const errors = useMemo(() => logs.filter((log) => log.type === "error"), [logs])
+
+  if (records.length === 0) {
+    return null
+  }
+
+  return (
+    <div className="fade-in" style={{ animationDelay: "0.55s" }}>
+      <div
+        style={{ backgroundColor: "rgba(15, 26, 46, 0.6)", borderColor: "rgba(30, 41, 59, 0.3)" }}
+        className="backdrop-blur-md border rounded-lg p-6 space-y-6"
+      >
+        <div>
+          <h3 className="text-lg font-semibold text-foreground mb-3">Source Summary</h3>
+          <div className="grid gap-3 md:grid-cols-2">
+            {summary.map((entry) => (
+              <div
+                key={entry.source}
+                className="rounded-lg border border-white/5 bg-slate-900/40 px-4 py-3"
+              >
+                <p className="text-sm font-semibold text-primary uppercase tracking-wide">{entry.source}</p>
+                <p className="text-foreground text-lg font-bold">{entry.count} findings</p>
+                {entry.latest && (
+                  <p className="text-xs mt-1 text-slate-400">Latest: {entry.latest.toLocaleString()}</p>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div>
+          <h3 className="text-lg font-semibold text-foreground mb-3">Latest Findings</h3>
+          <div className="space-y-3 max-h-96 overflow-y-auto">
+            {records.slice(0, 20).map((item) => (
+              <a
+                key={`${item.source}-${item.id}`}
+                href={item.url}
+                target="_blank"
+                rel="noreferrer"
+                className="block rounded-lg border border-white/5 bg-slate-900/40 p-4 hover:border-primary/60 transition-colors"
+              >
+                <p className="text-xs font-semibold text-primary uppercase tracking-wider">{item.source}</p>
+                <p className="text-foreground font-medium">{item.title}</p>
+                {item.published && (
+                  <p className="text-xs mt-1 text-slate-400">Published: {item.published.toLocaleString()}</p>
+                )}
+                {item.summary && (
+                  <p className="text-sm mt-2 text-slate-100/80">{item.summary}</p>
+                )}
+              </a>
+            ))}
+          </div>
+        </div>
+
+        {errors.length > 0 && (
+          <div>
+            <h3 className="text-lg font-semibold text-foreground mb-3">Errors Encountered</h3>
+            <ul className="space-y-2 font-mono text-xs text-red-300/90">
+              {errors.map((log) => (
+                <li key={log.id} className="rounded border border-red-500/30 bg-red-500/5 px-3 py-2">
+                  [{log.timestamp.toLocaleTimeString()}] {log.message}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </div>
+    </div>
+  )
+}
+
 export default function CrawlerPage() {
   const [isRunning, setIsRunning] = useState(false)
+  const [isPlayback, setIsPlayback] = useState(false)
   const [logs, setLogs] = useState<CrawlerLog[]>([])
+  const [results, setResults] = useState<CrawlerRecord[]>([])
+  const [stats, setStats] = useState<CrawlerStats | null>(null)
+  const [lastRunAt, setLastRunAt] = useState<Date | null>(null)
+  const [error, setError] = useState<string | null>(null)
   const [customSite, setCustomSite] = useState("")
   const [customThreat, setCustomThreat] = useState("")
   const [showCustomForm, setShowCustomForm] = useState(false)
+  const [abortController, setAbortController] = useState<AbortController | null>(null)
+
+  const logPlaybackRef = useRef<NodeJS.Timeout | null>(null)
+
+  const stopLogPlayback = useCallback(() => {
+    if (logPlaybackRef.current) {
+      clearInterval(logPlaybackRef.current)
+      logPlaybackRef.current = null
+    }
+  }, [])
+
+  useEffect(() => {
+    return () => {
+      stopLogPlayback()
+      abortController?.abort()
+    }
+  }, [abortController, stopLogPlayback])
+
+  const isBusy = isRunning || isPlayback
+
+  const handleCrawlerResult = useCallback(
+    (result: CrawlerResult) => {
+      setStats(result.stats)
+      setResults(result.records)
+
+      const completedAt = new Date()
+      const logEntries = result.logs
+
+      if (logEntries.length === 0) {
+        setLogs([])
+        setLastRunAt(completedAt)
+        return
+      }
+
+      setIsPlayback(true)
+      stopLogPlayback()
+      setLogs([])
+
+      let index = 0
+      logPlaybackRef.current = setInterval(() => {
+        setLogs((prev) => [...prev, logEntries[index]])
+        index += 1
+        if (index >= logEntries.length) {
+          stopLogPlayback()
+          setIsPlayback(false)
+          setLastRunAt(completedAt)
+        }
+      }, 320)
+    },
+    [stopLogPlayback]
+  )
 
   const handleStartCrawler = async () => {
+    if (isBusy) return
+
+    const controller = new AbortController()
+    setAbortController(controller)
     setIsRunning(true)
+    setIsPlayback(false)
     setLogs([])
+    setResults([])
+    setStats(null)
+    setError(null)
+    stopLogPlayback()
 
     try {
-      const crawlerLogs = await startCrawler()
-      setLogs(crawlerLogs)
-    } catch (error) {
-      console.error("Crawler error:", error)
+      const result = await startCrawler(controller.signal)
+      handleCrawlerResult(result)
+    } catch (err) {
+      if ((err as DOMException)?.name === "AbortError") {
+        setError("Crawler run cancelled by user.")
+        setLogs((prev) => [
+          ...prev,
+          {
+            id: `log-cancel-${Date.now()}`,
+            timestamp: new Date(),
+            message: "Crawler run cancelled by user",
+            type: "warning",
+          },
+        ])
+      } else {
+        console.error("Crawler error:", err)
+        setError("Failed to run crawler. Ensure the backend is running on port 8000.")
+      }
     } finally {
       setIsRunning(false)
+      setAbortController(null)
+    }
+  }
+
+  const handleStopCrawler = () => {
+    if (abortController) {
+      abortController.abort()
+      setAbortController(null)
+      stopLogPlayback()
+      setIsRunning(false)
+      setIsPlayback(false)
     }
   }
 
@@ -36,37 +222,46 @@ export default function CrawlerPage() {
     setLogs([])
 
     try {
-      // Simulate custom crawl with mock logs
       const mockLogs: CrawlerLog[] = [
-        { timestamp: new Date().toISOString(), message: `Initiating custom crawl for: ${customSite}`, type: "info" },
-        { timestamp: new Date().toISOString(), message: `Threat type: ${customThreat}`, type: "info" },
-        { timestamp: new Date().toISOString(), message: "Connecting to data sources...", type: "info" },
+        { id: `mock-${Date.now()}-1`, timestamp: new Date(), message: `Initiating custom crawl for: ${customSite}`, type: "info" },
+        { id: `mock-${Date.now()}-2`, timestamp: new Date(), message: `Threat type: ${customThreat}`, type: "info" },
+        { id: `mock-${Date.now()}-3`, timestamp: new Date(), message: "Connecting to data sources...", type: "info" },
         {
-          timestamp: new Date().toISOString(),
+          id: `mock-${Date.now()}-4`,
+          timestamp: new Date(),
           message: `Scanning ${customSite} for ${customThreat} indicators...`,
           type: "info",
         },
-        { timestamp: new Date().toISOString(), message: "Analyzing threat patterns...", type: "warning" },
+        { id: `mock-${Date.now()}-5`, timestamp: new Date(), message: "Analyzing threat patterns...", type: "warning" },
         {
-          timestamp: new Date().toISOString(),
+          id: `mock-${Date.now()}-6`,
+          timestamp: new Date(),
           message: `Found 12 potential ${customThreat} indicators`,
           type: "success",
         },
-        { timestamp: new Date().toISOString(), message: "Indexing results in threat database...", type: "info" },
-        { timestamp: new Date().toISOString(), message: "Custom crawl completed successfully", type: "success" },
+        { id: `mock-${Date.now()}-7`, timestamp: new Date(), message: "Indexing results in threat database...", type: "info" },
+        { id: `mock-${Date.now()}-8`, timestamp: new Date(), message: "Custom crawl completed successfully", type: "success" },
       ]
 
-      // Simulate streaming logs
-      for (const log of mockLogs) {
-        await new Promise((resolve) => setTimeout(resolve, 300))
-        setLogs((prev) => [...prev, log])
-      }
+      setLogs([])
+      setIsPlayback(true)
+
+      let index = 0
+      stopLogPlayback()
+      logPlaybackRef.current = setInterval(() => {
+        setLogs((prev) => [...prev, mockLogs[index]])
+        index += 1
+        if (index >= mockLogs.length) {
+          stopLogPlayback()
+          setIsPlayback(false)
+        }
+      }, 280)
 
       setCustomSite("")
       setCustomThreat("")
       setShowCustomForm(false)
-    } catch (error) {
-      console.error("Custom crawl error:", error)
+    } catch (err) {
+      console.error("Custom crawl error:", err)
     } finally {
       setIsRunning(false)
     }
@@ -74,61 +269,82 @@ export default function CrawlerPage() {
 
   return (
     <div className="p-8 space-y-8">
-      {/* Header */}
       <div className="fade-in">
         <h1 className="text-3xl font-bold text-foreground mb-2">OSINT Crawler</h1>
         <p className="text-muted">Automated threat intelligence data collection and indexing</p>
       </div>
 
-      {/* Control Panel */}
+      {error && (
+        <div className="bg-destructive/10 border border-destructive/20 text-destructive px-4 py-3 rounded-lg">
+          <p className="font-semibold">{error}</p>
+        </div>
+      )}
+
       <div className="fade-in" style={{ animationDelay: "0.1s" }}>
         <div
           style={{ backgroundColor: "rgba(15, 26, 46, 0.6)", borderColor: "rgba(30, 41, 59, 0.3)" }}
           className="backdrop-blur-md border rounded-lg p-6"
         >
-          <div className="flex items-center justify-between">
+          <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
             <div>
               <h3 className="text-lg font-semibold text-foreground mb-2">Crawler Status</h3>
-              <p className="text-muted">{isRunning ? "Crawler is running..." : "Crawler is idle"}</p>
+              <p className="text-muted">
+                {isRunning
+                  ? "Crawler request in progress..."
+                  : isPlayback
+                    ? "Streaming log output..."
+                    : lastRunAt
+                      ? `Last run at ${lastRunAt.toLocaleTimeString()}`
+                      : "Crawler is idle"}
+              </p>
             </div>
-            <button
-              onClick={handleStartCrawler}
-              disabled={isRunning}
-              className={`flex items-center gap-2 px-6 py-3 rounded-lg font-semibold transition-all duration-300 ${
-                isRunning
-                  ? "bg-muted/20 text-muted cursor-not-allowed"
-                  : "bg-primary text-white hover:bg-cyan-500 hover:shadow-lg hover:shadow-cyan-500/30"
-              }`}
-            >
-              <Play className="w-5 h-5" />
-              {isRunning ? "Running..." : "Start Crawler"}
-            </button>
+            <div className="flex items-center gap-3">
+              <button
+                onClick={handleStartCrawler}
+                disabled={isBusy}
+                className={`flex items-center gap-2 px-6 py-3 rounded-lg font-semibold transition-all duration-300 ${
+                  isBusy
+                    ? "bg-muted/20 text-muted cursor-not-allowed"
+                    : "bg-primary text-white hover:bg-cyan-500 hover:shadow-lg hover:shadow-cyan-500/30"
+                }`}
+              >
+                <Play className="w-5 h-5" />
+                {isBusy ? "Running..." : "Start Crawler"}
+              </button>
+              {abortController && (
+                <button
+                  onClick={handleStopCrawler}
+                  className="px-4 py-2 rounded-lg border border-destructive/40 text-destructive font-semibold hover:bg-destructive/10 transition-colors"
+                >
+                  Stop
+                </button>
+              )}
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Crawler Configuration */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 fade-in" style={{ animationDelay: "0.2s" }}>
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-3 fade-in" style={{ animationDelay: "0.2s" }}>
         <div
           style={{ backgroundColor: "rgba(15, 26, 46, 0.6)", borderColor: "rgba(30, 41, 59, 0.3)" }}
           className="backdrop-blur-md border rounded-lg p-6"
         >
-          <p className="text-sm text-muted mb-2">Crawler Interval</p>
-          <p className="text-2xl font-bold text-foreground">6 hours</p>
+          <p className="text-sm text-muted mb-2">Sources Crawled</p>
+          <p className="text-2xl font-bold text-foreground">{stats?.sources ?? 0}</p>
         </div>
         <div
           style={{ backgroundColor: "rgba(15, 26, 46, 0.6)", borderColor: "rgba(30, 41, 59, 0.3)" }}
           className="backdrop-blur-md border rounded-lg p-6"
         >
-          <p className="text-sm text-muted mb-2">Data Sources</p>
-          <p className="text-2xl font-bold text-foreground">5</p>
+          <p className="text-sm text-muted mb-2">Items Collected</p>
+          <p className="text-2xl font-bold text-foreground">{stats?.itemsTotal ?? 0}</p>
         </div>
         <div
           style={{ backgroundColor: "rgba(15, 26, 46, 0.6)", borderColor: "rgba(30, 41, 59, 0.3)" }}
           className="backdrop-blur-md border rounded-lg p-6"
         >
-          <p className="text-sm text-muted mb-2">Last Sync</p>
-          <p className="text-2xl font-bold text-foreground">2 hours ago</p>
+          <p className="text-sm text-muted mb-2">Unique Findings</p>
+          <p className="text-2xl font-bold text-foreground">{stats?.itemsUnique ?? 0}</p>
         </div>
       </div>
 
@@ -203,10 +419,11 @@ export default function CrawlerPage() {
         )}
       </div>
 
-      {/* Logs */}
       <div className="fade-in" style={{ animationDelay: "0.4s" }}>
-        <CrawlerLogs logs={logs} isRunning={isRunning} />
+        <CrawlerLogs logs={logs} isRunning={isRunning || isPlayback} />
       </div>
+
+      {results.length > 0 && <CrawlerSummary records={results} logs={logs} />}
     </div>
   )
 }

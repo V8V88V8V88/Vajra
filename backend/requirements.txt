@@ -33,6 +33,7 @@ pandas>=2.0.0
 pyyaml>=6.0
 rich>=13.0.0
 python-dateutil>=2.8.2
+requests>=2.31.0
 
 # Optional dependencies (uncomment if needed)
 # torch-geometric>=2.3.0  # For advanced GNN features

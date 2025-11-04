@@ -1,6 +1,7 @@
 "use client"
 
 import type { CrawlerLog } from "@/lib/api"
+import { useEffect, useRef } from "react"
 import { CheckCircle, AlertCircle, Info } from "lucide-react"
 import { motion } from "framer-motion"
 
@@ -9,77 +10,77 @@ interface CrawlerLogsProps {
   isRunning: boolean
 }
 
-const logIcons = {
+const typeLabels: Record<CrawlerLog["type"], string> = {
+  info: "INFO",
+  success: "SUCCESS",
+  warning: "WARN",
+  error: "ERROR",
+}
+
+const typeColors: Record<CrawlerLog["type"], string> = {
+  info: "text-sky-400",
+  success: "text-emerald-400",
+  warning: "text-amber-400",
+  error: "text-rose-400",
+}
+
+const typeIcons = {
   info: Info,
   success: CheckCircle,
   warning: AlertCircle,
   error: AlertCircle,
 }
 
-const logColors = {
-  info: "#06b6d4",
-  success: "#10b981",
-  warning: "#f59e0b",
-  error: "#ef4444",
-}
-
 export function CrawlerLogs({ logs, isRunning }: CrawlerLogsProps) {
+  const bottomRef = useRef<HTMLDivElement | null>(null)
+
+  useEffect(() => {
+    bottomRef.current?.scrollIntoView({ behavior: "smooth" })
+  }, [logs, isRunning])
+
   return (
-    <div
-      className="p-6 rounded-lg"
-      style={{
-        backgroundColor: "rgb(30 41 59 / 0.5)",
-        borderColor: "rgb(51 65 85 / 0.2)",
-        borderWidth: "1px",
-      }}
-    >
-      <h3 className="text-lg font-semibold text-foreground mb-6">Crawler Logs</h3>
-      <div className="space-y-3 max-h-96 overflow-y-auto">
+    <div className="rounded-lg border border-slate-700/60 bg-slate-950/70 shadow-lg shadow-black/40">
+      <div className="flex items-center justify-between px-4 py-3 border-b border-slate-700/60">
+        <p className="font-mono text-xs uppercase tracking-wider text-slate-300">Crawler Output</p>
+        {isRunning && (
+          <span className="flex items-center gap-2 font-mono text-xs text-sky-400">
+            <span className="h-2 w-2 animate-ping rounded-full bg-sky-400" />
+            running...
+          </span>
+        )}
+      </div>
+      <div className="h-72 overflow-y-auto bg-slate-950/80 px-4 py-3 font-mono text-xs text-slate-200">
         {logs.length === 0 && !isRunning && (
-          <p className="text-center py-8" style={{ color: "#94a3b8" }}>
-            No logs yet. Start the crawler to begin.
-          </p>
+          <p className="text-center text-slate-500">No logs yet. Start the crawler to begin.</p>
         )}
         {logs.map((log, index) => {
-          const Icon = logIcons[log.type]
+          const Icon = typeIcons[log.type]
           return (
             <motion.div
               key={log.id}
-              initial={{ opacity: 0, x: -20 }}
+              initial={{ opacity: 0, x: -10 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: index * 0.05 }}
-              className="flex items-start gap-3 p-3 rounded-lg border"
-              style={{
-                backgroundColor: "rgb(30 41 59 / 0.5)",
-                borderColor: "rgb(51 65 85 / 0.2)",
-              }}
+              transition={{ delay: index * 0.02 }}
+              className="flex items-start gap-3 rounded border border-slate-800/60 bg-slate-900/30 px-3 py-2 mb-2"
             >
-              <Icon className="w-5 h-5 mt-0.5 flex-shrink-0" style={{ color: logColors[log.type] }} />
-              <div className="flex-1 min-w-0">
-                <p className="text-foreground text-sm">{log.message}</p>
-                <p className="text-xs mt-1" style={{ color: "#94a3b8" }}>
-                  {log.timestamp.toLocaleTimeString()}
-                </p>
+              <Icon className={`mt-0.5 h-4 w-4 flex-shrink-0 ${typeColors[log.type]}`} />
+              <div className="space-y-1">
+                <div className="flex flex-wrap items-center gap-3">
+                  <span className="text-slate-500">{log.timestamp.toLocaleTimeString()}</span>
+                  <span className={`font-semibold ${typeColors[log.type]}`}>[{typeLabels[log.type]}]</span>
+                </div>
+                <p className="text-slate-100/90 leading-snug">{log.message}</p>
               </div>
             </motion.div>
           )
         })}
         {isRunning && (
-          <motion.div
-            animate={{ opacity: [0.5, 1, 0.5] }}
-            transition={{ duration: 1.5, repeat: Number.POSITIVE_INFINITY }}
-            className="flex items-center gap-3 p-3 rounded-lg border"
-            style={{
-              backgroundColor: "rgb(14 165 233 / 0.1)",
-              borderColor: "rgb(14 165 233 / 0.2)",
-            }}
-          >
-            <div className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: "#0ea5e9" }} />
-            <p className="text-sm" style={{ color: "#0ea5e9" }}>
-              Crawler running...
-            </p>
-          </motion.div>
+          <div className="flex items-center gap-2 rounded border border-sky-500/20 bg-sky-500/5 px-3 py-2 text-sky-300">
+            <div className="h-2 w-2 animate-pulse rounded-full bg-sky-400" />
+            waiting for output...
+          </div>
         )}
+        <div ref={bottomRef} />
       </div>
     </div>
   )

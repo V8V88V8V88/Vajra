@@ -282,7 +282,10 @@ export default function CrawlerPage() {
 
       <div className="fade-in" style={{ animationDelay: "0.1s" }}>
         <div
-          style={{ backgroundColor: "rgba(15, 26, 46, 0.6)", borderColor: "rgba(30, 41, 59, 0.3)" }}
+          style={{ 
+            background: "linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(8, 16, 30, 0.9) 100%)",
+            borderColor: "rgba(30, 58, 138, 0.3)" 
+          }}
           className="backdrop-blur-md border rounded-lg p-6"
         >
           <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
@@ -326,21 +329,30 @@ export default function CrawlerPage() {
 
       <div className="grid grid-cols-1 gap-6 md:grid-cols-3 fade-in" style={{ animationDelay: "0.2s" }}>
         <div
-          style={{ backgroundColor: "rgba(15, 26, 46, 0.6)", borderColor: "rgba(30, 41, 59, 0.3)" }}
+          style={{ 
+            background: "linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(8, 16, 30, 0.9) 100%)",
+            borderColor: "rgba(30, 58, 138, 0.3)" 
+          }}
           className="backdrop-blur-md border rounded-lg p-6"
         >
           <p className="text-sm text-muted mb-2">Sources Crawled</p>
           <p className="text-2xl font-bold text-foreground">{stats?.sources ?? 0}</p>
         </div>
         <div
-          style={{ backgroundColor: "rgba(15, 26, 46, 0.6)", borderColor: "rgba(30, 41, 59, 0.3)" }}
+          style={{ 
+            background: "linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(8, 16, 30, 0.9) 100%)",
+            borderColor: "rgba(30, 58, 138, 0.3)" 
+          }}
           className="backdrop-blur-md border rounded-lg p-6"
         >
           <p className="text-sm text-muted mb-2">Items Collected</p>
           <p className="text-2xl font-bold text-foreground">{stats?.itemsTotal ?? 0}</p>
         </div>
         <div
-          style={{ backgroundColor: "rgba(15, 26, 46, 0.6)", borderColor: "rgba(30, 41, 59, 0.3)" }}
+          style={{ 
+            background: "linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(8, 16, 30, 0.9) 100%)",
+            borderColor: "rgba(30, 58, 138, 0.3)" 
+          }}
           className="backdrop-blur-md border rounded-lg p-6"
         >
           <p className="text-sm text-muted mb-2">Unique Findings</p>
@@ -359,7 +371,10 @@ export default function CrawlerPage() {
 
         {showCustomForm && (
           <div
-            style={{ backgroundColor: "rgba(15, 26, 46, 0.6)", borderColor: "rgba(30, 41, 59, 0.3)" }}
+            style={{ 
+            background: "linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(8, 16, 30, 0.9) 100%)",
+            borderColor: "rgba(30, 58, 138, 0.3)" 
+          }}
             className="backdrop-blur-md border rounded-lg p-6 mt-4"
           >
             <div className="flex items-center justify-between mb-4">

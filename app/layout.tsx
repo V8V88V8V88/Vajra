@@ -21,7 +21,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.className} bg-background text-foreground`}>
+      <body 
+        className={`${inter.className} text-foreground`}
+        style={{
+          background: "linear-gradient(135deg, rgba(5, 15, 28, 1) 0%, rgba(8, 16, 30, 0.98) 50%, rgba(15, 23, 42, 0.95) 100%)",
+          minHeight: "100vh"
+        }}
+      >
         <QueryProvider>
           <div className="flex h-screen overflow-hidden">
             <Sidebar />

@@ -62,17 +62,17 @@ export default function ThreatsPage() {
             onChange={(e) => setSearchQuery(e.target.value)}
             className="w-full pl-12 pr-4 py-3 rounded-lg focus:outline-none transition-all"
             style={{
-              backgroundColor: "rgb(30 41 59 / 0.5)",
-              borderColor: "rgb(51 65 85 / 0.2)",
+              background: "linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(8, 16, 30, 0.9) 100%)",
+              borderColor: "rgba(30, 58, 138, 0.3)",
               borderWidth: "1px",
               color: "#f1f5f9",
             }}
             onFocus={(e) => {
-              e.currentTarget.style.borderColor = "rgb(14 165 233 / 0.5)"
-              e.currentTarget.style.boxShadow = "0 0 0 1px rgb(14 165 233 / 0.2)"
+              e.currentTarget.style.borderColor = "rgba(14, 165, 233, 0.5)"
+              e.currentTarget.style.boxShadow = "0 0 0 1px rgba(14, 165, 233, 0.2)"
             }}
             onBlur={(e) => {
-              e.currentTarget.style.borderColor = "rgb(51 65 85 / 0.2)"
+              e.currentTarget.style.borderColor = "rgba(30, 58, 138, 0.3)"
               e.currentTarget.style.boxShadow = "none"
             }}
           />
@@ -89,8 +89,8 @@ export default function ThreatsPage() {
                 variants={itemVariants}
                 className="h-32 rounded-lg animate-pulse"
                 style={{
-                  backgroundColor: "rgb(30 41 59 / 0.5)",
-                  borderColor: "rgb(51 65 85 / 0.2)",
+                  background: "linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(8, 16, 30, 0.9) 100%)",
+                  borderColor: "rgba(30, 58, 138, 0.3)",
                   borderWidth: "1px",
                 }}
               />
@@ -107,8 +107,8 @@ export default function ThreatsPage() {
             variants={itemVariants}
             className="text-center py-12 rounded-lg"
             style={{
-              backgroundColor: "rgb(30 41 59 / 0.5)",
-              borderColor: "rgb(51 65 85 / 0.2)",
+              background: "linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(8, 16, 30, 0.9) 100%)",
+              borderColor: "rgba(30, 58, 138, 0.3)",
               borderWidth: "1px",
             }}
           >
@@ -130,16 +130,18 @@ export default function ThreatsPage() {
             disabled={page === 1}
             className="px-4 py-2 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
             style={{
-              backgroundColor: "rgb(30 41 59 / 0.5)",
-              borderColor: "rgb(51 65 85 / 0.2)",
+              background: "linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(8, 16, 30, 0.9) 100%)",
+              borderColor: "rgba(30, 58, 138, 0.3)",
               borderWidth: "1px",
               color: "#f1f5f9",
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = "rgb(51 65 85 / 0.2)"
+              e.currentTarget.style.background = "linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(8, 16, 30, 0.98) 100%)"
+              e.currentTarget.style.borderColor = "rgba(14, 165, 233, 0.5)"
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = "rgb(30 41 59 / 0.5)"
+              e.currentTarget.style.background = "linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(8, 16, 30, 0.9) 100%)"
+              e.currentTarget.style.borderColor = "rgba(30, 58, 138, 0.3)"
             }}
           >
             Previous
@@ -152,16 +154,18 @@ export default function ThreatsPage() {
             disabled={page === totalPages}
             className="px-4 py-2 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
             style={{
-              backgroundColor: "rgb(30 41 59 / 0.5)",
-              borderColor: "rgb(51 65 85 / 0.2)",
+              background: "linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(8, 16, 30, 0.9) 100%)",
+              borderColor: "rgba(30, 58, 138, 0.3)",
               borderWidth: "1px",
               color: "#f1f5f9",
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = "rgb(51 65 85 / 0.2)"
+              e.currentTarget.style.background = "linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(8, 16, 30, 0.98) 100%)"
+              e.currentTarget.style.borderColor = "rgba(14, 165, 233, 0.5)"
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = "rgb(30 41 59 / 0.5)"
+              e.currentTarget.style.background = "linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(8, 16, 30, 0.9) 100%)"
+              e.currentTarget.style.borderColor = "rgba(30, 58, 138, 0.3)"
             }}
           >
             Next

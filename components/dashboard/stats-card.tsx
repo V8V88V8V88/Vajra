@@ -28,7 +28,10 @@ export function StatsCard({ title, value, icon: Icon, trend, color, loading }: S
   if (loading) {
     return (
       <div
-        style={{ backgroundColor: "rgba(30, 41, 59, 0.5)", borderColor: "rgba(51, 65, 85, 0.2)" }}
+        style={{ 
+          background: "linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(8, 16, 30, 0.9) 100%)",
+          borderColor: "rgba(30, 58, 138, 0.3)" 
+        }}
         className="backdrop-blur-md border rounded-lg p-6"
       >
         <Skeleton className="h-4 w-24 mb-4" />
@@ -40,7 +43,10 @@ export function StatsCard({ title, value, icon: Icon, trend, color, loading }: S
 
   return (
     <div
-      style={{ backgroundColor: "rgba(30, 41, 59, 0.5)", borderColor: "rgba(51, 65, 85, 0.2)" }}
+      style={{ 
+        background: "linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(8, 16, 30, 0.9) 100%)",
+        borderColor: "rgba(30, 58, 138, 0.3)" 
+      }}
       className="backdrop-blur-md border rounded-lg p-6 group hover:shadow-xl hover:shadow-primary/20 transition-all duration-300"
     >
       <div className="flex items-start justify-between mb-4">

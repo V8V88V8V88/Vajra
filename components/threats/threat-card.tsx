@@ -30,18 +30,18 @@ export function ThreatCard({ threat, onClick }: ThreatCardProps) {
       onClick={onClick}
       className="w-full text-left p-6 rounded-lg cursor-pointer group transition-all duration-300"
       style={{
-        backgroundColor: "rgb(30 41 59 / 0.5)",
-        borderColor: "rgb(51 65 85 / 0.2)",
+        background: "linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(8, 16, 30, 0.9) 100%)",
+        borderColor: "rgba(30, 58, 138, 0.3)",
         borderWidth: "1px",
       }}
       onMouseEnter={(e) => {
-        e.currentTarget.style.backgroundColor = "rgb(30 41 59 / 0.7)"
-        e.currentTarget.style.borderColor = "rgb(14 165 233 / 0.3)"
-        e.currentTarget.style.boxShadow = "0 20px 25px -5px rgb(14 165 233 / 0.1)"
+        e.currentTarget.style.background = "linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(8, 16, 30, 0.98) 100%)"
+        e.currentTarget.style.borderColor = "rgba(14, 165, 233, 0.5)"
+        e.currentTarget.style.boxShadow = "0 20px 25px -5px rgba(14, 165, 233, 0.2)"
       }}
       onMouseLeave={(e) => {
-        e.currentTarget.style.backgroundColor = "rgb(30 41 59 / 0.5)"
-        e.currentTarget.style.borderColor = "rgb(51 65 85 / 0.2)"
+        e.currentTarget.style.background = "linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(8, 16, 30, 0.9) 100%)"
+        e.currentTarget.style.borderColor = "rgba(30, 58, 138, 0.3)"
         e.currentTarget.style.boxShadow = "none"
       }}
     >

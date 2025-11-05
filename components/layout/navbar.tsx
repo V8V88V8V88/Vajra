@@ -5,7 +5,13 @@ import Image from "next/image"
 
 export function Navbar() {
   return (
-    <nav className="border-b border-border bg-card/50 backdrop-blur-md px-6 py-4 flex items-center justify-between">
+    <nav 
+      style={{
+        background: "linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(8, 16, 30, 0.98) 100%)",
+        borderColor: "rgba(30, 58, 138, 0.3)"
+      }}
+      className="border-b backdrop-blur-md px-6 py-4 flex items-center justify-between"
+    >
       <div className="flex items-center gap-3 transition-smooth">
         <Image
           src="/VajraLogo.png"
@@ -18,13 +24,13 @@ export function Navbar() {
       </div>
 
       <div className="flex items-center gap-4">
-        <button className="p-2 hover:bg-secondary/20 rounded-lg transition-smooth text-muted-foreground hover:text-foreground">
+        <button className="p-2 hover:bg-slate-800/40 rounded-lg transition-smooth text-foreground/70 hover:text-foreground">
           <Bell className="w-5 h-5" />
         </button>
-        <button className="p-2 hover:bg-secondary/20 rounded-lg transition-smooth text-muted-foreground hover:text-foreground">
+        <button className="p-2 hover:bg-slate-800/40 rounded-lg transition-smooth text-foreground/70 hover:text-foreground">
           <Settings className="w-5 h-5" />
         </button>
-        <button className="p-2 hover:bg-secondary/20 rounded-lg transition-smooth text-muted-foreground hover:text-foreground">
+        <button className="p-2 hover:bg-slate-800/40 rounded-lg transition-smooth text-foreground/70 hover:text-foreground">
           <User className="w-5 h-5" />
         </button>
       </div>

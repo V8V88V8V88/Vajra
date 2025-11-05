@@ -48,33 +48,19 @@ export default function ThreatsPage() {
       {/* Header */}
       <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
         <h1 className="text-3xl font-bold text-foreground mb-2">Threat Feed</h1>
-        <p style={{ color: "#94a3b8" }}>Browse and analyze detected threats</p>
+        <p className="text-muted-foreground">Browse and analyze detected threats</p>
       </motion.div>
 
       {/* Search */}
       <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}>
         <div className="relative">
-          <Search className="absolute left-4 top-3 w-5 h-5" style={{ color: "#94a3b8" }} />
+          <Search className="absolute left-4 top-3 w-5 h-5 text-muted-foreground" />
           <input
             type="text"
             placeholder="Search threats..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-12 pr-4 py-3 rounded-lg focus:outline-none transition-all"
-            style={{
-              background: "linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(8, 16, 30, 0.9) 100%)",
-              borderColor: "rgba(30, 58, 138, 0.3)",
-              borderWidth: "1px",
-              color: "#f1f5f9",
-            }}
-            onFocus={(e) => {
-              e.currentTarget.style.borderColor = "rgba(14, 165, 233, 0.5)"
-              e.currentTarget.style.boxShadow = "0 0 0 1px rgba(14, 165, 233, 0.2)"
-            }}
-            onBlur={(e) => {
-              e.currentTarget.style.borderColor = "rgba(30, 58, 138, 0.3)"
-              e.currentTarget.style.boxShadow = "none"
-            }}
+            className="w-full pl-12 pr-4 py-3 rounded-lg bg-input dark:bg-gradient-to-r dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-all"
           />
         </div>
       </motion.div>
@@ -87,12 +73,7 @@ export default function ThreatsPage() {
               <motion.div
                 key={i}
                 variants={itemVariants}
-                className="h-32 rounded-lg animate-pulse"
-                style={{
-                  background: "linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(8, 16, 30, 0.9) 100%)",
-                  borderColor: "rgba(30, 58, 138, 0.3)",
-                  borderWidth: "1px",
-                }}
+                className="h-32 rounded-lg animate-pulse bg-card dark:bg-gradient-to-r dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] border border-border"
               />
             ))}
           </div>
@@ -105,14 +86,9 @@ export default function ThreatsPage() {
         ) : (
           <motion.div
             variants={itemVariants}
-            className="text-center py-12 rounded-lg"
-            style={{
-              background: "linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(8, 16, 30, 0.9) 100%)",
-              borderColor: "rgba(30, 58, 138, 0.3)",
-              borderWidth: "1px",
-            }}
+            className="text-center py-12 rounded-lg bg-card dark:bg-gradient-to-r dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] border border-border"
           >
-            <p style={{ color: "#94a3b8" }}>No threats found</p>
+            <p className="text-muted-foreground">No threats found</p>
           </motion.div>
         )}
       </motion.div>
@@ -128,45 +104,17 @@ export default function ThreatsPage() {
           <button
             onClick={() => setPage((p) => Math.max(1, p - 1))}
             disabled={page === 1}
-            className="px-4 py-2 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-            style={{
-              background: "linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(8, 16, 30, 0.9) 100%)",
-              borderColor: "rgba(30, 58, 138, 0.3)",
-              borderWidth: "1px",
-              color: "#f1f5f9",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.background = "linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(8, 16, 30, 0.98) 100%)"
-              e.currentTarget.style.borderColor = "rgba(14, 165, 233, 0.5)"
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.background = "linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(8, 16, 30, 0.9) 100%)"
-              e.currentTarget.style.borderColor = "rgba(30, 58, 138, 0.3)"
-            }}
+            className="px-4 py-2 rounded-lg bg-card dark:bg-gradient-to-r dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] border border-border text-foreground disabled:opacity-50 disabled:cursor-not-allowed hover:bg-accent dark:hover:bg-[rgba(15,23,42,0.95)] hover:border-primary/50 transition-colors"
           >
             Previous
           </button>
-          <span style={{ color: "#94a3b8" }}>
+          <span className="text-muted-foreground">
             Page {page} of {totalPages}
           </span>
           <button
             onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
             disabled={page === totalPages}
-            className="px-4 py-2 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-            style={{
-              background: "linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(8, 16, 30, 0.9) 100%)",
-              borderColor: "rgba(30, 58, 138, 0.3)",
-              borderWidth: "1px",
-              color: "#f1f5f9",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.background = "linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(8, 16, 30, 0.98) 100%)"
-              e.currentTarget.style.borderColor = "rgba(14, 165, 233, 0.5)"
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.background = "linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(8, 16, 30, 0.9) 100%)"
-              e.currentTarget.style.borderColor = "rgba(30, 58, 138, 0.3)"
-            }}
+            className="px-4 py-2 rounded-lg bg-card dark:bg-gradient-to-r dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] border border-border text-foreground disabled:opacity-50 disabled:cursor-not-allowed hover:bg-accent dark:hover:bg-[rgba(15,23,42,0.95)] hover:border-primary/50 transition-colors"
           >
             Next
           </button>

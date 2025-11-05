@@ -14,11 +14,7 @@ interface SourceChartProps {
 export function SourceChart({ data }: SourceChartProps) {
   return (
     <div
-      style={{ 
-        background: "linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(8, 16, 30, 0.9) 100%)",
-        borderColor: "rgba(30, 58, 138, 0.3)" 
-      }}
-      className="backdrop-blur-md border rounded-lg p-6"
+      className="backdrop-blur-md border border-border bg-card dark:bg-gradient-to-br dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] rounded-lg p-6"
     >
       <h3 className="text-lg font-semibold text-foreground mb-6">Threat Sources</h3>
       <ResponsiveContainer width="100%" height={300}>
@@ -46,30 +42,30 @@ export function SourceChart({ data }: SourceChartProps) {
               </feMerge>
             </filter>
           </defs>
-          <CartesianGrid strokeDasharray="3 3" stroke="rgba(148, 163, 184, 0.1)" />
+          <CartesianGrid strokeDasharray="3 3" className="stroke-slate-300 dark:stroke-slate-700" />
           <XAxis 
             dataKey="name" 
-            stroke="rgb(148, 163, 184)" 
+            className="text-slate-600 dark:text-slate-400"
             style={{ fontSize: "12px" }}
-            tick={{ fill: "rgb(148, 163, 184)" }}
-            axisLine={{ stroke: "rgba(148, 163, 184, 0.2)" }}
+            tick={{ fill: "currentColor" }}
+            axisLine={{ stroke: "currentColor", opacity: 0.2 }}
           />
           <YAxis 
-            stroke="rgb(148, 163, 184)" 
+            className="text-slate-600 dark:text-slate-400"
             style={{ fontSize: "12px" }}
-            tick={{ fill: "rgb(148, 163, 184)" }}
-            axisLine={{ stroke: "rgba(148, 163, 184, 0.2)" }}
+            tick={{ fill: "currentColor" }}
+            axisLine={{ stroke: "currentColor", opacity: 0.2 }}
           />
           <Tooltip
             contentStyle={{
-              backgroundColor: "rgba(30, 41, 59, 0.95)",
-              border: "1px solid rgba(30, 58, 138, 0.5)",
+              backgroundColor: "hsl(var(--popover))",
+              border: "1px solid hsl(var(--border))",
               borderRadius: "8px",
-              boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.3)",
+              boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
             }}
-            labelStyle={{ color: "rgb(241, 245, 249)", fontWeight: "600" }}
-            itemStyle={{ color: "rgb(241, 245, 249)" }}
-            cursor={{ fill: "rgba(14, 165, 233, 0.1)" }}
+            labelStyle={{ color: "hsl(var(--popover-foreground))", fontWeight: "600" }}
+            itemStyle={{ color: "hsl(var(--popover-foreground))" }}
+            cursor={{ fill: "transparent" }}
           />
           <Bar 
             dataKey="value" 

@@ -1,10 +1,11 @@
 "use client"
 
-import { Bell, Settings, User, LogOut, UserCircle, ChevronDown, AlertCircle, CheckCircle2, Info, X, CheckCheck } from "lucide-react"
+import { Bell, Settings, User, LogOut, UserCircle, ChevronDown, AlertCircle, CheckCircle2, Info, X, CheckCheck, Moon, Sun } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { useState, useEffect } from "react"
+import { useTheme } from "next-themes"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -34,7 +35,13 @@ interface Notification {
 
 export function Navbar() {
   const router = useRouter()
+  const { theme, setTheme } = useTheme()
+  const [mounted, setMounted] = useState(false)
   const [settingsOpen, setSettingsOpen] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
   
   // Mock notifications - replace with actual notifications from API/context
   const [notifications, setNotifications] = useState<Notification[]>([
@@ -178,14 +185,10 @@ export function Navbar() {
 
   return (
     <nav 
+      className="border-b px-4 py-2 flex items-center justify-between h-14 backdrop-blur-md bg-white/80 dark:bg-gradient-to-r dark:from-[rgba(15,23,42,0.95)] dark:to-[rgba(8,16,30,0.98)] border-slate-200 dark:border-[rgba(30,58,138,0.3)]"
       style={{
-        background: "rgba(15, 23, 42, 0.6)",
-        backdropFilter: "blur(12px)",
-        WebkitBackdropFilter: "blur(12px)",
-        borderColor: "rgba(59, 130, 246, 0.1)",
         boxShadow: "0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)",
       }}
-      className="border-b px-4 py-2 flex items-center justify-between h-14"
     >
       <div className="flex items-center gap-2.5">
         <div className="relative group">
@@ -197,15 +200,15 @@ export function Navbar() {
             className="rounded-md transition-transform duration-200 group-hover:scale-110"
           />
         </div>
-        <div className="h-4 w-px bg-slate-700/50" />
-        <span className="text-base font-bold text-foreground tracking-tight">Vajra</span>
+        <div className="h-4 w-px bg-slate-300 dark:bg-slate-700/50" />
+        <span className="text-base font-bold text-slate-900 dark:text-foreground tracking-tight">Vajra</span>
       </div>
 
       <div className="flex items-center gap-1.5">
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <button 
-              className="relative p-1.5 hover:bg-slate-800/50 rounded-md transition-all duration-200 text-foreground/60 hover:text-foreground hover:scale-105 active:scale-95"
+              className="relative p-1.5 hover:bg-slate-100 dark:hover:bg-slate-800/40 rounded-md transition-all duration-200 text-slate-600 dark:text-foreground/70 hover:text-slate-900 dark:hover:text-foreground hover:scale-105 active:scale-95"
               title="Notifications"
             >
               <Bell className="w-4 h-4" />
@@ -224,13 +227,9 @@ export function Navbar() {
           </DropdownMenuTrigger>
           <DropdownMenuContent
             align="end"
-            className="w-80 p-0"
-            style={{
-              backgroundColor: "rgba(15, 23, 42, 0.98)",
-              borderColor: "rgba(30, 58, 138, 0.3)",
-            }}
+            className="w-80 p-0 bg-popover dark:bg-popover border-border"
           >
-            <div className="p-4 border-b" style={{ borderColor: "rgba(51, 65, 85, 0.2)" }}>
+            <div className="p-4 border-b border-border">
               <div className="flex items-center justify-between mb-2">
                 <DropdownMenuLabel className="p-0 text-foreground font-semibold">
                   Notifications
@@ -258,10 +257,9 @@ export function Navbar() {
                   {notifications.map((notification) => (
                     <div
                       key={notification.id}
-                      className={`p-4 border-b hover:bg-slate-800/40 transition-colors cursor-pointer ${
-                        !notification.read ? "bg-blue-500/5" : ""
-                      }`}
-                      style={{ borderColor: "rgba(51, 65, 85, 0.2)" }}
+                      className={`p-4 border-b hover:bg-accent dark:hover:bg-slate-800/40 transition-colors cursor-pointer ${
+                        !notification.read ? "bg-blue-500/5 dark:bg-blue-500/5" : ""
+                      } border-border`}
                       onClick={() => {
                         if (notification.link) {
                           router.push(notification.link)
@@ -302,17 +300,17 @@ export function Navbar() {
                             e.stopPropagation()
                             markAsRead(notification.id)
                           }}
-                          className="flex-shrink-0 p-1 hover:bg-slate-700/40 rounded transition-colors"
+                          className="flex-shrink-0 p-1 hover:bg-accent dark:hover:bg-slate-700/40 rounded transition-colors"
                         >
                           <X className="w-3 h-3 text-foreground/40" />
                         </button>
                       </div>
                     </div>
                   ))}
-                  <div className="p-2 border-t" style={{ borderColor: "rgba(51, 65, 85, 0.2)" }}>
+                  <div className="p-2 border-t border-border">
                     <button
                       onClick={clearAll}
-                      className="w-full text-xs text-foreground/60 hover:text-foreground text-center py-2 hover:bg-slate-800/40 rounded transition-colors"
+                      className="w-full text-xs text-muted-foreground hover:text-foreground text-center py-2 hover:bg-accent dark:hover:bg-slate-800/40 rounded transition-colors"
                     >
                       Clear all notifications
                     </button>
@@ -325,18 +323,32 @@ export function Navbar() {
         
         <button 
           onClick={() => setSettingsOpen(true)}
-          className="p-1.5 hover:bg-slate-800/50 rounded-md transition-all duration-200 text-foreground/60 hover:text-foreground hover:scale-105 active:scale-95"
+          className="p-1.5 hover:bg-slate-100 dark:hover:bg-slate-800/40 rounded-md transition-all duration-200 text-slate-600 dark:text-foreground/70 hover:text-slate-900 dark:hover:text-foreground hover:scale-105 active:scale-95"
           title="Settings"
         >
           <Settings className="w-4 h-4" />
         </button>
 
-        <div className="h-5 w-px bg-slate-700/50 mx-1" />
+        {mounted && (
+          <button
+            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+            className="p-1.5 hover:bg-slate-100 dark:hover:bg-slate-800/40 rounded-md transition-all duration-200 text-slate-600 dark:text-foreground/70 hover:text-slate-900 dark:hover:text-foreground hover:scale-105 active:scale-95"
+            title={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+          >
+            {theme === "dark" ? (
+              <Sun className="w-4 h-4" />
+            ) : (
+              <Moon className="w-4 h-4" />
+            )}
+          </button>
+        )}
+
+        <div className="h-5 w-px bg-slate-300 dark:bg-slate-700/50 mx-1" />
 
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <button className="flex items-center gap-1.5 p-1 pr-1.5 hover:bg-slate-800/50 rounded-md transition-all duration-200 text-foreground/60 hover:text-foreground hover:scale-105 active:scale-95 group">
-              <Avatar className="w-7 h-7 ring-2 ring-slate-700/50 group-hover:ring-primary/50 transition-all duration-200">
+            <button className="flex items-center gap-1.5 p-1 pr-1.5 hover:bg-slate-100 dark:hover:bg-slate-800/40 rounded-md transition-all duration-200 text-slate-600 dark:text-foreground/70 hover:text-slate-900 dark:hover:text-foreground hover:scale-105 active:scale-95 group">
+              <Avatar className="w-7 h-7 ring-2 ring-slate-300 dark:ring-slate-700/50 group-hover:ring-primary/50 transition-all duration-200">
                 {user.avatarUrl && (
                   <AvatarImage src={user.avatarUrl} alt={user.name} />
                 )}
@@ -349,17 +361,13 @@ export function Navbar() {
           </DropdownMenuTrigger>
           <DropdownMenuContent 
             align="end" 
-            className="w-56"
-            style={{
-              backgroundColor: "rgba(15, 23, 42, 0.98)",
-              borderColor: "rgba(30, 58, 138, 0.3)",
-            }}
+            className="w-56 bg-popover dark:bg-popover border-border"
           >
             <DropdownMenuLabel className="flex flex-col gap-1">
               <span className="text-foreground font-semibold">{user.name}</span>
               <span className="text-xs text-foreground/60 font-normal">{user.email}</span>
             </DropdownMenuLabel>
-            <DropdownMenuSeparator style={{ borderColor: "rgba(51, 65, 85, 0.2)" }} />
+            <DropdownMenuSeparator className="bg-border" />
             <DropdownMenuItem asChild>
               <Link href="/profile" className="cursor-pointer">
                 <UserCircle className="w-4 h-4 mr-2" />
@@ -372,7 +380,7 @@ export function Navbar() {
                 Settings
               </Link>
             </DropdownMenuItem>
-            <DropdownMenuSeparator style={{ borderColor: "rgba(51, 65, 85, 0.2)" }} />
+            <DropdownMenuSeparator className="bg-border" />
             <DropdownMenuItem 
               onClick={handleLogout}
               className="cursor-pointer text-destructive focus:text-destructive"
@@ -386,10 +394,7 @@ export function Navbar() {
         {/* Quick Settings Dialog */}
         <Dialog open={settingsOpen} onOpenChange={setSettingsOpen}>
           <DialogContent 
-            style={{
-              backgroundColor: "rgba(15, 23, 42, 0.98)",
-              borderColor: "rgba(30, 58, 138, 0.3)",
-            }}
+            className="bg-popover dark:bg-popover border-border"
           >
             <DialogHeader>
               <DialogTitle className="text-foreground">Quick Settings</DialogTitle>
@@ -401,10 +406,7 @@ export function Navbar() {
               <Link 
                 href="/settings"
                 onClick={() => setSettingsOpen(false)}
-                className="block p-4 rounded-lg border hover:bg-slate-800/40 transition-colors"
-                style={{
-                  borderColor: "rgba(51, 65, 85, 0.2)",
-                }}
+                className="block p-4 rounded-lg border border-border hover:bg-accent dark:hover:bg-slate-800/40 transition-colors"
               >
                 <div className="flex items-center gap-3">
                   <Settings className="w-5 h-5 text-foreground/70" />
@@ -418,10 +420,7 @@ export function Navbar() {
               <div className="pt-2 space-y-2">
                 <h4 className="text-sm font-medium text-foreground/80 mb-2">Quick Actions</h4>
                 <button
-                  className="w-full text-left p-3 rounded-lg border hover:bg-slate-800/40 transition-colors"
-                  style={{
-                    borderColor: "rgba(51, 65, 85, 0.2)",
-                  }}
+                  className="w-full text-left p-3 rounded-lg border border-border hover:bg-accent dark:hover:bg-slate-800/40 transition-colors"
                   onClick={() => {
                     // TODO: Implement notification toggle
                     console.log("Toggle notifications")

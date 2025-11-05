@@ -40,9 +40,8 @@ function CrawlerSummary({ records, logs }: { records: CrawlerRecord[]; logs: Cra
 
   return (
     <div className="fade-in" style={{ animationDelay: "0.55s" }}>
-      <div
-        style={{ backgroundColor: "rgba(15, 26, 46, 0.6)", borderColor: "rgba(30, 41, 59, 0.3)" }}
-        className="backdrop-blur-md border rounded-lg p-6 space-y-6"
+        <div
+        className="backdrop-blur-md border border-border bg-card dark:bg-gradient-to-br dark:from-[rgba(15,26,46,0.6)] dark:to-[rgba(30,41,59,0.3)] rounded-lg p-6 space-y-6"
       >
         <div>
           <h3 className="text-lg font-semibold text-foreground mb-3">Source Summary</h3>
@@ -50,12 +49,12 @@ function CrawlerSummary({ records, logs }: { records: CrawlerRecord[]; logs: Cra
             {summary.map((entry) => (
               <div
                 key={entry.source}
-                className="rounded-lg border border-white/5 bg-slate-900/40 px-4 py-3"
+                className="rounded-lg border border-border bg-accent/50 dark:bg-slate-900/40 px-4 py-3"
               >
                 <p className="text-sm font-semibold text-primary uppercase tracking-wide">{entry.source}</p>
                 <p className="text-foreground text-lg font-bold">{entry.count} findings</p>
                 {entry.latest && (
-                  <p className="text-xs mt-1 text-slate-400">Latest: {entry.latest.toLocaleString()}</p>
+                  <p className="text-xs mt-1 text-muted-foreground">Latest: {entry.latest.toLocaleString()}</p>
                 )}
               </div>
             ))}
@@ -71,15 +70,15 @@ function CrawlerSummary({ records, logs }: { records: CrawlerRecord[]; logs: Cra
                 href={item.url}
                 target="_blank"
                 rel="noreferrer"
-                className="block rounded-lg border border-white/5 bg-slate-900/40 p-4 hover:border-primary/60 transition-colors"
+                className="block rounded-lg border border-border bg-accent/50 dark:bg-slate-900/40 p-4 hover:border-primary/60 transition-colors"
               >
                 <p className="text-xs font-semibold text-primary uppercase tracking-wider">{item.source}</p>
                 <p className="text-foreground font-medium">{item.title}</p>
                 {item.published && (
-                  <p className="text-xs mt-1 text-slate-400">Published: {item.published.toLocaleString()}</p>
+                  <p className="text-xs mt-1 text-muted-foreground">Published: {item.published.toLocaleString()}</p>
                 )}
                 {item.summary && (
-                  <p className="text-sm mt-2 text-slate-100/80">{item.summary}</p>
+                  <p className="text-sm mt-2 text-muted-foreground">{item.summary}</p>
                 )}
               </a>
             ))}
@@ -271,7 +270,7 @@ export default function CrawlerPage() {
     <div className="p-8 space-y-8">
       <div className="fade-in">
         <h1 className="text-3xl font-bold text-foreground mb-2">OSINT Crawler</h1>
-        <p className="text-muted">Automated threat intelligence data collection and indexing</p>
+        <p className="text-muted-foreground">Automated threat intelligence data collection and indexing</p>
       </div>
 
       {error && (
@@ -282,16 +281,12 @@ export default function CrawlerPage() {
 
       <div className="fade-in" style={{ animationDelay: "0.1s" }}>
         <div
-          style={{ 
-            background: "linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(8, 16, 30, 0.9) 100%)",
-            borderColor: "rgba(30, 58, 138, 0.3)" 
-          }}
-          className="backdrop-blur-md border rounded-lg p-6"
+          className="backdrop-blur-md border border-border bg-card dark:bg-gradient-to-br dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] rounded-lg p-6"
         >
           <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
             <div>
               <h3 className="text-lg font-semibold text-foreground mb-2">Crawler Status</h3>
-              <p className="text-muted">
+              <p className="text-muted-foreground">
                 {isRunning
                   ? "Crawler request in progress..."
                   : isPlayback
@@ -329,31 +324,19 @@ export default function CrawlerPage() {
 
       <div className="grid grid-cols-1 gap-6 md:grid-cols-3 fade-in" style={{ animationDelay: "0.2s" }}>
         <div
-          style={{ 
-            background: "linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(8, 16, 30, 0.9) 100%)",
-            borderColor: "rgba(30, 58, 138, 0.3)" 
-          }}
-          className="backdrop-blur-md border rounded-lg p-6"
+          className="backdrop-blur-md border border-border bg-card dark:bg-gradient-to-br dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] rounded-lg p-6"
         >
-          <p className="text-sm text-muted mb-2">Sources Crawled</p>
+          <p className="text-sm text-muted-foreground mb-2">Sources Crawled</p>
           <p className="text-2xl font-bold text-foreground">{stats?.sources ?? 0}</p>
         </div>
         <div
-          style={{ 
-            background: "linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(8, 16, 30, 0.9) 100%)",
-            borderColor: "rgba(30, 58, 138, 0.3)" 
-          }}
-          className="backdrop-blur-md border rounded-lg p-6"
+          className="backdrop-blur-md border border-border bg-card dark:bg-gradient-to-br dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] rounded-lg p-6"
         >
           <p className="text-sm text-muted mb-2">Items Collected</p>
           <p className="text-2xl font-bold text-foreground">{stats?.itemsTotal ?? 0}</p>
         </div>
         <div
-          style={{ 
-            background: "linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(8, 16, 30, 0.9) 100%)",
-            borderColor: "rgba(30, 58, 138, 0.3)" 
-          }}
-          className="backdrop-blur-md border rounded-lg p-6"
+          className="backdrop-blur-md border border-border bg-card dark:bg-gradient-to-br dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] rounded-lg p-6"
         >
           <p className="text-sm text-muted mb-2">Unique Findings</p>
           <p className="text-2xl font-bold text-foreground">{stats?.itemsUnique ?? 0}</p>
@@ -370,18 +353,14 @@ export default function CrawlerPage() {
         </button>
 
         {showCustomForm && (
-          <div
-            style={{ 
-            background: "linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(8, 16, 30, 0.9) 100%)",
-            borderColor: "rgba(30, 58, 138, 0.3)" 
-          }}
-            className="backdrop-blur-md border rounded-lg p-6 mt-4"
-          >
+        <div
+          className="backdrop-blur-md border border-border bg-card dark:bg-gradient-to-br dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] rounded-lg p-6 mt-4"
+        >
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-lg font-semibold text-foreground">Search for Specific Threats</h3>
               <button
                 onClick={() => setShowCustomForm(false)}
-                className="text-muted hover:text-foreground transition-colors"
+                className="text-muted-foreground hover:text-foreground transition-colors"
               >
                 <X className="w-5 h-5" />
               </button>

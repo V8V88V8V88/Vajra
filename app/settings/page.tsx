@@ -96,7 +96,7 @@ export default function SettingsPage() {
       {/* Header */}
       <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
         <h1 className="text-3xl font-bold text-foreground mb-2">Settings</h1>
-        <p className="text-muted">Configure crawler and application preferences</p>
+        <p className="text-muted-foreground">Configure crawler and application preferences</p>
       </motion.div>
 
       {/* Settings Form */}
@@ -104,8 +104,7 @@ export default function SettingsPage() {
         {/* Crawler Settings */}
         <motion.div
           variants={itemVariants}
-          style={{ backgroundColor: "rgba(30, 41, 59, 0.5)", borderColor: "rgba(51, 65, 85, 0.2)" }}
-          className="backdrop-blur-md border rounded-lg p-6"
+          className="backdrop-blur-md border border-border bg-card dark:bg-gradient-to-br dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] rounded-lg p-6"
         >
           <h3 className="text-lg font-semibold text-foreground mb-6">Crawler Configuration</h3>
           <div className="space-y-4">
@@ -117,10 +116,9 @@ export default function SettingsPage() {
                 max="24"
                 value={settings.crawlerInterval}
                 onChange={(e) => setSettings({ ...settings, crawlerInterval: e.target.value })}
-                style={{ backgroundColor: "rgba(30, 41, 59, 0.5)", borderColor: "rgba(51, 65, 85, 0.2)" }}
-                className="w-full px-4 py-2 backdrop-blur-md border rounded-lg focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-all"
+                className="w-full px-4 py-2 bg-input dark:bg-[rgba(30,41,59,0.5)] border border-border rounded-lg focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-all text-foreground"
               />
-              <p className="text-xs text-muted mt-2">How often the crawler syncs threat data</p>
+              <p className="text-xs text-muted-foreground mt-2">How often the crawler syncs threat data</p>
             </div>
 
             <div>
@@ -129,8 +127,7 @@ export default function SettingsPage() {
                 type="text"
                 value={settings.apiUrl}
                 onChange={(e) => setSettings({ ...settings, apiUrl: e.target.value })}
-                style={{ backgroundColor: "rgba(30, 41, 59, 0.5)", borderColor: "rgba(51, 65, 85, 0.2)" }}
-                className="w-full px-4 py-2 backdrop-blur-md border rounded-lg focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-all"
+                className="w-full px-4 py-2 bg-input dark:bg-[rgba(30,41,59,0.5)] border border-border rounded-lg focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-all text-foreground"
               />
               <p className="text-xs text-muted mt-2">Backend API endpoint (TODO: implement backend integration)</p>
             </div>
@@ -140,8 +137,7 @@ export default function SettingsPage() {
         {/* Display Settings */}
         <motion.div
           variants={itemVariants}
-          style={{ backgroundColor: "rgba(30, 41, 59, 0.5)", borderColor: "rgba(51, 65, 85, 0.2)" }}
-          className="backdrop-blur-md border rounded-lg p-6"
+          className="backdrop-blur-md border border-border bg-card dark:bg-gradient-to-br dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] rounded-lg p-6"
         >
           <h3 className="text-lg font-semibold text-foreground mb-6">Display Settings</h3>
           <div className="space-y-4">
@@ -178,8 +174,7 @@ export default function SettingsPage() {
           </button>
           <button
             onClick={handleReset}
-            style={{ backgroundColor: "rgba(30, 41, 59, 0.5)", borderColor: "rgba(51, 65, 85, 0.2)" }}
-            className="flex items-center gap-2 px-6 py-3 backdrop-blur-md border rounded-lg font-semibold hover:bg-surface-light/20 transition-all duration-300"
+            className="flex items-center gap-2 px-6 py-3 bg-card dark:bg-[rgba(30,41,59,0.5)] border border-border rounded-lg font-semibold hover:bg-accent dark:hover:bg-slate-800/40 transition-all duration-300 text-foreground"
           >
             <RotateCcw className="w-5 h-5" />
             Reset to Defaults

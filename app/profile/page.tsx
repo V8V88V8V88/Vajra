@@ -122,7 +122,7 @@ export default function ProfilePage() {
     if (stored) {
       setProfile(stored)
     } else {
-      setProfile(defaultProfile)
+      setProfile(createDefaultProfile())
     }
     setIsEditing(false)
   }
@@ -165,7 +165,7 @@ export default function ProfilePage() {
       >
         <div>
           <h1 className="text-3xl font-bold text-foreground mb-2">User Profile</h1>
-          <p className="text-muted">Manage your account information and preferences</p>
+          <p className="text-muted-foreground">Manage your account information and preferences</p>
         </div>
         {!isEditing ? (
           <button
@@ -179,10 +179,7 @@ export default function ProfilePage() {
           <div className="flex gap-2">
             <button
               onClick={handleCancel}
-              className="flex items-center gap-2 px-4 py-2 border rounded-lg font-semibold hover:bg-slate-800/40 transition-all duration-300"
-              style={{
-                borderColor: "rgba(51, 65, 85, 0.2)",
-              }}
+              className="flex items-center gap-2 px-4 py-2 border border-border bg-card dark:bg-[rgba(30,41,59,0.5)] rounded-lg font-semibold hover:bg-accent dark:hover:bg-slate-800/40 transition-all duration-300 text-foreground"
             >
               <X className="w-4 h-4" />
               Cancel
@@ -208,11 +205,7 @@ export default function ProfilePage() {
         {/* Profile Picture Section */}
         <motion.div
           variants={itemVariants}
-          style={{
-            backgroundColor: "rgba(30, 41, 59, 0.5)",
-            borderColor: "rgba(51, 65, 85, 0.2)",
-          }}
-          className="backdrop-blur-md border rounded-lg p-6"
+          className="backdrop-blur-md border border-border bg-card dark:bg-gradient-to-br dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] rounded-lg p-6"
         >
           <h3 className="text-lg font-semibold text-foreground mb-4">Profile Picture</h3>
           <div className="flex items-center gap-6">
@@ -225,7 +218,7 @@ export default function ProfilePage() {
               </AvatarFallback>
             </Avatar>
             <div>
-              <p className="text-sm text-foreground/60 mb-2">
+              <p className="text-sm text-muted-foreground mb-2">
                 {avatarPreview || profile.avatarUrl
                   ? "Click to change your profile picture"
                   : "Avatar displays your initials"}
@@ -256,11 +249,7 @@ export default function ProfilePage() {
         {/* Personal Information */}
         <motion.div
           variants={itemVariants}
-          style={{
-            backgroundColor: "rgba(30, 41, 59, 0.5)",
-            borderColor: "rgba(51, 65, 85, 0.2)",
-          }}
-          className="backdrop-blur-md border rounded-lg p-6"
+          className="backdrop-blur-md border border-border bg-card dark:bg-gradient-to-br dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] rounded-lg p-6"
         >
           <h3 className="text-lg font-semibold text-foreground mb-6">Personal Information</h3>
           <div className="space-y-4">
@@ -274,11 +263,7 @@ export default function ProfilePage() {
                   type="text"
                   value={profile.name}
                   onChange={(e) => setProfile({ ...profile, name: e.target.value })}
-                  style={{
-                    backgroundColor: "rgba(30, 41, 59, 0.5)",
-                    borderColor: "rgba(51, 65, 85, 0.2)",
-                  }}
-                  className="w-full px-4 py-2 backdrop-blur-md border rounded-lg focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-all"
+                  className="w-full px-4 py-2 bg-input dark:bg-[rgba(30,41,59,0.5)] border border-border rounded-lg focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-all text-foreground"
                 />
               ) : (
                 <p className="text-foreground px-4 py-2">{profile.name}</p>
@@ -295,11 +280,7 @@ export default function ProfilePage() {
                   type="email"
                   value={profile.email}
                   onChange={(e) => setProfile({ ...profile, email: e.target.value })}
-                  style={{
-                    backgroundColor: "rgba(30, 41, 59, 0.5)",
-                    borderColor: "rgba(51, 65, 85, 0.2)",
-                  }}
-                  className="w-full px-4 py-2 backdrop-blur-md border rounded-lg focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-all"
+                  className="w-full px-4 py-2 bg-input dark:bg-[rgba(30,41,59,0.5)] border border-border rounded-lg focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-all text-foreground"
                 />
               ) : (
                 <p className="text-foreground px-4 py-2">{profile.email}</p>
@@ -313,11 +294,7 @@ export default function ProfilePage() {
                   type="text"
                   value={profile.role}
                   onChange={(e) => setProfile({ ...profile, role: e.target.value })}
-                  style={{
-                    backgroundColor: "rgba(30, 41, 59, 0.5)",
-                    borderColor: "rgba(51, 65, 85, 0.2)",
-                  }}
-                  className="w-full px-4 py-2 backdrop-blur-md border rounded-lg focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-all"
+                  className="w-full px-4 py-2 bg-input dark:bg-[rgba(30,41,59,0.5)] border border-border rounded-lg focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-all text-foreground"
                 />
               ) : (
                 <p className="text-foreground px-4 py-2">{profile.role}</p>
@@ -328,7 +305,7 @@ export default function ProfilePage() {
               <label className="text-sm font-medium text-foreground mb-2 block">
                 Member Since
               </label>
-              <p className="text-foreground/60 px-4 py-2">{profile.joinedDate}</p>
+              <p className="text-muted-foreground px-4 py-2">{profile.joinedDate}</p>
             </div>
           </div>
         </motion.div>

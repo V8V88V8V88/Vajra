@@ -16,11 +16,7 @@ interface ThreatTrendChartProps {
 export function ThreatTrendChart({ data }: ThreatTrendChartProps) {
   return (
     <div
-      style={{ 
-        background: "linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(8, 16, 30, 0.9) 100%)",
-        borderColor: "rgba(30, 58, 138, 0.3)" 
-      }}
-      className="backdrop-blur-md border rounded-lg p-6"
+      className="backdrop-blur-md border border-border bg-card dark:bg-gradient-to-br dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] rounded-lg p-6"
     >
       <h3 className="text-lg font-semibold text-foreground mb-6">Threat Trend (10 Days)</h3>
       <ResponsiveContainer width="100%" height={300}>
@@ -42,18 +38,28 @@ export function ThreatTrendChart({ data }: ThreatTrendChartProps) {
               <stop offset="100%" stopColor="#b45309" stopOpacity={1} />
             </linearGradient>
           </defs>
-          <CartesianGrid strokeDasharray="3 3" stroke="rgba(148, 163, 184, 0.1)" />
-          <XAxis dataKey="date" stroke="rgb(148, 163, 184)" style={{ fontSize: "12px" }} />
-          <YAxis stroke="rgb(148, 163, 184)" style={{ fontSize: "12px" }} />
+          <CartesianGrid strokeDasharray="3 3" className="stroke-slate-300 dark:stroke-slate-700" />
+          <XAxis 
+            dataKey="date" 
+            className="text-slate-600 dark:text-slate-400" 
+            style={{ fontSize: "12px" }}
+            tick={{ fill: "currentColor" }}
+          />
+          <YAxis 
+            className="text-slate-600 dark:text-slate-400" 
+            style={{ fontSize: "12px" }}
+            tick={{ fill: "currentColor" }}
+          />
           <Tooltip
             contentStyle={{
-              backgroundColor: "rgba(30, 41, 59, 0.9)",
-              border: "1px solid rgba(51, 65, 85, 0.5)",
+              backgroundColor: "hsl(var(--popover))",
+              border: "1px solid hsl(var(--border))",
               borderRadius: "8px",
             }}
-            labelStyle={{ color: "rgb(241, 245, 249)" }}
+            labelStyle={{ color: "hsl(var(--popover-foreground))" }}
+            itemStyle={{ color: "hsl(var(--popover-foreground))" }}
           />
-          <Legend />
+          <Legend wrapperStyle={{ color: "hsl(var(--foreground))" }} />
           <Line type="monotone" dataKey="threats" stroke="url(#threatsGradient)" strokeWidth={3} dot={false} />
           <Line type="monotone" dataKey="critical" stroke="url(#criticalGradient)" strokeWidth={3} dot={false} />
           <Line type="monotone" dataKey="high" stroke="url(#highGradient)" strokeWidth={3} dot={false} />

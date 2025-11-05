@@ -18,26 +18,57 @@ const defaultSettings: Settings = {
   enableNotifications: true,
 }
 
-export default function SettingsPage() {
-  const [settings, setSettings] = useState<Settings>(defaultSettings)
-  const [saved, setSaved] = useState(false)
-
-  useEffect(() => {
+// Helper function to safely get settings from localStorage
+const getStoredSettings = (): Settings | null => {
+  if (typeof window === "undefined") return null
+  try {
     const stored = localStorage.getItem("ctf-settings")
     if (stored) {
-      setSettings(JSON.parse(stored))
+      return JSON.parse(stored) as Settings
+    }
+  } catch (error) {
+    console.error("Error loading settings from localStorage:", error)
+  }
+  return null
+}
+
+export default function SettingsPage() {
+  // Always start with defaults to avoid hydration mismatch
+  const [settings, setSettings] = useState<Settings>(defaultSettings)
+  const [saved, setSaved] = useState(false)
+  const [isMounted, setIsMounted] = useState(false)
+
+  useEffect(() => {
+    // Only load from localStorage after component mounts (client-side only)
+    setIsMounted(true)
+    const stored = getStoredSettings()
+    if (stored) {
+      setSettings(stored)
     }
   }, [])
 
   const handleSave = () => {
-    localStorage.setItem("ctf-settings", JSON.stringify(settings))
-    setSaved(true)
-    setTimeout(() => setSaved(false), 2000)
+    if (typeof window !== "undefined") {
+      try {
+        localStorage.setItem("ctf-settings", JSON.stringify(settings))
+        setSaved(true)
+        setTimeout(() => setSaved(false), 2000)
+      } catch (error) {
+        console.error("Error saving settings to localStorage:", error)
+        alert("Failed to save settings. Please try again.")
+      }
+    }
   }
 
   const handleReset = () => {
     setSettings(defaultSettings)
-    localStorage.removeItem("ctf-settings")
+    if (typeof window !== "undefined") {
+      try {
+        localStorage.removeItem("ctf-settings")
+      } catch (error) {
+        console.error("Error removing settings from localStorage:", error)
+      }
+    }
   }
 
   const containerVariants = {

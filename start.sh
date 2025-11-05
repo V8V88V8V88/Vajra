@@ -58,6 +58,21 @@ else
     echo -e "${GREEN}[OK] Frontend dependencies found${NC}"
 fi
 
+# Function to kill process on a port
+kill_port() {
+    local port=$1
+    local pids=$(lsof -ti :$port 2>/dev/null || fuser $port/tcp 2>/dev/null | awk '{print $1}' || echo "")
+    if [ ! -z "$pids" ]; then
+        echo -e "${YELLOW}[*] Killing existing process on port $port...${NC}"
+        echo $pids | xargs kill -9 2>/dev/null || true
+        sleep 1
+    fi
+}
+
+# Kill any existing processes on ports 8000 and 3000
+kill_port 8000
+kill_port 3000
+
 # Start backend
 echo -e "${GREEN}[*] Starting backend server on port 8000...${NC}"
 cd backend

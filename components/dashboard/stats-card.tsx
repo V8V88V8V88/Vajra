@@ -45,9 +45,20 @@ export function StatsCard({ title, value, icon: Icon, trend, color, loading }: S
     <div
       style={{ 
         background: "linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(8, 16, 30, 0.9) 100%)",
-        borderColor: "rgba(30, 58, 138, 0.3)" 
+        borderColor: "rgba(30, 58, 138, 0.3)",
+        transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)"
       }}
-      className="backdrop-blur-md border rounded-lg p-6 group hover:shadow-xl hover:shadow-primary/20 transition-all duration-300"
+      className="backdrop-blur-md border rounded-lg p-6 group relative overflow-hidden"
+      onMouseEnter={(e) => {
+        e.currentTarget.style.borderColor = "rgba(14, 165, 233, 0.5)"
+        e.currentTarget.style.transform = "translateY(-2px)"
+        e.currentTarget.style.boxShadow = "0 4px 12px rgba(14, 165, 233, 0.15)"
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.borderColor = "rgba(30, 58, 138, 0.3)"
+        e.currentTarget.style.transform = "translateY(0)"
+        e.currentTarget.style.boxShadow = "none"
+      }}
     >
       <div className="flex items-start justify-between mb-4">
         <div>

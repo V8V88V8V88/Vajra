@@ -207,10 +207,10 @@ export default function CrawlerPage() {
     if (abortController) {
       abortController.abort()
       setAbortController(null)
-      stopLogPlayback()
-      setIsRunning(false)
-      setIsPlayback(false)
     }
+    stopLogPlayback()
+    setIsRunning(false)
+    setIsPlayback(false)
   }
 
   const handleCustomCrawl = async (e: React.FormEvent) => {
@@ -309,11 +309,12 @@ export default function CrawlerPage() {
                 <Play className="w-5 h-5" />
                 {isBusy ? "Running..." : "Start Crawler"}
               </button>
-              {abortController && (
+              {isBusy && (
                 <button
                   onClick={handleStopCrawler}
-                  className="px-4 py-2 rounded-lg border border-destructive/40 text-destructive font-semibold hover:bg-destructive/10 transition-colors"
+                  className="flex items-center gap-2 px-4 py-2 rounded-lg border border-destructive/40 bg-destructive/10 text-destructive font-semibold hover:bg-destructive/20 transition-colors"
                 >
+                  <X className="w-4 h-4" />
                   Stop
                 </button>
               )}

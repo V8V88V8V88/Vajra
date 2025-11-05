@@ -1,106 +1,142 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect, useMemo } from "react"
 import { useQuery } from "@tanstack/react-query"
-import { getThreats } from "@/lib/api"
+import { getThreats, searchThreats } from "@/lib/api"
 import { ThreatCard } from "@/components/threats/threat-card"
 import { ThreatDetailModal } from "@/components/threats/threat-detail-modal"
 import type { Threat } from "@/lib/api"
 import { Search } from "lucide-react"
-import { motion } from "framer-motion"
 
 export default function ThreatsPage() {
   const [page, setPage] = useState(1)
   const [selectedThreat, setSelectedThreat] = useState<Threat | null>(null)
-  const [searchQuery, setSearchQuery] = useState("")
+  const [searchInput, setSearchInput] = useState("")
 
-  const { data, isLoading } = useQuery({
-    queryKey: ["threats", page],
-    queryFn: () => getThreats(page, 5),
+  // Debounced search query - updates after user stops typing
+  const [debouncedSearch, setDebouncedSearch] = useState("")
+
+  // Debounce search input
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setDebouncedSearch(searchInput.trim())
+      setPage(1) // Reset to first page when search changes
+    }, 300) // 300ms delay
+
+    return () => clearTimeout(timer)
+  }, [searchInput])
+
+  // Reset page to 1 when search changes
+  useEffect(() => {
+    setPage(1)
+  }, [debouncedSearch])
+
+  // Clear search
+  const handleClearSearch = () => {
+    setSearchInput("")
+    setDebouncedSearch("")
+    setPage(1)
+  }
+
+  // Use search when debouncedSearch is present, otherwise use paginated list
+  const { data, isLoading, error, isFetching, refetch } = useQuery({
+    queryKey: debouncedSearch ? ["threats", "search", debouncedSearch] : ["threats", "list", page],
+    queryFn: async () => {
+      if (debouncedSearch) {
+        const threats = await searchThreats(debouncedSearch)
+        return { threats, total: threats.length }
+      } else {
+        const result = await getThreats(page, 5)
+        return result
+      }
+    },
+    enabled: true,
+    staleTime: 0, // Always refetch to ensure fresh data
+    refetchOnWindowFocus: false, // Don't refetch on focus to avoid flickering
   })
 
-  const threats = data?.threats || []
+  // Refetch when switching from search to list mode
+  useEffect(() => {
+    if (!debouncedSearch && !isLoading) {
+      refetch()
+    }
+  }, [debouncedSearch, refetch, isLoading])
+
+  const threats = useMemo(() => data?.threats || [], [data?.threats])
   const total = data?.total || 0
-  const totalPages = Math.ceil(total / 5)
+  const totalPages = debouncedSearch ? 1 : Math.ceil(total / 5)
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.05,
-        delayChildren: 0.1,
-      },
-    },
-  }
 
-  const itemVariants = {
-    hidden: { opacity: 0, x: -20 },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: { duration: 0.3, ease: "easeOut" },
-    },
-  }
+  // Removed animation variants that might hide content
 
   return (
     <div className="p-8 space-y-8">
       {/* Header */}
-      <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+      <div>
         <h1 className="text-3xl font-bold text-foreground mb-2">Threat Feed</h1>
         <p className="text-muted-foreground">Browse and analyze detected threats</p>
-      </motion.div>
+      </div>
 
       {/* Search */}
-      <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}>
+      <div>
         <div className="relative">
           <Search className="absolute left-4 top-3 w-5 h-5 text-muted-foreground" />
           <input
             type="text"
             placeholder="Search threats..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-12 pr-4 py-3 rounded-lg bg-input dark:bg-gradient-to-r dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-all"
+            value={searchInput}
+            onChange={(e) => setSearchInput(e.target.value)}
+            className="w-full pl-12 pr-10 py-3 rounded-lg bg-input dark:bg-gradient-to-r dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-all"
           />
+          {searchInput && (
+            <button
+              type="button"
+              onClick={handleClearSearch}
+              className="absolute right-4 top-3 text-muted-foreground hover:text-foreground transition-colors"
+            >
+              ✕
+            </button>
+          )}
         </div>
-      </motion.div>
+        {debouncedSearch && (
+          <div className="mt-2 text-sm text-muted-foreground">
+            Showing results for: <span className="text-foreground font-medium">"{debouncedSearch}"</span>
+            {isFetching && <span className="ml-2 text-primary">(searching...)</span>}
+          </div>
+        )}
+      </div>
 
       {/* Threats List */}
-      <motion.div className="space-y-4" variants={containerVariants} initial="hidden" animate="visible">
-        {isLoading ? (
+      <div className="space-y-4">
+        {isLoading || isFetching ? (
           <div className="space-y-4">
             {[...Array(5)].map((_, i) => (
-              <motion.div
+              <div
                 key={i}
-                variants={itemVariants}
                 className="h-32 rounded-lg animate-pulse bg-card dark:bg-gradient-to-r dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] border border-border"
               />
             ))}
           </div>
         ) : threats.length > 0 ? (
           threats.map((threat) => (
-            <motion.div key={threat.id} variants={itemVariants}>
+            <div key={threat.id}>
               <ThreatCard threat={threat} onClick={() => setSelectedThreat(threat)} />
-            </motion.div>
+            </div>
           ))
         ) : (
-          <motion.div
-            variants={itemVariants}
-            className="text-center py-12 rounded-lg bg-card dark:bg-gradient-to-r dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] border border-border"
-          >
-            <p className="text-muted-foreground">No threats found</p>
-          </motion.div>
+          <div className="text-center py-12 rounded-lg bg-card dark:bg-gradient-to-r dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] border border-border">
+            <p className="text-muted-foreground">
+              {debouncedSearch 
+                ? `No threats found matching "${debouncedSearch}"` 
+                : "No threats found"}
+            </p>
+          </div>
         )}
-      </motion.div>
+      </div>
 
       {/* Pagination */}
       {totalPages > 1 && (
-        <motion.div
-          className="flex items-center justify-center gap-4"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.3 }}
-        >
+        <div className="flex items-center justify-center gap-4">
           <button
             onClick={() => setPage((p) => Math.max(1, p - 1))}
             disabled={page === 1}
@@ -118,7 +154,7 @@ export default function ThreatsPage() {
           >
             Next
           </button>
-        </motion.div>
+        </div>
       )}
 
       {/* Detail Modal */}

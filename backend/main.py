@@ -1,10 +1,11 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import List, Optional
 import sys
 import os
 import logging
+import datetime as dt
 
 # ensure project root is on path
 ROOT = os.path.dirname(os.path.dirname(__file__))
@@ -69,18 +70,42 @@ async def health():
 
 @app.get("/api/stats")
 async def get_stats():
-    # Try to compute from data_layer or fallback to sample
+    # Get real stats from crawled data
     try:
-        from data_layer.timeseries_db import get_overview_metrics_api
+        from data_layer.neo4j_connector import Neo4jConnector
         
-        stats = get_overview_metrics_api()
-        return stats
-    except Exception as e:
-        logger.warning("timeseries DB access failed, returning fallback stats: %s", e)
+        connector = Neo4jConnector()
+        
+        # Count all threat nodes
+        threat_nodes = [n for n in connector.nodes.values() 
+                       if n.node_type in ['CVE', 'ThreatIntelligence', 'Campaign', 'actor', 'malware']]
+        
+        total_threats = len(threat_nodes)
+        
+        # Count by severity
+        critical_count = sum(1 for n in threat_nodes 
+                           if n.properties.get('severity', '').lower() == 'critical')
+        high_count = sum(1 for n in threat_nodes 
+                        if n.properties.get('severity', '').lower() == 'high')
+        
+        # Count campaigns/active threats
+        campaign_count = sum(1 for n in threat_nodes 
+                           if n.node_type in ['Campaign', 'ThreatIntelligence'])
+        
+        connector.close()
+        
         return {
-            "totalThreats": 2847,
-            "criticalThreats": 12,
-            "activeCampaigns": 34,
+            "totalThreats": total_threats,
+            "criticalThreats": critical_count,
+            "activeCampaigns": campaign_count if campaign_count > 0 else (high_count + critical_count),
+            "lastUpdate": dt.datetime.utcnow().isoformat() + "Z",
+        }
+    except Exception as e:
+        logger.warning("Failed to get stats from database, returning fallback: %s", e)
+        return {
+            "totalThreats": 0,
+            "criticalThreats": 0,
+            "activeCampaigns": 0,
             "lastUpdate": None,
         }
 
@@ -142,13 +167,53 @@ async def get_threat(threat_id: str):
 
 
 @app.post("/api/crawler/start")
-async def start_crawler():
+async def start_crawler(request: Request):
+    # Get date range from request body if provided
+    start_date = None
+    end_date = None
+    try:
+        body = await request.json()
+        start_date = body.get("startDate")
+        end_date = body.get("endDate")
+    except Exception:
+        # If no body or JSON parsing fails, use defaults
+        pass
+    
     # Try to import a crawler orchestration if present, else simulate
     try:
         from scripts.crawler_orchestrator import run_crawler
+        from data_layer.neo4j_connector import store_crawler_records
 
-        result = run_crawler()
+        result = run_crawler(start_date=start_date, end_date=end_date)
         if isinstance(result, dict):
+            # Store crawled records in Neo4j/threat database
+            records = result.get("records", [])
+            if records:
+                try:
+                    stored_count = store_crawler_records(records)
+                    # Get total unique threats count from database
+                    from data_layer.neo4j_connector import Neo4jConnector
+                    db_connector = Neo4jConnector()
+                    total_unique = len([n for n in db_connector.nodes.values() 
+                                      if n.node_type in ['CVE', 'ThreatIntelligence', 'Campaign']])
+                    db_connector.close()
+                    
+                    logger.info(f"Stored {stored_count} new crawler records in threat database (total unique: {total_unique})")
+                    # Add log entry about storage
+                    result["logs"].append({
+                        "timestamp": dt.datetime.utcnow().isoformat() + "Z",
+                        "message": f"Stored {stored_count} new threats in database (total unique: {total_unique})",
+                        "type": "success"
+                    })
+                    # Update stats to show actual unique count from database
+                    result["stats"]["items_unique"] = total_unique
+                except Exception as e:
+                    logger.warning(f"Failed to store crawler records: {e}")
+                    result["logs"].append({
+                        "timestamp": dt.datetime.utcnow().isoformat() + "Z",
+                        "message": f"Warning: Could not store threats in database: {e}",
+                        "type": "warning"
+                    })
             return result
         return {"logs": result}
     except Exception as e:
@@ -173,53 +238,310 @@ async def search(q: str):
 
 
 @app.get("/api/charts/trend")
-async def get_trend_data(days: int = 10):
-    """Get threat trend data for the last N days"""
+async def get_trend_data(days: int = 10, startDate: str = None, endDate: str = None):
+    """Get threat trend data for the last N days or custom date range
+    
+    Args:
+        days: Number of days (used if startDate/endDate not provided)
+        startDate: Start date in YYYY-MM-DD format (optional)
+        endDate: End date in YYYY-MM-DD format (optional)
+    """
     try:
-        from data_layer.timeseries_db import TimeSeriesDBClient
+        from data_layer.neo4j_connector import Neo4jConnector
         from datetime import datetime, timedelta
         
-        client = TimeSeriesDBClient()
+        connector = Neo4jConnector()
         now = datetime.now()
-        start_date = now - timedelta(days=days)
         
-        # Query threat data
-        threat_data = client.query('threat_count', start_date)
-        critical_data = client.query('critical_threats', start_date)
-        high_data = client.query('high_threats', start_date)
+        # Use custom date range if provided
+        if startDate and endDate:
+            try:
+                start_dt = datetime.strptime(startDate, '%Y-%m-%d')
+                end_dt = datetime.strptime(endDate, '%Y-%m-%d')
+                # Calculate days for grouping logic
+                days = (end_dt - start_dt).days
+                # Override 'now' to use endDate as reference
+                now = end_dt
+            except ValueError:
+                logger.warning(f"Invalid date format: startDate={startDate}, endDate={endDate}")
+                # Fall back to default
+                startDate = None
+                endDate = None
         
-        # Generate trend data
-        trend_data = []
-        for i in range(days):
-            date = (start_date + timedelta(days=i)).strftime('%Y-%m-%d')
-            threats = 45 + (i * 3) + (i % 3) * 2  # Synthetic trend
-            critical = max(2, int(threats * 0.02))
-            high = max(5, int(threats * 0.15))
+        # Group threats by date
+        date_counts = {}
+        date_critical = {}
+        date_high = {}
+        
+        for node in connector.nodes.values():
+            if node.node_type in ['CVE', 'ThreatIntelligence', 'Campaign', 'actor', 'malware']:
+                discovered = node.properties.get('discovered')
+                if not discovered:
+                    continue
+                
+                try:
+                    date_obj = None
+                    # Parse date (could be ISO string or other format)
+                    if isinstance(discovered, str):
+                        # Try different date formats
+                        if 'T' in discovered:
+                            # ISO format with time
+                            discovered_clean = discovered.replace('Z', '+00:00')
+                            try:
+                                date_obj = datetime.fromisoformat(discovered_clean)
+                            except ValueError:
+                                # Try without timezone
+                                try:
+                                    date_obj = datetime.fromisoformat(discovered_clean.split('+')[0])
+                                except ValueError:
+                                    # Try just date part
+                                    date_obj = datetime.strptime(discovered[:10], '%Y-%m-%d')
+                        elif len(discovered) == 10 and discovered.count('-') == 2:
+                            # YYYY-MM-DD format
+                            date_obj = datetime.strptime(discovered, '%Y-%m-%d')
+                        elif len(discovered) >= 10:
+                            # Try to extract date part
+                            date_obj = datetime.strptime(discovered[:10], '%Y-%m-%d')
+                    elif isinstance(discovered, datetime):
+                        date_obj = discovered
+                    
+                    if not date_obj:
+                        continue
+                    
+                    date_str = date_obj.strftime('%Y-%m-%d')
+                    date_obj_no_tz = date_obj.replace(tzinfo=None)
+                    
+                    # Only include if within range
+                    if startDate and endDate:
+                        # Custom date range
+                        if not (start_dt <= date_obj_no_tz <= end_dt):
+                            continue
+                    else:
+                        # Default: last N days
+                        days_diff = (now - date_obj_no_tz).days
+                        if not (0 <= days_diff <= days):
+                            continue
+                    
+                    # Count this threat
+                    date_counts[date_str] = date_counts.get(date_str, 0) + 1
+                    
+                    severity = node.properties.get('severity', '').lower().strip()
+                    
+                    # Check CVSS score first (more reliable)
+                    cvss_score = node.properties.get('cvss_score', '')
+                    if cvss_score:
+                        try:
+                            score = float(cvss_score)
+                            if score >= 9.0:
+                                date_critical[date_str] = date_critical.get(date_str, 0) + 1
+                            elif score >= 7.0:
+                                date_high[date_str] = date_high.get(date_str, 0) + 1
+                        except (ValueError, TypeError):
+                            pass
+                    
+                    # Also check severity string - be more lenient
+                    if severity in ['critical', 'crit', 'critical ']:
+                        date_critical[date_str] = date_critical.get(date_str, 0) + 1
+                    elif severity in ['high', 'high ']:
+                        date_high[date_str] = date_high.get(date_str, 0) + 1
+                    
+                    # Also check if name/title contains severity indicators
+                    name = node.properties.get('name', '').lower()
+                    if 'critical' in name or ('cve' in name and 'critical' in str(node.properties.get('description', '')).lower()):
+                        # Check if it's actually critical by checking description or metadata
+                        desc = str(node.properties.get('description', '')).lower()
+                        if 'critical' in desc or 'cvss' in desc:
+                            date_critical[date_str] = date_critical.get(date_str, 0) + 1
+                    elif 'high' in name or 'high severity' in str(node.properties.get('description', '')).lower():
+                        date_high[date_str] = date_high.get(date_str, 0) + 1
+                except (ValueError, AttributeError, TypeError) as e:
+                    logger.debug(f"Failed to parse date '{discovered}': {e}")
+                    continue
+        
+        # Debug: Log sample nodes to check severity BEFORE closing connector
+        severity_samples = []
+        cvss_samples = []
+        for node in list(connector.nodes.values())[:20]:
+            if node.node_type in ['CVE', 'ThreatIntelligence', 'Campaign']:
+                sev = node.properties.get('severity', '')
+                cvss = node.properties.get('cvss_score', '')
+                if sev:
+                    severity_samples.append(sev)
+                if cvss:
+                    cvss_samples.append(cvss)
+        
+        logger.info(f"Severity samples from DB: {set(severity_samples)}")
+        logger.info(f"CVSS score samples: {cvss_samples[:10]}")
+        
+        connector.close()
+        
+        # Log for debugging
+        total_critical = sum(date_critical.values())
+        total_high = sum(date_high.values())
+        logger.info(f"Trend data: Found {len(date_counts)} unique dates with threats, {len(date_critical)} dates with critical ({total_critical} total), {len(date_high)} dates with high ({total_high} total)")
+        
+        # Generate trend data for last N days
+        # For long periods (6 months), group by weeks for better visualization
+        if days > 90:
+            # Group by week (7 days) - aggregate all dates into weeks
+            week_data = {}
+            week_critical = {}
+            week_high = {}
             
-            trend_data.append({
-                "date": date,
-                "threats": threats,
-                "critical": critical,
-                "high": high
-            })
+            for date_str, count in date_counts.items():
+                try:
+                    date_obj = datetime.strptime(date_str, '%Y-%m-%d')
+                    # Get week start (Monday)
+                    days_since_monday = date_obj.weekday()
+                    week_start = date_obj - timedelta(days=days_since_monday)
+                    week_key = week_start.strftime('%Y-%m-%d')
+                    week_data[week_key] = week_data.get(week_key, 0) + count
+                except ValueError:
+                    continue
+            
+            for date_str, count in date_critical.items():
+                try:
+                    date_obj = datetime.strptime(date_str, '%Y-%m-%d')
+                    days_since_monday = date_obj.weekday()
+                    week_start = date_obj - timedelta(days=days_since_monday)
+                    week_key = week_start.strftime('%Y-%m-%d')
+                    week_critical[week_key] = week_critical.get(week_key, 0) + count
+                except ValueError:
+                    continue
+            
+            for date_str, count in date_high.items():
+                try:
+                    date_obj = datetime.strptime(date_str, '%Y-%m-%d')
+                    days_since_monday = date_obj.weekday()
+                    week_start = date_obj - timedelta(days=days_since_monday)
+                    week_key = week_start.strftime('%Y-%m-%d')
+                    week_high[week_key] = week_high.get(week_key, 0) + count
+                except ValueError:
+                    continue
+            
+            # Generate weekly trend - ensure we cover all weeks in range
+            trend_data = []
+            if startDate and endDate:
+                # Use custom date range
+                trend_start = start_dt
+                trend_end = end_dt
+            else:
+                # Default: last N days
+                trend_start = now - timedelta(days=days)
+                trend_end = now
+            
+            current_week = trend_start - timedelta(days=trend_start.weekday())  # Start from Monday
+            
+            while current_week <= trend_end:
+                week_key = current_week.strftime('%Y-%m-%d')
+                threats = week_data.get(week_key, 0)
+                critical = week_critical.get(week_key, 0)
+                high = week_high.get(week_key, 0)
+                
+                trend_data.append({
+                    "date": week_key,
+                    "threats": threats,
+                    "critical": critical,
+                    "high": high
+                })
+                
+                # Move to next week
+                current_week += timedelta(days=7)
+        else:
+            # For shorter periods, show daily data
+            trend_data = []
+            if startDate and endDate:
+                # Custom date range - generate all days in range
+                current_date = start_dt
+                while current_date <= end_dt:
+                    date = current_date.strftime('%Y-%m-%d')
+                    threats = date_counts.get(date, 0)
+                    critical = date_critical.get(date, 0)
+                    high = date_high.get(date, 0)
+                    
+                    trend_data.append({
+                        "date": date,
+                        "threats": threats,
+                        "critical": critical,
+                        "high": high
+                    })
+                    current_date += timedelta(days=1)
+            else:
+                # Default: last N days
+                for i in range(days):
+                    date = (now - timedelta(days=days - 1 - i)).strftime('%Y-%m-%d')
+                    threats = date_counts.get(date, 0)
+                    critical = date_critical.get(date, 0)
+                    high = date_high.get(date, 0)
+                    
+                    trend_data.append({
+                        "date": date,
+                        "threats": threats,
+                        "critical": critical,
+                        "high": high
+                    })
         
-        client.close()
+        # Ensure we always have data points (even if zeros) for chart to render
+        if not trend_data:
+            logger.warning("No trend data generated, creating empty data points")
+            if days > 90:
+                # Create weekly empty data
+                weeks = days // 7
+                start_date = datetime.now() - timedelta(days=days)
+                current_week = start_date - timedelta(days=start_date.weekday())
+                for _ in range(weeks + 1):
+                    if current_week > datetime.now():
+                        break
+                    trend_data.append({
+                        "date": current_week.strftime('%Y-%m-%d'),
+                        "threats": 0,
+                        "critical": 0,
+                        "high": 0
+                    })
+                    current_week += timedelta(days=7)
+            else:
+                # Create daily empty data
+                for i in range(days):
+                    date = (datetime.now() - timedelta(days=days - 1 - i)).strftime('%Y-%m-%d')
+                    trend_data.append({
+                        "date": date,
+                        "threats": 0,
+                        "critical": 0,
+                        "high": 0
+                    })
+        
+        logger.info(f"Returning {len(trend_data)} trend data points")
         return {"data": trend_data}
     except Exception as e:
         logger.warning("Trend data generation failed, using fallback: %s", e)
-        # Fallback data
+        import traceback
+        logger.error(traceback.format_exc())
+        # Fallback: return empty trend with proper structure
         from datetime import datetime, timedelta
         trend_data = []
-        base_date = datetime.now() - timedelta(days=days)
-        for i in range(days):
-            date = (base_date + timedelta(days=i)).strftime('%Y-%m-%d')
-            threats = 45 + (i * 3) + (i % 3) * 2
-            trend_data.append({
-                "date": date,
-                "threats": threats,
-                "critical": max(2, int(threats * 0.02)),
-                "high": max(5, int(threats * 0.15))
-            })
+        if days > 90:
+            weeks = days // 7
+            start_date = datetime.now() - timedelta(days=days)
+            current_week = start_date - timedelta(days=start_date.weekday())
+            for _ in range(weeks + 1):
+                if current_week > datetime.now():
+                    break
+                trend_data.append({
+                    "date": current_week.strftime('%Y-%m-%d'),
+                    "threats": 0,
+                    "critical": 0,
+                    "high": 0
+                })
+                current_week += timedelta(days=7)
+        else:
+            for i in range(days):
+                date = (datetime.now() - timedelta(days=days - 1 - i)).strftime('%Y-%m-%d')
+                trend_data.append({
+                    "date": date,
+                    "threats": 0,
+                    "critical": 0,
+                    "high": 0
+                })
         return {"data": trend_data}
 
 
@@ -231,23 +553,23 @@ async def get_severity_data():
         
         connector = Neo4jConnector()
         
-        # Count threats by severity
+        # Count threats by severity - include all threat types
         severity_counts = {"critical": 0, "high": 0, "medium": 0, "low": 0}
         
         for node in connector.nodes.values():
-            if node.node_type in ['actor', 'malware', 'campaign']:
-                severity = node.properties.get('severity', 'medium')
+            if node.node_type in ['CVE', 'ThreatIntelligence', 'Campaign', 'actor', 'malware']:
+                severity = node.properties.get('severity', 'medium').lower()
                 if severity in severity_counts:
                     severity_counts[severity] += 1
         
         connector.close()
         
-        # Format for chart
+        # Format for chart - use actual counts, no fallback minimums
         data = [
-            {"name": "Critical", "value": max(severity_counts["critical"], 12), "fill": "#ef4444"},
-            {"name": "High", "value": max(severity_counts["high"], 156), "fill": "#f59e0b"},
-            {"name": "Medium", "value": max(severity_counts["medium"], 892), "fill": "#06b6d4"},
-            {"name": "Low", "value": max(severity_counts["low"], 1787), "fill": "#10b981"},
+            {"name": "Critical", "value": severity_counts["critical"], "fill": "#ef4444"},
+            {"name": "High", "value": severity_counts["high"], "fill": "#f59e0b"},
+            {"name": "Medium", "value": severity_counts["medium"], "fill": "#06b6d4"},
+            {"name": "Low", "value": severity_counts["low"], "fill": "#10b981"},
         ]
         
         return {"data": data}
@@ -256,10 +578,10 @@ async def get_severity_data():
         # Fallback data
         return {
             "data": [
-                {"name": "Critical", "value": 12, "fill": "#ef4444"},
-                {"name": "High", "value": 156, "fill": "#f59e0b"},
-                {"name": "Medium", "value": 892, "fill": "#06b6d4"},
-                {"name": "Low", "value": 1787, "fill": "#10b981"},
+                {"name": "Critical", "value": 0, "fill": "#ef4444"},
+                {"name": "High", "value": 0, "fill": "#f59e0b"},
+                {"name": "Medium", "value": 0, "fill": "#06b6d4"},
+                {"name": "Low", "value": 0, "fill": "#10b981"},
             ]
         }
 
@@ -267,40 +589,41 @@ async def get_severity_data():
 @app.get("/api/charts/sources")
 async def get_source_data():
     """Get threat source distribution for bar chart"""
-    # Default fallback data - change this ONE place to update data
-    DEFAULT_SOURCE_DATA = [
-        {"name": "OSINT Feeds", "value": 124},
-        {"name": "CVE Database", "value": 456},
-        {"name": "Dark Web", "value": 234},
-        {"name": "Network Monitoring", "value": 678},
-        {"name": "Malware Analysis", "value": 234},
-    ]
-    
     try:
         from data_layer.neo4j_connector import Neo4jConnector
         
         connector = Neo4jConnector()
         
-        # Count threats by source
+        # Count threats by source - include all threat types
         source_counts = {}
         
         for node in connector.nodes.values():
-            if node.node_type in ['actor', 'malware', 'campaign']:
+            if node.node_type in ['CVE', 'ThreatIntelligence', 'Campaign', 'actor', 'malware']:
                 source = node.properties.get('source', 'Unknown')
+                # Normalize source names for better display
+                if source == 'nvd':
+                    source = 'NVD (CVE Database)'
+                elif source == 'cisa_kev':
+                    source = 'CISA KEV'
+                elif source == 'reddit_netsec':
+                    source = 'Reddit /r/netsec'
+                elif source == 'Threat Database':
+                    source = 'Other Sources'
+                
                 source_counts[source] = source_counts.get(source, 0) + 1
         
         connector.close()
         
-        # Use actual data if available, otherwise fallback
+        # Use actual data, format for chart
         if source_counts:
-            data = [{"name": k, "value": v} for k, v in source_counts.items()]
+            data = [{"name": k, "value": v} for k, v in sorted(source_counts.items(), key=lambda x: x[1], reverse=True)]
         else:
-            data = DEFAULT_SOURCE_DATA
+            data = []
         
         return {"data": data}
     except Exception as e:
         logger.warning("Source data generation failed, using fallback: %s", e)
-        return {"data": DEFAULT_SOURCE_DATA}
+        return {"data": []}
 
 
 # AI Inference Endpoints

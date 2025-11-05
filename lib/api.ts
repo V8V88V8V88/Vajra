@@ -37,6 +37,7 @@ export interface CrawlerRecord {
   summary: string
   published?: Date | null
   severity?: string | null
+  status?: string | null
   metadata?: Record<string, string>
 }
 
@@ -224,18 +225,44 @@ export async function getThreats(page = 1, limit = 10): Promise<{ threats: Threa
     const data = await response.json()
     
     // Transform backend data to frontend format
-    const threats = data.threats.map((t: any) => ({
-      id: t.id,
-      title: t.title,
-      severity: t.severity,
-      timestamp: new Date(t.timestamp),
-      summary: t.summary,
-      description: t.description,
-      source: t.source,
-      indicators: t.indicators || [],
-      affectedSystems: t.affectedSystems || [],
-      recommendation: t.recommendation
-    }))
+    const threats = data.threats.map((t: any) => {
+      // Handle timestamp safely
+      let timestamp: Date
+      try {
+        if (t.timestamp) {
+          timestamp = new Date(t.timestamp)
+          if (isNaN(timestamp.getTime())) {
+            timestamp = new Date()
+          }
+        } else {
+          timestamp = new Date()
+        }
+      } catch {
+        timestamp = new Date()
+      }
+      
+      // Normalize severity
+      const severityMap: Record<string, Threat['severity']> = {
+        'critical': 'critical',
+        'high': 'high',
+        'medium': 'medium',
+        'low': 'low'
+      }
+      const normalizedSeverity = severityMap[t.severity?.toLowerCase()] || 'medium'
+      
+      return {
+        id: t.id || `threat-${Date.now()}-${Math.random()}`,
+        title: t.title || 'Unknown Threat',
+        severity: normalizedSeverity,
+        timestamp: timestamp,
+        summary: t.summary || t.description || 'No description available',
+        description: t.description || t.summary || 'No description available',
+        source: t.source || 'Threat Database',
+        indicators: t.indicators || [t.id],
+        affectedSystems: t.affectedSystems || [],
+        recommendation: t.recommendation || 'Monitor and investigate'
+      }
+    })
     
     return { threats, total: data.total }
   } catch (error) {
@@ -308,6 +335,7 @@ export async function startCrawler(signal?: AbortSignal): Promise<CrawlerResult>
       summary: record.summary ?? '',
       published: record.published ? new Date(record.published) : null,
       severity: record.severity ?? null,
+      status: record.status ?? null,
       metadata: record.metadata ?? {}
     }))
 
@@ -329,28 +357,100 @@ export async function startCrawler(signal?: AbortSignal): Promise<CrawlerResult>
 }
 
 export async function searchThreats(query: string): Promise<Threat[]> {
+  console.log('[searchThreats] Called with query:', query)
+  
+  if (!query || !query.trim()) {
+    console.log('[searchThreats] Empty query, returning empty array')
+    return []
+  }
+
+  const searchUrl = `${API_BASE_URL}/api/search?q=${encodeURIComponent(query.trim())}`
+  console.log('[searchThreats] Fetching from:', searchUrl)
+
   try {
-    const response = await fetch(`${API_BASE_URL}/api/threats/search?q=${encodeURIComponent(query)}`)
-    if (!response.ok) throw new Error('API request failed')
-    const data = await response.json()
+    const response = await fetch(searchUrl)
+    console.log('[searchThreats] Response status:', response.status, response.ok)
     
-    return data.threats.map((t: any) => ({
-      id: t.id,
-      title: t.title,
-      severity: t.severity,
-      timestamp: new Date(t.timestamp),
-      summary: t.summary,
-      description: t.description,
-      source: t.source,
-      indicators: t.indicators || [],
-      affectedSystems: t.affectedSystems || [],
-      recommendation: t.recommendation
-    }))
-  } catch (error) {
-    console.error('Failed to search threats via API, using mock data:', error)
-    return mockThreats.filter(
-      (t) => t.title.toLowerCase().includes(query.toLowerCase()) || t.summary.toLowerCase().includes(query.toLowerCase()),
+    if (!response.ok) {
+      throw new Error(`API request failed with status ${response.status}`)
+    }
+    const data = await response.json()
+    console.log('[searchThreats] Response data:', data)
+    
+    // Backend returns {results: [...]} with simplified threat objects
+    const results = data.results || []
+    console.log('[searchThreats] Results count:', results.length)
+    
+    // If backend returns results, map them to Threat format
+    if (results.length > 0) {
+      const mapped = results.map((t: any) => {
+        // Normalize severity to match Threat type
+        const severityMap: Record<string, Threat['severity']> = {
+          'critical': 'critical',
+          'high': 'high',
+          'medium': 'medium',
+          'low': 'low'
+        }
+        const normalizedSeverity = severityMap[t.severity?.toLowerCase()] || 'medium'
+        
+        // Handle timestamp - use current date if missing
+        let timestamp: Date
+        if (t.timestamp) {
+          try {
+            timestamp = new Date(t.timestamp)
+            // Check if date is valid
+            if (isNaN(timestamp.getTime())) {
+              timestamp = new Date()
+            }
+          } catch {
+            timestamp = new Date()
+          }
+        } else {
+          timestamp = new Date()
+        }
+        
+        return {
+          id: t.id || `threat-${Date.now()}-${Math.random()}`,
+          title: t.title || t.name || 'Unknown Threat',
+          severity: normalizedSeverity,
+          timestamp: timestamp,
+          summary: t.summary || t.description || `Threat of type ${t.type || 'unknown'}`,
+          description: t.description || `Threat type: ${t.type || 'unknown'}. ID: ${t.id}`,
+          source: t.source || 'Threat Database',
+          indicators: t.indicators || [t.id],
+          affectedSystems: t.affectedSystems || [],
+          recommendation: t.recommendation || 'Monitor and investigate'
+        }
+      })
+      console.log('[searchThreats] Mapped results:', mapped)
+      return mapped
+    }
+    
+    // If backend returns empty results, fall back to mock data search
+    console.log('[searchThreats] Backend returned empty results, falling back to mock data search')
+    const queryLower = query.toLowerCase()
+    const filtered = mockThreats.filter(
+      (t) => 
+        t.title.toLowerCase().includes(queryLower) || 
+        t.summary.toLowerCase().includes(queryLower) ||
+        t.description.toLowerCase().includes(queryLower) ||
+        t.source.toLowerCase().includes(queryLower)
     )
+    console.log('[searchThreats] Mock data filtered results:', filtered.length, 'threats')
+    return filtered
+  } catch (error) {
+    console.error('[searchThreats] Failed to search threats via API, using mock data:', error)
+    // Fallback to client-side filtering of mock data
+    const queryLower = query.toLowerCase()
+    const filtered = mockThreats.filter(
+      (t) => 
+        t.title.toLowerCase().includes(queryLower) || 
+        t.summary.toLowerCase().includes(queryLower) ||
+        t.description.toLowerCase().includes(queryLower) ||
+        t.source.toLowerCase().includes(queryLower)
+    )
+    console.log('[searchThreats] Error fallback mock data results:', filtered.length, 'threats')
+    return filtered
   }
 }
 

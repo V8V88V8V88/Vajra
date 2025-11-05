@@ -29,7 +29,10 @@ class CrawlerRecord:
     summary: str
     published: Optional[str] = None
     severity: Optional[str] = None
+    status: Optional[str] = None
     metadata: Dict[str, str] = field(default_factory=dict)
+ALLOWED_NVD_STATUSES = {"Analyzed", "Modified"}
+
 
 
 @dataclass
@@ -73,16 +76,32 @@ def crawl_nvd_recent(limit: int = 20, *, user_agent: str) -> Iterable[CrawlerRec
 
     base_url = "https://services.nvd.nist.gov/rest/json/cves/2.0"
     now = dt.datetime.now(dt.timezone.utc)
-    start = now - dt.timedelta(days=7)
+    # Expand to 30 days to get more variety and catch more CVEs
+    start = now - dt.timedelta(days=30)
     params = {
-        "resultsPerPage": str(limit),
+        "resultsPerPage": str(limit * 3),  # Fetch more to account for filtering
         "startIndex": "0",
         "pubStartDate": start.strftime("%Y-%m-%dT%H:%M:%S.000Z"),
         "pubEndDate": now.strftime("%Y-%m-%dT%H:%M:%S.000Z"),
+        "orderBy": "publishedDate",  # Sort by newest first
+        "sortOrder": "DESC",  # Descending order
     }
     api_key = os.environ.get("NVD_API_KEY")
     payload = _fetch_json(base_url, user_agent=user_agent, params=params, api_key=api_key)
-    vulnerabilities = payload.get("vulnerabilities", [])[:limit]
+    # Get all vulnerabilities, we'll filter and limit after checking status
+    all_vulnerabilities = payload.get("vulnerabilities", [])
+    
+    # Filter to only "Analyzed" or "Modified" status, then limit
+    filtered = []
+    for item in all_vulnerabilities:
+        cve = item.get("cve", {})
+        status = cve.get("vulnStatus")
+        if status in ALLOWED_NVD_STATUSES:
+            filtered.append(item)
+        if len(filtered) >= limit:
+            break
+    
+    vulnerabilities = filtered
 
     for item in vulnerabilities:
         cve = item.get("cve", {})
@@ -92,6 +111,11 @@ def crawl_nvd_recent(limit: int = 20, *, user_agent: str) -> Iterable[CrawlerRec
 
         descriptions = cve.get("descriptions", [])
         metrics = cve.get("metrics", {})
+        status = cve.get("vulnStatus")
+
+        if status and status not in ALLOWED_NVD_STATUSES:
+            logger.debug("Skipping CVE %s with status %s", cve_id, status)
+            continue
 
         severity = None
         score = None
@@ -109,10 +133,11 @@ def crawl_nvd_recent(limit: int = 20, *, user_agent: str) -> Iterable[CrawlerRec
             id=cve_id,
             source="nvd",
             title=cve_id,
-            url=f"https://nvd.nist.gov/vuln/detail/{cve_id}",
+            url=f"https://www.cve.org/CVERecord?id={cve_id}",
             summary=descriptions[0].get("value", "") if descriptions else "",
             published=cve.get("published"),
             severity=severity,
+            status=status,
             metadata={"cvss_score": str(score) if score is not None else ""},
         )
         yield record
@@ -123,14 +148,29 @@ def crawl_cisa_kev(limit: int = 20, *, user_agent: str) -> Iterable[CrawlerRecor
 
     url = "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
     payload = _fetch_json(url, user_agent=user_agent)
-    vulns = payload.get("vulnerabilities", [])[:limit]
+    all_vulns = payload.get("vulnerabilities", [])
+    
+    # Sort by dateAdded (most recent first) to get newest additions
+    sorted_vulns = sorted(
+        all_vulns,
+        key=lambda x: x.get("dateAdded", ""),
+        reverse=True
+    )
+    vulns = sorted_vulns[:limit]
 
     for item in vulns:
+        cve_id = item.get("cveID", item.get("vulnerabilityName", ""))
+        # Use cve.org URL if we have a CVE ID, otherwise fall back to notes
+        if cve_id and cve_id.startswith("CVE-"):
+            cve_url = f"https://www.cve.org/CVERecord?id={cve_id}"
+        else:
+            cve_url = item.get("notes", "")
+        
         record = CrawlerRecord(
-            id=item.get("cveID", item.get("vulnerabilityName", "")),
+            id=cve_id,
             source="cisa_kev",
-            title=item.get("vulnerabilityName", item.get("cveID", "Known Exploited Vulnerability")),
-            url=item.get("notes", ""),
+            title=item.get("vulnerabilityName", cve_id or "Known Exploited Vulnerability"),
+            url=cve_url,
             summary=item.get("shortDescription", ""),
             published=item.get("dateAdded"),
             severity=item.get("knownRansomwareCampaignUse"),
@@ -146,9 +186,12 @@ def crawl_cisa_kev(limit: int = 20, *, user_agent: str) -> Iterable[CrawlerRecor
 def crawl_reddit_netsec(limit: int = 10, *, user_agent: str) -> Iterable[CrawlerRecord]:
     """Fetch recent posts from r/netsec."""
 
-    url = f"https://www.reddit.com/r/netsec/new.json?limit={limit}"
+    # Fetch more to get variety
+    url = f"https://www.reddit.com/r/netsec/new.json?limit={limit * 2}"
     payload = _fetch_json(url, user_agent=user_agent)
-    posts = payload.get("data", {}).get("children", [])
+    all_posts = payload.get("data", {}).get("children", [])
+    # Limit to requested amount
+    posts = all_posts[:limit]
 
     for post in posts:
         data = post.get("data", {})

@@ -23,7 +23,17 @@ const severityBgColors = {
 }
 
 export function ThreatCard({ threat, onClick }: ThreatCardProps) {
-  const formattedTime = new Date(threat.timestamp).toLocaleString()
+  // Safely format timestamp
+  let formattedTime = 'Unknown'
+  try {
+    if (threat.timestamp && threat.timestamp instanceof Date) {
+      formattedTime = threat.timestamp.toLocaleString()
+    } else if (threat.timestamp) {
+      formattedTime = new Date(threat.timestamp).toLocaleString()
+    }
+  } catch (e) {
+    formattedTime = 'Unknown'
+  }
 
   return (
     <button
@@ -38,7 +48,7 @@ export function ThreatCard({ threat, onClick }: ThreatCardProps) {
               {threat.title}
             </h3>
           </div>
-          <p className="text-muted-foreground text-sm">{threat.summary}</p>
+          <p className="text-muted-foreground text-sm">{threat.summary || threat.description || 'No description available'}</p>
         </div>
         <div className="ml-4 px-3 py-1 rounded-full" style={{ backgroundColor: severityBgColors[threat.severity] }}>
           <span className="text-xs font-semibold uppercase" style={{ color: severityColors[threat.severity] }}>

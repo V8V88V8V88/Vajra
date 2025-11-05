@@ -629,6 +629,52 @@ def query_threats_api(page: int = 1, limit: int = 10) -> tuple:
     return threats, total
 
 
+def export_all_threats_api() -> List[Dict]:
+    """Export all threats from database for download."""
+    connector = Neo4jConnector()
+    
+    # Get all threat nodes - include all types
+    threats = []
+    threat_nodes = [n for n in connector.nodes.values() 
+                   if n.node_type in ['actor', 'malware', 'campaign', 'CVE', 'ThreatIntelligence', 'Campaign']]
+    
+    logger.info(f"Exporting {len(threat_nodes)} threat nodes")
+    
+    for node in threat_nodes:
+        try:
+            # Get description/summary from properties
+            description = node.properties.get('description', node.properties.get('summary', 'Threat entity'))
+            
+            # Include all properties for complete export
+            threat_data = {
+                "id": node.node_id,
+                "node_type": node.node_type,
+                "title": node.properties.get('name', node.node_id),
+                "severity": node.properties.get('severity', 'medium'),
+                "timestamp": node.properties.get('discovered', None),
+                "summary": description,
+                "description": description if len(description) > 50 else f"Threat type: {node.node_type}. {description}",
+                "source": node.properties.get('source', 'Threat Database'),
+                "url": node.properties.get('url', ''),
+                "status": node.properties.get('status'),
+                "indicators": node.properties.get('indicators', [node.node_id]),
+                "affectedSystems": node.properties.get('affectedSystems', []),
+                "recommendation": node.properties.get('recommendation', 'Monitor and investigate'),
+                # Include all metadata
+                "metadata": {k: v for k, v in node.properties.items() 
+                            if k not in ['name', 'description', 'summary', 'severity', 'discovered', 
+                                       'source', 'url', 'status', 'indicators', 'affectedSystems', 'recommendation']}
+            }
+            threats.append(threat_data)
+        except Exception as e:
+            logger.warning(f"Error exporting node {node.node_id}: {e}")
+            continue
+    
+    connector.close()
+    logger.info(f"Successfully exported {len(threats)} threats")
+    return threats
+
+
 def get_threat_by_id_api(threat_id: str) -> Optional[Dict]:
     """Get single threat by ID for API."""
     connector = Neo4jConnector()
@@ -708,10 +754,13 @@ def store_crawler_records(records: List[Dict]) -> int:
     for record in records:
         # Determine node type based on source
         node_type = "Campaign"  # Default
-        if record.get("source") == "nvd" or record.get("source") == "cisa_kev":
+        source = record.get("source", "")
+        if source in ["nvd", "cisa_kev", "github_advisories"]:
             node_type = "CVE"
-        elif record.get("source") == "reddit_netsec":
+        elif source in ["reddit_netsec", "exploit_db"]:
             node_type = "ThreatIntelligence"
+        elif source in ["abuse_ch_urlhaus", "abuse_ch_threatfox", "malwarebazaar"]:
+            node_type = "malware"  # Malware-related threats
         
         # Create unique node ID
         node_id = f"{record.get('source', 'unknown')}:{record.get('id', 'unknown')}"
@@ -731,19 +780,25 @@ def store_crawler_records(records: List[Dict]) -> int:
             severity = "medium"
         
         # Create threat node
+        properties = {
+            "name": record.get("title", record.get("id", "Unknown")),
+            "description": record.get("summary", ""),
+            "severity": severity,
+            "discovered": record.get("published"),
+            "source": record.get("source", "unknown"),
+            "url": record.get("url", ""),
+            "status": record.get("status"),
+        }
+        
+        # Add metadata, especially cvss_score if available
+        metadata = record.get("metadata", {})
+        if metadata:
+            properties.update(metadata)
+        
         node = ThreatNode(
             node_id=node_id,
             node_type=node_type,
-            properties={
-                "name": record.get("title", record.get("id", "Unknown")),
-                "description": record.get("summary", ""),
-                "severity": severity,
-                "discovered": record.get("published"),
-                "source": record.get("source", "unknown"),
-                "url": record.get("url", ""),
-                "status": record.get("status"),
-                **record.get("metadata", {})
-            }
+            properties=properties
         )
         
         # Store/update node

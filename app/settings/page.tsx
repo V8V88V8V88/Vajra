@@ -1,8 +1,9 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Save, RotateCcw } from "lucide-react"
+import { Save, RotateCcw, Download } from "lucide-react"
 import { motion } from "framer-motion"
+import { exportAllThreats } from "@/lib/api"
 
 interface Settings {
   crawlerInterval: string
@@ -37,6 +38,8 @@ export default function SettingsPage() {
   const [settings, setSettings] = useState<Settings>(defaultSettings)
   const [saved, setSaved] = useState(false)
   const [isMounted, setIsMounted] = useState(false)
+  const [isExporting, setIsExporting] = useState(false)
+  const [exportError, setExportError] = useState<string | null>(null)
 
   useEffect(() => {
     // Only load from localStorage after component mounts (client-side only)
@@ -68,6 +71,19 @@ export default function SettingsPage() {
       } catch (error) {
         console.error("Error removing settings from localStorage:", error)
       }
+    }
+  }
+
+  const handleExportThreats = async () => {
+    setIsExporting(true)
+    setExportError(null)
+    try {
+      await exportAllThreats()
+    } catch (error) {
+      console.error("Export failed:", error)
+      setExportError("Failed to export threats. Please ensure the backend is running.")
+    } finally {
+      setIsExporting(false)
     }
   }
 
@@ -160,6 +176,32 @@ export default function SettingsPage() {
               />
               <span className="text-foreground font-medium">Enable Notifications</span>
             </label>
+          </div>
+        </motion.div>
+
+        {/* Data Management */}
+        <motion.div
+          variants={itemVariants}
+          className="backdrop-blur-md border border-border bg-card dark:bg-gradient-to-br dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] rounded-lg p-6"
+        >
+          <h3 className="text-lg font-semibold text-foreground mb-6">Data Management</h3>
+          <div className="space-y-4">
+            <div>
+              <p className="text-sm text-muted-foreground mb-3">
+                Export all crawled threats from the database as a JSON file for backup or analysis.
+              </p>
+              <button
+                onClick={handleExportThreats}
+                disabled={isExporting}
+                className="flex items-center gap-2 px-6 py-3 bg-accent text-accent-foreground rounded-lg font-semibold hover:bg-accent/90 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300"
+              >
+                <Download className="w-5 h-5" />
+                {isExporting ? "Exporting..." : "Export All Threats"}
+              </button>
+              {exportError && (
+                <p className="text-sm text-destructive mt-2">{exportError}</p>
+              )}
+            </div>
           </div>
         </motion.div>
 

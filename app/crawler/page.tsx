@@ -113,6 +113,9 @@ export default function CrawlerPage() {
   const [customSite, setCustomSite] = useState("")
   const [customThreat, setCustomThreat] = useState("")
   const [showCustomForm, setShowCustomForm] = useState(false)
+  const [timeRange, setTimeRange] = useState<"1month" | "3months" | "6months" | "12months" | "custom">("6months")
+  const [customStartDate, setCustomStartDate] = useState("")
+  const [customEndDate, setCustomEndDate] = useState("")
   const [abortController, setAbortController] = useState<AbortController | null>(null)
 
   const logPlaybackRef = useRef<NodeJS.Timeout | null>(null)
@@ -153,8 +156,10 @@ export default function CrawlerPage() {
 
       let index = 0
       logPlaybackRef.current = setInterval(() => {
-        setLogs((prev) => [...prev, logEntries[index]])
-        index += 1
+        if (index < logEntries.length && logEntries[index]) {
+          setLogs((prev) => [...prev, logEntries[index]])
+          index += 1
+        }
         if (index >= logEntries.length) {
           stopLogPlayback()
           setIsPlayback(false)
@@ -179,7 +184,33 @@ export default function CrawlerPage() {
     stopLogPlayback()
 
     try {
-      const result = await startCrawler(controller.signal)
+      // Calculate date range based on selection
+      let startDate: string | undefined = undefined
+      let endDate: string | undefined = undefined
+      
+      if (timeRange === "custom") {
+        if (!customStartDate || !customEndDate) {
+          setError("Please select both start and end dates for custom range")
+          setIsRunning(false)
+          return
+        }
+        if (new Date(customStartDate) > new Date(customEndDate)) {
+          setError("Start date must be before end date")
+          setIsRunning(false)
+          return
+        }
+        startDate = customStartDate
+        endDate = customEndDate
+      } else {
+        const end = new Date()
+        const start = new Date()
+        const months = timeRange === "1month" ? 1 : timeRange === "3months" ? 3 : timeRange === "6months" ? 6 : 12
+        start.setMonth(start.getMonth() - months)
+        startDate = start.toISOString().split('T')[0]
+        endDate = end.toISOString().split('T')[0]
+      }
+      
+      const result = await startCrawler(controller.signal, startDate, endDate)
       handleCrawlerResult(result)
     } catch (err) {
       if ((err as DOMException)?.name === "AbortError") {
@@ -248,8 +279,10 @@ export default function CrawlerPage() {
       let index = 0
       stopLogPlayback()
       logPlaybackRef.current = setInterval(() => {
-        setLogs((prev) => [...prev, mockLogs[index]])
-        index += 1
+        if (index < mockLogs.length && mockLogs[index]) {
+          setLogs((prev) => [...prev, mockLogs[index]])
+          index += 1
+        }
         if (index >= mockLogs.length) {
           stopLogPlayback()
           setIsPlayback(false)
@@ -283,40 +316,127 @@ export default function CrawlerPage() {
         <div
           className="backdrop-blur-md border border-border bg-card dark:bg-gradient-to-br dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] rounded-lg p-6"
         >
-          <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-            <div>
-              <h3 className="text-lg font-semibold text-foreground mb-2">Crawler Status</h3>
-              <p className="text-muted-foreground">
-                {isRunning
-                  ? "Crawler request in progress..."
-                  : isPlayback
-                    ? "Streaming log output..."
-                    : lastRunAt
-                      ? `Last run at ${lastRunAt.toLocaleTimeString()}`
-                      : "Crawler is idle"}
-              </p>
-            </div>
-            <div className="flex items-center gap-3">
-              <button
-                onClick={handleStartCrawler}
-                disabled={isBusy}
-                className={`flex items-center gap-2 px-6 py-3 rounded-lg font-semibold transition-all duration-300 ${
-                  isBusy
-                    ? "bg-muted/20 text-muted cursor-not-allowed"
-                    : "bg-primary text-white hover:bg-cyan-500 hover:shadow-lg hover:shadow-cyan-500/30"
-                }`}
-              >
-                <Play className="w-5 h-5" />
-                {isBusy ? "Running..." : "Start Crawler"}
-              </button>
-              {isBusy && (
+          <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+              <div>
+                <h3 className="text-lg font-semibold text-foreground mb-2">Crawler Status</h3>
+                <p className="text-muted-foreground">
+                  {isRunning
+                    ? "Crawler request in progress..."
+                    : isPlayback
+                      ? "Streaming log output..."
+                      : lastRunAt
+                        ? `Last run at ${lastRunAt.toLocaleTimeString()}`
+                        : "Crawler is idle"}
+                </p>
+              </div>
+              <div className="flex items-center gap-3">
                 <button
-                  onClick={handleStopCrawler}
-                  className="flex items-center gap-2 px-4 py-2 rounded-lg border border-destructive/40 bg-destructive/10 text-destructive font-semibold hover:bg-destructive/20 transition-colors"
+                  onClick={handleStartCrawler}
+                  disabled={isBusy}
+                  className={`flex items-center gap-2 px-6 py-3 rounded-lg font-semibold transition-all duration-300 ${
+                    isBusy
+                      ? "bg-muted/20 text-muted cursor-not-allowed"
+                      : "bg-primary text-white hover:bg-cyan-500 hover:shadow-lg hover:shadow-cyan-500/30"
+                  }`}
                 >
-                  <X className="w-4 h-4" />
-                  Stop
+                  <Play className="w-5 h-5" />
+                  {isBusy ? "Running..." : "Start Crawler"}
                 </button>
+                {isBusy && (
+                  <button
+                    onClick={handleStopCrawler}
+                    className="flex items-center gap-2 px-4 py-2 rounded-lg border border-destructive/40 bg-destructive/10 text-destructive font-semibold hover:bg-destructive/20 transition-colors"
+                  >
+                    <X className="w-4 h-4" />
+                    Stop
+                  </button>
+                )}
+              </div>
+            </div>
+            
+            {/* Time Range Selector */}
+            <div className="border-t border-border pt-4 mt-4">
+              <label className="block text-sm font-medium text-foreground mb-3">Time Range</label>
+              <div className="flex flex-wrap gap-3">
+                <button
+                  type="button"
+                  onClick={() => setTimeRange("1month")}
+                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                    timeRange === "1month"
+                      ? "bg-primary text-white"
+                      : "bg-accent/10 text-foreground hover:bg-accent/20"
+                  }`}
+                >
+                  1 Month
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setTimeRange("3months")}
+                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                    timeRange === "3months"
+                      ? "bg-primary text-white"
+                      : "bg-accent/10 text-foreground hover:bg-accent/20"
+                  }`}
+                >
+                  3 Months
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setTimeRange("6months")}
+                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                    timeRange === "6months"
+                      ? "bg-primary text-white"
+                      : "bg-accent/10 text-foreground hover:bg-accent/20"
+                  }`}
+                >
+                  6 Months
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setTimeRange("12months")}
+                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                    timeRange === "12months"
+                      ? "bg-primary text-white"
+                      : "bg-accent/10 text-foreground hover:bg-accent/20"
+                  }`}
+                >
+                  12 Months
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setTimeRange("custom")}
+                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                    timeRange === "custom"
+                      ? "bg-primary text-white"
+                      : "bg-accent/10 text-foreground hover:bg-accent/20"
+                  }`}
+                >
+                  Custom Range
+                </button>
+              </div>
+              
+              {timeRange === "custom" && (
+                <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium text-foreground mb-2">Start Date</label>
+                    <input
+                      type="date"
+                      value={customStartDate}
+                      onChange={(e) => setCustomStartDate(e.target.value)}
+                      className="w-full px-4 py-2 rounded-lg bg-input border border-border text-foreground focus:outline-none focus:ring-2 focus:ring-primary transition-all"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-foreground mb-2">End Date</label>
+                    <input
+                      type="date"
+                      value={customEndDate}
+                      onChange={(e) => setCustomEndDate(e.target.value)}
+                      className="w-full px-4 py-2 rounded-lg bg-input border border-border text-foreground focus:outline-none focus:ring-2 focus:ring-primary transition-all"
+                    />
+                  </div>
+                </div>
               )}
             </div>
           </div>

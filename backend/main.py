@@ -237,6 +237,44 @@ async def search(q: str):
         return {"results": []}
 
 
+@app.get("/api/threats/export")
+async def export_all_threats():
+    """Export all crawled threats from database as JSON."""
+    try:
+        from data_layer.neo4j_connector import export_all_threats_api
+        from fastapi.responses import Response
+        import json
+        
+        threats = export_all_threats_api()
+        
+        # Create export metadata
+        export_data = {
+            "export_date": dt.datetime.utcnow().isoformat() + "Z",
+            "total_threats": len(threats),
+            "version": "1.0",
+            "threats": threats
+        }
+        
+        # Convert to JSON string
+        json_content = json.dumps(export_data, indent=2, ensure_ascii=False)
+        
+        # Generate filename with timestamp
+        filename = f"threats_export_{dt.datetime.utcnow().strftime('%Y%m%d_%H%M%S')}.json"
+        
+        return Response(
+            content=json_content,
+            media_type="application/json",
+            headers={
+                "Content-Disposition": f'attachment; filename="{filename}"'
+            }
+        )
+    except Exception as e:
+        logger.error("Export failed: %s", e)
+        import traceback
+        logger.error(traceback.format_exc())
+        raise HTTPException(status_code=500, detail=f"Failed to export threats: {str(e)}")
+
+
 @app.get("/api/charts/trend")
 async def get_trend_data(days: int = 10, startDate: str = None, endDate: str = None):
     """Get threat trend data for the last N days or custom date range
@@ -601,14 +639,18 @@ async def get_source_data():
             if node.node_type in ['CVE', 'ThreatIntelligence', 'Campaign', 'actor', 'malware']:
                 source = node.properties.get('source', 'Unknown')
                 # Normalize source names for better display
-                if source == 'nvd':
-                    source = 'NVD (CVE Database)'
-                elif source == 'cisa_kev':
-                    source = 'CISA KEV'
-                elif source == 'reddit_netsec':
-                    source = 'Reddit /r/netsec'
-                elif source == 'Threat Database':
-                    source = 'Other Sources'
+                source_map = {
+                    'nvd': 'NVD (CVE Database)',
+                    'cisa_kev': 'CISA KEV',
+                    'reddit_netsec': 'Reddit /r/netsec',
+                    'github_advisories': 'GitHub Security',
+                    'abuse_ch_urlhaus': 'Abuse.ch URLhaus',
+                    'abuse_ch_threatfox': 'Abuse.ch ThreatFox',
+                    'exploit_db': 'Exploit-DB',
+                    'malwarebazaar': 'MalwareBazaar',
+                    'Threat Database': 'Other Sources'
+                }
+                source = source_map.get(source, source.title().replace('_', ' '))
                 
                 source_counts[source] = source_counts.get(source, 0) + 1
         

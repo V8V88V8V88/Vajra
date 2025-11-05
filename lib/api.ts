@@ -311,10 +311,18 @@ export async function getStats(): Promise<ThreatStats> {
   }
 }
 
-export async function startCrawler(signal?: AbortSignal): Promise<CrawlerResult> {
+export async function startCrawler(signal?: AbortSignal, startDate?: string, endDate?: string): Promise<CrawlerResult> {
   try {
+    const body: any = {}
+    if (startDate) body.startDate = startDate
+    if (endDate) body.endDate = endDate
+    
     const response = await fetch(`${API_BASE_URL}/api/crawler/start`, {
       method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: Object.keys(body).length > 0 ? JSON.stringify(body) : undefined,
       signal
     })
     if (!response.ok) throw new Error('API request failed')
@@ -527,9 +535,13 @@ export async function getHealthStatus() {
 }
 
 // Chart data API functions
-export async function getTrendData(days: number = 10): Promise<TrendDataPoint[]> {
+export async function getTrendData(days: number = 10, startDate?: string, endDate?: string): Promise<TrendDataPoint[]> {
   try {
-    const response = await fetch(`${API_BASE_URL}/api/charts/trend?days=${days}`)
+    let url = `${API_BASE_URL}/api/charts/trend?days=${days}`
+    if (startDate && endDate) {
+      url += `&startDate=${encodeURIComponent(startDate)}&endDate=${encodeURIComponent(endDate)}`
+    }
+    const response = await fetch(url)
     if (!response.ok) throw new Error('Failed to fetch trend data')
     const data = await response.json()
     return data.data || []
@@ -561,5 +573,36 @@ export async function getSourceData(): Promise<SourceDataPoint[]> {
     console.error('Failed to fetch source data from API:', error)
     // Return empty array instead of mock data - let backend handle fallback
     return []
+  }
+}
+
+export async function exportAllThreats(): Promise<void> {
+  try {
+    const response = await fetch(`${API_BASE_URL}/api/threats/export`)
+    if (!response.ok) throw new Error('Failed to export threats')
+    
+    // Get filename from Content-Disposition header or use default
+    const contentDisposition = response.headers.get('Content-Disposition')
+    let filename = `threats_export_${new Date().toISOString().slice(0, 10)}.json`
+    if (contentDisposition) {
+      const filenameMatch = contentDisposition.match(/filename="(.+)"/)
+      if (filenameMatch) {
+        filename = filenameMatch[1]
+      }
+    }
+    
+    // Download the JSON file
+    const blob = await response.blob()
+    const url = window.URL.createObjectURL(blob)
+    const a = document.createElement('a')
+    a.href = url
+    a.download = filename
+    document.body.appendChild(a)
+    a.click()
+    window.URL.revokeObjectURL(url)
+    document.body.removeChild(a)
+  } catch (error) {
+    console.error('Failed to export threats:', error)
+    throw error
   }
 }

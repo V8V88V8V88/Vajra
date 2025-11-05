@@ -2,8 +2,10 @@
 
 import logging
 from typing import List, Dict, Any, Optional, Tuple
-from dataclasses import dataclass
+from dataclasses import dataclass, asdict
 import json
+import os
+from pathlib import Path
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
@@ -33,9 +35,13 @@ class ThreatRelationship:
 
 
 class Neo4jConnector:
+    # Persistent storage file path
+    PERSISTENCE_FILE = Path(__file__).parent.parent / "data" / "threats_persistent.json"
+    
     def __init__(self, uri: str = "bolt://localhost:7687", 
                  user: str = "neo4j", 
-                 password: str = "password"):
+                 password: str = "password",
+                 persistence_file: Optional[Path] = None):
         self.uri = uri
         self.user = user
         self.password = password
@@ -44,6 +50,9 @@ class Neo4jConnector:
         
         self.nodes: Dict[str, ThreatNode] = {}
         self.relationships: List[ThreatRelationship] = []
+        
+        # Set persistence file path
+        self.persistence_file = persistence_file or self.PERSISTENCE_FILE
         
         if NEO4J_AVAILABLE:
             try:
@@ -54,6 +63,10 @@ class Neo4jConnector:
         else:
             logger.info("Neo4j driver not available. Using simulation mode.")
             self.simulation_mode = True
+        
+        # Load persistent data if in simulation mode and file exists
+        if self.simulation_mode:
+            self._load_persistent_data()
             
     def _connect(self) -> None:
         try:
@@ -73,6 +86,81 @@ class Neo4jConnector:
             self.driver.close()
             self.connected = False
             logger.info("Neo4j connection closed")
+        
+        # Save persistent data if in simulation mode
+        if self.simulation_mode:
+            self._save_persistent_data()
+    
+    def _save_persistent_data(self) -> None:
+        """Save nodes and relationships to JSON file for persistence."""
+        try:
+            # Ensure directory exists
+            self.persistence_file.parent.mkdir(parents=True, exist_ok=True)
+            
+            # Serialize nodes and relationships
+            data = {
+                "nodes": [
+                    {
+                        "node_id": node.node_id,
+                        "node_type": node.node_type,
+                        "properties": node.properties
+                    }
+                    for node in self.nodes.values()
+                ],
+                "relationships": [
+                    {
+                        "source_id": rel.source_id,
+                        "target_id": rel.target_id,
+                        "relationship_type": rel.relationship_type,
+                        "properties": rel.properties
+                    }
+                    for rel in self.relationships
+                ]
+            }
+            
+            # Write to file atomically
+            temp_file = self.persistence_file.with_suffix('.tmp')
+            with open(temp_file, 'w', encoding='utf-8') as f:
+                json.dump(data, f, indent=2, ensure_ascii=False)
+            
+            # Atomic rename
+            temp_file.replace(self.persistence_file)
+            logger.debug(f"Saved {len(self.nodes)} nodes and {len(self.relationships)} relationships to {self.persistence_file}")
+        except Exception as e:
+            logger.error(f"Failed to save persistent data: {e}")
+    
+    def _load_persistent_data(self) -> None:
+        """Load nodes and relationships from JSON file."""
+        if not self.persistence_file.exists():
+            logger.debug(f"Persistence file not found at {self.persistence_file}, starting with empty database")
+            return
+        
+        try:
+            with open(self.persistence_file, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+            
+            # Load nodes
+            for node_data in data.get("nodes", []):
+                node = ThreatNode(
+                    node_id=node_data["node_id"],
+                    node_type=node_data["node_type"],
+                    properties=node_data.get("properties", {})
+                )
+                self.nodes[node.node_id] = node
+            
+            # Load relationships
+            for rel_data in data.get("relationships", []):
+                rel = ThreatRelationship(
+                    source_id=rel_data["source_id"],
+                    target_id=rel_data["target_id"],
+                    relationship_type=rel_data["relationship_type"],
+                    properties=rel_data.get("properties", {})
+                )
+                self.relationships.append(rel)
+            
+            logger.info(f"Loaded {len(self.nodes)} nodes and {len(self.relationships)} relationships from {self.persistence_file}")
+        except Exception as e:
+            logger.error(f"Failed to load persistent data: {e}")
             
     def create_node(self, node: ThreatNode) -> bool:
         """
@@ -342,6 +430,10 @@ class Neo4jConnector:
         if self.simulation_mode:
             self.nodes.clear()
             self.relationships.clear()
+            # Clear persistence file too
+            if self.persistence_file.exists():
+                self.persistence_file.unlink()
+                logger.info("Cleared persistence file")
             logger.info("Cleared simulation database")
             return True
             
@@ -507,27 +599,30 @@ def query_threats_api(page: int = 1, limit: int = 10) -> tuple:
     """Query threats with pagination for API."""
     connector = Neo4jConnector()
     
-    # Get all actor and malware nodes (threats)
+    # Get all threat nodes (actors, malware, campaigns, CVEs, threat intelligence)
     threats = []
     threat_nodes = [n for n in connector.nodes.values() 
-                   if n.node_type in ['actor', 'malware', 'campaign']]
+                   if n.node_type in ['actor', 'malware', 'campaign', 'CVE', 'ThreatIntelligence']]
     
     total = len(threat_nodes)
     start = (page - 1) * limit
     end = start + limit
     
     for node in threat_nodes[start:end]:
+        # Get description/summary from properties
+        description = node.properties.get('description', node.properties.get('summary', 'Threat entity'))
+        
         threats.append({
             "id": node.node_id,
             "title": node.properties.get('name', node.node_id),
             "severity": node.properties.get('severity', 'medium'),
             "timestamp": node.properties.get('discovered', None),
-            "summary": node.properties.get('description', 'Threat entity'),
-            "description": f"Threat type: {node.node_type}",
-            "source": "Neo4j Graph Database",
-            "indicators": [node.node_id],
-            "affectedSystems": [],
-            "recommendation": "Monitor and investigate"
+            "summary": description,
+            "description": description if len(description) > 50 else f"Threat type: {node.node_type}. {description}",
+            "source": node.properties.get('source', 'Threat Database'),
+            "indicators": node.properties.get('indicators', [node.node_id]),
+            "affectedSystems": node.properties.get('affectedSystems', []),
+            "recommendation": node.properties.get('recommendation', 'Monitor and investigate')
         })
     
     connector.close()
@@ -565,15 +660,107 @@ def search_threats_api(query: str) -> List[Dict]:
     connector = Neo4jConnector()
     
     results = []
+    query_lower = query.lower()
+    
     for node in connector.nodes.values():
+        # Search in node ID, name, description, and all properties
+        node_id_lower = node.node_id.lower()
+        name_lower = node.properties.get('name', '').lower()
+        description_lower = node.properties.get('description', '').lower()
         node_str = json.dumps(node.properties).lower()
-        if query.lower() in node_str or query.lower() in node.node_id.lower():
-            results.append({
+        
+        if (query_lower in node_id_lower or 
+            query_lower in name_lower or 
+            query_lower in description_lower or
+            query_lower in node_str):
+            
+            # Format result to match Threat interface
+            result = {
                 "id": node.node_id,
                 "title": node.properties.get('name', node.node_id),
-                "severity": node.properties.get('severity', 'low'),
-                "type": node.node_type
-            })
+                "severity": node.properties.get('severity', 'medium'),
+                "type": node.node_type,
+                "summary": node.properties.get('description', node.properties.get('summary', 'Threat entity')),
+                "description": node.properties.get('description', f"Threat type: {node.node_type}. ID: {node.node_id}"),
+                "source": node.properties.get('source', 'Threat Database'),
+                "timestamp": node.properties.get('discovered', None),
+            }
+            results.append(result)
     
     connector.close()
     return results
+
+
+def store_crawler_records(records: List[Dict]) -> int:
+    """Store crawler records as threat nodes in Neo4j.
+    
+    Args:
+        records: List of crawler record dictionaries
+        
+    Returns:
+        Number of NEW records stored (excluding duplicates)
+    """
+    connector = Neo4jConnector()
+    new_count = 0
+    updated_count = 0
+    
+    # Batch create/update nodes
+    for record in records:
+        # Determine node type based on source
+        node_type = "Campaign"  # Default
+        if record.get("source") == "nvd" or record.get("source") == "cisa_kev":
+            node_type = "CVE"
+        elif record.get("source") == "reddit_netsec":
+            node_type = "ThreatIntelligence"
+        
+        # Create unique node ID
+        node_id = f"{record.get('source', 'unknown')}:{record.get('id', 'unknown')}"
+        
+        # Check if node already exists
+        existing_node = connector.get_node(node_id)
+        is_new = existing_node is None
+        
+        # Map severity string to standardized severity
+        severity_raw = record.get("severity", "").upper() if record.get("severity") else ""
+        severity = "low"
+        if "CRITICAL" in severity_raw:
+            severity = "critical"
+        elif "HIGH" in severity_raw:
+            severity = "high"
+        elif "MEDIUM" in severity_raw:
+            severity = "medium"
+        
+        # Create threat node
+        node = ThreatNode(
+            node_id=node_id,
+            node_type=node_type,
+            properties={
+                "name": record.get("title", record.get("id", "Unknown")),
+                "description": record.get("summary", ""),
+                "severity": severity,
+                "discovered": record.get("published"),
+                "source": record.get("source", "unknown"),
+                "url": record.get("url", ""),
+                "status": record.get("status"),
+                **record.get("metadata", {})
+            }
+        )
+        
+        # Store/update node
+        if connector.create_node(node):
+            if is_new:
+                new_count += 1
+            else:
+                updated_count += 1
+    
+    # Save all records at once after batch creation
+    if connector.simulation_mode:
+        connector._save_persistent_data()
+    
+    connector.close()
+    
+    # Log for debugging
+    logger.info(f"Stored {new_count} new records, updated {updated_count} existing records")
+    
+    # Return only new count for stats
+    return new_count

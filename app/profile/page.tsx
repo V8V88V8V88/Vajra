@@ -1,15 +1,16 @@
 "use client"
 
-import { useState, useEffect } from "react"
-import { UserCircle, Mail, Save, Edit2, X } from "lucide-react"
+import { useState, useEffect, useRef } from "react"
+import { UserCircle, Mail, Save, Edit2, X, Upload } from "lucide-react"
 import { motion } from "framer-motion"
-import { Avatar, AvatarFallback } from "@/components/ui/avatar"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
 interface UserProfile {
   name: string
   email: string
   role: string
   joinedDate: string
+  avatarUrl?: string
 }
 
 // Helper function to create default profile (without calling Date methods)
@@ -40,6 +41,8 @@ export default function ProfilePage() {
   const [isEditing, setIsEditing] = useState(false)
   const [saved, setSaved] = useState(false)
   const [isMounted, setIsMounted] = useState(false)
+  const [avatarPreview, setAvatarPreview] = useState<string | null>(null)
+  const fileInputRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
     // Only load from localStorage after component mounts (client-side only)
@@ -51,6 +54,10 @@ export default function ProfilePage() {
         stored.joinedDate = new Date().toLocaleDateString()
       }
       setProfile(stored)
+      // Load avatar preview if exists
+      if (stored.avatarUrl) {
+        setAvatarPreview(stored.avatarUrl)
+      }
     } else {
       // Set joinedDate for default profile
       setProfile((prev) => ({
@@ -59,6 +66,39 @@ export default function ProfilePage() {
       }))
     }
   }, [])
+
+  const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0]
+    if (file) {
+      // Validate file type
+      if (!file.type.startsWith("image/")) {
+        alert("Please select an image file")
+        return
+      }
+      
+      // Validate file size (max 5MB)
+      if (file.size > 5 * 1024 * 1024) {
+        alert("Image size must be less than 5MB")
+        return
+      }
+
+      // Create preview URL
+      const reader = new FileReader()
+      reader.onloadend = () => {
+        const result = reader.result as string
+        setAvatarPreview(result)
+        setProfile((prev) => ({
+          ...prev,
+          avatarUrl: result,
+        }))
+      }
+      reader.readAsDataURL(file)
+    }
+  }
+
+  const handleChangePictureClick = () => {
+    fileInputRef.current?.click()
+  }
 
   const handleSave = () => {
     if (typeof window !== "undefined") {
@@ -175,24 +215,37 @@ export default function ProfilePage() {
           <h3 className="text-lg font-semibold text-foreground mb-4">Profile Picture</h3>
           <div className="flex items-center gap-6">
             <Avatar className="w-24 h-24">
+              {avatarPreview || profile.avatarUrl ? (
+                <AvatarImage src={avatarPreview || profile.avatarUrl} alt="Profile" />
+              ) : null}
               <AvatarFallback className="bg-primary/20 text-primary text-2xl">
                 {initials}
               </AvatarFallback>
             </Avatar>
             <div>
               <p className="text-sm text-foreground/60 mb-2">
-                Avatar displays your initials
+                {avatarPreview || profile.avatarUrl
+                  ? "Click to change your profile picture"
+                  : "Avatar displays your initials"}
               </p>
               {isEditing && (
-                <button
-                  className="text-sm text-primary hover:underline"
-                  onClick={() => {
-                    // TODO: Implement image upload
-                    console.log("Upload image")
-                  }}
-                >
-                  Change Picture
-                </button>
+                <>
+                  <input
+                    ref={fileInputRef}
+                    type="file"
+                    accept="image/*"
+                    onChange={handleImageChange}
+                    className="hidden"
+                  />
+                  <button
+                    type="button"
+                    onClick={handleChangePictureClick}
+                    className="flex items-center gap-2 text-sm text-primary hover:underline transition-colors"
+                  >
+                    <Upload className="w-4 h-4" />
+                    Change Picture
+                  </button>
+                </>
               )}
             </div>
           </div>

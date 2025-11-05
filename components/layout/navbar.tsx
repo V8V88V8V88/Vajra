@@ -179,35 +179,42 @@ export function Navbar() {
   return (
     <nav 
       style={{
-        background: "linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(8, 16, 30, 0.98) 100%)",
-        borderColor: "rgba(30, 58, 138, 0.3)"
+        background: "rgba(15, 23, 42, 0.6)",
+        backdropFilter: "blur(12px)",
+        WebkitBackdropFilter: "blur(12px)",
+        borderColor: "rgba(59, 130, 246, 0.1)",
+        boxShadow: "0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)",
       }}
-      className="border-b backdrop-blur-md px-6 py-4 flex items-center justify-between"
+      className="border-b px-4 py-2 flex items-center justify-between h-14"
     >
-      <div className="flex items-center gap-3 transition-smooth">
-        <Image
-          src="/VajraLogo.png"
-          alt="Vajra Logo"
-          width={32}
-          height={32}
-          className="rounded-lg"
-        />
-        <h1 className="text-xl font-bold text-foreground">Vajra</h1>
+      <div className="flex items-center gap-2.5">
+        <div className="relative group">
+          <Image
+            src="/VajraLogo.png"
+            alt="Vajra Logo"
+            width={24}
+            height={24}
+            className="rounded-md transition-transform duration-200 group-hover:scale-110"
+          />
+        </div>
+        <div className="h-4 w-px bg-slate-700/50" />
+        <span className="text-base font-bold text-foreground tracking-tight">Vajra</span>
       </div>
 
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-1.5">
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <button 
-              className="relative p-2 hover:bg-slate-800/40 rounded-lg transition-smooth text-foreground/70 hover:text-foreground"
+              className="relative p-1.5 hover:bg-slate-800/50 rounded-md transition-all duration-200 text-foreground/60 hover:text-foreground hover:scale-105 active:scale-95"
               title="Notifications"
             >
-              <Bell className="w-5 h-5" />
+              <Bell className="w-4 h-4" />
               {unreadCount > 0 && (
                 <span
-                  className="absolute -top-1 -right-1 flex items-center justify-center w-5 h-5 text-xs font-bold text-white rounded-full"
+                  className="absolute -top-0.5 -right-0.5 flex items-center justify-center min-w-[16px] h-4 px-1 text-[10px] font-bold text-white rounded-full animate-pulse"
                   style={{
                     backgroundColor: "rgb(239, 68, 68)",
+                    boxShadow: "0 0 8px rgba(239, 68, 68, 0.6)",
                   }}
                 >
                   {unreadCount > 9 ? "9+" : unreadCount}
@@ -318,24 +325,26 @@ export function Navbar() {
         
         <button 
           onClick={() => setSettingsOpen(true)}
-          className="p-2 hover:bg-slate-800/40 rounded-lg transition-smooth text-foreground/70 hover:text-foreground"
+          className="p-1.5 hover:bg-slate-800/50 rounded-md transition-all duration-200 text-foreground/60 hover:text-foreground hover:scale-105 active:scale-95"
           title="Settings"
         >
-          <Settings className="w-5 h-5" />
+          <Settings className="w-4 h-4" />
         </button>
+
+        <div className="h-5 w-px bg-slate-700/50 mx-1" />
 
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <button className="flex items-center gap-2 p-2 hover:bg-slate-800/40 rounded-lg transition-smooth text-foreground/70 hover:text-foreground">
-              <Avatar className="w-6 h-6">
+            <button className="flex items-center gap-1.5 p-1 pr-1.5 hover:bg-slate-800/50 rounded-md transition-all duration-200 text-foreground/60 hover:text-foreground hover:scale-105 active:scale-95 group">
+              <Avatar className="w-7 h-7 ring-2 ring-slate-700/50 group-hover:ring-primary/50 transition-all duration-200">
                 {user.avatarUrl && (
                   <AvatarImage src={user.avatarUrl} alt={user.name} />
                 )}
-                <AvatarFallback className="bg-primary/20 text-primary text-xs">
+                <AvatarFallback className="bg-gradient-to-br from-primary/30 to-primary/10 text-primary text-[10px] font-semibold">
                   {user.initials}
                 </AvatarFallback>
               </Avatar>
-              <ChevronDown className="w-4 h-4" />
+              <ChevronDown className="w-3 h-3 opacity-60 group-hover:opacity-100 transition-opacity" />
             </button>
           </DropdownMenuTrigger>
           <DropdownMenuContent 

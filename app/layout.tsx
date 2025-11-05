@@ -31,7 +31,13 @@ export default function RootLayout({
         <QueryProvider>
           <div className="flex h-screen overflow-hidden">
             <Sidebar />
-            <div className="flex-1 flex flex-col overflow-hidden">
+            <div 
+              className="flex-1 flex flex-col overflow-hidden"
+              style={{
+                transition: "margin-left 150ms cubic-bezier(0.4, 0, 0.2, 1)",
+                willChange: "margin-left"
+              }}
+            >
               <Navbar />
               <main className="flex-1 overflow-auto">{children}</main>
             </div>

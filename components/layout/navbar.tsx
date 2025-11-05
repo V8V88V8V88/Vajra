@@ -20,7 +20,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog"
-import { Avatar, AvatarFallback } from "@/components/ui/avatar"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
 interface Notification {
   id: string
@@ -72,10 +72,11 @@ export function Navbar() {
     name: "User",
     email: "user@example.com",
     initials: "U",
+    avatarUrl: undefined as string | undefined,
   })
 
-  // Load user data from localStorage after mount to avoid hydration mismatch
-  useEffect(() => {
+  // Helper function to load user data from localStorage
+  const loadUserData = () => {
     if (typeof window !== "undefined") {
       try {
         const stored = localStorage.getItem("user-profile")
@@ -93,12 +94,38 @@ export function Navbar() {
             name: profile.name || "User",
             email: profile.email || "user@example.com",
             initials: initials || "U",
+            avatarUrl: profile.avatarUrl,
           })
         }
       } catch (error) {
         // Keep default user if there's an error
         console.error("Error loading user from localStorage:", error)
       }
+    }
+  }
+
+  // Load user data from localStorage after mount to avoid hydration mismatch
+  useEffect(() => {
+    loadUserData()
+
+    // Listen for storage changes (when profile is updated in another tab/window)
+    const handleStorageChange = (e: StorageEvent) => {
+      if (e.key === "user-profile") {
+        loadUserData()
+      }
+    }
+
+    // Listen for custom storage event (for same-tab updates)
+    const handleCustomStorageChange = () => {
+      loadUserData()
+    }
+
+    window.addEventListener("storage", handleStorageChange)
+    window.addEventListener("user-profile-updated", handleCustomStorageChange)
+
+    return () => {
+      window.removeEventListener("storage", handleStorageChange)
+      window.removeEventListener("user-profile-updated", handleCustomStorageChange)
     }
   }, [])
 
@@ -301,6 +328,9 @@ export function Navbar() {
           <DropdownMenuTrigger asChild>
             <button className="flex items-center gap-2 p-2 hover:bg-slate-800/40 rounded-lg transition-smooth text-foreground/70 hover:text-foreground">
               <Avatar className="w-6 h-6">
+                {user.avatarUrl && (
+                  <AvatarImage src={user.avatarUrl} alt={user.name} />
+                )}
                 <AvatarFallback className="bg-primary/20 text-primary text-xs">
                   {user.initials}
                 </AvatarFallback>

@@ -104,6 +104,8 @@ export default function ProfilePage() {
     if (typeof window !== "undefined") {
       try {
         localStorage.setItem("user-profile", JSON.stringify(profile))
+        // Dispatch custom event to notify navbar and other components
+        window.dispatchEvent(new Event("user-profile-updated"))
         setSaved(true)
         setIsEditing(false)
         setTimeout(() => setSaved(false), 2000)

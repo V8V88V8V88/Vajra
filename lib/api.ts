@@ -13,6 +13,13 @@ export interface Threat {
   indicators: string[]
   affectedSystems: string[]
   recommendation: string
+  // AI analysis fields (optional)
+  ai_risk_score?: number
+  ai_sentiment?: string
+  is_anomaly?: boolean
+  anomaly_score?: number
+  anomaly_explanation?: string
+  ai_analysis?: Record<string, any>
 }
 
 export interface ThreatStats {
@@ -260,7 +267,14 @@ export async function getThreats(page = 1, limit = 10): Promise<{ threats: Threa
         source: t.source || 'Threat Database',
         indicators: t.indicators || [t.id],
         affectedSystems: t.affectedSystems || [],
-        recommendation: t.recommendation || 'Monitor and investigate'
+        recommendation: t.recommendation || 'Monitor and investigate',
+        // Include AI analysis fields if available
+        ai_risk_score: t.ai_risk_score,
+        ai_sentiment: t.ai_sentiment,
+        is_anomaly: t.is_anomaly,
+        anomaly_score: t.anomaly_score,
+        anomaly_explanation: t.anomaly_explanation,
+        ai_analysis: t.ai_analysis
       }
     })
     
@@ -276,17 +290,40 @@ export async function getThreatById(id: string): Promise<Threat | null> {
     const response = await fetch(`${API_BASE_URL}/api/threats/${id}`)
     if (!response.ok) throw new Error('API request failed')
     const data = await response.json()
+    
+    // Handle timestamp safely
+    let timestamp: Date
+    try {
+      if (data.timestamp) {
+        timestamp = new Date(data.timestamp)
+        if (isNaN(timestamp.getTime())) {
+          timestamp = new Date()
+        }
+      } else {
+        timestamp = new Date()
+      }
+    } catch {
+      timestamp = new Date()
+    }
+    
     return {
       id: data.id,
       title: data.title,
       severity: data.severity,
-      timestamp: new Date(data.timestamp),
+      timestamp: timestamp,
       summary: data.summary,
       description: data.description,
       source: data.source,
       indicators: data.indicators || [],
       affectedSystems: data.affectedSystems || [],
-      recommendation: data.recommendation
+      recommendation: data.recommendation,
+      // Include AI analysis fields if available
+      ai_risk_score: data.ai_risk_score,
+      ai_sentiment: data.ai_sentiment,
+      is_anomaly: data.is_anomaly,
+      anomaly_score: data.anomaly_score,
+      anomaly_explanation: data.anomaly_explanation,
+      ai_analysis: data.ai_analysis
     }
   } catch (error) {
     console.error('Failed to fetch threat details:', error)
@@ -427,7 +464,14 @@ export async function searchThreats(query: string): Promise<Threat[]> {
           source: t.source || 'Threat Database',
           indicators: t.indicators || [t.id],
           affectedSystems: t.affectedSystems || [],
-          recommendation: t.recommendation || 'Monitor and investigate'
+          recommendation: t.recommendation || 'Monitor and investigate',
+          // Include AI analysis fields if available
+          ai_risk_score: t.ai_risk_score,
+          ai_sentiment: t.ai_sentiment,
+          is_anomaly: t.is_anomaly,
+          anomaly_score: t.anomaly_score,
+          anomaly_explanation: t.anomaly_explanation,
+          ai_analysis: t.ai_analysis
         }
       })
       console.log('[searchThreats] Mapped results:', mapped)
@@ -576,6 +620,22 @@ export async function getSourceData(): Promise<SourceDataPoint[]> {
   }
 }
 
+export async function getAIForecast(): Promise<{
+  status: string
+  forecast: Array<{date: string, predicted_value: number}>
+  trend: string
+  risk_level?: string
+}> {
+  try {
+    const response = await fetch(`${API_BASE_URL}/api/ai/forecast`)
+    if (!response.ok) throw new Error('Failed to get AI forecast')
+    return await response.json()
+  } catch (error) {
+    console.error('Failed to get AI forecast:', error)
+    throw error
+  }
+}
+
 export async function exportAllThreats(): Promise<void> {
   try {
     const response = await fetch(`${API_BASE_URL}/api/threats/export`)
@@ -603,6 +663,31 @@ export async function exportAllThreats(): Promise<void> {
     document.body.removeChild(a)
   } catch (error) {
     console.error('Failed to export threats:', error)
+    throw error
+  }
+}
+
+export async function sendChatMessage(message: string): Promise<{
+  message: string
+  status: string
+}> {
+  try {
+    const response = await fetch(`${API_BASE_URL}/api/ai/chat`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ message }),
+    })
+    
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => ({ message: 'Failed to get AI response' }))
+      throw new Error(errorData.message || 'Failed to get AI response')
+    }
+    
+    return await response.json()
+  } catch (error) {
+    console.error('Failed to send chat message:', error)
     throw error
   }
 }

@@ -1,7 +1,7 @@
 "use client"
 
 import type { Threat } from "@/lib/api"
-import { AlertCircle, Clock, Tag } from "lucide-react"
+import { AlertCircle, Clock, Tag, Brain, AlertTriangle } from "lucide-react"
 
 interface ThreatCardProps {
   threat: Threat
@@ -66,6 +66,20 @@ export function ThreatCard({ threat, onClick }: ThreatCardProps) {
           <Tag className="w-4 h-4" />
           <span>{threat.source}</span>
         </div>
+        {threat.ai_risk_score !== undefined && (
+          <div className="flex items-center gap-2">
+            <Brain className="w-4 h-4 text-primary" />
+            <span className="text-primary font-medium">
+              AI Risk: {(threat.ai_risk_score * 100).toFixed(0)}%
+            </span>
+          </div>
+        )}
+        {threat.is_anomaly && (
+          <div className="flex items-center gap-2 px-2 py-1 rounded bg-yellow-500/10 border border-yellow-500/20">
+            <AlertTriangle className="w-4 h-4 text-yellow-500" />
+            <span className="text-yellow-500 font-semibold text-xs">ZERO-DAY</span>
+          </div>
+        )}
       </div>
     </button>
   )

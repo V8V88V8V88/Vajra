@@ -6,6 +6,7 @@ import { StatsCard } from "@/components/dashboard/stats-card"
 import { ThreatTrendChart } from "@/components/dashboard/threat-trend-chart"
 import { SeverityChart } from "@/components/dashboard/severity-chart"
 import { SourceChart } from "@/components/dashboard/source-chart"
+import { AIForecastChart } from "@/components/dashboard/ai-forecast-chart"
 import { AlertCircle, TrendingUp, Activity } from "lucide-react"
 
 export default function Dashboard() {
@@ -145,6 +146,11 @@ export default function Dashboard() {
       {/* Source Chart */}
       <div>
         <SourceChart data={sourceData} />
+      </div>
+
+      {/* AI Forecast Chart */}
+      <div>
+        <AIForecastChart />
       </div>
     </div>
   )

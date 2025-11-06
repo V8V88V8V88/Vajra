@@ -612,7 +612,7 @@ def query_threats_api(page: int = 1, limit: int = 10) -> tuple:
         # Get description/summary from properties
         description = node.properties.get('description', node.properties.get('summary', 'Threat entity'))
         
-        threats.append({
+        threat_obj = {
             "id": node.node_id,
             "title": node.properties.get('name', node.node_id),
             "severity": node.properties.get('severity', 'medium'),
@@ -623,7 +623,19 @@ def query_threats_api(page: int = 1, limit: int = 10) -> tuple:
             "indicators": node.properties.get('indicators', [node.node_id]),
             "affectedSystems": node.properties.get('affectedSystems', []),
             "recommendation": node.properties.get('recommendation', 'Monitor and investigate')
-        })
+        }
+        
+        # Add AI analysis data if available
+        if node.properties.get('ai_risk_score') is not None:
+            threat_obj["ai_risk_score"] = node.properties.get('ai_risk_score')
+        if node.properties.get('ai_sentiment'):
+            threat_obj["ai_sentiment"] = node.properties.get('ai_sentiment')
+        if node.properties.get('is_anomaly'):
+            threat_obj["is_anomaly"] = node.properties.get('is_anomaly')
+            threat_obj["anomaly_score"] = node.properties.get('anomaly_score')
+            threat_obj["anomaly_explanation"] = node.properties.get('anomaly_explanation')
+        
+        threats.append(threat_obj)
     
     connector.close()
     return threats, total
@@ -691,11 +703,23 @@ def get_threat_by_id_api(threat_id: str) -> Optional[Dict]:
         "timestamp": node.properties.get('discovered', None),
         "summary": node.properties.get('description', 'Threat entity'),
         "description": f"Threat type: {node.node_type}. {node.properties.get('description', '')}",
-        "source": "Neo4j Graph Database",
-        "indicators": [node.node_id],
-        "affectedSystems": [],
-        "recommendation": "Investigate and mitigate"
+        "source": node.properties.get('source', 'Threat Database'),
+        "indicators": node.properties.get('indicators', [node.node_id]),
+        "affectedSystems": node.properties.get('affectedSystems', []),
+        "recommendation": node.properties.get('recommendation', 'Investigate and mitigate')
     }
+    
+    # Add AI analysis data if available
+    if node.properties.get('ai_risk_score') is not None:
+        threat["ai_risk_score"] = node.properties.get('ai_risk_score')
+        threat["ai_sentiment"] = node.properties.get('ai_sentiment', 'neutral')
+        # Include full AI metadata from properties
+        metadata_dict = {}
+        for k, v in node.properties.items():
+            if k.startswith('ai_') or k.startswith('anomaly_'):
+                metadata_dict[k] = v
+        if metadata_dict:
+            threat["ai_analysis"] = metadata_dict
     
     connector.close()
     return threat
@@ -790,10 +814,21 @@ def store_crawler_records(records: List[Dict]) -> int:
             "status": record.get("status"),
         }
         
-        # Add metadata, especially cvss_score if available
+        # Add metadata, especially cvss_score and AI analysis if available
         metadata = record.get("metadata", {})
         if metadata:
             properties.update(metadata)
+            # Store AI analysis separately for easy access
+            if "ai_risk_score" in metadata:
+                properties["ai_risk_score"] = metadata["ai_risk_score"]
+            if "ai_sentiment" in metadata:
+                properties["ai_sentiment"] = metadata["ai_sentiment"]
+            if "is_anomaly" in metadata:
+                properties["is_anomaly"] = metadata["is_anomaly"]
+            if "anomaly_score" in metadata:
+                properties["anomaly_score"] = metadata["anomaly_score"]
+            if "anomaly_explanation" in metadata:
+                properties["anomaly_explanation"] = metadata["anomaly_explanation"]
         
         node = ThreatNode(
             node_id=node_id,

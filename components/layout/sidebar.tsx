@@ -1,6 +1,6 @@
 "use client"
 
-import { BarChart3, Settings, Zap, AlertCircle, Info, PanelLeftClose, PanelLeftOpen } from "lucide-react"
+import { BarChart3, Settings, Zap, AlertCircle, Info, PanelLeftClose, PanelLeftOpen, Brain } from "lucide-react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useState } from "react"
@@ -9,6 +9,7 @@ const navItems = [
   { href: "/", label: "Dashboard", icon: BarChart3 },
   { href: "/threats", label: "Threat Feed", icon: AlertCircle },
   { href: "/crawler", label: "Crawler", icon: Zap },
+  { href: "/ai", label: "AI Assistant", icon: Brain },
   { href: "/settings", label: "Settings", icon: Settings },
   { href: "/about", label: "About", icon: Info }, // About Section
 ]

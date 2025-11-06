@@ -11,6 +11,14 @@ import datetime as dt
 ROOT = os.path.dirname(os.path.dirname(__file__))
 sys.path.insert(0, ROOT)
 
+# Load environment variables from .env file if it exists
+try:
+    from dotenv import load_dotenv
+    env_path = os.path.join(os.path.dirname(__file__), '.env')
+    load_dotenv(env_path)
+except ImportError:
+    pass  # python-dotenv not installed, skip
+
 logger = logging.getLogger("uvicorn")
 
 app = FastAPI(title="AI Cyber Threat Forecaster API")
@@ -35,6 +43,10 @@ class Threat(BaseModel):
     indicators: Optional[List[str]] = []
     affectedSystems: Optional[List[str]] = []
     recommendation: Optional[str] = None
+
+
+class ChatRequest(BaseModel):
+    message: str
 
 
 @app.get("/")
@@ -190,6 +202,132 @@ async def start_crawler(request: Request):
             records = result.get("records", [])
             if records:
                 try:
+                    # Run AI analysis on crawled threats
+                    logs = result.get("logs", [])
+                    try:
+                        from inference_core.transformer_nlp import ThreatChatterNLP
+                        from inference_core.anomaly_detector import AnomalyDetector, ThreatEvent
+                        import numpy as np
+                        from datetime import datetime
+                        
+                        logs.append({
+                            "timestamp": dt.datetime.utcnow().isoformat() + "Z",
+                            "message": "Running AI analysis on crawled threats...",
+                            "type": "info"
+                        })
+                        
+                        # Initialize AI models
+                        nlp_analyzer = ThreatChatterNLP()
+                        anomaly_detector = AnomalyDetector(contamination=0.1, n_estimators=100)
+                        
+                        ai_analyzed_count = 0
+                        anomaly_count = 0
+                        
+                        # Analyze each threat with NLP
+                        for record in records:
+                            try:
+                                # NLP Analysis
+                                text = record.get("summary", "") or record.get("title", "")
+                                if text:
+                                    nlp_result = nlp_analyzer.analyze(text[:500])  # Limit text length
+                                    
+                                    # Add AI metadata to record
+                                    record.setdefault("metadata", {})
+                                    record["metadata"]["ai_risk_score"] = float(nlp_result.risk_score) if hasattr(nlp_result.risk_score, '__float__') else 0.0
+                                    record["metadata"]["ai_sentiment"] = nlp_result.sentiment
+                                    record["metadata"]["ai_entities"] = [
+                                        {"text": e.text, "type": e.entity_type, "confidence": float(e.confidence)}
+                                        for e in nlp_result.entities[:5]  # Top 5 entities
+                                    ]
+                                    record["metadata"]["ai_intents"] = [
+                                        {"type": i.intent_type, "confidence": float(i.confidence)}
+                                        for i in nlp_result.intents[:3]  # Top 3 intents
+                                    ]
+                                    ai_analyzed_count += 1
+                                    
+                                    # Anomaly Detection (prepare features)
+                                    try:
+                                        # Create feature vector: [risk_score, severity_score, has_cve, has_exploit_keywords]
+                                        severity_map = {"critical": 0.9, "high": 0.7, "medium": 0.5, "low": 0.3}
+                                        severity = record.get("severity", "").lower()
+                                        severity_score = severity_map.get(severity, 0.5)
+                                        
+                                        has_cve = 1.0 if "CVE-" in text else 0.0
+                                        exploit_keywords = ["exploit", "zero-day", "remote code", "rce"]
+                                        has_exploit = 1.0 if any(kw in text.lower() for kw in exploit_keywords) else 0.0
+                                        
+                                        features = np.array([
+                                            float(nlp_result.risk_score),
+                                            severity_score,
+                                            has_cve,
+                                            has_exploit
+                                        ])
+                                        
+                                        event = ThreatEvent(
+                                            event_id=f"{record.get('source', 'unknown')}:{record.get('id', 'unknown')}",
+                                            timestamp=datetime.utcnow(),
+                                            features=features,
+                                            event_type=record.get("source", "unknown"),
+                                            metadata={"title": record.get("title", "")}
+                                        )
+                                        anomaly_detector.add_event(event)
+                                    except Exception as e:
+                                        logger.debug(f"Failed to prepare anomaly features: {e}")
+                                        continue
+                                    
+                            except Exception as e:
+                                logger.warning(f"AI analysis failed for record {record.get('id', 'unknown')}: {e}")
+                                continue
+                        
+                        # Train anomaly detector and detect anomalies
+                        if len(anomaly_detector.events) > 10:  # Need minimum events
+                            try:
+                                anomaly_detector.train()
+                                
+                                # Detect anomalies
+                                for event in anomaly_detector.events:
+                                    result = anomaly_detector.detect_anomaly(event)
+                                    if result.is_anomaly:
+                                        # Find matching record and mark as anomaly
+                                        for record in records:
+                                            record_id = f"{record.get('source', 'unknown')}:{record.get('id', 'unknown')}"
+                                            if record_id == event.event_id:
+                                                record.setdefault("metadata", {})
+                                                record["metadata"]["is_anomaly"] = True
+                                                record["metadata"]["anomaly_score"] = float(result.anomaly_score)
+                                                record["metadata"]["anomaly_confidence"] = float(result.confidence)
+                                                record["metadata"]["anomaly_explanation"] = result.explanation
+                                                anomaly_count += 1
+                                                break
+                            except Exception as e:
+                                logger.warning(f"Anomaly detection failed: {e}")
+                        
+                        # Update logs with AI analysis results
+                        logs.append({
+                            "timestamp": dt.datetime.utcnow().isoformat() + "Z",
+                            "message": f"AI Analysis complete: {ai_analyzed_count} threats analyzed, {anomaly_count} anomalies detected",
+                            "type": "success"
+                        })
+                        
+                        result["logs"] = logs
+                        
+                    except ImportError as e:
+                        logger.warning(f"AI models not available: {e}")
+                        logs.append({
+                            "timestamp": dt.datetime.utcnow().isoformat() + "Z",
+                            "message": "AI analysis skipped (models not available)",
+                            "type": "warning"
+                        })
+                        result["logs"] = logs
+                    except Exception as e:
+                        logger.error(f"AI analysis error: {e}")
+                        logs.append({
+                            "timestamp": dt.datetime.utcnow().isoformat() + "Z",
+                            "message": f"AI analysis error: {str(e)}",
+                            "type": "warning"
+                        })
+                        result["logs"] = logs
+                    
                     stored_count = store_crawler_records(records)
                     # Get total unique threats count from database
                     from data_layer.neo4j_connector import Neo4jConnector
@@ -624,6 +762,174 @@ async def get_severity_data():
         }
 
 
+@app.get("/api/ai/forecast")
+async def get_ai_forecast():
+    """Get AI-based threat forecast for dashboard using LSTM."""
+    try:
+        from inference_core.temporal_forecast import ThreatForecaster, ThreatSignal
+        from data_layer.neo4j_connector import Neo4jConnector
+        from datetime import datetime, timedelta
+        
+        connector = Neo4jConnector()
+        
+        # Get threats from last 30 days for forecasting
+        from datetime import timezone
+        now = datetime.now(timezone.utc)
+        thirty_days_ago = now - timedelta(days=30)
+        
+        signals = []
+        threat_nodes = [n for n in connector.nodes.values() 
+                       if n.node_type in ['CVE', 'ThreatIntelligence', 'Campaign']]
+        
+        # Group threats by date
+        date_counts = {}
+        for node in threat_nodes:
+            discovered = node.properties.get('discovered')
+            if discovered:
+                try:
+                    # Handle different datetime formats
+                    if isinstance(discovered, str):
+                        # Try ISO format with Z or +00:00
+                        if discovered.endswith('Z'):
+                            threat_date = datetime.fromisoformat(discovered.replace('Z', '+00:00'))
+                        elif '+' in discovered or discovered.count('-') >= 2:
+                            threat_date = datetime.fromisoformat(discovered)
+                        else:
+                            # Date-only format - add timezone
+                            threat_date = datetime.strptime(discovered.split('T')[0], '%Y-%m-%d').replace(tzinfo=timezone.utc)
+                    else:
+                        # Already a datetime object - ensure it's timezone-aware
+                        threat_date = discovered if discovered.tzinfo else discovered.replace(tzinfo=timezone.utc)
+                    
+                    # Ensure timezone-aware for comparison
+                    if not threat_date.tzinfo:
+                        threat_date = threat_date.replace(tzinfo=timezone.utc)
+                    
+                    if threat_date >= thirty_days_ago:
+                        date_str = threat_date.date().isoformat()
+                        date_counts[date_str] = date_counts.get(date_str, 0) + 1
+                except (ValueError, AttributeError, TypeError) as e:
+                    logger.debug(f"Skipping invalid date format: {discovered} - {e}")
+                    continue
+        
+        # Create signals for forecaster
+        for date_str, count in sorted(date_counts.items()):
+            try:
+                signal_date = datetime.strptime(date_str, '%Y-%m-%d').replace(tzinfo=timezone.utc)
+                signal = ThreatSignal(
+                    timestamp=signal_date,
+                    signal_type="threat_count",
+                    value=float(count),
+                    metadata={}
+                )
+                signals.append(signal)
+            except ValueError:
+                continue
+        
+        connector.close()
+        
+        if len(signals) < 7:
+            # Not enough data for forecasting
+            return {
+                "status": "insufficient_data",
+                "message": "Need at least 7 days of data for forecasting",
+                "forecast": [],
+                "trend": "stable"
+            }
+        
+        # Format forecast dates (needed for both LSTM and fallback)
+        forecast_dates = []
+        current_date = now.date()
+        for i in range(7):
+            forecast_date = current_date + timedelta(days=i+1)
+            forecast_dates.append(forecast_date.isoformat())
+        
+        # Run LSTM forecast
+        try:
+            from inference_core.temporal_forecast import TORCH_AVAILABLE
+            if not TORCH_AVAILABLE:
+                # Fallback to simple statistical forecast if PyTorch not available
+                logger.warning("PyTorch not available, using simple statistical forecast")
+                # Simple moving average forecast
+                recent_values = [s.value for s in signals[-7:]]
+                if len(recent_values) < 7:
+                    recent_values = [s.value for s in signals]
+                
+                avg_value = sum(recent_values) / len(recent_values) if recent_values else 0
+                trend_diff = recent_values[-1] - recent_values[0] if len(recent_values) >= 2 else 0
+                
+                forecast_values = [max(0, avg_value + (trend_diff / 7) * i) for i in range(1, 8)]
+                trend = "increasing" if trend_diff > 0 else "decreasing" if trend_diff < 0 else "stable"
+                risk_level = "high" if avg_value > 10 else "medium" if avg_value > 5 else "low"
+                
+                return {
+                    "status": "success",
+                    "forecast": [
+                        {"date": date, "predicted_value": value}
+                        for date, value in zip(forecast_dates, forecast_values)
+                    ],
+                    "trend": trend,
+                    "risk_level": risk_level,
+                    "note": "Statistical forecast (PyTorch not available)"
+                }
+            
+            forecaster = ThreatForecaster(sequence_length=min(len(signals), 30), forecast_horizon=7)
+            forecaster.add_signals(signals)
+            
+            # Try training with LSTM if enough data, otherwise use statistical
+            try:
+                if len(signals) >= forecaster.sequence_length + 1:
+                    forecaster.train("threat_count")
+                    forecast_result = forecaster.forecast("threat_count", method='lstm')
+                else:
+                    forecast_result = forecaster.forecast("threat_count", method='statistical')
+            except (ValueError, Exception) as e:
+                logger.info(f"LSTM training failed, using statistical: {e}")
+                forecast_result = forecaster.forecast("threat_count", method='statistical')
+            
+            forecast_values = forecast_result.predicted_values.tolist() if hasattr(forecast_result.predicted_values, 'tolist') else list(forecast_result.predicted_values)
+            
+            return {
+                "status": "success",
+                "forecast": [
+                    {"date": date, "predicted_value": value}
+                    for date, value in zip(forecast_dates, forecast_values[:7])
+                ],
+                "trend": forecast_result.trend,
+                "risk_level": forecast_result.risk_level
+            }
+        except Exception as e:
+            logger.warning(f"Forecast failed: {e}")
+            return {
+                "status": "error",
+                "message": str(e),
+                "forecast": [],
+                "trend": "unknown"
+            }
+            
+    except ImportError as e:
+        if 'torch' in str(e).lower():
+            logger.warning(f"PyTorch not available: {e}")
+            return {
+                "status": "error",
+                "message": "PyTorch is required for AI forecasting. Install it with: pip install torch",
+                "forecast": [],
+                "trend": "unknown",
+                "install_hint": "pip install torch"
+            }
+        raise
+    except Exception as e:
+        logger.warning(f"AI forecast endpoint failed: {e}")
+        import traceback
+        logger.error(traceback.format_exc())
+        return {
+            "status": "error",
+            "message": str(e),
+            "forecast": [],
+            "trend": "unknown"
+        }
+
+
 @app.get("/api/charts/sources")
 async def get_source_data():
     """Get threat source distribution for bar chart"""
@@ -785,6 +1091,86 @@ async def analyze_anomaly(data: dict):
         return result
     except Exception as e:
         logger.error(f"Anomaly detection error: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.post("/api/ai/chat")
+async def ai_chat(request: ChatRequest):
+    """
+    AI Chat endpoint for security-related questions.
+    Uses external AI service for CVE analysis, threat assessment, and security questions.
+    """
+    try:
+        message = request.message.strip()
+        
+        if not message:
+            raise HTTPException(status_code=400, detail="Message is required")
+        
+        # Check if AI SDK is available
+        try:
+            import google.generativeai as genai
+            import os
+            
+            api_key = os.environ.get("GEMINI_API_KEY") or os.environ.get("AI_API_KEY")
+            
+            if not api_key:
+                return {
+                    "status": "error",
+                    "message": "AI service API key not configured. Please set GEMINI_API_KEY or AI_API_KEY environment variable."
+                }
+            
+            # Configure the AI service
+            genai.configure(api_key=api_key)
+            
+            # Get the appropriate model (configurable via env var)
+            # Set AI_MODEL_NAME env var to use a specific model version (default: gemini-2.5-pro)
+            model_name = os.environ.get("AI_MODEL_NAME", "gemini-2.5-pro")
+            model = genai.GenerativeModel(model_name)
+            
+            # Create system prompt for security-focused responses
+            system_prompt = """You are a cybersecurity expert AI assistant specializing in:
+- CVE (Common Vulnerabilities and Exposures) analysis and explanations
+- Security threat assessment and vulnerability analysis
+- Explaining whether specific systems or websites might be affected by vulnerabilities
+- Providing security recommendations and best practices
+- Threat intelligence and security research
+
+Be concise, accurate, and helpful. When discussing CVEs, include:
+- Severity and CVSS scores when available
+- Affected products/versions
+- Potential impact
+- Remediation steps
+
+For website/system vulnerability questions, provide specific, actionable guidance."""
+            
+            # Combine system prompt with user message
+            full_prompt = f"{system_prompt}\n\nUser Question: {message}\n\nPlease provide a comprehensive answer:"
+            
+            # Generate response
+            response = model.generate_content(full_prompt)
+            
+            answer = response.text if hasattr(response, 'text') else str(response)
+            
+            return {
+                "status": "success",
+                "message": answer
+            }
+            
+        except ImportError:
+            logger.error("AI SDK not installed. Install with: pip install google-generativeai")
+            return {
+                "status": "error",
+                "message": "AI service is not available. The required library is not installed."
+            }
+        except Exception as e:
+            logger.error(f"AI chat error: {e}")
+            return {
+                "status": "error",
+                "message": f"Error getting AI response: {str(e)}"
+            }
+            
+    except Exception as e:
+        logger.error(f"AI chat endpoint error: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
 

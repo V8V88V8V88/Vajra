@@ -1928,7 +1928,7 @@ Currently, relationships are stored but not extensively used. Future enhancement
 - `NEO4J_USER` (optional): Neo4j username
 - `NEO4J_PASSWORD` (optional): Neo4j password
 - `GEMINI_API_KEY` or `AI_API_KEY` (required for AI chat): API key for LLM service
-- `AI_MODEL_NAME` (optional): LLM model name override (default: "gemini-2.5-pro")
+- `AI_MODEL_NAME` (optional): LLM model name override (default: "gemini-2.5-flash")
 - `INFLUXDB_URL` (optional): InfluxDB connection URL
 - `INFLUXDB_TOKEN` (optional): InfluxDB authentication token
 

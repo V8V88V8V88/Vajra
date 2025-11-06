@@ -636,6 +636,58 @@ export async function getAIForecast(): Promise<{
   }
 }
 
+export interface WebsiteCheckResult {
+  status: string
+  url: string
+  scan_date: string
+  technologies: Record<string, Array<{
+    name: string
+    version?: string
+    confidence: string
+    source: string
+  }>>
+  vulnerabilities: Array<{
+    id: string
+    cve_id: string
+    title: string
+    description: string
+    severity: string
+    cvss_score?: string
+    url: string
+    ai_is_vulnerable?: boolean
+    ai_confidence?: string
+    ai_reasoning?: string
+    ai_remediation?: string
+  }>
+  summary: {
+    total_cves_checked: number
+    vulnerable_count: number
+    critical_count: number
+    high_count: number
+    medium_count: number
+    low_count: number
+  }
+  ai_analysis?: any
+}
+
+export async function checkWebsite(url: string, options?: {min_severity?: string}): Promise<WebsiteCheckResult> {
+  try {
+    const response = await fetch(`${API_BASE_URL}/api/website/check`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ url, options })
+    })
+    if (!response.ok) {
+      const error = await response.json()
+      throw new Error(error.detail || 'Failed to check website')
+    }
+    return await response.json()
+  } catch (error) {
+    console.error('Website check error:', error)
+    throw error
+  }
+}
+
 export async function exportAllThreats(): Promise<void> {
   try {
     const response = await fetch(`${API_BASE_URL}/api/threats/export`)

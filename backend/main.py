@@ -1,11 +1,12 @@
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-from typing import List, Optional
+from typing import List, Optional, Dict
 import sys
 import os
 import logging
 import datetime as dt
+import requests
 
 # ensure project root is on path
 ROOT = os.path.dirname(os.path.dirname(__file__))
@@ -47,6 +48,11 @@ class Threat(BaseModel):
 
 class ChatRequest(BaseModel):
     message: str
+
+
+class WebsiteCheckRequest(BaseModel):
+    url: str
+    options: Optional[Dict] = None
 
 
 @app.get("/")
@@ -1123,8 +1129,8 @@ async def ai_chat(request: ChatRequest):
             genai.configure(api_key=api_key)
             
             # Get the appropriate model (configurable via env var)
-            # Set AI_MODEL_NAME env var to use a specific model version (default: gemini-2.5-pro)
-            model_name = os.environ.get("AI_MODEL_NAME", "gemini-2.5-pro")
+            # Set AI_MODEL_NAME env var to use a specific model version (default: gemini-2.5-flash)
+            model_name = os.environ.get("AI_MODEL_NAME", "gemini-2.5-flash")
             model = genai.GenerativeModel(model_name)
             
             # Create system prompt for security-focused responses
@@ -1172,6 +1178,213 @@ For website/system vulnerability questions, provide specific, actionable guidanc
     except Exception as e:
         logger.error(f"AI chat endpoint error: {e}")
         raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.post("/api/website/check")
+async def check_website(request: WebsiteCheckRequest):
+    """
+    Check a website for vulnerabilities by analyzing its technology stack
+    and matching against CVE database with AI-powered analysis.
+    """
+    try:
+        from scripts.website_scanner import WebsiteScanner
+        from scripts.cve_matcher import CVEMatcher
+        import google.generativeai as genai
+        import json
+        
+        url = request.url.strip()
+        options = request.options or {}
+        min_severity = options.get("min_severity", "medium")
+        
+        # Validate URL
+        if not url:
+            raise HTTPException(status_code=400, detail="URL is required")
+        
+        if not url.startswith(('http://', 'https://')):
+            url = 'https://' + url
+        
+        logger.info(f"Checking website: {url}")
+        
+        # Step 1: Scan website for technologies
+        scanner = WebsiteScanner(timeout=30)
+        scan_result = scanner.scan(url)
+        technologies = scan_result.get("technologies", {})
+        
+        # Step 2: Match against CVE database
+        matcher = CVEMatcher()
+        matching_cves = matcher.find_matching_cves(technologies, min_severity=min_severity)
+        
+        logger.info(f"Found {len(matching_cves)} matching CVEs for {url}")
+        
+        # If no CVEs found, return early with helpful message
+        if len(matching_cves) == 0:
+            matcher.close()
+            return {
+                "status": "success",
+                "url": url,
+                "scan_date": scan_result.get("detected_at"),
+                "technologies": technologies,
+                "vulnerabilities": [],
+                "summary": {
+                    "total_cves_checked": 0,
+                    "vulnerable_count": 0,
+                    "critical_count": 0,
+                    "high_count": 0,
+                    "medium_count": 0,
+                    "low_count": 0
+                },
+                "message": "No matching CVEs found. This could mean: 1) No CVEs in database (run crawler first), 2) Technologies not matched, or 3) Website is secure."
+            }
+        
+        matcher.close()
+        
+        # Step 3: AI-powered analysis using Gemini (only if CVEs found and API key available)
+        ai_analysis = None
+        api_key = os.environ.get("GEMINI_API_KEY") or os.environ.get("AI_API_KEY")
+        
+        # Only run AI analysis if we have matching CVEs and API key
+        # Limit to top 10 CVEs for faster processing
+        if api_key and matching_cves and len(matching_cves) > 0:
+            try:
+                genai.configure(api_key=api_key)
+                model_name = os.environ.get("AI_MODEL_NAME", "gemini-2.5-flash")
+                model = genai.GenerativeModel(model_name)
+                
+                # Prepare prompt for AI analysis (limit to top 10 for speed)
+                tech_summary = []
+                for category, techs in technologies.items():
+                    for tech in techs:
+                        tech_str = tech.get('name', '')
+                        if tech.get('version'):
+                            tech_str += f" {tech['version']}"
+                        tech_summary.append(f"- {category}: {tech_str}")
+                
+                # Limit to top 10 CVEs for faster AI analysis
+                cves_to_analyze = matching_cves[:10]
+                cve_summary = []
+                for cve in cves_to_analyze:
+                    cve_id = cve.get('cve_id', cve.get('id', ''))
+                    severity = cve.get('severity', 'unknown')
+                    description = cve.get('description', '')[:150]  # Truncate more
+                    cve_summary.append(f"- {cve_id} ({severity}): {description}")
+                
+                prompt = f"""You are a cybersecurity expert. Analyze if the website {url} is actually vulnerable to these CVEs.
+
+IMPORTANT: If the website is hosted on GitHub Pages, Cloudflare Pages, Netlify, or similar static hosting, most server-side CVEs do NOT apply.
+
+Technologies Detected:
+{chr(10).join(tech_summary)}
+
+Potential CVEs Found:
+{chr(10).join(cve_summary)}
+
+For each CVE, determine:
+1. Is the website actually vulnerable? (Yes/No/Maybe)
+   - Say "No" if website is static hosting (GitHub Pages, etc.) and CVE requires server-side software
+   - Say "No" if detected technologies don't match CVE requirements
+   - Only say "Yes" if there's strong evidence the vulnerability applies
+2. Confidence level (High/Medium/Low)
+3. Brief reasoning (explain why vulnerable or not)
+4. Remediation steps (only if vulnerable)
+
+Return JSON format:
+{{
+    "vulnerabilities": [
+        {{
+            "cve_id": "CVE-2023-12345",
+            "is_vulnerable": false,
+            "confidence": "high",
+            "reasoning": "Website is on GitHub Pages (static hosting). This CVE requires Jenkins server-side software which is not present.",
+            "severity": "critical",
+            "remediation": "N/A - Not applicable"
+        }}
+    ],
+    "summary": {{
+        "total_checked": 10,
+        "vulnerable_count": 0,
+        "critical_count": 0,
+        "high_count": 0
+    }}
+}}
+
+Be strict and accurate. Only mark as vulnerable if there's strong evidence."""
+                
+                # Get AI response
+                response = model.generate_content(prompt)
+                ai_text = response.text
+                
+                # Extract JSON from response (handle markdown code blocks)
+                if '```json' in ai_text:
+                    ai_text = ai_text.split('```json')[1].split('```')[0].strip()
+                elif '```' in ai_text:
+                    ai_text = ai_text.split('```')[1].split('```')[0].strip()
+                
+                ai_analysis = json.loads(ai_text)
+                
+                # Merge AI analysis with CVE data (only for analyzed CVEs)
+                cve_dict = {cve.get('cve_id', cve.get('id', '')): cve for cve in matching_cves}
+                for vuln in ai_analysis.get('vulnerabilities', []):
+                    cve_id = vuln.get('cve_id', '')
+                    if cve_id in cve_dict:
+                        cve_dict[cve_id].update({
+                            'ai_is_vulnerable': vuln.get('is_vulnerable', False),
+                            'ai_confidence': vuln.get('confidence', 'medium'),
+                            'ai_reasoning': vuln.get('reasoning', ''),
+                            'ai_remediation': vuln.get('remediation', '')
+                        })
+                
+                # Update matching_cves with AI analysis
+                matching_cves = list(cve_dict.values())
+                
+                # Filter out CVEs that AI says are NOT vulnerable (if AI analysis succeeded)
+                if ai_analysis.get('vulnerabilities'):
+                    matching_cves = [
+                        cve for cve in matching_cves 
+                        if cve.get('ai_is_vulnerable', True)  # Keep if vulnerable or no AI analysis
+                    ]
+                
+            except Exception as e:
+                logger.warning(f"AI analysis failed: {e}")
+                ai_analysis = {"error": str(e)}
+        
+        # Calculate summary - only count CVEs that AI confirmed as vulnerable
+        # If AI analysis was done, only count CVEs marked as vulnerable
+        # Otherwise, count all matching CVEs (but they'll be filtered by AI if available)
+        if ai_analysis and ai_analysis.get('vulnerabilities'):
+            vulnerable_count = sum(1 for cve in matching_cves if cve.get('ai_is_vulnerable') is True)
+        else:
+            # No AI analysis or AI failed - don't assume all are vulnerable
+            vulnerable_count = 0
+        
+        critical_count = sum(1 for cve in matching_cves if cve.get('severity', '').lower() == 'critical')
+        high_count = sum(1 for cve in matching_cves if cve.get('severity', '').lower() == 'high')
+        
+        return {
+            "status": "success",
+            "url": url,
+            "scan_date": scan_result.get("detected_at"),
+            "technologies": technologies,
+            "vulnerabilities": matching_cves[:30],  # Limit response size
+            "summary": {
+                "total_cves_checked": len(matching_cves),
+                "vulnerable_count": vulnerable_count,
+                "critical_count": critical_count,
+                "high_count": high_count,
+                "medium_count": sum(1 for cve in matching_cves if cve.get('severity', '').lower() == 'medium'),
+                "low_count": sum(1 for cve in matching_cves if cve.get('severity', '').lower() == 'low')
+            },
+            "ai_analysis": ai_analysis if ai_analysis else None
+        }
+        
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+    except requests.exceptions.RequestException as e:
+        raise HTTPException(status_code=400, detail=f"Failed to access website: {str(e)}")
+    except Exception as e:
+        logger.error(f"Website check failed: {e}")
+        import traceback
+        logger.error(traceback.format_exc())
+        raise HTTPException(status_code=500, detail=f"Website check failed: {str(e)}")
 
 
 @app.get("/health")

@@ -33,8 +33,13 @@ export function AIChat() {
   ])
   const [input, setInput] = useState("")
   const [isLoading, setIsLoading] = useState(false)
+  const [isMounted, setIsMounted] = useState(false)
   const messagesEndRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
+
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
@@ -156,7 +161,7 @@ export function AIChat() {
                   ? "text-cyan-200 dark:text-cyan-200" 
                   : "text-slate-400 dark:text-slate-400"
               }`}>
-                {message.timestamp.toLocaleTimeString()}
+                {isMounted ? message.timestamp.toLocaleTimeString() : ""}
               </p>
             </div>
 

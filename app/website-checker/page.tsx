@@ -135,40 +135,6 @@ export default function WebsiteChecker() {
             </div>
           </div>
 
-          {/* Technologies Detected */}
-          {Object.keys(result.technologies).length > 0 && (
-            <div className="backdrop-blur-md border border-border bg-card dark:bg-gradient-to-br dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] rounded-lg p-6">
-              <h2 className="text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
-                <Code className="w-5 h-5" />
-                Technologies Detected
-              </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {Object.entries(result.technologies).map(([category, techs]) => (
-                  <div key={category} className="space-y-2">
-                    <h3 className="text-sm font-medium text-muted-foreground uppercase">{category}</h3>
-                    <div className="space-y-1">
-                      {techs.map((tech, idx) => (
-                        <div key={idx} className="flex items-center gap-2 text-sm">
-                          <span className="text-foreground font-medium">{tech.name}</span>
-                          {tech.version && (
-                            <span className="text-muted-foreground">v{tech.version}</span>
-                          )}
-                          <span className={`text-xs px-2 py-0.5 rounded ${
-                            tech.confidence === 'high' ? 'bg-green-500/20 text-green-400' :
-                            tech.confidence === 'medium' ? 'bg-yellow-500/20 text-yellow-400' :
-                            'bg-gray-500/20 text-gray-400'
-                          }`}>
-                            {tech.confidence}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-
           {/* Vulnerabilities List */}
           {result.vulnerabilities.length > 0 && (
             <div className="backdrop-blur-md border border-border bg-card dark:bg-gradient-to-br dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] rounded-lg p-6">
@@ -255,14 +221,110 @@ export default function WebsiteChecker() {
             </div>
           )}
 
+          {/* Technologies Detected */}
+          {Object.keys(result.technologies).length > 0 && (
+            <div className="backdrop-blur-md border border-border bg-card dark:bg-gradient-to-br dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] rounded-lg p-6">
+              <h2 className="text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
+                <Code className="w-5 h-5" />
+                Technologies Detected
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {Object.entries(result.technologies).map(([category, techs]) => (
+                  <div key={category} className="space-y-2">
+                    <h3 className="text-sm font-medium text-muted-foreground uppercase">{category}</h3>
+                    <div className="space-y-1">
+                      {techs.map((tech, idx) => {
+                        // Find check status for this tech
+                        const checkStatus = result.tech_check_status?.find(
+                          ts => ts.name === tech.name && ts.category === category
+                        )
+                        return (
+                          <div key={idx} className="flex items-center gap-2 text-sm">
+                            <span className="text-foreground font-medium">{tech.name}</span>
+                            {tech.version && (
+                              <span className="text-muted-foreground">v{tech.version}</span>
+                            )}
+                            <span className={`text-xs px-2 py-0.5 rounded ${
+                              tech.confidence === 'high' ? 'bg-green-500/20 text-green-400' :
+                              tech.confidence === 'medium' ? 'bg-yellow-500/20 text-yellow-400' :
+                              'bg-gray-500/20 text-gray-400'
+                            }`}>
+                              {tech.confidence}
+                            </span>
+                            {checkStatus && (
+                              <span className={`text-xs px-2 py-0.5 rounded ${
+                                checkStatus.matched_cves > 0 ? 'bg-red-500/20 text-red-400' :
+                                checkStatus.cves_exist ? 'bg-yellow-500/20 text-yellow-400' :
+                                'bg-gray-500/20 text-gray-400'
+                              }`} title={
+                                checkStatus.matched_cves > 0 
+                                  ? `${checkStatus.matched_cves} CVE(s) matched`
+                                  : checkStatus.cves_exist 
+                                  ? 'CVEs exist in database but none matched'
+                                  : 'No CVEs found in database for this technology'
+                              }>
+                                {checkStatus.matched_cves > 0 ? `⚠️ ${checkStatus.matched_cves}` :
+                                 checkStatus.cves_exist ? '✓ Checked' : '○ No CVEs'}
+                              </span>
+                            )}
+                          </div>
+                        )
+                      })}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* CVE Check Status */}
+          {result.summary.total_cves_in_database !== undefined && (
+            <div className="backdrop-blur-md border border-border bg-card dark:bg-gradient-to-br dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] rounded-lg p-6">
+              <h2 className="text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
+                <Shield className="w-5 h-5" />
+                CVE Database Status
+              </h2>
+              <div className="space-y-2">
+                <div className="flex items-center justify-between p-3 bg-background/50 rounded">
+                  <span className="text-sm text-muted-foreground">Total CVEs in Database:</span>
+                  <span className="text-sm font-semibold text-foreground">{result.summary.total_cves_in_database}</span>
+                </div>
+                <div className="flex items-center justify-between p-3 bg-background/50 rounded">
+                  <span className="text-sm text-muted-foreground">CVEs Checked Against Technologies:</span>
+                  <span className="text-sm font-semibold text-foreground">{result.summary.total_cves_checked}</span>
+                </div>
+                {result.summary.total_cves_in_database === 0 && (
+                  <div className="mt-4 p-4 bg-yellow-500/10 border border-yellow-500/20 rounded-lg">
+                    <p className="text-sm text-yellow-400">
+                      <strong>⚠️ Database Empty:</strong> Run the crawler first to populate CVEs before checking websites.
+                    </p>
+                  </div>
+                )}
+                {result.summary.total_cves_in_database > 0 && result.summary.total_cves_checked === 0 && (
+                  <div className="mt-4 p-4 bg-blue-500/10 border border-blue-500/20 rounded-lg">
+                    <p className="text-sm text-blue-400">
+                      <strong>ℹ️ No Matches:</strong> Checked {result.summary.total_cves_in_database} CVEs in database, but none matched the detected technologies. This could mean the technologies are secure or not in the CVE database.
+                    </p>
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
+
           {/* No Vulnerabilities */}
           {result.vulnerabilities.length === 0 && (
-            <div className="backdrop-blur-md border border-border bg-card dark:bg-gradient-to-br dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] rounded-lg p-6 text-center">
-              <CheckCircle className="w-12 h-12 text-green-400 mx-auto mb-4" />
-              <h3 className="text-xl font-semibold text-foreground mb-2">No Vulnerabilities Found</h3>
-              <p className="text-muted-foreground">
-                No matching CVEs were found for the detected technologies, or the website appears to be secure.
-              </p>
+            <div className="backdrop-blur-md border border-border bg-card dark:bg-gradient-to-br dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] rounded-lg p-6">
+              <div className="text-center mb-4">
+                <CheckCircle className="w-12 h-12 text-green-400 mx-auto mb-4" />
+                <h3 className="text-xl font-semibold text-foreground mb-2">No Vulnerabilities Found</h3>
+                <p className="text-muted-foreground mb-4">
+                  {result.summary.total_cves_checked === 0 && result.summary.total_cves_in_database === 0
+                    ? "No CVEs found in database. Run the crawler first to populate CVEs."
+                    : result.summary.total_cves_checked === 0 && result.summary.total_cves_in_database && result.summary.total_cves_in_database > 0
+                    ? `Checked ${result.summary.total_cves_in_database} CVEs in database. No matching CVEs found for detected technologies.`
+                    : "No matching CVEs were found for the detected technologies, or the website appears to be secure."}
+                </p>
+              </div>
             </div>
           )}
         </div>
@@ -270,4 +332,3 @@ export default function WebsiteChecker() {
     </div>
   )
 }
-

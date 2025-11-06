@@ -1209,48 +1209,48 @@ async def check_website(request: WebsiteCheckRequest):
         scanner = WebsiteScanner(timeout=30)
         scan_result = scanner.scan(url)
         technologies = scan_result.get("technologies", {})
+        headers = scan_result.get("headers", {})
+        
+        # Check basic security indicators
+        uses_https = url.startswith('https://')
+        has_security_headers = any(header.lower() in headers for header in [
+            'X-Frame-Options', 'Content-Security-Policy', 'Strict-Transport-Security',
+            'X-Content-Type-Options', 'X-XSS-Protection'
+        ])
+        
+        # Check for piracy/malware indicators in URL
+        url_lower = url.lower()
+        piracy_indicators = ['pirate', 'torrent', '1337x', 'yts', 'rarbg', 'thepiratebay', 
+                            'kickass', 'extratorrent', 'limetorrents', 'torlock']
+        is_potential_piracy = any(indicator in url_lower for indicator in piracy_indicators)
         
         # Step 2: Match against CVE database
         matcher = CVEMatcher()
         matching_cves = matcher.find_matching_cves(technologies, min_severity=min_severity)
         
-        logger.info(f"Found {len(matching_cves)} matching CVEs for {url}")
+        # Get total CVE count in database for reporting
+        all_cves_in_db = matcher._get_all_cves()
+        total_cves_in_database = len(all_cves_in_db)
         
-        # If no CVEs found, return early with helpful message
-        if len(matching_cves) == 0:
-            matcher.close()
-            return {
-                "status": "success",
-                "url": url,
-                "scan_date": scan_result.get("detected_at"),
-                "technologies": technologies,
-                "vulnerabilities": [],
-                "summary": {
-                    "total_cves_checked": 0,
-                    "vulnerable_count": 0,
-                    "critical_count": 0,
-                    "high_count": 0,
-                    "medium_count": 0,
-                    "low_count": 0
-                },
-                "message": "No matching CVEs found. This could mean: 1) No CVEs in database (run crawler first), 2) Technologies not matched, or 3) Website is secure."
-            }
+        logger.info(f"Found {len(matching_cves)} matching CVEs for {url} (out of {total_cves_in_database} total CVEs in database)")
+        
+        # Note: We'll run AI analysis even if no CVEs found, to check for general security issues
+        # This ensures unsafe sites (like piracy sites, HTTP sites) are still flagged
         
         matcher.close()
         
-        # Step 3: AI-powered analysis using Gemini (only if CVEs found and API key available)
+        # Step 3: AI-powered analysis using Gemini (ALWAYS run if API key available, even if no CVEs)
         ai_analysis = None
         api_key = os.environ.get("GEMINI_API_KEY") or os.environ.get("AI_API_KEY")
         
-        # Only run AI analysis if we have matching CVEs and API key
-        # Limit to top 10 CVEs for faster processing
-        if api_key and matching_cves and len(matching_cves) > 0:
+        # Run AI analysis even if no CVEs found - for general security assessment
+        if api_key:
             try:
                 genai.configure(api_key=api_key)
                 model_name = os.environ.get("AI_MODEL_NAME", "gemini-2.5-flash")
                 model = genai.GenerativeModel(model_name)
                 
-                # Prepare prompt for AI analysis (limit to top 10 for speed)
+                # Prepare prompt for AI analysis
                 tech_summary = []
                 for category, techs in technologies.items():
                     for tech in techs:
@@ -1259,55 +1259,99 @@ async def check_website(request: WebsiteCheckRequest):
                             tech_str += f" {tech['version']}"
                         tech_summary.append(f"- {category}: {tech_str}")
                 
+                if not tech_summary:
+                    tech_summary = ["- No specific technologies detected"]
+                
+                # Security issues summary
+                security_summary = []
+                if not uses_https:
+                    security_summary.append("- Uses HTTP instead of HTTPS (INSECURE - data can be intercepted)")
+                if not has_security_headers:
+                    security_summary.append("- Missing important security headers (X-Frame-Options, CSP, HSTS)")
+                if is_potential_piracy:
+                    security_summary.append("- URL suggests this may be a piracy site (HIGH RISK - often contains malware)")
+                if not security_summary:
+                    security_summary = ["- Basic security checks: HTTPS enabled, some security headers present"]
+                
                 # Limit to top 10 CVEs for faster AI analysis
-                cves_to_analyze = matching_cves[:10]
+                cves_to_analyze = matching_cves[:10] if matching_cves else []
                 cve_summary = []
                 for cve in cves_to_analyze:
                     cve_id = cve.get('cve_id', cve.get('id', ''))
                     severity = cve.get('severity', 'unknown')
-                    description = cve.get('description', '')[:150]  # Truncate more
+                    description = cve.get('description', '')[:150]
                     cve_summary.append(f"- {cve_id} ({severity}): {description}")
                 
-                prompt = f"""You are a cybersecurity expert. Analyze if the website {url} is actually vulnerable to these CVEs.
+                if not cve_summary:
+                    cve_summary = ["- No specific CVEs matched from database"]
+                
+                prompt = f"""You are a cybersecurity expert. Analyze the website {url} for security issues and vulnerabilities.
 
-IMPORTANT: If the website is hosted on GitHub Pages, Cloudflare Pages, Netlify, or similar static hosting, most server-side CVEs do NOT apply.
+IMPORTANT SECURITY CHECKS:
+1. Check if site uses HTTPS (if HTTP only, mark as unsafe)
+2. Check for common security headers (X-Frame-Options, CSP, etc.)
+3. Check if site is a known piracy/malware/phishing site
+4. Check for outdated technologies with known vulnerabilities
+5. Check for general security best practices
 
 Technologies Detected:
 {chr(10).join(tech_summary)}
 
+Security Checks:
+{chr(10).join(security_summary)}
+
 Potential CVEs Found:
 {chr(10).join(cve_summary)}
 
-For each CVE, determine:
-1. Is the website actually vulnerable? (Yes/No/Maybe)
-   - Say "No" if website is static hosting (GitHub Pages, etc.) and CVE requires server-side software
-   - Say "No" if detected technologies don't match CVE requirements
-   - Only say "Yes" if there's strong evidence the vulnerability applies
+Website URL: {url}
+
+For each CVE or security issue, determine:
+1. Is the website actually vulnerable or unsafe? (Yes/No/Maybe)
+   - Say "Yes" if:
+     * Site uses HTTP instead of HTTPS
+     * Site is a known piracy/malware/phishing site
+     * Site has outdated technologies with critical CVEs
+     * Site lacks basic security headers
+     * Site has multiple security issues
+   - Say "No" ONLY if:
+     * Site is on secure static hosting (GitHub Pages, Cloudflare Pages) AND CVEs don't apply
+     * Site has HTTPS, security headers, and no matching vulnerabilities
 2. Confidence level (High/Medium/Low)
-3. Brief reasoning (explain why vulnerable or not)
-4. Remediation steps (only if vulnerable)
+3. Brief reasoning (explain why unsafe or not)
+4. Remediation steps (if vulnerable)
 
 Return JSON format:
 {{
     "vulnerabilities": [
         {{
-            "cve_id": "CVE-2023-12345",
-            "is_vulnerable": false,
+            "cve_id": "CVE-2023-12345" or "GENERAL-SECURITY-ISSUE",
+            "is_vulnerable": true,
             "confidence": "high",
-            "reasoning": "Website is on GitHub Pages (static hosting). This CVE requires Jenkins server-side software which is not present.",
-            "severity": "critical",
-            "remediation": "N/A - Not applicable"
+            "reasoning": "Website uses HTTP instead of HTTPS, exposing user data to interception. Also appears to be a piracy site which often contains malware.",
+            "severity": "high",
+            "remediation": "Enable HTTPS, implement security headers, and review site security practices."
         }}
     ],
     "summary": {{
-        "total_checked": 10,
+        "total_checked": {len(cves_to_analyze)},
         "vulnerable_count": 0,
         "critical_count": 0,
         "high_count": 0
-    }}
+    }},
+    "general_warnings": [
+        "Site uses HTTP instead of HTTPS",
+        "Site appears to be a piracy site (high risk of malware)"
+    ]
 }}
 
-Be strict and accurate. Only mark as vulnerable if there's strong evidence."""
+Be STRICT about security. Flag sites as unsafe if they:
+- Use HTTP instead of HTTPS
+- Are known piracy/malware sites
+- Have outdated technologies
+- Lack security headers
+- Show any security red flags
+
+Only mark as safe if site has HTTPS, proper security headers, and no matching vulnerabilities."""
                 
                 # Get AI response
                 response = model.generate_content(prompt)
@@ -1323,6 +1367,26 @@ Be strict and accurate. Only mark as vulnerable if there's strong evidence."""
                 
                 # Merge AI analysis with CVE data (only for analyzed CVEs)
                 cve_dict = {cve.get('cve_id', cve.get('id', '')): cve for cve in matching_cves}
+                
+                # Add general warnings as vulnerabilities if no CVEs matched
+                general_warnings = ai_analysis.get('general_warnings', [])
+                if general_warnings and len(matching_cves) == 0:
+                    # Create synthetic vulnerabilities for general warnings
+                    for i, warning in enumerate(general_warnings):
+                        warning_id = f"GENERAL-SECURITY-{i+1}"
+                        matching_cves.append({
+                            "id": warning_id,
+                            "cve_id": warning_id,
+                            "title": warning,
+                            "description": warning,
+                            "severity": "high" if "piracy" in warning.lower() or "http" in warning.lower() else "medium",
+                            "url": url,
+                            "ai_is_vulnerable": True,
+                            "ai_confidence": "high",
+                            "ai_reasoning": warning,
+                            "ai_remediation": "Review and fix security issues"
+                        })
+                
                 for vuln in ai_analysis.get('vulnerabilities', []):
                     cve_id = vuln.get('cve_id', '')
                     if cve_id in cve_dict:
@@ -1332,9 +1396,25 @@ Be strict and accurate. Only mark as vulnerable if there's strong evidence."""
                             'ai_reasoning': vuln.get('reasoning', ''),
                             'ai_remediation': vuln.get('remediation', '')
                         })
+                    elif cve_id.startswith('GENERAL-SECURITY'):
+                        # Add general security issues as vulnerabilities
+                        matching_cves.append({
+                            "id": cve_id,
+                            "cve_id": cve_id,
+                            "title": vuln.get('reasoning', cve_id),
+                            "description": vuln.get('reasoning', ''),
+                            "severity": vuln.get('severity', 'high'),
+                            "url": url,
+                            "ai_is_vulnerable": vuln.get('is_vulnerable', True),
+                            "ai_confidence": vuln.get('confidence', 'high'),
+                            "ai_reasoning": vuln.get('reasoning', ''),
+                            "ai_remediation": vuln.get('remediation', '')
+                        })
                 
                 # Update matching_cves with AI analysis
-                matching_cves = list(cve_dict.values())
+                matching_cves = list(cve_dict.values()) + [
+                    cve for cve in matching_cves if cve.get('id', '').startswith('GENERAL-SECURITY')
+                ]
                 
                 # Filter out CVEs that AI says are NOT vulnerable (if AI analysis succeeded)
                 if ai_analysis.get('vulnerabilities'):
@@ -1347,17 +1427,36 @@ Be strict and accurate. Only mark as vulnerable if there's strong evidence."""
                 logger.warning(f"AI analysis failed: {e}")
                 ai_analysis = {"error": str(e)}
         
-        # Calculate summary - only count CVEs that AI confirmed as vulnerable
-        # If AI analysis was done, only count CVEs marked as vulnerable
-        # Otherwise, count all matching CVEs (but they'll be filtered by AI if available)
-        if ai_analysis and ai_analysis.get('vulnerabilities'):
-            vulnerable_count = sum(1 for cve in matching_cves if cve.get('ai_is_vulnerable') is True)
-        else:
-            # No AI analysis or AI failed - don't assume all are vulnerable
-            vulnerable_count = 0
+        matcher.close()
+        
+        # Calculate summary - count vulnerabilities that AI confirmed OR general security issues
+        vulnerable_count = sum(1 for cve in matching_cves if cve.get('ai_is_vulnerable', True))
+        
+        # If AI analysis provided general warnings, add them to count
+        if ai_analysis and ai_analysis.get('general_warnings'):
+            vulnerable_count = max(vulnerable_count, len(ai_analysis.get('general_warnings', [])))
         
         critical_count = sum(1 for cve in matching_cves if cve.get('severity', '').lower() == 'critical')
         high_count = sum(1 for cve in matching_cves if cve.get('severity', '').lower() == 'high')
+        
+        # Prepare technology check status
+        tech_check_status = []
+        for category, techs in technologies.items():
+            for tech in techs:
+                tech_name = tech.get('name', '')
+                tech_version = tech.get('version', '')
+                # Check if any CVE mentions this technology
+                tech_mentioned = any(
+                    tech_name.lower() in (cve.get('description', '') + ' ' + cve.get('title', '')).lower()
+                    for cve in all_cves_in_db[:100]  # Check first 100 CVEs for performance
+                )
+                tech_check_status.append({
+                    "name": tech_name,
+                    "version": tech_version,
+                    "category": category,
+                    "cves_exist": tech_mentioned,
+                    "matched_cves": len([cve for cve in matching_cves if tech_name.lower() in (cve.get('description', '') + ' ' + cve.get('title', '')).lower()])
+                })
         
         return {
             "status": "success",
@@ -1367,12 +1466,14 @@ Be strict and accurate. Only mark as vulnerable if there's strong evidence."""
             "vulnerabilities": matching_cves[:30],  # Limit response size
             "summary": {
                 "total_cves_checked": len(matching_cves),
+                "total_cves_in_database": total_cves_in_database,
                 "vulnerable_count": vulnerable_count,
                 "critical_count": critical_count,
                 "high_count": high_count,
                 "medium_count": sum(1 for cve in matching_cves if cve.get('severity', '').lower() == 'medium'),
                 "low_count": sum(1 for cve in matching_cves if cve.get('severity', '').lower() == 'low')
             },
+            "tech_check_status": tech_check_status,
             "ai_analysis": ai_analysis if ai_analysis else None
         }
         

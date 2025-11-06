@@ -6,7 +6,9 @@ import { Sidebar } from "@/components/layout/sidebar"
 import { Navbar } from "@/components/layout/navbar"
 import { QueryProvider } from "@/components/providers/query-provider"
 import { ThemeProvider } from "@/components/theme-provider"
+import { FontLoader } from "@/components/font-loader"
 
+// Inter font for non-Apple platforms
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
@@ -28,6 +30,7 @@ export default function RootLayout({
           minHeight: "100vh"
         }}
       >
+        <FontLoader />
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           <QueryProvider>
             <div className="flex h-screen overflow-hidden">

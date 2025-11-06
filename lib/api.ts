@@ -661,12 +661,20 @@ export interface WebsiteCheckResult {
   }>
   summary: {
     total_cves_checked: number
+    total_cves_in_database?: number
     vulnerable_count: number
     critical_count: number
     high_count: number
     medium_count: number
     low_count: number
   }
+  tech_check_status?: Array<{
+    name: string
+    version?: string
+    category: string
+    cves_exist: boolean
+    matched_cves: number
+  }>
   ai_analysis?: any
 }
 

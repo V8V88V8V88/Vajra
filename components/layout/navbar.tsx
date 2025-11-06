@@ -349,9 +349,11 @@ export function Navbar() {
           <DropdownMenuTrigger asChild>
             <button className="flex items-center gap-1.5 p-1 pr-1.5 hover:bg-slate-100 dark:hover:bg-slate-800/40 rounded-md transition-all duration-200 text-slate-600 dark:text-foreground/70 hover:text-slate-900 dark:hover:text-foreground hover:scale-105 active:scale-95 group">
               <Avatar className="w-7 h-7 ring-2 ring-slate-300 dark:ring-slate-700/50 group-hover:ring-primary/50 transition-all duration-200">
-                {user.avatarUrl && (
-                  <AvatarImage src={user.avatarUrl} alt={user.name} />
-                )}
+                <AvatarImage 
+                  src={user.avatarUrl} 
+                  alt={user.name}
+                  className="object-cover"
+                />
                 <AvatarFallback className="bg-gradient-to-br from-primary/30 to-primary/10 text-primary text-[10px] font-semibold">
                   {user.initials}
                 </AvatarFallback>

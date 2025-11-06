@@ -2,8 +2,10 @@
 
 import { useState, useRef, useEffect } from "react"
 import { sendChatMessage } from "@/lib/api"
-import { Send, Bot, User, Loader2 } from "lucide-react"
+import { Send, Bot, User, Loader2, Sparkles } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import ReactMarkdown from "react-markdown"
+import Image from "next/image"
 
 interface Message {
   id: string
@@ -95,9 +97,9 @@ export function AIChat() {
   }
 
   return (
-    <div className="flex flex-col h-full backdrop-blur-md border border-border bg-card dark:bg-gradient-to-br dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] rounded-lg overflow-hidden">
+    <div className="flex flex-col h-full backdrop-blur-md border border-slate-900 bg-[#0a0a0f] dark:bg-[#0a0a0f] rounded-lg overflow-hidden">
       {/* Messages Area */}
-      <div className="flex-1 overflow-y-auto p-6 space-y-4">
+      <div className="flex-1 overflow-y-auto p-6 space-y-4 bg-[#0a0a0f]">
         {messages.map((message) => (
           <div
             key={message.id}
@@ -106,31 +108,67 @@ export function AIChat() {
             }`}
           >
             {message.role === "assistant" && (
-              <div className="flex-shrink-0 w-8 h-8 rounded-full bg-gradient-to-br from-purple-500 to-cyan-500 flex items-center justify-center">
-                <Bot className="w-5 h-5 text-white" />
+              <div className="flex-shrink-0 w-8 h-8 rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center border border-cyan-400/50">
+                <Sparkles className="w-4 h-4 text-white" />
               </div>
             )}
             
             <div
               className={`max-w-[80%] rounded-lg px-4 py-3 ${
                 message.role === "user"
-                  ? "bg-gradient-to-r from-cyan-500/20 to-blue-500/20 dark:from-cyan-500/30 dark:to-blue-500/30 text-foreground border border-cyan-500/30"
-                  : "bg-slate-100 dark:bg-slate-800/50 text-foreground border border-slate-200 dark:border-slate-700"
+                  ? "bg-cyan-500/60 dark:bg-cyan-500/60 text-white border border-cyan-500/70 dark:border-cyan-400/70"
+                  : "bg-[#0d1217] dark:bg-[#0d1217] text-slate-100 dark:text-slate-200 border border-cyan-500/20 dark:border-cyan-500/20"
               }`}
             >
-              <p className="text-sm whitespace-pre-wrap break-words">{message.content}</p>
+              {message.role === "assistant" ? (
+                <div className="text-sm markdown-content">
+                  <ReactMarkdown
+                    components={{
+                      h1: ({node, ...props}) => <h1 className="text-xl font-bold mt-4 mb-2 text-slate-100" {...props} />,
+                      h2: ({node, ...props}) => <h2 className="text-lg font-bold mt-3 mb-2 text-slate-100" {...props} />,
+                      h3: ({node, ...props}) => <h3 className="text-base font-bold mt-3 mb-1 text-slate-100" {...props} />,
+                      h4: ({node, ...props}) => <h4 className="text-sm font-bold mt-2 mb-1 text-slate-100" {...props} />,
+                      p: ({node, ...props}) => <p className="mb-2 text-slate-200 leading-relaxed" {...props} />,
+                      strong: ({node, ...props}) => <strong className="font-semibold text-slate-100" {...props} />,
+                      em: ({node, ...props}) => <em className="italic text-slate-200" {...props} />,
+                      ul: ({node, ...props}) => <ul className="list-disc list-inside mb-2 ml-4 space-y-1 text-slate-200" {...props} />,
+                      ol: ({node, ...props}) => <ol className="list-decimal list-inside mb-2 ml-4 space-y-1 text-slate-200" {...props} />,
+                      li: ({node, ...props}) => <li className="text-slate-200" {...props} />,
+                      code: ({node, inline, ...props}: any) => 
+                        inline ? (
+                          <code className="bg-slate-800 dark:bg-slate-800 px-1.5 py-0.5 rounded text-sm font-mono text-cyan-300" {...props} />
+                        ) : (
+                          <code className="block bg-slate-800 dark:bg-slate-800 p-2 rounded text-sm font-mono text-cyan-300 overflow-x-auto" {...props} />
+                        ),
+                      pre: ({node, ...props}) => <pre className="bg-slate-800 dark:bg-slate-800 p-3 rounded mb-2 overflow-x-auto text-cyan-300" {...props} />,
+                      blockquote: ({node, ...props}) => <blockquote className="border-l-4 border-slate-700 dark:border-slate-700 pl-4 italic my-2 text-slate-300" {...props} />,
+                      a: ({node, ...props}) => <a className="text-cyan-400 dark:text-cyan-400 hover:text-cyan-300 hover:underline" target="_blank" rel="noopener noreferrer" {...props} />,
+                    }}
+                  >
+                    {message.content}
+                  </ReactMarkdown>
+                </div>
+              ) : (
+                <p className="text-sm whitespace-pre-wrap break-words text-white">{message.content}</p>
+              )}
               <p className={`text-xs mt-2 ${
                 message.role === "user" 
-                  ? "text-cyan-600 dark:text-cyan-400" 
-                  : "text-muted-foreground"
+                  ? "text-cyan-200 dark:text-cyan-200" 
+                  : "text-slate-400 dark:text-slate-400"
               }`}>
                 {message.timestamp.toLocaleTimeString()}
               </p>
             </div>
 
             {message.role === "user" && (
-              <div className="flex-shrink-0 w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-indigo-500 flex items-center justify-center">
-                <User className="w-5 h-5 text-white" />
+              <div className="flex-shrink-0 w-8 h-8 rounded-full bg-gradient-to-br from-blue-600 to-indigo-600 flex items-center justify-center border border-blue-500/50 overflow-hidden">
+                <Image
+                  src="/VajraLogo.png"
+                  alt="User"
+                  width={20}
+                  height={20}
+                  className="object-contain"
+                />
               </div>
             )}
           </div>
@@ -138,11 +176,11 @@ export function AIChat() {
         
         {isLoading && (
           <div className="flex gap-4 justify-start">
-            <div className="flex-shrink-0 w-8 h-8 rounded-full bg-gradient-to-br from-purple-500 to-cyan-500 flex items-center justify-center">
-              <Bot className="w-5 h-5 text-white" />
+            <div className="flex-shrink-0 w-8 h-8 rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center border border-cyan-400/50">
+              <Sparkles className="w-4 h-4 text-white" />
             </div>
-            <div className="bg-slate-100 dark:bg-slate-800/50 rounded-lg px-4 py-3 border border-slate-200 dark:border-slate-700">
-              <Loader2 className="w-5 h-5 animate-spin text-muted-foreground" />
+            <div className="bg-[#0f1419] dark:bg-[#0f1419] rounded-lg px-4 py-3 border border-cyan-500/20 dark:border-cyan-500/20">
+              <Loader2 className="w-5 h-5 animate-spin text-slate-400" />
             </div>
           </div>
         )}
@@ -152,14 +190,14 @@ export function AIChat() {
 
       {/* Example Questions */}
       {messages.length === 1 && (
-        <div className="px-6 pb-2 border-t border-border">
-          <p className="text-xs text-muted-foreground mb-2 mt-3">Example questions:</p>
+        <div className="px-6 pb-2 border-t border-slate-900 bg-[#0a0a0f]">
+          <p className="text-xs text-slate-500 mb-2 mt-3">Example questions:</p>
           <div className="flex flex-wrap gap-2">
             {EXAMPLE_QUESTIONS.map((question, idx) => (
               <button
                 key={idx}
                 onClick={() => handleExampleClick(question)}
-                className="text-xs px-3 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800/50 hover:bg-slate-200 dark:hover:bg-slate-700 text-foreground border border-slate-200 dark:border-slate-700 transition-colors"
+                className="text-xs px-3 py-1.5 rounded-full bg-[#0f1419] dark:bg-[#0f1419] hover:bg-[#151a20] dark:hover:bg-[#151a20] text-slate-300 border border-cyan-500/30 dark:border-cyan-500/30 hover:border-cyan-500/50 transition-colors"
               >
                 {question}
               </button>
@@ -169,7 +207,7 @@ export function AIChat() {
       )}
 
       {/* Input Area */}
-      <div className="border-t border-border p-4">
+      <div className="border-t border-slate-900 p-4 bg-[#0a0a0f]">
         <div className="flex gap-2">
           <input
             ref={inputRef}
@@ -179,7 +217,7 @@ export function AIChat() {
             onKeyPress={handleKeyPress}
             placeholder="Ask about CVEs, vulnerabilities, or security threats..."
             disabled={isLoading}
-            className="flex-1 px-4 py-3 rounded-lg bg-background border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 disabled:opacity-50"
+            className="flex-1 px-4 py-3 rounded-lg bg-[#0f1419] border border-cyan-500/30 text-slate-100 placeholder:text-slate-600 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500/50 disabled:opacity-50"
           />
           <Button
             onClick={handleSend}

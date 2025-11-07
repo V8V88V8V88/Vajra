@@ -12,6 +12,7 @@ import {
 } from "@/lib/api"
 import { CrawlerLogs } from "@/components/crawler/crawler-logs"
 import { Play, Search, X } from "lucide-react"
+import { dispatchNotification } from "@/contexts/notification-context"
 
 function deriveSourceSummary(records: CrawlerRecord[]) {
   const bySource = new Map<string, { count: number; latest?: Date | null }>()
@@ -231,6 +232,18 @@ export default function CrawlerPage() {
             customThreat: isCustom ? customThreat : undefined,
           })
         }
+        
+        // Dispatch notification for crawler completion (no logs case)
+        const itemsCount = result.stats?.itemsTotal || result.records?.length || 0
+        const sourcesCount = result.stats?.sources || 0
+        dispatchNotification({
+          title: "Crawler Update",
+          message: isCustom 
+            ? `Custom crawl completed: Found ${itemsCount} items from ${sourcesCount} sources`
+            : `Threat data sync completed: Found ${itemsCount} items from ${sourcesCount} sources`,
+          type: "success",
+          link: "/crawler",
+        })
         return
       }
 
@@ -292,6 +305,18 @@ export default function CrawlerPage() {
               customThreat: isCustom ? customThreat : undefined,
             })
           }
+          
+          // Dispatch notification for crawler completion
+          const itemsCount = result.stats?.itemsTotal || result.records?.length || 0
+          const sourcesCount = result.stats?.sources || 0
+          dispatchNotification({
+            title: "Crawler Update",
+            message: isCustom 
+              ? `Custom crawl completed: Found ${itemsCount} items from ${sourcesCount} sources`
+              : `Threat data sync completed: Found ${itemsCount} items from ${sourcesCount} sources`,
+            type: "success",
+            link: "/crawler",
+          })
         }
       }, 320)
     },

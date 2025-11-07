@@ -6,6 +6,7 @@ import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { useState, useEffect } from "react"
 import { useTheme } from "next-themes"
+import { useNotifications } from "@/contexts/notification-context"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -23,55 +24,16 @@ import {
 } from "@/components/ui/dialog"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
-interface Notification {
-  id: string
-  title: string
-  message: string
-  type: "info" | "warning" | "success" | "error"
-  timestamp: Date
-  read: boolean
-  link?: string
-}
-
 export function Navbar() {
   const router = useRouter()
   const { theme, setTheme } = useTheme()
+  const { notifications, markAsRead, markAllAsRead, clearAll, unreadCount } = useNotifications()
   const [mounted, setMounted] = useState(false)
   const [settingsOpen, setSettingsOpen] = useState(false)
 
   useEffect(() => {
     setMounted(true)
   }, [])
-  
-  // Mock notifications - replace with actual notifications from API/context
-  const [notifications, setNotifications] = useState<Notification[]>([
-    {
-      id: "1",
-      title: "New Threat Detected",
-      message: "High severity threat detected in the network",
-      type: "warning",
-      timestamp: new Date(Date.now() - 5 * 60 * 1000), // 5 minutes ago
-      read: false,
-      link: "/threats",
-    },
-    {
-      id: "2",
-      title: "Crawler Update",
-      message: "Threat data sync completed successfully",
-      type: "success",
-      timestamp: new Date(Date.now() - 30 * 60 * 1000), // 30 minutes ago
-      read: false,
-      link: "/crawler",
-    },
-    {
-      id: "3",
-      title: "System Status",
-      message: "All systems operational",
-      type: "info",
-      timestamp: new Date(Date.now() - 2 * 60 * 60 * 1000), // 2 hours ago
-      read: true,
-    },
-  ])
 
   // Mock user data - replace with actual user context/auth when implemented
   // Using useState to ensure stable reference and avoid hydration issues
@@ -136,29 +98,13 @@ export function Navbar() {
     }
   }, [])
 
-  const unreadCount = notifications.filter((n) => !n.read).length
-
   const handleLogout = () => {
     // TODO: Implement logout logic
     console.log("Logout clicked")
     // Could navigate to login page or clear session
   }
 
-  const markAsRead = (id: string) => {
-    setNotifications((prev) =>
-      prev.map((n) => (n.id === id ? { ...n, read: true } : n))
-    )
-  }
-
-  const markAllAsRead = () => {
-    setNotifications((prev) => prev.map((n) => ({ ...n, read: true })))
-  }
-
-  const clearAll = () => {
-    setNotifications([])
-  }
-
-  const getNotificationIcon = (type: Notification["type"]) => {
+  const getNotificationIcon = (type: "info" | "warning" | "success" | "error") => {
     switch (type) {
       case "warning":
       case "error":

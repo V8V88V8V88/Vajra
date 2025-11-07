@@ -7,6 +7,7 @@ import { Navbar } from "@/components/layout/navbar"
 import { QueryProvider } from "@/components/providers/query-provider"
 import { ThemeProvider } from "@/components/theme-provider"
 import { FontLoader } from "@/components/font-loader"
+import { NotificationProvider } from "@/contexts/notification-context"
 
 // Inter font for non-Apple platforms
 const inter = Inter({ subsets: ["latin"] })
@@ -32,21 +33,23 @@ export default function RootLayout({
       >
         <FontLoader />
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
-          <QueryProvider>
-            <div className="flex h-screen overflow-hidden">
-              <Sidebar />
-              <div 
-                className="flex-1 flex flex-col overflow-hidden"
-                style={{
-                  transition: "margin-left 150ms cubic-bezier(0.4, 0, 0.2, 1)",
-                  willChange: "margin-left"
-                }}
-              >
-                <Navbar />
-                <main className="flex-1 overflow-auto">{children}</main>
+          <NotificationProvider>
+            <QueryProvider>
+              <div className="flex h-screen overflow-hidden">
+                <Sidebar />
+                <div 
+                  className="flex-1 flex flex-col overflow-hidden"
+                  style={{
+                    transition: "margin-left 150ms cubic-bezier(0.4, 0, 0.2, 1)",
+                    willChange: "margin-left"
+                  }}
+                >
+                  <Navbar />
+                  <main className="flex-1 overflow-auto">{children}</main>
+                </div>
               </div>
-            </div>
-          </QueryProvider>
+            </QueryProvider>
+          </NotificationProvider>
         </ThemeProvider>
       </body>
     </html>

@@ -2,7 +2,8 @@
 
 import { useState } from "react"
 import { checkWebsite, type WebsiteCheckResult } from "@/lib/api"
-import { Search, AlertCircle, CheckCircle, XCircle, ExternalLink, Shield, Server, Code, Globe, Loader2 } from "lucide-react"
+import { Search, AlertCircle, CheckCircle, XCircle, ExternalLink, Shield, Server, Code, Globe, Loader2, Download } from "lucide-react"
+import { dispatchNotification } from "@/contexts/notification-context"
 
 const severityColors = {
   critical: "bg-red-500/10 border-red-500/20 text-red-400",
@@ -36,11 +37,64 @@ export default function WebsiteChecker() {
     try {
       const data = await checkWebsite(url.trim())
       setResult(data)
+      
+      // Dispatch notification for website check completion
+      const vulnCount = data.summary.vulnerable_count || 0
+      const criticalCount = data.summary.critical_count || 0
+      const highCount = data.summary.high_count || 0
+      
+      if (vulnCount > 0) {
+        dispatchNotification({
+          title: "Website Vulnerability Check Complete",
+          message: `Found ${vulnCount} vulnerabilities (${criticalCount} critical, ${highCount} high) on ${url.trim()}`,
+          type: criticalCount > 0 ? "error" : highCount > 0 ? "warning" : "info",
+          link: "/website-checker",
+        })
+      } else {
+        dispatchNotification({
+          title: "Website Vulnerability Check Complete",
+          message: `No vulnerabilities found on ${url.trim()}`,
+          type: "success",
+          link: "/website-checker",
+        })
+      }
     } catch (err: any) {
       setError(err.message || "Failed to check website")
+      
+      // Dispatch error notification
+      dispatchNotification({
+        title: "Website Check Failed",
+        message: `Failed to check ${url.trim()}: ${err.message || "Unknown error"}`,
+        type: "error",
+        link: "/website-checker",
+      })
     } finally {
       setLoading(false)
     }
+  }
+
+  const handleExport = () => {
+    if (!result) return
+
+    const exportData = {
+      url: result.url,
+      scan_date: result.scan_date,
+      summary: result.summary,
+      vulnerabilities: result.vulnerabilities,
+      technologies: result.technologies,
+      tech_check_status: result.tech_check_status || [],
+      ai_analysis: result.ai_analysis || null,
+    }
+
+    const blob = new Blob([JSON.stringify(exportData, null, 2)], { type: 'application/json' })
+    const blobUrl = window.URL.createObjectURL(blob)
+    const a = document.createElement('a')
+    a.href = blobUrl
+    a.download = `vulnerability-report-${result.url.replace(/https?:\/\//, '').replace(/\//g, '-')}-${new Date().toISOString().split('T')[0]}.json`
+    document.body.appendChild(a)
+    a.click()
+    window.URL.revokeObjectURL(blobUrl)
+    document.body.removeChild(a)
   }
 
   return (
@@ -95,6 +149,23 @@ export default function WebsiteChecker() {
       {/* Results */}
       {result && (
         <div className="space-y-6">
+          {/* Export Button */}
+          <div className="flex justify-between items-center">
+            <div>
+              <h2 className="text-2xl font-bold text-foreground">Scan Results</h2>
+              <p className="text-sm text-muted-foreground mt-1">
+                Scanned on {new Date(result.scan_date).toLocaleString()}
+              </p>
+            </div>
+            <button
+              onClick={handleExport}
+              className="flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-lg font-medium hover:bg-primary/90 transition-colors shadow-lg"
+            >
+              <Download className="w-4 h-4" />
+              Export Report
+            </button>
+          </div>
+
           {/* Summary Cards */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
             <div className="backdrop-blur-md border border-border bg-card dark:bg-gradient-to-br dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] rounded-lg p-4">

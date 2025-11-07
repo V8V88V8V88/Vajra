@@ -22,7 +22,23 @@ except ImportError:
 
 logger = logging.getLogger("uvicorn")
 
+# Import Redis cache
+from services.redis_cache import cache, cache_response, invalidate_cache_on_update
+
 app = FastAPI(title="AI Cyber Threat Forecaster API")
+
+# Startup and shutdown events for Redis
+@app.on_event("startup")
+async def startup_event():
+    """Initialize Redis connection on startup."""
+    await cache.connect()
+    logger.info("Application startup complete")
+
+@app.on_event("shutdown")
+async def shutdown_event():
+    """Close Redis connection on shutdown."""
+    await cache.disconnect()
+    logger.info("Application shutdown complete")
 
 # Allow local frontend during development
 app.add_middleware(
@@ -87,6 +103,7 @@ async def health():
 
 
 @app.get("/api/stats")
+@cache_response(ttl=60, key_prefix="stats")  # Cache for 1 minute
 async def get_stats():
     # Get real stats from crawled data
     try:
@@ -129,6 +146,7 @@ async def get_stats():
 
 
 @app.get("/api/threats")
+@cache_response(ttl=120, key_prefix="threats")  # Cache for 2 minutes
 async def list_threats(page: int = 1, limit: int = 10):
     try:
         from data_layer.neo4j_connector import query_threats_api
@@ -347,6 +365,16 @@ async def start_crawler(request: Request):
                     db_connector.close()
                     
                     logger.info(f"Stored {stored_count} new crawler records in threat database (total unique: {total_unique})")
+                    
+                    # Invalidate all relevant caches after storing new data
+                    await invalidate_cache_on_update([
+                        "stats:*",
+                        "threats:*", 
+                        "charts:*",
+                        "get_threat:*"
+                    ])
+                    logger.info("Cache invalidated after crawler data update")
+                    
                     # Add log entry about storage
                     result["logs"].append({
                         "id": f"log-stored-{dt.datetime.utcnow().timestamp()}",
@@ -474,6 +502,7 @@ async def delete_all_threats():
 
 
 @app.get("/api/charts/trend")
+@cache_response(ttl=180, key_prefix="charts:trend")  # Cache for 3 minutes
 async def get_trend_data(days: int = 10, startDate: str = None, endDate: str = None):
     """Get threat trend data for the last N days or custom date range
     
@@ -864,6 +893,7 @@ async def get_trend_data(days: int = 10, startDate: str = None, endDate: str = N
 
 
 @app.get("/api/charts/severity")
+@cache_response(ttl=180, key_prefix="charts:severity")  # Cache for 3 minutes
 async def get_severity_data():
     """Get severity distribution for pie chart"""
     try:
@@ -1270,6 +1300,7 @@ async def get_ai_forecast(days: int = 7):
 
 
 @app.get("/api/charts/sources")
+@cache_response(ttl=180, key_prefix="charts:sources")  # Cache for 3 minutes
 async def get_source_data():
     """Get threat source distribution for bar chart"""
     try:
@@ -1833,6 +1864,37 @@ Only mark as safe if site has HTTPS, proper security headers, and no matching vu
         raise HTTPException(status_code=500, detail=f"Website check failed: {str(e)}")
 
 
+@app.get("/api/cache/stats")
+async def get_cache_stats():
+    """Get Redis cache statistics and performance metrics."""
+    stats = await cache.get_stats()
+    return stats
+
+
+@app.post("/api/cache/clear")
+async def clear_cache(pattern: Optional[str] = None):
+    """
+    Clear cache entries. Use with caution!
+    
+    Args:
+        pattern: Optional pattern to clear specific keys (e.g., "threats:*")
+                 If not provided, clears ALL cache
+    """
+    if pattern:
+        deleted = await cache.delete_pattern(pattern)
+        return {
+            "status": "success",
+            "message": f"Cleared {deleted} cache entries matching pattern: {pattern}",
+            "deleted_count": deleted
+        }
+    else:
+        success = await cache.clear_all()
+        return {
+            "status": "success" if success else "error",
+            "message": "All cache entries cleared" if success else "Failed to clear cache"
+        }
+
+
 @app.get("/health")
 async def health_check():
     """Comprehensive health check of all modules"""
@@ -1853,6 +1915,9 @@ async def health_check():
         status["modules"]["neo4j"] = "connected" if test_connection() else "unavailable"
     except:
         status["modules"]["neo4j"] = "unavailable"
+    
+    # Check Redis cache
+    status["modules"]["redis_cache"] = "connected" if cache.is_connected() else "unavailable"
     
     try:
         from data_layer.timeseries_db import test_connection

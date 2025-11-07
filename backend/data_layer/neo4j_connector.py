@@ -801,12 +801,38 @@ def store_crawler_records(records: List[Dict]) -> int:
         
         # Map severity string to standardized severity
         severity_raw = record.get("severity", "").upper() if record.get("severity") else ""
-        severity = "low"
+        severity = None
+        
+        # First try to get severity from string
         if "CRITICAL" in severity_raw:
             severity = "critical"
         elif "HIGH" in severity_raw:
             severity = "high"
         elif "MEDIUM" in severity_raw:
+            severity = "medium"
+        elif "LOW" in severity_raw:
+            severity = "low"
+        
+        # If severity is missing, try to determine from CVSS score
+        if not severity:
+            metadata = record.get("metadata", {})
+            cvss_score = metadata.get("cvss_score", "")
+            if cvss_score:
+                try:
+                    score_float = float(str(cvss_score).strip())
+                    if score_float >= 9.0:
+                        severity = "critical"
+                    elif score_float >= 7.0:
+                        severity = "high"
+                    elif score_float >= 4.0:
+                        severity = "medium"
+                    else:
+                        severity = "low"
+                except (ValueError, TypeError):
+                    pass
+        
+        # Default to medium if still no severity (better than low for unknown threats)
+        if not severity:
             severity = "medium"
         
         # Create threat node

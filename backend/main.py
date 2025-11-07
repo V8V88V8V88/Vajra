@@ -217,6 +217,7 @@ async def start_crawler(request: Request):
                         from datetime import datetime
                         
                         logs.append({
+                            "id": f"log-ai-analysis-{dt.datetime.utcnow().timestamp()}",
                             "timestamp": dt.datetime.utcnow().isoformat() + "Z",
                             "message": "Running AI analysis on crawled threats...",
                             "type": "info"
@@ -310,6 +311,7 @@ async def start_crawler(request: Request):
                         
                         # Update logs with AI analysis results
                         logs.append({
+                            "id": f"log-ai-complete-{dt.datetime.utcnow().timestamp()}",
                             "timestamp": dt.datetime.utcnow().isoformat() + "Z",
                             "message": f"AI Analysis complete: {ai_analyzed_count} threats analyzed, {anomaly_count} anomalies detected",
                             "type": "success"
@@ -320,6 +322,7 @@ async def start_crawler(request: Request):
                     except ImportError as e:
                         logger.warning(f"AI models not available: {e}")
                         logs.append({
+                            "id": f"log-ai-skipped-{dt.datetime.utcnow().timestamp()}",
                             "timestamp": dt.datetime.utcnow().isoformat() + "Z",
                             "message": "AI analysis skipped (models not available)",
                             "type": "warning"
@@ -328,6 +331,7 @@ async def start_crawler(request: Request):
                     except Exception as e:
                         logger.error(f"AI analysis error: {e}")
                         logs.append({
+                            "id": f"log-ai-error-{dt.datetime.utcnow().timestamp()}",
                             "timestamp": dt.datetime.utcnow().isoformat() + "Z",
                             "message": f"AI analysis error: {str(e)}",
                             "type": "warning"
@@ -345,6 +349,7 @@ async def start_crawler(request: Request):
                     logger.info(f"Stored {stored_count} new crawler records in threat database (total unique: {total_unique})")
                     # Add log entry about storage
                     result["logs"].append({
+                        "id": f"log-stored-{dt.datetime.utcnow().timestamp()}",
                         "timestamp": dt.datetime.utcnow().isoformat() + "Z",
                         "message": f"Stored {stored_count} new threats in database (total unique: {total_unique})",
                         "type": "success"
@@ -354,17 +359,32 @@ async def start_crawler(request: Request):
                 except Exception as e:
                     logger.warning(f"Failed to store crawler records: {e}")
                     result["logs"].append({
+                        "id": f"log-storage-error-{dt.datetime.utcnow().timestamp()}",
                         "timestamp": dt.datetime.utcnow().isoformat() + "Z",
                         "message": f"Warning: Could not store threats in database: {e}",
                         "type": "warning"
                     })
+            
+            # Always add final completion log
+            result["logs"].append({
+                "id": f"log-completion-{dt.datetime.utcnow().timestamp()}",
+                "timestamp": dt.datetime.utcnow().isoformat() + "Z",
+                "message": f"Crawler run completed successfully. Total items collected: {result['stats'].get('items_total', 0)}, unique: {result['stats'].get('items_unique', 0)}",
+                "type": "success"
+            })
+            
             return result
         return {"logs": result}
     except Exception as e:
         logger.warning("Crawler orchestrator missing, returning simulated logs: %s", e)
         logs = []
         for i in range(10):
-            logs.append({"timestamp": None, "message": f"Simulated log {i}", "type": "info"})
+            logs.append({
+                "id": f"log-simulated-{i}-{dt.datetime.utcnow().timestamp()}",
+                "timestamp": dt.datetime.utcnow().isoformat() + "Z",
+                "message": f"Simulated log {i}",
+                "type": "info"
+            })
         return {"logs": logs}
 
 

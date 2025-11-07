@@ -6,12 +6,17 @@ import { getThreats, searchThreats } from "@/lib/api"
 import { ThreatCard } from "@/components/threats/threat-card"
 import { ThreatDetailModal } from "@/components/threats/threat-detail-modal"
 import type { Threat } from "@/lib/api"
-import { Search } from "lucide-react"
+import { Search, Filter, Calendar } from "lucide-react"
+
+type SeverityFilter = "all" | "critical" | "high" | "medium" | "low"
+type DateSort = "newest" | "oldest"
 
 export default function ThreatsPage() {
   const [page, setPage] = useState(1)
   const [selectedThreat, setSelectedThreat] = useState<Threat | null>(null)
   const [searchInput, setSearchInput] = useState("")
+  const [severityFilter, setSeverityFilter] = useState<SeverityFilter>("all")
+  const [dateSort, setDateSort] = useState<DateSort>("newest")
 
   // Debounced search query - updates after user stops typing
   const [debouncedSearch, setDebouncedSearch] = useState("")
@@ -38,13 +43,23 @@ export default function ThreatsPage() {
     setPage(1)
   }
 
-  // Use search when debouncedSearch is present, otherwise use paginated list
+  // Fetch all threats when filters are active, otherwise use pagination
+  const needsAllThreats = debouncedSearch || severityFilter !== "all"
+  
   const { data, isLoading, error, isFetching, refetch } = useQuery({
-    queryKey: debouncedSearch ? ["threats", "search", debouncedSearch] : ["threats", "list", page],
+    queryKey: debouncedSearch 
+      ? ["threats", "search", debouncedSearch] 
+      : needsAllThreats 
+        ? ["threats", "all"] 
+        : ["threats", "list", page],
     queryFn: async () => {
       if (debouncedSearch) {
         const threats = await searchThreats(debouncedSearch)
         return { threats, total: threats.length }
+      } else if (needsAllThreats) {
+        // Fetch all threats when filtering
+        const result = await getThreats(1, 1000) // Fetch large batch
+        return result
       } else {
         const result = await getThreats(page, 5)
         return result
@@ -55,16 +70,44 @@ export default function ThreatsPage() {
     refetchOnWindowFocus: false, // Don't refetch on focus to avoid flickering
   })
 
-  // Refetch when switching from search to list mode
+  // Refetch when filters change
   useEffect(() => {
-    if (!debouncedSearch && !isLoading) {
+    if (!isLoading) {
       refetch()
     }
-  }, [debouncedSearch, refetch, isLoading])
+  }, [debouncedSearch, severityFilter, refetch, isLoading])
 
-  const threats = useMemo(() => data?.threats || [], [data?.threats])
-  const total = data?.total || 0
-  const totalPages = debouncedSearch ? 1 : Math.ceil(total / 5)
+  // Filter and sort threats
+  const filteredAndSortedThreats = useMemo(() => {
+    let threats = data?.threats || []
+    
+    // Apply severity filter
+    if (severityFilter !== "all") {
+      threats = threats.filter((threat) => {
+        const threatSeverity = threat.severity?.toLowerCase() || ""
+        return threatSeverity === severityFilter.toLowerCase()
+      })
+    }
+    
+    // Apply date sort
+    threats = [...threats].sort((a, b) => {
+      const dateA = a.timestamp ? new Date(a.timestamp).getTime() : 0
+      const dateB = b.timestamp ? new Date(b.timestamp).getTime() : 0
+      
+      if (dateSort === "newest") {
+        return dateB - dateA // Newest first
+      } else {
+        return dateA - dateB // Oldest first
+      }
+    })
+    
+    return threats
+  }, [data?.threats, severityFilter, dateSort])
+
+  const threats = filteredAndSortedThreats
+  const total = threats.length
+  // Only show pagination when not filtering/searching
+  const totalPages = (debouncedSearch || severityFilter !== "all") ? 1 : Math.ceil((data?.total || 0) / 5)
 
 
   // Removed animation variants that might hide content
@@ -77,8 +120,9 @@ export default function ThreatsPage() {
         <p className="text-muted-foreground">Browse and analyze detected threats</p>
       </div>
 
-      {/* Search */}
-      <div>
+      {/* Search and Filters */}
+      <div className="space-y-4">
+        {/* Search Bar */}
         <div className="relative">
           <Search className="absolute left-4 top-3 w-5 h-5 text-muted-foreground" />
           <input
@@ -98,10 +142,64 @@ export default function ThreatsPage() {
             </button>
           )}
         </div>
+
+        {/* Filter and Sort Controls */}
+        <div className="flex flex-wrap items-center gap-4">
+          {/* Severity Filter */}
+          <div className="flex items-center gap-2">
+            <Filter className="w-4 h-4 text-muted-foreground" />
+            <label className="text-sm font-medium text-foreground">Severity:</label>
+            <select
+              value={severityFilter}
+              onChange={(e) => {
+                setSeverityFilter(e.target.value as SeverityFilter)
+                setPage(1)
+              }}
+              className="px-3 py-2 rounded-lg bg-input dark:bg-gradient-to-r dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] border border-border text-foreground focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-all text-sm"
+            >
+              <option value="all">All</option>
+              <option value="critical">Critical</option>
+              <option value="high">High</option>
+              <option value="medium">Medium</option>
+              <option value="low">Low</option>
+            </select>
+          </div>
+
+          {/* Date Sort */}
+          <div className="flex items-center gap-2">
+            <Calendar className="w-4 h-4 text-muted-foreground" />
+            <label className="text-sm font-medium text-foreground">Sort by Date:</label>
+            <select
+              value={dateSort}
+              onChange={(e) => {
+                setDateSort(e.target.value as DateSort)
+                setPage(1)
+              }}
+              className="px-3 py-2 rounded-lg bg-input dark:bg-gradient-to-r dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] border border-border text-foreground focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-all text-sm"
+            >
+              <option value="newest">Newest First</option>
+              <option value="oldest">Oldest First</option>
+            </select>
+          </div>
+
+          {/* Results Count */}
+          {!debouncedSearch && (
+            <div className="ml-auto text-sm text-muted-foreground">
+              Showing {threats.length} {threats.length === 1 ? 'threat' : 'threats'}
+              {severityFilter !== "all" && ` (${severityFilter})`}
+            </div>
+          )}
+        </div>
+
         {debouncedSearch && (
-          <div className="mt-2 text-sm text-muted-foreground">
+          <div className="text-sm text-muted-foreground">
             Showing results for: <span className="text-foreground font-medium">"{debouncedSearch}"</span>
             {isFetching && <span className="ml-2 text-primary">(searching...)</span>}
+            {threats.length > 0 && (
+              <span className="ml-2">
+                ({threats.length} {threats.length === 1 ? 'result' : 'results'})
+              </span>
+            )}
           </div>
         )}
       </div>

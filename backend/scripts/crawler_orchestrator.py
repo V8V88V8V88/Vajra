@@ -42,17 +42,19 @@ class CrawlerLog:
     timestamp: str
     message: str
     type: str = "info"  # info | success | error | warning
+    id: str = field(default_factory=lambda: f"log-{dt.datetime.utcnow().timestamp()}-{id(dt.datetime.utcnow())}")
 
 
 def _log(message: str, level: str = "info") -> CrawlerLog:
     now = dt.datetime.utcnow().isoformat() + "Z"
+    log_id = f"log-{dt.datetime.utcnow().timestamp()}-{id(now)}"
     if level == "error":
         logger.error(message)
     elif level == "warning":
         logger.warning(message)
     else:
         logger.info(message)
-    return CrawlerLog(timestamp=now, message=message, type=level)
+    return CrawlerLog(timestamp=now, message=message, type=level, id=log_id)
 
 
 def _fetch_json(
@@ -143,6 +145,13 @@ def crawl_nvd_recent(limit: int = 20, *, user_agent: str, start_date: str = None
                 total_results = payload.get("totalResults", 0)
                 date_range_str = f"{start_date} to {end_date}" if start_date and end_date else f"{start.strftime('%Y-%m-%d')} to {end.strftime('%Y-%m-%d')}"
                 logger.info(f"NVD API reports {total_results} total CVEs in date range {date_range_str}")
+                
+                # Warn if no results but we're querying a valid date range
+                if total_results == 0 and days_diff > 0:
+                    logger.warning(f"NVD API returned 0 results for date range {date_range_str}. This might indicate:")
+                    logger.warning("  - API rate limiting (try adding NVD_API_KEY)")
+                    logger.warning("  - Date range too old (NVD may have limited historical data)")
+                    logger.warning("  - Network/API issues")
             
             if not vulnerabilities_batch:
                 logger.info(f"No more CVEs to fetch (page {pages_fetched + 1})")
@@ -204,6 +213,16 @@ def crawl_nvd_recent(limit: int = 20, *, user_agent: str, start_date: str = None
     
     vulnerabilities = filtered
     logger.info(f"Fetched {len(all_vulnerabilities)} total CVEs, filtered to {len(vulnerabilities)} analyzed CVEs")
+    
+    # If we got very few results, log a warning
+    if len(vulnerabilities) == 0 and len(all_vulnerabilities) > 0:
+        status_counts = {}
+        for item in all_vulnerabilities[:100]:  # Sample first 100
+            status = item.get("cve", {}).get("vulnStatus", "unknown")
+            status_counts[status] = status_counts.get(status, 0) + 1
+        logger.warning(f"No analyzed CVEs found. Status distribution: {status_counts}")
+    elif len(vulnerabilities) == 0:
+        logger.warning(f"No CVEs fetched from NVD API. Check API key and date range.")
 
     for item in vulnerabilities:
         cve = item.get("cve", {})
@@ -230,6 +249,25 @@ def crawl_nvd_recent(limit: int = 20, *, user_agent: str, start_date: str = None
                 severity = metric.get("baseSeverity") or data.get("baseSeverity") or severity
                 score = data.get("baseScore") or score
                 break
+
+        # If severity is missing but we have a CVSS score, determine severity from score
+        if not severity and score is not None:
+            try:
+                score_float = float(score)
+                if score_float >= 9.0:
+                    severity = "CRITICAL"
+                elif score_float >= 7.0:
+                    severity = "HIGH"
+                elif score_float >= 4.0:
+                    severity = "MEDIUM"
+                else:
+                    severity = "LOW"
+            except (ValueError, TypeError):
+                pass
+
+        # Normalize severity to lowercase for consistency
+        if severity:
+            severity = severity.lower()
 
         record = CrawlerRecord(
             id=cve_id,
@@ -333,6 +371,17 @@ def crawl_reddit_netsec(limit: int = 10, *, user_agent: str) -> Iterable[Crawler
 
     for post in posts:
         data = post.get("data", {})
+        # Determine severity based on keywords in title/content
+        title_lower = data.get("title", "").lower()
+        content_lower = data.get("selftext", "").lower()
+        combined = f"{title_lower} {content_lower}"
+        
+        severity = "medium"  # Default for Reddit posts
+        if any(word in combined for word in ["critical", "0-day", "zero-day", "rce", "remote code execution"]):
+            severity = "high"
+        elif any(word in combined for word in ["exploit", "poc", "proof of concept", "cve-"]):
+            severity = "high"
+        
         record = CrawlerRecord(
             id=str(data.get("id")),
             source="reddit_netsec",
@@ -340,6 +389,7 @@ def crawl_reddit_netsec(limit: int = 10, *, user_agent: str) -> Iterable[Crawler
             url=f"https://www.reddit.com{data.get('permalink', '')}",
             summary=data.get("selftext", "")[:300],
             published=dt.datetime.fromtimestamp(data.get("created_utc", 0)).isoformat() + "Z",
+            severity=severity,
             metadata={
                 "author": data.get("author", ""),
                 "score": str(data.get("score", "")),
@@ -390,6 +440,14 @@ def crawl_github_advisories(limit: int = 20, *, user_agent: str, start_date: str
                     cve_id = match.group(0)
             
             if cve_id or "GHSA-" in message or "advisory" in message.lower():
+                # GitHub advisories are typically high severity
+                severity = "high"
+                message_lower = message.lower()
+                if any(word in message_lower for word in ["critical", "critical severity", "cvss:3.1/av:n"]):
+                    severity = "critical"
+                elif any(word in message_lower for word in ["low", "low severity"]):
+                    severity = "low"
+                
                 record = CrawlerRecord(
                     id=commit.get("sha", "")[:12],
                     source="github_advisories",
@@ -397,7 +455,7 @@ def crawl_github_advisories(limit: int = 20, *, user_agent: str, start_date: str
                     url=f"https://github.com/github/advisory-database/commit/{commit.get('sha', '')}",
                     summary=message[:300],
                     published=date,
-                    severity=None,
+                    severity=severity,
                     metadata={"commit_sha": commit.get("sha", ""), "cve_id": cve_id or ""},
                 )
                 yield record
@@ -415,30 +473,48 @@ def crawl_abuse_ch_urlhaus(limit: int = 20, *, user_agent: str) -> Iterable[Craw
     try:
         payload = _fetch_json(url, user_agent=user_agent, timeout=30)
         
+        # URLhaus returns a list directly, not wrapped in a dict
         urls = payload if isinstance(payload, list) else payload.get("urls", [])
         
-        for item in urls[:limit]:
-            url_entry = item.get("url", "")
-            threat = item.get("threat", "malware")
-            date_added = item.get("date_added", "")
+        if not urls:
+            logger.warning(f"URLhaus returned empty data. Payload type: {type(payload)}, keys: {list(payload.keys()) if isinstance(payload, dict) else 'N/A'}")
+            return
+        
+        count = 0
+        for item in urls:
+            if count >= limit:
+                break
             
-            record = CrawlerRecord(
-                id=f"urlhaus-{item.get('id', item.get('urlhash', ''))}",
-                source="abuse_ch_urlhaus",
-                title=f"Malware URL: {threat}",
-                url=url_entry or "https://urlhaus.abuse.ch/",
-                summary=f"Threat type: {threat}. Status: {item.get('url_status', 'unknown')}",
-                published=date_added,
-                severity="high" if threat in ["malware", "phishing"] else "medium",
-                metadata={
-                    "threat_type": threat,
-                    "url_status": item.get("url_status", ""),
-                    "host": item.get("host", ""),
-                },
-            )
-            yield record
+            # Handle both dict and list item formats
+            if isinstance(item, dict):
+                url_entry = item.get("url", "")
+                threat = item.get("threat", "malware")
+                date_added = item.get("date_added", "")
+                
+                record = CrawlerRecord(
+                    id=f"urlhaus-{item.get('id', item.get('urlhash', str(hash(url_entry))))}",
+                    source="abuse_ch_urlhaus",
+                    title=f"Malware URL: {threat}",
+                    url=url_entry or "https://urlhaus.abuse.ch/",
+                    summary=f"Threat type: {threat}. Status: {item.get('url_status', 'unknown')}",
+                    published=date_added,
+                    severity="high" if threat in ["malware", "phishing"] else "medium",
+                    metadata={
+                        "threat_type": threat,
+                        "url_status": item.get("url_status", ""),
+                        "host": item.get("host", ""),
+                    },
+                )
+                yield record
+                count += 1
+        
+        if count == 0:
+            logger.warning(f"URLhaus: No valid records found in {len(urls)} items")
+    except requests.HTTPError as e:
+        logger.error(f"URLhaus HTTP error: {e.response.status_code} - {e.response.text[:200]}")
+        return
     except Exception as e:
-        logger.warning(f"URLhaus fetch failed: {e}")
+        logger.error(f"URLhaus fetch failed: {e}", exc_info=True)
         return
 
 
@@ -450,32 +526,58 @@ def crawl_abuse_ch_threatfox(limit: int = 20, *, user_agent: str) -> Iterable[Cr
     try:
         payload = _fetch_json(url, user_agent=user_agent, timeout=30)
         
-        iocs = payload.get("data", []) if isinstance(payload, dict) else (payload if isinstance(payload, list) else [])
+        # ThreatFox returns {"query_status": "...", "data": [...]}
+        if isinstance(payload, dict):
+            query_status = payload.get("query_status", "")
+            if query_status != "ok":
+                logger.warning(f"ThreatFox query status: {query_status}")
+            iocs = payload.get("data", [])
+        elif isinstance(payload, list):
+            iocs = payload
+        else:
+            logger.warning(f"ThreatFox returned unexpected format: {type(payload)}")
+            return
         
-        for item in iocs[:limit]:
-            ioc_value = item.get("ioc", "")
-            threat_type = item.get("threat_type", "")
-            malware = item.get("malware", "")
-            first_seen = item.get("first_seen", "")
+        if not iocs:
+            logger.warning(f"ThreatFox returned empty data")
+            return
+        
+        count = 0
+        for item in iocs:
+            if count >= limit:
+                break
             
-            record = CrawlerRecord(
-                id=f"threatfox-{item.get('id', ioc_value[:16])}",
-                source="abuse_ch_threatfox",
-                title=f"IOC: {malware} ({threat_type})",
-                url=f"https://threatfox.abuse.ch/ioc/{item.get('id', '')}" if item.get("id") else "https://threatfox.abuse.ch/",
-                summary=f"IOC Type: {threat_type}, Malware: {malware}",
-                published=first_seen,
-                severity="high",
-                metadata={
-                    "ioc": ioc_value,
-                    "threat_type": threat_type,
-                    "malware": malware,
-                    "ioc_type": item.get("ioc_type", ""),
-                },
-            )
-            yield record
+            if isinstance(item, dict):
+                ioc_value = item.get("ioc", "")
+                threat_type = item.get("threat_type", "")
+                malware = item.get("malware", "")
+                first_seen = item.get("first_seen", "")
+                
+                record = CrawlerRecord(
+                    id=f"threatfox-{item.get('id', ioc_value[:16] if ioc_value else str(count))}",
+                    source="abuse_ch_threatfox",
+                    title=f"IOC: {malware} ({threat_type})",
+                    url=f"https://threatfox.abuse.ch/ioc/{item.get('id', '')}" if item.get("id") else "https://threatfox.abuse.ch/",
+                    summary=f"IOC Type: {threat_type}, Malware: {malware}",
+                    published=first_seen,
+                    severity="high",
+                    metadata={
+                        "ioc": ioc_value,
+                        "threat_type": threat_type,
+                        "malware": malware,
+                        "ioc_type": item.get("ioc_type", ""),
+                    },
+                )
+                yield record
+                count += 1
+        
+        if count == 0:
+            logger.warning(f"ThreatFox: No valid records found in {len(iocs)} items")
+    except requests.HTTPError as e:
+        logger.error(f"ThreatFox HTTP error: {e.response.status_code} - {e.response.text[:200]}")
+        return
     except Exception as e:
-        logger.warning(f"ThreatFox fetch failed: {e}")
+        logger.error(f"ThreatFox fetch failed: {e}", exc_info=True)
         return
 
 
@@ -484,11 +586,23 @@ def crawl_exploit_db(limit: int = 15, *, user_agent: str, start_date: str = None
     
     try:
         import feedparser
-        
+    except ImportError:
+        logger.error("feedparser not installed. Install with: pip install feedparser")
+        return
+    
+    try:
         feed_url = "https://www.exploit-db.com/rss.xml"
         feed = feedparser.parse(feed_url)
         
+        if feed.bozo and feed.bozo_exception:
+            logger.warning(f"Exploit-DB RSS parse error: {feed.bozo_exception}")
+        
+        if not feed.entries:
+            logger.warning(f"Exploit-DB returned no entries")
+            return
+        
         count = 0
+        skipped_by_date = 0
         for entry in feed.entries:
             if count >= limit:
                 break
@@ -502,13 +616,19 @@ def crawl_exploit_db(limit: int = 15, *, user_agent: str, start_date: str = None
                         if start_date:
                             start_dt = dt.datetime.strptime(start_date, "%Y-%m-%d")
                             if entry_dt.date() < start_dt.date():
+                                skipped_by_date += 1
                                 continue
                         if end_date:
                             end_dt = dt.datetime.strptime(end_date, "%Y-%m-%d")
                             if entry_dt.date() > end_dt.date():
+                                skipped_by_date += 1
                                 continue
-                    except (ValueError, TypeError):
+                    except (ValueError, TypeError) as e:
+                        logger.debug(f"Date parsing error for Exploit-DB entry: {e}")
                         pass
+                else:
+                    # If no date filter, include it
+                    pass
             
             record = CrawlerRecord(
                 id=entry.get("id", "").split("/")[-1] or str(count),
@@ -525,10 +645,11 @@ def crawl_exploit_db(limit: int = 15, *, user_agent: str, start_date: str = None
             )
             yield record
             count += 1
-    except ImportError:
-        logger.warning("feedparser not available, skipping Exploit-DB")
+        
+        if count == 0:
+            logger.warning(f"Exploit-DB: No records returned. Total entries: {len(feed.entries)}, skipped by date: {skipped_by_date}")
     except Exception as e:
-        logger.warning(f"Exploit-DB fetch failed: {e}")
+        logger.error(f"Exploit-DB fetch failed: {e}", exc_info=True)
         return
 
 
@@ -545,31 +666,51 @@ def crawl_malwarebazaar(limit: int = 15, *, user_agent: str) -> Iterable[Crawler
         response.raise_for_status()
         payload = response.json()
         
+        query_status = payload.get("query_status", "")
+        if query_status != "ok":
+            logger.warning(f"MalwareBazaar query status: {query_status}")
+        
         samples = payload.get("data", [])
         
-        for sample in samples[:limit]:
-            sha256 = sample.get("sha256_hash", "")
-            malware_type = sample.get("malware_type", "")
-            first_seen = sample.get("first_seen", "")
+        if not samples:
+            logger.warning(f"MalwareBazaar returned no samples")
+            return
+        
+        count = 0
+        for sample in samples:
+            if count >= limit:
+                break
             
-            record = CrawlerRecord(
-                id=sha256[:16] if sha256 else sample.get("id", str(hash(str(sample)))),
-                source="malwarebazaar",
-                title=f"Malware Sample: {malware_type}",
-                url=f"https://bazaar.abuse.ch/sample/{sha256}/" if sha256 else "https://bazaar.abuse.ch/",
-                summary=f"Malware Type: {malware_type}, SHA256: {sha256[:32]}..." if sha256 else f"Type: {malware_type}",
-                published=first_seen,
-                severity="high",
-                metadata={
-                    "sha256": sha256,
-                    "malware_type": malware_type,
-                    "file_type": sample.get("file_type", ""),
-                    "signature": sample.get("signature", ""),
-                },
-            )
-            yield record
+            if isinstance(sample, dict):
+                sha256 = sample.get("sha256_hash", "")
+                malware_type = sample.get("malware_type", "")
+                first_seen = sample.get("first_seen", "")
+                
+                record = CrawlerRecord(
+                    id=sha256[:16] if sha256 else sample.get("id", str(hash(str(sample)))),
+                    source="malwarebazaar",
+                    title=f"Malware Sample: {malware_type}",
+                    url=f"https://bazaar.abuse.ch/sample/{sha256}/" if sha256 else "https://bazaar.abuse.ch/",
+                    summary=f"Malware Type: {malware_type}, SHA256: {sha256[:32]}..." if sha256 else f"Type: {malware_type}",
+                    published=first_seen,
+                    severity="high",
+                    metadata={
+                        "sha256": sha256,
+                        "malware_type": malware_type,
+                        "file_type": sample.get("file_type", ""),
+                        "signature": sample.get("signature", ""),
+                    },
+                )
+                yield record
+                count += 1
+        
+        if count == 0:
+            logger.warning(f"MalwareBazaar: No valid records found in {len(samples)} samples")
+    except requests.HTTPError as e:
+        logger.error(f"MalwareBazaar HTTP error: {e.response.status_code} - {e.response.text[:200]}")
+        return
     except Exception as e:
-        logger.warning(f"MalwareBazaar fetch failed: {e}")
+        logger.error(f"MalwareBazaar fetch failed: {e}", exc_info=True)
         return
 
 
@@ -656,9 +797,23 @@ def run_crawler(start_date: str = None, end_date: str = None) -> Dict[str, objec
     for record in records:
         unique_records.setdefault(f"{record.source}:{record.id}", record)
 
+    # Calculate final stats
+    total_items = len(records)
+    unique_items = len(unique_records)
+    successful_sources = sum(1 for log in logs if log.type == "success" and "Collected" in log.message)
+    
+    # Add completion log with summary
     logs.append(
         _log(
-            f"Crawler finished. Sources: {len(sources)}, total items: {len(records)}, unique: {len(unique_records)}",
+            f"Crawler finished successfully. Sources crawled: {successful_sources}/{len(sources)}, total items: {total_items}, unique: {unique_items}",
+            "success",
+        )
+    )
+    
+    # Add final summary log
+    logs.append(
+        _log(
+            f"Crawler run completed at {dt.datetime.utcnow().isoformat()}Z. Total execution time: {len(logs)} log entries processed.",
             "info",
         )
     )
@@ -669,9 +824,9 @@ def run_crawler(start_date: str = None, end_date: str = None) -> Dict[str, objec
         "logs": [log.__dict__ for log in logs],
         "records": serialised_records,
         "stats": {
-            "sources": len(sources),
-            "items_total": len(records),
-            "items_unique": len(unique_records),
+            "sources": successful_sources,  # Count successful sources, not total attempted
+            "items_total": total_items,
+            "items_unique": unique_items,
         },
     }
 

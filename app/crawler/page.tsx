@@ -102,6 +102,51 @@ function CrawlerSummary({ records, logs }: { records: CrawlerRecord[]; logs: Cra
   )
 }
 
+interface SavedCrawlerRun {
+  startTime: string
+  endTime: string
+  logs: CrawlerLog[]
+  stats: CrawlerStats | null
+  results: CrawlerRecord[]
+  timeRange: string
+  isCustomCrawl: boolean
+  customSite?: string
+  customThreat?: string
+}
+
+const STORAGE_KEY = "vajra-last-crawler-run"
+
+function saveCrawlerRun(run: SavedCrawlerRun) {
+  if (typeof window !== "undefined") {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(run))
+    } catch (error) {
+      console.error("Failed to save crawler run:", error)
+    }
+  }
+}
+
+function loadCrawlerRun(): SavedCrawlerRun | null {
+  if (typeof window === "undefined") return null
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY)
+    if (saved) {
+      const parsed = JSON.parse(saved) as SavedCrawlerRun
+      // Convert date strings back to Date objects for logs
+      if (parsed.logs) {
+        parsed.logs = parsed.logs.map((log) => ({
+          ...log,
+          timestamp: new Date(log.timestamp),
+        }))
+      }
+      return parsed
+    }
+  } catch (error) {
+    console.error("Failed to load crawler run:", error)
+  }
+  return null
+}
+
 export default function CrawlerPage() {
   const [isRunning, setIsRunning] = useState(false)
   const [isPlayback, setIsPlayback] = useState(false)
@@ -109,6 +154,7 @@ export default function CrawlerPage() {
   const [results, setResults] = useState<CrawlerRecord[]>([])
   const [stats, setStats] = useState<CrawlerStats | null>(null)
   const [lastRunAt, setLastRunAt] = useState<Date | null>(null)
+  const [startTime, setStartTime] = useState<Date | null>(null)
   const [error, setError] = useState<string | null>(null)
   const [customSite, setCustomSite] = useState("")
   const [customThreat, setCustomThreat] = useState("")
@@ -119,6 +165,25 @@ export default function CrawlerPage() {
   const [abortController, setAbortController] = useState<AbortController | null>(null)
 
   const logPlaybackRef = useRef<NodeJS.Timeout | null>(null)
+
+  // Load saved crawler run on mount
+  useEffect(() => {
+    const saved = loadCrawlerRun()
+    if (saved) {
+      setLogs(saved.logs || [])
+      setStats(saved.stats)
+      setResults(saved.results || [])
+      setLastRunAt(new Date(saved.endTime))
+      setStartTime(new Date(saved.startTime))
+      if (saved.timeRange) {
+        setTimeRange(saved.timeRange as typeof timeRange)
+      }
+      if (saved.isCustomCrawl) {
+        setCustomSite(saved.customSite || "")
+        setCustomThreat(saved.customThreat || "")
+      }
+    }
+  }, [])
 
   const stopLogPlayback = useCallback(() => {
     if (logPlaybackRef.current) {
@@ -137,37 +202,100 @@ export default function CrawlerPage() {
   const isBusy = isRunning || isPlayback
 
   const handleCrawlerResult = useCallback(
-    (result: CrawlerResult) => {
-      setStats(result.stats)
-      setResults(result.records)
-
+    (result: CrawlerResult, isCustom: boolean = false) => {
       const completedAt = new Date()
-      const logEntries = result.logs
+      const logEntries = result.logs || []
+      
+      // Always set stats and results immediately
+      setStats(result.stats)
+      setResults(result.records || [])
 
+      // If no logs, just save and finish
       if (logEntries.length === 0) {
         setLogs([])
         setLastRunAt(completedAt)
+        setIsRunning(false)
+        setIsPlayback(false)
+        
+        // Save even if no logs
+        if (startTime) {
+          saveCrawlerRun({
+            startTime: startTime.toISOString(),
+            endTime: completedAt.toISOString(),
+            logs: [],
+            stats: result.stats,
+            results: result.records || [],
+            timeRange: timeRange,
+            isCustomCrawl: isCustom,
+            customSite: isCustom ? customSite : undefined,
+            customThreat: isCustom ? customThreat : undefined,
+          })
+        }
         return
       }
 
+      // Validate logs have required fields
+      const validLogs = logEntries.filter(log => 
+        log && 
+        log.id && 
+        log.type && 
+        log.message && 
+        log.timestamp instanceof Date
+      )
+      
+      if (validLogs.length === 0) {
+        // Add a fallback log
+        const fallbackLog: CrawlerLog = {
+          id: `log-fallback-${Date.now()}`,
+          timestamp: completedAt,
+          message: "Crawler completed but no valid logs were returned",
+          type: "warning"
+        }
+        setLogs([fallbackLog])
+        setLastRunAt(completedAt)
+        setIsRunning(false)
+        setIsPlayback(false)
+        return
+      }
+
+      // Start playback animation
       setIsPlayback(true)
+      setIsRunning(false) // Mark as not running since we have results
       stopLogPlayback()
-      setLogs([])
+      setLogs([]) // Clear logs before playback
 
       let index = 0
       logPlaybackRef.current = setInterval(() => {
-        if (index < logEntries.length && logEntries[index]) {
-          setLogs((prev) => [...prev, logEntries[index]])
+        if (index < validLogs.length && validLogs[index]) {
+          setLogs((prev) => [...prev, validLogs[index]])
           index += 1
         }
-        if (index >= logEntries.length) {
+        if (index >= validLogs.length) {
           stopLogPlayback()
           setIsPlayback(false)
           setLastRunAt(completedAt)
+          
+          // Ensure all logs are displayed (in case playback missed any)
+          setLogs(validLogs)
+          
+          // Save crawler run data after playback completes
+          if (startTime) {
+            saveCrawlerRun({
+              startTime: startTime.toISOString(),
+              endTime: completedAt.toISOString(),
+              logs: validLogs,
+              stats: result.stats,
+              results: result.records || [],
+              timeRange: timeRange,
+              isCustomCrawl: isCustom,
+              customSite: isCustom ? customSite : undefined,
+              customThreat: isCustom ? customThreat : undefined,
+            })
+          }
         }
       }, 320)
     },
-    [stopLogPlayback]
+    [stopLogPlayback, startTime, timeRange, customSite, customThreat]
   )
 
   const handleStartCrawler = async () => {
@@ -181,6 +309,8 @@ export default function CrawlerPage() {
     setResults([])
     setStats(null)
     setError(null)
+    const crawlStartTime = new Date()
+    setStartTime(crawlStartTime)
     stopLogPlayback()
 
     try {
@@ -211,25 +341,71 @@ export default function CrawlerPage() {
       }
       
       const result = await startCrawler(controller.signal, startDate, endDate)
-      handleCrawlerResult(result)
+      
+      // Ensure crawler is marked as stopped
+      setIsRunning(false)
+      
+      // Process results
+      handleCrawlerResult(result, false)
     } catch (err) {
       if ((err as DOMException)?.name === "AbortError") {
         setError("Crawler run cancelled by user.")
-        setLogs((prev) => [
-          ...prev,
-          {
-            id: `log-cancel-${Date.now()}`,
-            timestamp: new Date(),
-            message: "Crawler run cancelled by user",
-            type: "warning",
-          },
-        ])
+        const cancelLog: CrawlerLog = {
+          id: `log-cancel-${Date.now()}`,
+          timestamp: new Date(),
+          message: "Crawler run cancelled by user",
+          type: "warning",
+        }
+        setLogs((prev) => {
+          const updatedLogs = [...prev, cancelLog]
+          
+          // Save cancelled run info
+          if (startTime) {
+            const cancelledAt = new Date()
+            saveCrawlerRun({
+              startTime: startTime.toISOString(),
+              endTime: cancelledAt.toISOString(),
+              logs: updatedLogs,
+              stats: stats,
+              results: results,
+              timeRange: timeRange,
+              isCustomCrawl: false,
+            })
+          }
+          
+          return updatedLogs
+        })
       } else {
         console.error("Crawler error:", err)
         setError("Failed to run crawler. Ensure the backend is running on port 8000.")
+        
+        // Add error log
+        const errorLog: CrawlerLog = {
+          id: `log-error-${Date.now()}`,
+          timestamp: new Date(),
+          message: `Crawler failed: ${err instanceof Error ? err.message : 'Unknown error'}`,
+          type: "error",
+        }
+        setLogs((prev) => [...prev, errorLog])
+        
+        // Save error run info
+        if (startTime) {
+          const errorAt = new Date()
+          saveCrawlerRun({
+            startTime: startTime.toISOString(),
+            endTime: errorAt.toISOString(),
+            logs: [...logs, errorLog],
+            stats: null,
+            results: [],
+            timeRange: timeRange,
+            isCustomCrawl: false,
+          })
+        }
       }
     } finally {
+      // Always ensure running state is cleared
       setIsRunning(false)
+      setIsPlayback(false)
       setAbortController(null)
     }
   }
@@ -248,8 +424,12 @@ export default function CrawlerPage() {
     e.preventDefault()
     if (!customSite.trim() || !customThreat.trim()) return
 
+    const crawlStartTime = new Date()
+    setStartTime(crawlStartTime)
     setIsRunning(true)
     setLogs([])
+    setResults([])
+    setStats(null)
 
     try {
       const mockLogs: CrawlerLog[] = [
@@ -273,6 +453,14 @@ export default function CrawlerPage() {
         { id: `mock-${Date.now()}-8`, timestamp: new Date(), message: "Custom crawl completed successfully", type: "success" },
       ]
 
+      // Mock stats and results for custom crawl
+      const mockStats: CrawlerStats = {
+        sources: 3,
+        itemsTotal: 12,
+        itemsUnique: 12,
+      }
+      const mockResults: CrawlerRecord[] = []
+
       setLogs([])
       setIsPlayback(true)
 
@@ -286,6 +474,23 @@ export default function CrawlerPage() {
         if (index >= mockLogs.length) {
           stopLogPlayback()
           setIsPlayback(false)
+          const completedAt = new Date()
+          setLastRunAt(completedAt)
+          setStats(mockStats)
+          setResults(mockResults)
+          
+          // Save custom crawl run
+          saveCrawlerRun({
+            startTime: crawlStartTime.toISOString(),
+            endTime: completedAt.toISOString(),
+            logs: mockLogs,
+            stats: mockStats,
+            results: mockResults,
+            timeRange: "custom",
+            isCustomCrawl: true,
+            customSite: customSite,
+            customThreat: customThreat,
+          })
         }
       }, 280)
 
@@ -325,10 +530,17 @@ export default function CrawlerPage() {
                     ? "Crawler request in progress..."
                     : isPlayback
                       ? "Streaming log output..."
-                      : lastRunAt
-                        ? `Last run at ${lastRunAt.toLocaleTimeString()}`
-                        : "Crawler is idle"}
+                      : lastRunAt && startTime
+                        ? `Last run: ${startTime.toLocaleString()} - ${lastRunAt.toLocaleString()} (${Math.round((lastRunAt.getTime() - startTime.getTime()) / 1000)}s)`
+                        : lastRunAt
+                          ? `Last run at ${lastRunAt.toLocaleString()}`
+                          : "Crawler is idle"}
                 </p>
+                {lastRunAt && stats && (
+                  <p className="text-xs text-muted-foreground mt-1">
+                    Collected {stats.itemsTotal} items from {stats.sources} sources ({stats.itemsUnique} unique)
+                  </p>
+                )}
               </div>
               <div className="flex items-center gap-3">
                 <button

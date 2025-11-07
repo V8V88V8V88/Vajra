@@ -371,15 +371,9 @@ export function Navbar() {
             </DropdownMenuLabel>
             <DropdownMenuSeparator className="bg-border" />
             <DropdownMenuItem asChild>
-              <Link href="/profile" className="cursor-pointer">
-                <UserCircle className="w-4 h-4 mr-2" />
-                Profile
-              </Link>
-            </DropdownMenuItem>
-            <DropdownMenuItem asChild>
               <Link href="/settings" className="cursor-pointer">
-                <Settings className="w-4 h-4 mr-2" />
-                Settings
+                <UserCircle className="w-4 h-4 mr-2" />
+                Profile & Settings
               </Link>
             </DropdownMenuItem>
             <DropdownMenuSeparator className="bg-border" />

@@ -7,6 +7,8 @@ import { ThreatTrendChart } from "@/components/dashboard/threat-trend-chart"
 import { SeverityChart } from "@/components/dashboard/severity-chart"
 import { SourceChart } from "@/components/dashboard/source-chart"
 import { AIForecastChart } from "@/components/dashboard/ai-forecast-chart"
+import { SeverityForecastChart } from "@/components/dashboard/severity-forecast-chart"
+import { SourcesForecastChart } from "@/components/dashboard/sources-forecast-chart"
 import { AlertCircle, TrendingUp, Activity } from "lucide-react"
 
 export default function Dashboard() {
@@ -148,9 +150,13 @@ export default function Dashboard() {
         <SourceChart data={sourceData} />
       </div>
 
-      {/* AI Forecast Chart */}
-      <div>
+      {/* AI Forecast Charts */}
+      <div className="space-y-6">
         <AIForecastChart />
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <SeverityForecastChart />
+          <SourcesForecastChart />
+        </div>
       </div>
     </div>
   )

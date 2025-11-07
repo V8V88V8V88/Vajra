@@ -1,7 +1,7 @@
 "use client"
 
 import type { Threat } from "@/lib/api"
-import { X, AlertCircle, Shield, Zap, Brain, AlertTriangle, TrendingUp } from "lucide-react"
+import { X, AlertCircle, Shield, Zap, Brain, AlertTriangle, TrendingUp, ExternalLink } from "lucide-react"
 import { motion } from "framer-motion"
 
 interface ThreatDetailModalProps {
@@ -17,6 +17,38 @@ const severityColors = {
 }
 
 export function ThreatDetailModal({ threat, onClose }: ThreatDetailModalProps) {
+  // Extract CVE URL from threat data
+  const getCveUrl = (): string | null => {
+    // First, check if URL is directly available
+    if (threat.url && threat.url.startsWith('http')) {
+      return threat.url
+    }
+    
+    // Try to extract CVE ID from indicators
+    for (const indicator of threat.indicators) {
+      const cveMatch = indicator.match(/CVE-\d{4}-\d+/i)
+      if (cveMatch) {
+        return `https://www.cve.org/CVERecord?id=${cveMatch[0]}`
+      }
+    }
+    
+    // Try to extract CVE ID from title
+    const titleCveMatch = threat.title.match(/CVE-\d{4}-\d+/i)
+    if (titleCveMatch) {
+      return `https://www.cve.org/CVERecord?id=${titleCveMatch[0]}`
+    }
+    
+    // Try to extract CVE ID from ID field
+    const idCveMatch = threat.id.match(/CVE-\d{4}-\d+/i)
+    if (idCveMatch) {
+      return `https://www.cve.org/CVERecord?id=${idCveMatch[0]}`
+    }
+    
+    return null
+  }
+  
+  const cveUrl = getCveUrl()
+  
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -46,19 +78,43 @@ export function ThreatDetailModal({ threat, onClose }: ThreatDetailModalProps) {
             </div>
             <p style={{ color: "#94a3b8" }}>{threat.summary}</p>
           </div>
-          <button
-            onClick={onClose}
-            className="p-2 rounded-lg transition-colors"
-            style={{ backgroundColor: "rgb(51 65 85 / 0.2)" }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = "rgb(51 65 85 / 0.4)"
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = "rgb(51 65 85 / 0.2)"
-            }}
-          >
-            <X className="w-6 h-6" style={{ color: "#94a3b8" }} />
-          </button>
+          <div className="flex items-center gap-2">
+            {cveUrl && (
+              <a
+                href={cveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-4 py-2 rounded-lg transition-colors flex items-center gap-2"
+                style={{ 
+                  backgroundColor: "rgb(6 182 212 / 0.2)",
+                  color: "#06b6d4",
+                  border: "1px solid rgb(6 182 212 / 0.3)"
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = "rgb(6 182 212 / 0.3)"
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = "rgb(6 182 212 / 0.2)"
+                }}
+              >
+                <ExternalLink className="w-4 h-4" />
+                <span className="text-sm font-medium">Open CVE Site</span>
+              </a>
+            )}
+            <button
+              onClick={onClose}
+              className="p-2 rounded-lg transition-colors"
+              style={{ backgroundColor: "rgb(51 65 85 / 0.2)" }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = "rgb(51 65 85 / 0.4)"
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = "rgb(51 65 85 / 0.2)"
+              }}
+            >
+              <X className="w-6 h-6" style={{ color: "#94a3b8" }} />
+            </button>
+          </div>
         </div>
 
         {/* Content */}

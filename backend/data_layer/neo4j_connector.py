@@ -622,7 +622,8 @@ def query_threats_api(page: int = 1, limit: int = 10) -> tuple:
             "source": node.properties.get('source', 'Threat Database'),
             "indicators": node.properties.get('indicators', [node.node_id]),
             "affectedSystems": node.properties.get('affectedSystems', []),
-            "recommendation": node.properties.get('recommendation', 'Monitor and investigate')
+            "recommendation": node.properties.get('recommendation', 'Monitor and investigate'),
+            "url": node.properties.get('url', '')
         }
         
         # Add AI analysis data if available
@@ -706,7 +707,8 @@ def get_threat_by_id_api(threat_id: str) -> Optional[Dict]:
         "source": node.properties.get('source', 'Threat Database'),
         "indicators": node.properties.get('indicators', [node.node_id]),
         "affectedSystems": node.properties.get('affectedSystems', []),
-        "recommendation": node.properties.get('recommendation', 'Investigate and mitigate')
+        "recommendation": node.properties.get('recommendation', 'Investigate and mitigate'),
+        "url": node.properties.get('url', '')
     }
     
     # Add AI analysis data if available
@@ -754,6 +756,10 @@ def search_threats_api(query: str) -> List[Dict]:
                 "description": node.properties.get('description', f"Threat type: {node.node_type}. ID: {node.node_id}"),
                 "source": node.properties.get('source', 'Threat Database'),
                 "timestamp": node.properties.get('discovered', None),
+                "url": node.properties.get('url', ''),
+                "indicators": node.properties.get('indicators', [node.node_id]),
+                "affectedSystems": node.properties.get('affectedSystems', []),
+                "recommendation": node.properties.get('recommendation', 'Monitor and investigate')
             }
             results.append(result)
     
@@ -817,6 +823,12 @@ def store_crawler_records(records: List[Dict]) -> int:
         # Add metadata, especially cvss_score and AI analysis if available
         metadata = record.get("metadata", {})
         if metadata:
+            # Extract cvss_score from metadata and store directly in properties for easier access
+            if "cvss_score" in metadata:
+                cvss_val = metadata.get("cvss_score")
+                if cvss_val and str(cvss_val).strip() and str(cvss_val) != "None":
+                    properties["cvss_score"] = str(cvss_val).strip()
+            # Store all metadata
             properties.update(metadata)
             # Store AI analysis separately for easy access
             if "ai_risk_score" in metadata:

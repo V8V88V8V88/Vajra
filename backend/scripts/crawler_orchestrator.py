@@ -84,7 +84,7 @@ def crawl_nvd_recent(limit: int = 20, *, user_agent: str, start_date: str = None
     base_url = "https://services.nvd.nist.gov/rest/json/cves/2.0"
     now = dt.datetime.now(dt.timezone.utc)
     
-    # Use provided dates or default to 6 months
+    # Use provided dates or default to 5 years (to get historical CVEs)
     if start_date and end_date:
         try:
             start = dt.datetime.strptime(start_date, "%Y-%m-%d").replace(tzinfo=dt.timezone.utc)
@@ -93,11 +93,11 @@ def crawl_nvd_recent(limit: int = 20, *, user_agent: str, start_date: str = None
             end = end.replace(hour=23, minute=59, second=59)
         except ValueError:
             # Fallback to default if parsing fails
-            start = now - dt.timedelta(days=180)
+            start = now - dt.timedelta(days=1825)  # 5 years
             end = now
     else:
-        # Default to 6 months
-        start = now - dt.timedelta(days=180)
+        # Default to 5 years to get historical CVEs, not just recent ones
+        start = now - dt.timedelta(days=1825)  # 5 years back
         end = now
     
     api_key = os.environ.get("NVD_API_KEY")
@@ -106,21 +106,25 @@ def crawl_nvd_recent(limit: int = 20, *, user_agent: str, start_date: str = None
     all_vulnerabilities = []
     start_index = 0
     results_per_page = 2000  # NVD API max per page
-    max_pages = 10  # Limit to prevent infinite loops
+    # Remove max_pages limit - fetch ALL pages until we get all results
     pages_fetched = 0
+    total_results = None  # Will be set from first API response
     
     # Calculate expected range - increase limit for longer date ranges
     days_diff = (end - start).days
-    if days_diff > 365:
-        # For 1+ year, fetch more
+    if days_diff > 1095:  # 3+ years
+        target_limit = limit * 10  # Fetch many more for very long ranges
+    elif days_diff > 730:  # 2+ years
+        target_limit = limit * 8
+    elif days_diff > 365:  # 1+ year
+        target_limit = limit * 5
+    elif days_diff > 180:  # 6+ months
         target_limit = limit * 3
-    elif days_diff > 180:
-        # For 6+ months, fetch more
-        target_limit = limit * 2
     else:
-        target_limit = limit
+        target_limit = limit * 2
     
-    while pages_fetched < max_pages:
+    # Fetch ALL pages until we get all results or hit the target limit
+    while True:
         params = {
             "resultsPerPage": str(results_per_page),
             "startIndex": str(start_index),
@@ -133,22 +137,43 @@ def crawl_nvd_recent(limit: int = 20, *, user_agent: str, start_date: str = None
         try:
             payload = _fetch_json(base_url, user_agent=user_agent, params=params, api_key=api_key)
             vulnerabilities_batch = payload.get("vulnerabilities", [])
-            total_results = payload.get("totalResults", 0)
+            
+            # Set total_results from first response
+            if total_results is None:
+                total_results = payload.get("totalResults", 0)
+                date_range_str = f"{start_date} to {end_date}" if start_date and end_date else f"{start.strftime('%Y-%m-%d')} to {end.strftime('%Y-%m-%d')}"
+                logger.info(f"NVD API reports {total_results} total CVEs in date range {date_range_str}")
             
             if not vulnerabilities_batch:
+                logger.info(f"No more CVEs to fetch (page {pages_fetched + 1})")
                 break
             
             all_vulnerabilities.extend(vulnerabilities_batch)
             pages_fetched += 1
             
-            # Check if we've fetched all results
-            if len(all_vulnerabilities) >= total_results or start_index + len(vulnerabilities_batch) >= total_results:
-                break
+            # Log progress every 5 pages
+            if pages_fetched % 5 == 0:
+                filtered_count = sum(1 for item in all_vulnerabilities 
+                                   if item.get("cve", {}).get("vulnStatus") in ALLOWED_NVD_STATUSES)
+                logger.info(f"Fetched {pages_fetched} pages, {len(all_vulnerabilities)} total CVEs, {filtered_count} analyzed")
             
-            # Check if we have enough filtered results
+            # Check if we've fetched all available results
+            if total_results > 0:
+                if start_index + len(vulnerabilities_batch) >= total_results:
+                    logger.info(f"Fetched all {total_results} CVEs from NVD API")
+                    break
+                # Also check if we got fewer results than expected (last page)
+                if len(vulnerabilities_batch) < results_per_page:
+                    logger.info(f"Reached last page (got {len(vulnerabilities_batch)} CVEs, expected up to {results_per_page})")
+                    break
+            
+            # Check if we have enough filtered results (but continue fetching if there are more pages)
             filtered_count = sum(1 for item in all_vulnerabilities 
                                if item.get("cve", {}).get("vulnStatus") in ALLOWED_NVD_STATUSES)
-            if filtered_count >= target_limit:
+            # Only stop early if we have enough AND we're past a reasonable number of pages
+            # This ensures we fetch historical data even if limit is reached early
+            if filtered_count >= target_limit and pages_fetched >= 5:
+                logger.info(f"Reached target limit of {target_limit} analyzed CVEs after {pages_fetched} pages")
                 break
             
             start_index += results_per_page
@@ -158,7 +183,14 @@ def crawl_nvd_recent(limit: int = 20, *, user_agent: str, start_date: str = None
             time.sleep(0.6)  # NVD API recommends 0.6s between requests
         except Exception as e:
             logger.warning(f"Error fetching NVD page {pages_fetched + 1}: {e}")
-            break
+            # Don't break immediately - try to continue if it's a transient error
+            if pages_fetched == 0:
+                # If first page fails, break
+                break
+            # Otherwise, log and continue (might be rate limit)
+            import time
+            time.sleep(2)  # Longer delay on error
+            start_index += results_per_page
     
     # Filter to only "Analyzed" or "Modified" status, then limit
     filtered = []
@@ -278,11 +310,12 @@ def crawl_cisa_kev(limit: int = 20, *, user_agent: str, start_date: str = None, 
             url=cve_url,
             summary=item.get("shortDescription", ""),
             published=item.get("dateAdded"),
-            severity=item.get("knownRansomwareCampaignUse"),
+            severity="critical",  # CISA KEV entries are all critical by definition (known exploited)
             metadata={
                 "vendor": item.get("vendorProject", ""),
                 "product": item.get("product", ""),
                 "required_action": item.get("requiredAction", ""),
+                "cvss_score": "9.0",  # Mark as critical since it's in KEV
             },
         )
         yield record
@@ -563,27 +596,35 @@ def run_crawler(start_date: str = None, end_date: str = None) -> Dict[str, objec
             logs.append(_log(f"Crawling data from {start_date} to {end_date} ({days_diff} days)", "info"))
             date_range_msg = f" ({start_date} to {end_date})"
             
-            # Increase limits for longer date ranges
-            if days_diff > 365:
-                nvd_limit = 200  # 1+ year
+            # Increase limits for longer date ranges - much higher to get historical data
+            if days_diff > 1095:  # 3+ years
+                nvd_limit = 10000  # Fetch many CVEs for historical ranges
+                cisa_limit = 1000
+            elif days_diff > 730:  # 2+ years
+                nvd_limit = 5000
+                cisa_limit = 500
+            elif days_diff > 365:  # 1+ year
+                nvd_limit = 2000
+                cisa_limit = 500
+            elif days_diff > 180:  # 6+ months
+                nvd_limit = 1000
+                cisa_limit = 300
+            elif days_diff > 90:  # 3+ months
+                nvd_limit = 500
                 cisa_limit = 200
-            elif days_diff > 180:
-                nvd_limit = 150  # 6+ months
-                cisa_limit = 150
-            elif days_diff > 90:
-                nvd_limit = 100  # 3+ months
-                cisa_limit = 100
             else:
-                nvd_limit = 50  # Default
-                cisa_limit = 50
+                nvd_limit = 200  # Default (increased from 50)
+                cisa_limit = 100
         except ValueError:
-            nvd_limit = 50
-            cisa_limit = 50
-            date_range_msg = ""
+            # If date parsing fails, use default 5 year range
+            nvd_limit = 10000
+            cisa_limit = 1000
+            date_range_msg = " (default: 5 years, date parsing failed)"
     else:
-        nvd_limit = 50
-        cisa_limit = 50
-        date_range_msg = ""
+        # Default to fetching many CVEs (5 year range)
+        nvd_limit = 10000
+        cisa_limit = 1000
+        date_range_msg = " (default: 5 years)"
 
     sources = [
         ("NVD Recent CVEs", crawl_nvd_recent, {"limit": nvd_limit, "start_date": start_date, "end_date": end_date}),

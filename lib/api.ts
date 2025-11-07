@@ -13,6 +13,7 @@ export interface Threat {
   indicators: string[]
   affectedSystems: string[]
   recommendation: string
+  url?: string
   // AI analysis fields (optional)
   ai_risk_score?: number
   ai_sentiment?: string
@@ -268,6 +269,7 @@ export async function getThreats(page = 1, limit = 10): Promise<{ threats: Threa
         indicators: t.indicators || [t.id],
         affectedSystems: t.affectedSystems || [],
         recommendation: t.recommendation || 'Monitor and investigate',
+        url: t.url || '',
         // Include AI analysis fields if available
         ai_risk_score: t.ai_risk_score,
         ai_sentiment: t.ai_sentiment,
@@ -317,6 +319,7 @@ export async function getThreatById(id: string): Promise<Threat | null> {
       indicators: data.indicators || [],
       affectedSystems: data.affectedSystems || [],
       recommendation: data.recommendation,
+      url: data.url || '',
       // Include AI analysis fields if available
       ai_risk_score: data.ai_risk_score,
       ai_sentiment: data.ai_sentiment,
@@ -465,6 +468,7 @@ export async function searchThreats(query: string): Promise<Threat[]> {
           indicators: t.indicators || [t.id],
           affectedSystems: t.affectedSystems || [],
           recommendation: t.recommendation || 'Monitor and investigate',
+          url: t.url || '',
           // Include AI analysis fields if available
           ai_risk_score: t.ai_risk_score,
           ai_sentiment: t.ai_sentiment,
@@ -620,18 +624,67 @@ export async function getSourceData(): Promise<SourceDataPoint[]> {
   }
 }
 
-export async function getAIForecast(): Promise<{
+export async function getAIForecast(days: number = 7): Promise<{
   status: string
   forecast: Array<{date: string, predicted_value: number}>
   trend: string
   risk_level?: string
 }> {
   try {
-    const response = await fetch(`${API_BASE_URL}/api/ai/forecast`)
+    const response = await fetch(`${API_BASE_URL}/api/ai/forecast?days=${days}`)
     if (!response.ok) throw new Error('Failed to get AI forecast')
     return await response.json()
   } catch (error) {
     console.error('Failed to get AI forecast:', error)
+    throw error
+  }
+}
+
+export async function deleteAllThreats(): Promise<{
+  status: string
+  message: string
+  deleted_count: number
+}> {
+  try {
+    const response = await fetch(`${API_BASE_URL}/api/threats/delete-all`, {
+      method: 'DELETE'
+    })
+    if (!response.ok) {
+      const error = await response.json()
+      throw new Error(error.detail || 'Failed to delete threats')
+    }
+    return await response.json()
+  } catch (error) {
+    console.error('Failed to delete threats:', error)
+    throw error
+  }
+}
+
+export async function getSeverityForecast(days: number = 7): Promise<{
+  status: string
+  forecast: Array<{date: string, critical: number, high: number, medium: number, low: number}>
+}> {
+  try {
+    const response = await fetch(`${API_BASE_URL}/api/ai/forecast/severity?days=${days}`)
+    if (!response.ok) throw new Error('Failed to get severity forecast')
+    return await response.json()
+  } catch (error) {
+    console.error('Failed to get severity forecast:', error)
+    throw error
+  }
+}
+
+export async function getSourcesForecast(days: number = 7): Promise<{
+  status: string
+  forecast: Array<Record<string, number>>
+  sources: string[]
+}> {
+  try {
+    const response = await fetch(`${API_BASE_URL}/api/ai/forecast/sources?days=${days}`)
+    if (!response.ok) throw new Error('Failed to get sources forecast')
+    return await response.json()
+  } catch (error) {
+    console.error('Failed to get sources forecast:', error)
     throw error
   }
 }

@@ -10,6 +10,7 @@ import { AIForecastChart } from "@/components/dashboard/ai-forecast-chart"
 import { SeverityForecastChart } from "@/components/dashboard/severity-forecast-chart"
 import { SourcesForecastChart } from "@/components/dashboard/sources-forecast-chart"
 import { AlertCircle, TrendingUp, Activity } from "lucide-react"
+import type { DateRangeType } from "@/components/ui/date-range-selector"
 
 export default function Dashboard() {
   const [stats, setStats] = useState(null)
@@ -18,22 +19,53 @@ export default function Dashboard() {
   const [sourceData, setSourceData] = useState([])
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
-  const [trendDateRange, setTrendDateRange] = useState<{startDate?: string, endDate?: string}>({})
+  const [trendDateRange, setTrendDateRange] = useState<DateRangeType>("6months")
+  const [trendCustomStart, setTrendCustomStart] = useState<string>("")
+  const [trendCustomEnd, setTrendCustomEnd] = useState<string>("")
+  const [sourceDateRange, setSourceDateRange] = useState<DateRangeType>("6months")
+  const [sourceCustomStart, setSourceCustomStart] = useState<string>("")
+  const [sourceCustomEnd, setSourceCustomEnd] = useState<string>("")
 
-  const loadTrendData = async (startDate?: string, endDate?: string) => {
+  const loadTrendData = async (range: DateRangeType, startDate?: string, endDate?: string) => {
     try {
-      if (startDate && endDate) {
-        // Calculate days between dates
+      let days = 180 // Default 6 months
+      let customStart: string | undefined = undefined
+      let customEnd: string | undefined = undefined
+
+      if (range === "custom" && startDate && endDate) {
+        customStart = startDate
+        customEnd = endDate
         const start = new Date(startDate)
         const end = new Date(endDate)
-        const days = Math.ceil((end.getTime() - start.getTime()) / (1000 * 60 * 60 * 24))
-        const trend = await getTrendData(days, startDate, endDate)
-        setTrendData(trend)
+        days = Math.ceil((end.getTime() - start.getTime()) / (1000 * 60 * 60 * 24))
       } else {
-        // Default to 180 days (6 months)
-        const trend = await getTrendData(180)
-        setTrendData(trend)
+        // Calculate days based on preset
+        const end = new Date()
+        const start = new Date()
+        switch (range) {
+          case "1month":
+            start.setMonth(start.getMonth() - 1)
+            days = 30
+            break
+          case "3months":
+            start.setMonth(start.getMonth() - 3)
+            days = 90
+            break
+          case "6months":
+            start.setMonth(start.getMonth() - 6)
+            days = 180
+            break
+          case "12months":
+            start.setMonth(start.getMonth() - 12)
+            days = 365
+            break
+        }
+        customStart = start.toISOString().split('T')[0]
+        customEnd = end.toISOString().split('T')[0]
       }
+
+      const trend = await getTrendData(days, customStart, customEnd)
+      setTrendData(trend)
     } catch (error) {
       console.error('Failed to load trend data:', error)
     }
@@ -55,7 +87,7 @@ export default function Dashboard() {
         setSourceData(sources)
         
         // Load trend data separately with date range support
-        await loadTrendData(trendDateRange.startDate, trendDateRange.endDate)
+        await loadTrendData(trendDateRange, trendCustomStart || undefined, trendCustomEnd || undefined)
       } catch (error) {
         console.error('Failed to load dashboard data:', error)
         setError('Backend is not running. Please start the backend server on port 8000.')
@@ -68,21 +100,21 @@ export default function Dashboard() {
 
   // Reload trend data when date range changes
   useEffect(() => {
-    if (trendDateRange.startDate && trendDateRange.endDate) {
-      loadTrendData(trendDateRange.startDate, trendDateRange.endDate)
-    } else if (!trendDateRange.startDate && !trendDateRange.endDate && Object.keys(trendDateRange).length > 0) {
-      // Reset to default when cleared (only if it was previously set)
-      loadTrendData()
-    }
+    loadTrendData(trendDateRange, trendCustomStart || undefined, trendCustomEnd || undefined)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [trendDateRange.startDate, trendDateRange.endDate])
+  }, [trendDateRange, trendCustomStart, trendCustomEnd])
 
-  const handleTrendDateRangeChange = (startDate: string, endDate: string) => {
-    if (startDate && endDate) {
-      setTrendDateRange({ startDate, endDate })
-    } else {
-      setTrendDateRange({})
-    }
+  const handleTrendDateRangeChange = (range: DateRangeType, startDate?: string, endDate?: string) => {
+    setTrendDateRange(range)
+    setTrendCustomStart(startDate || "")
+    setTrendCustomEnd(endDate || "")
+  }
+
+  const handleSourceDateRangeChange = (range: DateRangeType, startDate?: string, endDate?: string) => {
+    setSourceDateRange(range)
+    setSourceCustomStart(startDate || "")
+    setSourceCustomEnd(endDate || "")
+    // TODO: Reload source data with date range filter when backend supports it
   }
 
   return (
@@ -147,7 +179,7 @@ export default function Dashboard() {
 
       {/* Source Chart */}
       <div>
-        <SourceChart data={sourceData} />
+        <SourceChart data={sourceData} onDateRangeChange={handleSourceDateRangeChange} />
       </div>
 
       {/* AI Forecast Charts */}

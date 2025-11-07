@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from "react"
 import { ComposedChart, Line, Area, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts"
-import { Calendar, X } from "lucide-react"
+import { DateRangeSelector, type DateRangeType } from "@/components/ui/date-range-selector"
 
 interface TrendData {
   date: string
@@ -15,13 +15,13 @@ interface TrendData {
 
 interface ThreatTrendChartProps {
   data: TrendData[]
-  onDateRangeChange?: (startDate: string, endDate: string) => void
+  onDateRangeChange?: (range: DateRangeType, startDate?: string, endDate?: string) => void
 }
 
 export function ThreatTrendChart({ data, onDateRangeChange }: ThreatTrendChartProps) {
-  const [showDateRange, setShowDateRange] = useState(false)
-  const [startDate, setStartDate] = useState("")
-  const [endDate, setEndDate] = useState("")
+  const [dateRange, setDateRange] = useState<DateRangeType>("6months")
+  const [customStartDate, setCustomStartDate] = useState("")
+  const [customEndDate, setCustomEndDate] = useState("")
   
   // Calculate max values for scaling - use single scale for all metrics
   const { maxValue } = useMemo(() => {
@@ -52,18 +52,11 @@ export function ThreatTrendChart({ data, onDateRangeChange }: ThreatTrendChartPr
     })
   }
   
-  const handleApplyDateRange = () => {
-    if (startDate && endDate && new Date(startDate) <= new Date(endDate)) {
-      onDateRangeChange?.(startDate, endDate)
-      setShowDateRange(false)
-    }
-  }
-  
-  const handleClearDateRange = () => {
-    setStartDate("")
-    setEndDate("")
-    onDateRangeChange?.("", "")
-    setShowDateRange(false)
+  const handleDateRangeChange = (range: DateRangeType, startDate?: string, endDate?: string) => {
+    setDateRange(range)
+    if (startDate) setCustomStartDate(startDate)
+    if (endDate) setCustomEndDate(endDate)
+    onDateRangeChange?.(range, startDate, endDate)
   }
   
   return (
@@ -72,66 +65,12 @@ export function ThreatTrendChart({ data, onDateRangeChange }: ThreatTrendChartPr
     >
       <div className="flex items-center justify-between mb-6">
         <h3 className="text-lg font-semibold text-foreground">Threat Trend</h3>
-        <div className="relative">
-          <button
-            onClick={() => setShowDateRange(!showDateRange)}
-            className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-accent/10 text-accent hover:bg-accent/20 transition-colors text-sm font-medium"
-          >
-            <Calendar className="w-4 h-4" />
-            {startDate && endDate ? "Custom Range" : "Date Range"}
-          </button>
-          
-          {showDateRange && (
-            <div className="absolute right-0 top-full mt-2 z-10 bg-card border border-border rounded-lg p-4 shadow-lg min-w-[300px]">
-              <div className="flex items-center justify-between mb-3">
-                <span className="text-sm font-semibold text-foreground">Select Date Range</span>
-                <button
-                  onClick={() => setShowDateRange(false)}
-                  className="text-muted-foreground hover:text-foreground"
-                >
-                  <X className="w-4 h-4" />
-                </button>
-              </div>
-              <div className="space-y-3">
-                <div>
-                  <label className="block text-xs font-medium text-foreground mb-1">Start Date</label>
-                  <input
-                    type="date"
-                    value={startDate}
-                    onChange={(e) => setStartDate(e.target.value)}
-                    className="w-full px-3 py-2 rounded-lg bg-input border border-border text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary"
-                  />
-                </div>
-                <div>
-                  <label className="block text-xs font-medium text-foreground mb-1">End Date</label>
-                  <input
-                    type="date"
-                    value={endDate}
-                    onChange={(e) => setEndDate(e.target.value)}
-                    className="w-full px-3 py-2 rounded-lg bg-input border border-border text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary"
-                  />
-                </div>
-                <div className="flex gap-2">
-                  <button
-                    onClick={handleApplyDateRange}
-                    disabled={!startDate || !endDate || new Date(startDate) > new Date(endDate)}
-                    className="flex-1 px-3 py-2 rounded-lg bg-primary text-white text-sm font-medium hover:bg-primary/90 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-                  >
-                    Apply
-                  </button>
-                  {(startDate || endDate) && (
-                    <button
-                      onClick={handleClearDateRange}
-                      className="px-3 py-2 rounded-lg border border-border text-foreground text-sm font-medium hover:bg-accent/10 transition-colors"
-                    >
-                      Clear
-                    </button>
-                  )}
-                </div>
-              </div>
-            </div>
-          )}
-        </div>
+        <DateRangeSelector
+          value={dateRange}
+          customStartDate={customStartDate}
+          customEndDate={customEndDate}
+          onChange={handleDateRangeChange}
+        />
       </div>
       <ResponsiveContainer width="100%" height={300}>
         <ComposedChart data={data}>

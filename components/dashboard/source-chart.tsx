@@ -3,6 +3,7 @@
 import { useState, useMemo } from "react"
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell, LabelList } from "recharts"
 import { BarChart3, TrendingUp } from "lucide-react"
+import { DateRangeSelector, type DateRangeType } from "@/components/ui/date-range-selector"
 
 interface SourceData {
   name: string
@@ -11,6 +12,7 @@ interface SourceData {
 
 interface SourceChartProps {
   data: SourceData[]
+  onDateRangeChange?: (range: DateRangeType, startDate?: string, endDate?: string) => void
 }
 
 // Custom tooltip with percentage
@@ -55,8 +57,18 @@ const CustomLabel = ({ x, y, width, value }: any) => {
   )
 }
 
-export function SourceChart({ data }: SourceChartProps) {
+export function SourceChart({ data, onDateRangeChange }: SourceChartProps) {
   const [useLogScale, setUseLogScale] = useState(false)
+  const [dateRange, setDateRange] = useState<DateRangeType>("6months")
+  const [customStartDate, setCustomStartDate] = useState("")
+  const [customEndDate, setCustomEndDate] = useState("")
+
+  const handleDateRangeChange = (range: DateRangeType, startDate?: string, endDate?: string) => {
+    setDateRange(range)
+    if (startDate) setCustomStartDate(startDate)
+    if (endDate) setCustomEndDate(endDate)
+    onDateRangeChange?.(range, startDate, endDate)
+  }
   
   // Calculate total and percentages
   const chartData = useMemo(() => {
@@ -89,23 +101,33 @@ export function SourceChart({ data }: SourceChartProps) {
     >
       <div className="flex items-center justify-between mb-6">
         <h3 className="text-lg font-semibold text-foreground">Threat Sources</h3>
-        <button
-          onClick={() => setUseLogScale(!useLogScale)}
-          className="flex items-center gap-2 px-3 py-1.5 text-xs rounded-lg border border-border bg-background hover:bg-accent transition-colors"
-          title={useLogScale ? "Switch to linear scale (accurate)" : "Switch to logarithmic scale (better visualization)"}
-        >
-          {useLogScale ? (
-            <>
-              <BarChart3 className="w-4 h-4" />
-              <span>Linear</span>
-            </>
-          ) : (
-            <>
-              <TrendingUp className="w-4 h-4" />
-              <span>Log Scale</span>
-            </>
+        <div className="flex items-center gap-2">
+          {onDateRangeChange && (
+            <DateRangeSelector
+              value={dateRange}
+              customStartDate={customStartDate}
+              customEndDate={customEndDate}
+              onChange={handleDateRangeChange}
+            />
           )}
-        </button>
+          <button
+            onClick={() => setUseLogScale(!useLogScale)}
+            className="flex items-center gap-2 px-3 py-1.5 text-xs rounded-lg border border-border bg-background hover:bg-accent transition-colors"
+            title={useLogScale ? "Switch to linear scale (accurate)" : "Switch to logarithmic scale (better visualization)"}
+          >
+            {useLogScale ? (
+              <>
+                <BarChart3 className="w-4 h-4" />
+                <span>Linear</span>
+              </>
+            ) : (
+              <>
+                <TrendingUp className="w-4 h-4" />
+                <span>Log Scale</span>
+              </>
+            )}
+          </button>
+        </div>
       </div>
       
       {useLogScale && (

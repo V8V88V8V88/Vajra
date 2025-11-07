@@ -1,4 +1,4 @@
-# Vajra: AI-Powered Cyber Threat Forecaster - Complete Project Specification
+# VAJRA: AI-Powered Cyber Threat Forecaster - Complete Project Specification
 
 **Version:** 1.0  
 **Last Updated:** November 2025  
@@ -30,7 +30,7 @@
 
 ## Executive Summary
 
-**Vajra** is an enterprise-grade AI-powered cyber threat intelligence platform designed for critical infrastructure protection. The system automatically collects threat data from multiple Open Source Intelligence (OSINT) sources, stores it persistently, analyzes it using advanced machine learning models, and presents it through an interactive web-based dashboard.
+**VAJRA** is an enterprise-grade AI-powered cyber threat intelligence platform designed for critical infrastructure protection. The system automatically collects threat data from multiple Open Source Intelligence (OSINT) sources, stores it persistently, analyzes it using advanced machine learning models, and presents it through an interactive web-based dashboard.
 
 ### Key Capabilities
 - **Real-time OSINT Data Collection:** Automated crawling from 8 diverse threat intelligence sources
@@ -50,7 +50,7 @@
 ## Project Overview
 
 ### Purpose
-Vajra addresses the critical need for automated threat intelligence collection and analysis in cybersecurity operations. It eliminates manual monitoring of multiple threat sources by automating data collection, normalization, storage, and visualization.
+VAJRA addresses the critical need for automated threat intelligence collection and analysis in cybersecurity operations. It eliminates manual monitoring of multiple threat sources by automating data collection, normalization, storage, and visualization.
 
 ### Problem Statement
 Security teams must monitor numerous threat intelligence sources (CVE databases, security advisories, OSINT feeds) manually, leading to:
@@ -61,7 +61,7 @@ Security teams must monitor numerous threat intelligence sources (CVE databases,
 - Difficulty in correlating threats across sources
 
 ### Solution
-Vajra provides a unified platform that:
+VAJRA provides a unified platform that:
 - Automates collection from 8+ OSINT sources
 - Normalizes data into consistent formats
 - Stores data persistently for historical analysis
@@ -817,7 +817,7 @@ const { data, isLoading, error } = useQuery({
 
 ### Overview
 
-Vajra's AI/ML engine (`backend/inference_core/`) is a comprehensive machine learning suite designed for advanced cyber threat intelligence analysis. The system integrates five specialized AI models that work together to provide predictive analytics, anomaly detection, relationship mapping, natural language processing, and explainable insights.
+VAJRA's AI/ML engine (`backend/inference_core/`) is a comprehensive machine learning suite designed for advanced cyber threat intelligence analysis. The system integrates five specialized AI models that work together to provide predictive analytics, anomaly detection, relationship mapping, natural language processing, and explainable insights.
 
 **Key Features:**
 - **Production-Ready Models:** Pre-trained models with 92.3% (GNN) and 88.7% (LSTM) accuracy
@@ -2162,7 +2162,7 @@ When generating reports or documentation for this project, include:
 
 ## Conclusion
 
-Vajra is a comprehensive, production-ready AI-powered threat intelligence platform that demonstrates:
+VAJRA is a comprehensive, production-ready AI-powered threat intelligence platform that demonstrates:
 - **Full-stack development:** Frontend, backend, and data layer integration
 - **Real-world OSINT:** 8 diverse threat intelligence sources with automated collection
 - **Persistent storage:** JSON-based persistence with Neo4j support

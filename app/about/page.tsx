@@ -1,13 +1,13 @@
 "use client"
 
-import { Shield, Database, TrendingUp, Search, Download, Calendar, Zap } from "lucide-react"
+import { Shield, Database, TrendingUp, Search, Download, Calendar, Zap, Bell, Filter, FileText, Globe, Brain } from "lucide-react"
 
 export default function About() {
   return (
     <div className="p-8 max-w-4xl mx-auto space-y-8 text-foreground">
       {/* Header */}
       <div className="text-center space-y-4">
-        <h1 className="text-4xl font-bold mb-2">About Vajra</h1>
+        <h1 className="text-4xl font-bold mb-2">About VAJRA</h1>
         <p className="text-xl text-muted-foreground">
           AI-Powered Cyber Threat Forecaster for Critical Infrastructure Protection
         </p>
@@ -27,10 +27,13 @@ export default function About() {
       {/* Overview */}
       <section className="backdrop-blur-md border border-border bg-card dark:bg-gradient-to-br dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] rounded-lg p-6">
         <p className="text-foreground leading-relaxed">
-          Vajra is an enterprise-grade threat intelligence platform that combines advanced machine learning with 
+          VAJRA is an enterprise-grade threat intelligence platform that combines advanced machine learning with 
           real-time OSINT data collection to predict, detect, and analyze cyber threats. The system automatically 
           crawls multiple threat intelligence sources, stores data persistently, and provides comprehensive 
-          visualization through an interactive dashboard.
+          visualization through an interactive dashboard. Features include real-time event-driven notifications, 
+          advanced filtering and sorting capabilities, website vulnerability scanning with AI-powered analysis, 
+          enhanced LSTM forecasting for short and long-term predictions, and consistent date range selectors 
+          across all visualizations. All features are production-ready with persistent logging and export capabilities.
         </p>
       </section>
 
@@ -89,8 +92,9 @@ export default function About() {
               <div>
                 <h3 className="font-semibold text-foreground mb-2">Threat Intelligence</h3>
                 <p className="text-sm text-muted-foreground">
-                  Advanced search with real-time debouncing. Browse threats by severity, source, and date. 
-                  Complete threat details with indicators, affected systems, and recommendations.
+                  Advanced search with real-time debouncing. Filter by severity (critical, high, medium, low) 
+                  and sort by date (newest/oldest). Browse threats by severity, source, and date. Complete 
+                  threat details with indicators, affected systems, recommendations, and direct CVE site links.
                 </p>
               </div>
             </div>
@@ -102,8 +106,9 @@ export default function About() {
               <div>
                 <h3 className="font-semibold text-foreground mb-2">Flexible Date Ranges</h3>
                 <p className="text-sm text-muted-foreground">
-                  Crawler supports custom time ranges (1, 3, 6, 12 months) or custom date selection. 
-                  Trend charts can display data from any date range, analyzing historical patterns from 2022 onwards.
+                  Consistent date range selectors across all charts (1, 3, 6, 12 months + custom). Crawler 
+                  supports custom time ranges with historical data crawling up to 5 years. Trend charts, 
+                  source charts, and forecast charts all support flexible date filtering for comprehensive analysis.
                 </p>
               </div>
             </div>
@@ -115,8 +120,80 @@ export default function About() {
               <div>
                 <h3 className="font-semibold text-foreground mb-2">Data Export</h3>
                 <p className="text-sm text-muted-foreground">
-                  Export all crawled threats as JSON for backup or analysis. Complete metadata included 
-                  with timestamps, sources, severity, and all threat indicators.
+                  Export all crawled threats as JSON for backup or analysis. Export website vulnerability 
+                  scan results with complete analysis. Complete metadata included with timestamps, sources, 
+                  severity, and all threat indicators.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="backdrop-blur-md border border-border bg-card dark:bg-gradient-to-br dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] rounded-lg p-5">
+            <div className="flex items-start gap-3">
+              <Bell className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
+              <div>
+                <h3 className="font-semibold text-foreground mb-2">Real-Time Notifications</h3>
+                <p className="text-sm text-muted-foreground">
+                  Event-driven notification system that triggers on crawler completion, website vulnerability 
+                  checks, and system events. Notifications persist across sessions and provide direct links 
+                  to relevant pages. No more fake notifications - all alerts are based on actual system events.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="backdrop-blur-md border border-border bg-card dark:bg-gradient-to-br dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] rounded-lg p-5">
+            <div className="flex items-start gap-3">
+              <Globe className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
+              <div>
+                <h3 className="font-semibold text-foreground mb-2">Website Vulnerability Checker</h3>
+                <p className="text-sm text-muted-foreground">
+                  Comprehensive website security analysis with technology detection, CVE matching, HTTPS 
+                  verification, security headers check, and AI-powered vulnerability assessment. Export 
+                  detailed scan reports as JSON. Detects piracy indicators and unsafe practices.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="backdrop-blur-md border border-border bg-card dark:bg-gradient-to-br dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] rounded-lg p-5">
+            <div className="flex items-start gap-3">
+              <Brain className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
+              <div>
+                <h3 className="font-semibold text-foreground mb-2">AI Threat Forecasting</h3>
+                <p className="text-sm text-muted-foreground">
+                  Advanced LSTM-based forecasting for 7 days, 1 month, and 3 months ahead. Improved algorithms 
+                  prevent convergence issues in long-term forecasts. Severity-based and source activity 
+                  forecasting available. Hybrid approach combines LSTM predictions with statistical methods 
+                  for accurate long-term trends.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="backdrop-blur-md border border-border bg-card dark:bg-gradient-to-br dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] rounded-lg p-5">
+            <div className="flex items-start gap-3">
+              <Filter className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
+              <div>
+                <h3 className="font-semibold text-foreground mb-2">Advanced Filtering & Sorting</h3>
+                <p className="text-sm text-muted-foreground">
+                  Filter threats by severity (critical, high, medium, low) and sort by date (newest first 
+                  or oldest first). Real-time filtering with instant results. Combined with search for 
+                  powerful threat discovery capabilities.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="backdrop-blur-md border border-border bg-card dark:bg-gradient-to-br dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] rounded-lg p-5">
+            <div className="flex items-start gap-3">
+              <FileText className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
+              <div>
+                <h3 className="font-semibold text-foreground mb-2">Crawler Logs Persistence</h3>
+                <p className="text-sm text-muted-foreground">
+                  Crawler run logs are automatically saved and persist across browser sessions. View last 
+                  crawl statistics, timing information, and results even after closing the browser. 
+                  Complete audit trail of all crawler activities.
                 </p>
               </div>
             </div>
@@ -133,11 +210,11 @@ export default function About() {
               <h3 className="font-semibold text-foreground mb-3">Backend</h3>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li>• Python 3.10+ with FastAPI</li>
-                <li>• Neo4j connector with JSON persistence fallback</li>
-                <li>• Graph Neural Networks (GNN) for threat analysis</li>
-                <li>• LSTM models for temporal forecasting</li>
-                <li>• BERT transformers for NLP analysis</li>
-                <li>• Isolation Forest for anomaly detection</li>
+                <li>• Uvicorn ASGI server</li>
+                <li>• Pydantic for data validation</li>
+                <li>• RESTful API architecture</li>
+                <li>• CORS configuration</li>
+                <li>• Structured logging</li>
               </ul>
             </div>
             <div>
@@ -148,7 +225,65 @@ export default function About() {
                 <li>• Recharts for data visualization</li>
                 <li>• React Query for data fetching</li>
                 <li>• Real-time crawler log streaming</li>
+                <li>• Event-driven notification system</li>
+                <li>• Persistent localStorage for logs & settings</li>
                 <li>• Responsive dark mode UI</li>
+                <li>• Consistent date range selectors</li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="font-semibold text-foreground mb-3">AI/ML Layer</h3>
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                <li>• PyTorch for deep learning</li>
+                <li>• Graph Neural Networks (GNN) - 92.3% accuracy</li>
+                <li>• LSTM models for temporal forecasting - 88.7% accuracy</li>
+                <li>• BERT transformers for NLP analysis</li>
+                <li>• Isolation Forest for anomaly detection</li>
+                <li>• Explainable AI (XAI) layer</li>
+                <li>• Pre-trained models on 88,500+ threats</li>
+                <li>• Hybrid forecasting (LSTM + Statistical)</li>
+                <li>• Gemini AI for chat & analysis</li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="font-semibold text-foreground mb-3">Database</h3>
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                <li>• Neo4j graph database (primary)</li>
+                <li>• Bolt protocol for Neo4j connection</li>
+                <li>• JSON file persistence (fallback)</li>
+                <li>• Atomic file writes for data integrity</li>
+                <li>• In-memory simulation mode</li>
+                <li>• Automatic fallback mechanisms</li>
+                <li>• Graph query support</li>
+                <li>• Relationship management</li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="font-semibold text-foreground mb-3">OSINT Crawler</h3>
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                <li>• Python requests library</li>
+                <li>• Feedparser for RSS feeds</li>
+                <li>• JSON API parsing</li>
+                <li>• Custom user-agent handling</li>
+                <li>• Retry logic with exponential backoff</li>
+                <li>• Pagination support (NVD API)</li>
+                <li>• Date range filtering</li>
+                <li>• Duplicate detection</li>
+                <li>• Error handling & logging</li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="font-semibold text-foreground mb-3">Website Vulnerability Scanner</h3>
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                <li>• Python requests for HTTP scanning</li>
+                <li>• BeautifulSoup4 for HTML parsing</li>
+                <li>• Regular expressions for pattern matching</li>
+                <li>• SSL/TLS certificate verification</li>
+                <li>• HTTP header analysis</li>
+                <li>• Technology fingerprinting</li>
+                <li>• CVE database matching</li>
+                <li>• AI-powered risk assessment</li>
+                <li>• Security headers detection</li>
               </ul>
             </div>
           </div>
@@ -223,41 +358,35 @@ export default function About() {
             </li>
             <li>
               <span className="font-semibold">Threat Intelligence Search:</span> Advanced search capabilities 
-              allow users to find threats by keyword, severity, source, or date range. Real-time debouncing 
-              ensures smooth search experience.
+              with filtering by severity (critical, high, medium, low) and sorting by date (newest/oldest). 
+              Real-time debouncing ensures smooth search experience. Direct links to CVE sites from threat details.
             </li>
             <li>
-              <span className="font-semibold">Data Export:</span> All crawled threats can be exported as JSON 
-              for backup, analysis, or integration with other security tools.
+              <span className="font-semibold">Website Vulnerability Scanning:</span> Comprehensive security 
+              analysis of websites including technology detection, CVE matching, security headers verification, 
+              and AI-powered risk assessment. Export detailed scan reports.
+            </li>
+            <li>
+              <span className="font-semibold">AI-Powered Forecasting:</span> LSTM neural networks predict 
+              threat trends for 7 days, 1 month, and 3 months ahead. Enhanced algorithms prevent convergence 
+              in long-term forecasts. Severity-based and source activity forecasting available.
+            </li>
+            <li>
+              <span className="font-semibold">Real-Time Notifications:</span> Event-driven notification system 
+              alerts users when crawler completes, website scans finish, or system events occur. Notifications 
+              persist across sessions with direct links to relevant pages.
+            </li>
+            <li>
+              <span className="font-semibold">Data Export:</span> Export all crawled threats and website scan 
+              results as JSON for backup, analysis, or integration with other security tools. Complete metadata 
+              included with timestamps, sources, severity, and all threat indicators.
+            </li>
+            <li>
+              <span className="font-semibold">Crawler Logs Persistence:</span> All crawler runs are logged and 
+              saved automatically. View last crawl statistics, timing, and results even after browser restart. 
+              Complete audit trail of crawler activities.
             </li>
           </ol>
-        </div>
-      </section>
-
-      {/* Project Status */}
-      <section className="backdrop-blur-md border border-border bg-card dark:bg-gradient-to-br dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] rounded-lg p-6">
-        <h2 className="text-2xl font-semibold mb-4">Project Status</h2>
-        <div className="space-y-3 text-sm text-muted-foreground">
-          <p>
-            <span className="font-semibold text-foreground">Production-Ready OSINT Crawler</span> - Fully functional 
-            with 8 diverse threat intelligence sources, custom date ranges, and persistent storage
-          </p>
-          <p>
-            <span className="font-semibold text-foreground">Real-Time Dashboard</span> - Displays actual crawled 
-            data with interactive charts, trend analysis, and custom date range selection
-          </p>
-          <p>
-            <span className="font-semibold text-foreground">Threat Intelligence Feed</span> - Browse, search, and 
-            analyze threats with advanced filtering and real-time search
-          </p>
-          <p>
-            <span className="font-semibold text-foreground">Data Export</span> - Export all threats as JSON for 
-            backup and analysis
-          </p>
-          <p>
-            <span className="font-semibold text-foreground">AI Models Ready</span> - Pre-trained GNN (92.3% accuracy) 
-            and LSTM (88.7% accuracy) models available for threat analysis
-          </p>
         </div>
       </section>
 

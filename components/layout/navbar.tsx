@@ -140,14 +140,14 @@ export function Navbar() {
         <div className="relative group">
           <Image
             src="/VajraLogo.png"
-            alt="Vajra Logo"
+            alt="VAJRA Logo"
             width={24}
             height={24}
             className="rounded-md transition-transform duration-200 group-hover:scale-110"
           />
         </div>
         <div className="h-4 w-px bg-slate-300 dark:bg-slate-700/50" />
-        <span className="text-base font-bold text-slate-900 dark:text-foreground tracking-tight">Vajra</span>
+        <span className="text-base font-bold text-slate-900 dark:text-foreground tracking-tight">VAJRA</span>
       </div>
 
       <div className="flex items-center gap-1.5">

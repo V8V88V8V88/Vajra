@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Vajra - Start Script
+# VAJRA - Start Script
 # Runs backend and frontend in parallel
 
 set -e  # Exit on error
@@ -15,7 +15,7 @@ NC='\033[0m' # No Color
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd "$SCRIPT_DIR"
 
-echo -e "${GREEN}[*] Starting Vajra...${NC}"
+echo -e "${GREEN}[*] Starting VAJRA...${NC}"
 
 # Function to cleanup background processes on exit
 cleanup() {

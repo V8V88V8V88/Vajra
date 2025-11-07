@@ -148,23 +148,85 @@ class ThreatForecaster:
             
         sorted_signals = sorted(self.signals[signal_type], key=lambda s: s.timestamp)
         values = np.array([s.value for s in sorted_signals[-self.sequence_length:]])
-        values = (values - self.mean) / self.std
+        
+        # Store original mean and std for denormalization
+        original_mean = np.mean(values)
+        original_std = np.std(values) + 1e-8
+        
+        # Normalize using stored parameters (from training)
+        if self.std < 1e-8:
+            # Fallback if not trained yet
+            self.mean = original_mean
+            self.std = original_std
+        values_normalized = (values - self.mean) / self.std
         
         # Get model device
         device = next(self.model.parameters()).device
         
         self.model.eval()
         predictions = []
-        current_sequence = values.copy()
+        current_sequence = values_normalized.copy()
+        
+        # For longer forecasts, use a hybrid approach to prevent convergence
+        use_hybrid = self.forecast_horizon > 30
         
         with torch.no_grad():
-            for _ in range(self.forecast_horizon):
+            for step in range(self.forecast_horizon):
                 x = torch.FloatTensor(current_sequence).unsqueeze(0).unsqueeze(-1).to(device)
-                pred = self.model(x).cpu().item()  # Move back to CPU to get value
-                predictions.append(pred)
-                current_sequence = np.append(current_sequence[1:], pred)
+                pred_normalized = self.model(x).cpu().item()
                 
+                # For longer forecasts, add some regularization to prevent convergence
+                if use_hybrid and step > 30:
+                    # After 30 steps, blend with statistical trend to prevent convergence
+                    recent_preds = np.array(predictions[-7:]) if len(predictions) >= 7 else np.array(predictions)
+                    if len(recent_preds) > 0:
+                        trend = np.mean(np.diff(recent_preds)) if len(recent_preds) > 1 else 0
+                        # Blend: 70% LSTM, 30% trend continuation
+                        pred_normalized = 0.7 * pred_normalized + 0.3 * (recent_preds[-1] + trend)
+                
+                # Clamp predictions to reasonable range (prevent extreme values)
+                pred_normalized = np.clip(pred_normalized, -3.0, 3.0)
+                
+                predictions.append(pred_normalized)
+                
+                # Update sequence for next prediction
+                current_sequence = np.append(current_sequence[1:], pred_normalized)
+                
+        # Denormalize predictions
         predictions = np.array(predictions) * self.std + self.mean
+        
+        # Ensure predictions are non-negative
+        predictions = np.maximum(predictions, 0)
+        
+        # For very long forecasts, apply smoothing to prevent wild oscillations
+        if self.forecast_horizon > 60:
+            from scipy import signal
+            try:
+                # Apply a simple moving average filter to smooth predictions
+                window_size = min(7, len(predictions) // 10)
+                if window_size >= 3:
+                    predictions = signal.savgol_filter(predictions, window_size if window_size % 2 == 1 else window_size - 1, 2)
+            except:
+                # Fallback to simple moving average if scipy not available
+                window_size = min(5, len(predictions) // 10)
+                if window_size >= 3:
+                    smoothed = []
+                    for i in range(len(predictions)):
+                        start = max(0, i - window_size // 2)
+                        end = min(len(predictions), i + window_size // 2 + 1)
+                        smoothed.append(np.mean(predictions[start:end]))
+                    predictions = np.array(smoothed)
+        
+        # Validate predictions - check if they're converging to a constant
+        if len(predictions) > 10:
+            recent_std = np.std(predictions[-10:])
+            if recent_std < 0.01 * np.mean(np.abs(predictions[-10:])):
+                # Predictions are converging, apply trend-based correction
+                logger.warning("LSTM predictions converging, applying trend correction")
+                trend_slope = (predictions[-1] - predictions[0]) / len(predictions) if len(predictions) > 1 else 0
+                base_value = np.mean(predictions[:10]) if len(predictions) >= 10 else predictions[0]
+                for i in range(len(predictions)):
+                    predictions[i] = base_value + trend_slope * i
         
         trend = self._analyze_trend(predictions)
         risk_level = self._assess_risk(predictions)
@@ -192,11 +254,23 @@ class ThreatForecaster:
             trend_slope = coeffs[0]
         else:
             trend_slope = 0
-            
+        
+        # For longer forecasts, use exponential smoothing to prevent linear divergence
         predictions = []
-        for i in range(self.forecast_horizon):
-            pred = ma + trend_slope * (i + 1)
-            predictions.append(pred)
+        if self.forecast_horizon > 30:
+            # Use exponential smoothing for longer forecasts
+            alpha = 0.3  # Smoothing factor
+            last_value = values[-1] if len(values) > 0 else ma
+            for i in range(self.forecast_horizon):
+                # Blend moving average with trend, but apply exponential decay to trend
+                trend_contribution = trend_slope * (i + 1) * np.exp(-alpha * i / 30)
+                pred = ma + trend_contribution
+                predictions.append(max(0, pred))
+        else:
+            # Simple linear trend for shorter forecasts
+            for i in range(self.forecast_horizon):
+                pred = ma + trend_slope * (i + 1)
+                predictions.append(max(0, pred))
             
         predictions = np.array(predictions)
         

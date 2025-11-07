@@ -115,7 +115,7 @@ interface SavedCrawlerRun {
   customThreat?: string
 }
 
-const STORAGE_KEY = "vajra-last-crawler-run"
+const STORAGE_KEY = "VAJRA-last-crawler-run"
 
 function saveCrawlerRun(run: SavedCrawlerRun) {
   if (typeof window !== "undefined") {

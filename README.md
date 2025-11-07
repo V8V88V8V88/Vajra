@@ -2,8 +2,8 @@
     <br/>
     <p>
         <img src="VajraLogo.png"
-            title="Vajra" alt="Helium logo" width="120" />
-        <h1>Vajra</h1>
+            title="VAJRA" alt="Helium logo" width="120" />
+        <h1>VAJRA</h1>
     </p>
     <p width="120">
         AI-Powered Cyber Threat Forecaster for Critical Infrastructure Protection.
@@ -59,7 +59,7 @@ The frontend will be available at `http://localhost:3000`.
 ## Project Structure
 
 ```
-Vajra/
+VAJRA/
 ├── backend/          # FastAPI server with ML models
 │   ├── inference_core/    # GNN, LSTM, NLP, Anomaly Detection
 │   ├── data_layer/       # Neo4j, InfluxDB, Vector DB connectors

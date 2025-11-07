@@ -1,7 +1,7 @@
 # Backend - Inference Core & Polyglot Data Layer
 
 ## Overview
-Python-based AI/ML backend for Vajra Cyber Threat Forecaster.
+Python-based AI/ML backend for VAJRA Cyber Threat Forecaster.
 
 ## Quick Start
 

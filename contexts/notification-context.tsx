@@ -23,7 +23,7 @@ interface NotificationContextType {
 
 const NotificationContext = createContext<NotificationContextType | undefined>(undefined)
 
-const STORAGE_KEY = "vajra-notifications"
+const STORAGE_KEY = "VAJRA-notifications"
 const MAX_NOTIFICATIONS = 50 // Keep last 50 notifications
 
 export function NotificationProvider({ children }: { children: React.ReactNode }) {

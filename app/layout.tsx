@@ -13,7 +13,7 @@ import { NotificationProvider } from "@/contexts/notification-context"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "AI Cyber Threat Forecaster",
+  title: "VAJRA - AI Cyber Threat Forecaster",
   description: "Advanced threat intelligence and forecasting platform",
   generator: 'v0.app',
   icons: {

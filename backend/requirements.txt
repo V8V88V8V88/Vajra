@@ -45,6 +45,10 @@ beautifulsoup4>=4.12.0
 # AI Chat Service
 google-generativeai>=0.3.0
 
+# Caching
+redis>=5.0.0
+hiredis>=2.2.3  # C parser for better performance
+
 # Optional dependencies (uncomment if needed)
 # torch-geometric>=2.3.0  # For advanced GNN features
 # pinecone-client>=2.2.0  # Alternative vector DB

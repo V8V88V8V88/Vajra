@@ -23,6 +23,11 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip"
 
 export function Navbar() {
   const router = useRouter()
@@ -147,7 +152,14 @@ export function Navbar() {
           />
         </div>
         <div className="h-4 w-px bg-slate-300 dark:bg-slate-700/50" />
-        <span className="text-base font-bold text-slate-900 dark:text-foreground tracking-tight">VAJRA</span>
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <span className="text-base font-bold text-slate-900 dark:text-foreground tracking-tight cursor-default">VAJRA</span>
+          </TooltipTrigger>
+          <TooltipContent>
+            <p>Vulnerability Analysis and Joint Risk Assessment</p>
+          </TooltipContent>
+        </Tooltip>
       </div>
 
       <div className="flex items-center gap-1.5">

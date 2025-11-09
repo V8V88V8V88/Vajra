@@ -169,14 +169,14 @@ export function AIForecastChart({ className }: AIForecastChartProps) {
         <ComposedChart data={chartData}>
           <defs>
             <linearGradient id="forecastGradient" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0%" stopColor="#ea580c" stopOpacity={1} />
-              <stop offset="50%" stopColor="#f97316" stopOpacity={1} />
-              <stop offset="100%" stopColor="#fdba74" stopOpacity={1} />
+              <stop offset="0%" stopColor="#7c2d12" stopOpacity={1} />
+              <stop offset="55%" stopColor="#ea580c" stopOpacity={1} />
+              <stop offset="100%" stopColor="#fbbf24" stopOpacity={0.9} />
             </linearGradient>
             <linearGradient id="forecastAreaGradient" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#f97316" stopOpacity={0.45} />
-              <stop offset="45%" stopColor="#fb923c" stopOpacity={0.25} />
-              <stop offset="100%" stopColor="#fed7aa" stopOpacity={0} />
+              <stop offset="0%" stopColor="rgba(234, 88, 12, 0.35)" />
+              <stop offset="55%" stopColor="rgba(249, 115, 22, 0.18)" />
+              <stop offset="100%" stopColor="rgba(251, 191, 36, 0)" />
             </linearGradient>
           </defs>
           <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" strokeOpacity={0.35} />

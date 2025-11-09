@@ -143,9 +143,9 @@ export function SourceChart({ data, onDateRangeChange }: SourceChartProps) {
         >
           <defs>
             <linearGradient id="barGradient" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#ea580c" stopOpacity={1} />
-              <stop offset="50%" stopColor="#f97316" stopOpacity={0.95} />
-              <stop offset="100%" stopColor="#fb923c" stopOpacity={0.85} />
+              <stop offset="0%" stopColor="#fbbf24" stopOpacity={0.9} />
+              <stop offset="55%" stopColor="#ea580c" stopOpacity={0.95} />
+              <stop offset="100%" stopColor="#7c2d12" stopOpacity={1} />
             </linearGradient>
             <filter id="barShadow">
               <feGaussianBlur in="SourceAlpha" stdDeviation="2" />

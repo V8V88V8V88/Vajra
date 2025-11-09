@@ -129,7 +129,7 @@ export function AIForecastChart({ className }: AIForecastChartProps) {
               {trendIcon}
               <span className="capitalize">{forecastData.trend} Trend</span>
               {forecastData.risk_level && (
-                <span className="ml-2 px-2 py-1 rounded text-xs bg-foreground/10 text-foreground capitalize">
+                <span className="ml-2 px-2 py-1 rounded text-xs border border-destructive/40 bg-destructive/10 text-destructive font-semibold capitalize">
                   {forecastData.risk_level} Risk
                 </span>
               )}

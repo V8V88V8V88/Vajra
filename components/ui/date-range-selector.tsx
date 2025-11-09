@@ -79,7 +79,7 @@ export function DateRangeSelector({
     <div className={`relative ${className}`}>
       <button
         onClick={() => setShowCustom(!showCustom)}
-        className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-accent/10 text-accent hover:bg-accent/20 transition-colors text-sm font-medium"
+        className="flex items-center gap-2 px-3 py-1.5 rounded-lg border border-border/60 bg-muted/60 text-foreground hover:bg-muted/80 transition-colors text-sm font-medium"
       >
         <Calendar className="w-4 h-4" />
         {getDateRangeLabel()}
@@ -108,40 +108,40 @@ export function DateRangeSelector({
             <div className="grid grid-cols-2 gap-2">
               <button
                 onClick={() => handlePresetChange("1month")}
-                className={`px-3 py-2 rounded-lg text-xs font-medium transition-colors ${
+                className={`px-3 py-2 rounded-lg text-xs font-medium transition-colors border ${
                   value === "1month"
-                    ? "bg-primary text-white"
-                    : "bg-accent/10 text-foreground hover:bg-accent/20"
+                    ? "border-foreground bg-foreground text-background"
+                    : "border-border bg-muted/50 text-foreground hover:bg-muted/70"
                 }`}
               >
                 1 Month
               </button>
               <button
                 onClick={() => handlePresetChange("3months")}
-                className={`px-3 py-2 rounded-lg text-xs font-medium transition-colors ${
+                className={`px-3 py-2 rounded-lg text-xs font-medium transition-colors border ${
                   value === "3months"
-                    ? "bg-primary text-white"
-                    : "bg-accent/10 text-foreground hover:bg-accent/20"
+                    ? "border-foreground bg-foreground text-background"
+                    : "border-border bg-muted/50 text-foreground hover:bg-muted/70"
                 }`}
               >
                 3 Months
               </button>
               <button
                 onClick={() => handlePresetChange("6months")}
-                className={`px-3 py-2 rounded-lg text-xs font-medium transition-colors ${
+                className={`px-3 py-2 rounded-lg text-xs font-medium transition-colors border ${
                   value === "6months"
-                    ? "bg-primary text-white"
-                    : "bg-accent/10 text-foreground hover:bg-accent/20"
+                    ? "border-foreground bg-foreground text-background"
+                    : "border-border bg-muted/50 text-foreground hover:bg-muted/70"
                 }`}
               >
                 6 Months
               </button>
               <button
                 onClick={() => handlePresetChange("12months")}
-                className={`px-3 py-2 rounded-lg text-xs font-medium transition-colors ${
+                className={`px-3 py-2 rounded-lg text-xs font-medium transition-colors border ${
                   value === "12months"
-                    ? "bg-primary text-white"
-                    : "bg-accent/10 text-foreground hover:bg-accent/20"
+                    ? "border-foreground bg-foreground text-background"
+                    : "border-border bg-muted/50 text-foreground hover:bg-muted/70"
                 }`}
               >
                 12 Months
@@ -174,14 +174,14 @@ export function DateRangeSelector({
               <button
                 onClick={handleCustomApply}
                 disabled={!startDate || !endDate || new Date(startDate) > new Date(endDate)}
-                className="flex-1 px-3 py-2 rounded-lg bg-primary text-white text-sm font-medium hover:bg-primary/90 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                className="flex-1 px-3 py-2 rounded-lg bg-foreground text-background text-sm font-medium hover:bg-foreground/90 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
               >
                 Apply Custom
               </button>
               {(startDate || endDate || value === "custom") && (
                 <button
                   onClick={handleClear}
-                  className="px-3 py-2 rounded-lg border border-border text-foreground text-sm font-medium hover:bg-accent/10 transition-colors"
+                  className="px-3 py-2 rounded-lg border border-border text-foreground text-sm font-medium hover:bg-muted/60 transition-colors"
                 >
                   Clear
                 </button>

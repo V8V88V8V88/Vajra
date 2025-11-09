@@ -42,7 +42,7 @@ function CrawlerSummary({ records, logs }: { records: CrawlerRecord[]; logs: Cra
   return (
     <div className="fade-in" style={{ animationDelay: "0.55s" }}>
         <div
-        className="backdrop-blur-md border border-border bg-card dark:bg-gradient-to-br dark:from-[rgba(15,26,46,0.6)] dark:to-[rgba(30,41,59,0.3)] rounded-lg p-6 space-y-6"
+        className="backdrop-blur-md border border-border bg-card/95 dark:bg-card/95 rounded-lg p-6 space-y-6"
       >
         <div>
           <h3 className="text-lg font-semibold text-foreground mb-3">Source Summary</h3>
@@ -50,7 +50,7 @@ function CrawlerSummary({ records, logs }: { records: CrawlerRecord[]; logs: Cra
             {summary.map((entry) => (
               <div
                 key={entry.source}
-                className="rounded-lg border border-border bg-accent/50 dark:bg-slate-900/40 px-4 py-3"
+                className="rounded-lg border border-border bg-muted/60 dark:bg-muted/30 px-4 py-3"
               >
                 <p className="text-sm font-semibold text-primary uppercase tracking-wide">{entry.source}</p>
                 <p className="text-foreground text-lg font-bold">{entry.count} findings</p>
@@ -71,7 +71,7 @@ function CrawlerSummary({ records, logs }: { records: CrawlerRecord[]; logs: Cra
                 href={item.url}
                 target="_blank"
                 rel="noreferrer"
-                className="block rounded-lg border border-border bg-accent/50 dark:bg-slate-900/40 p-4 hover:border-primary/60 transition-colors"
+                className="block rounded-lg border border-border bg-muted/60 dark:bg-muted/30 p-4 hover:border-foreground/40 transition-colors"
               >
                 <p className="text-xs font-semibold text-primary uppercase tracking-wider">{item.source}</p>
                 <p className="text-foreground font-medium">{item.title}</p>
@@ -544,7 +544,7 @@ export default function CrawlerPage() {
 
       <div className="fade-in" style={{ animationDelay: "0.1s" }}>
         <div
-          className="backdrop-blur-md border border-border bg-card dark:bg-gradient-to-br dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] rounded-lg p-6"
+          className="backdrop-blur-md border border-border bg-card/95 dark:bg-card/95 rounded-lg p-6"
         >
           <div className="flex flex-col gap-4">
             <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
@@ -573,8 +573,8 @@ export default function CrawlerPage() {
                   disabled={isBusy}
                   className={`flex items-center gap-2 px-6 py-3 rounded-lg font-semibold transition-all duration-300 ${
                     isBusy
-                      ? "bg-muted/20 text-muted cursor-not-allowed"
-                      : "bg-primary text-white hover:bg-cyan-500 hover:shadow-lg hover:shadow-cyan-500/30"
+                      ? "bg-muted/20 text-muted-foreground cursor-not-allowed"
+                      : "bg-foreground text-background hover:bg-foreground/80 hover:shadow-[0_12px_28px_rgba(0,0,0,0.25)]"
                   }`}
                 >
                   <Play className="w-5 h-5" />
@@ -601,7 +601,7 @@ export default function CrawlerPage() {
                   onClick={() => setTimeRange("1month")}
                   className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
                     timeRange === "1month"
-                      ? "bg-primary text-white"
+                      ? "bg-foreground text-background"
                       : "bg-accent/10 text-foreground hover:bg-accent/20"
                   }`}
                 >
@@ -612,7 +612,7 @@ export default function CrawlerPage() {
                   onClick={() => setTimeRange("3months")}
                   className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
                     timeRange === "3months"
-                      ? "bg-primary text-white"
+                      ? "bg-foreground text-background"
                       : "bg-accent/10 text-foreground hover:bg-accent/20"
                   }`}
                 >
@@ -623,7 +623,7 @@ export default function CrawlerPage() {
                   onClick={() => setTimeRange("6months")}
                   className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
                     timeRange === "6months"
-                      ? "bg-primary text-white"
+                      ? "bg-foreground text-background"
                       : "bg-accent/10 text-foreground hover:bg-accent/20"
                   }`}
                 >
@@ -634,7 +634,7 @@ export default function CrawlerPage() {
                   onClick={() => setTimeRange("12months")}
                   className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
                     timeRange === "12months"
-                      ? "bg-primary text-white"
+                      ? "bg-foreground text-background"
                       : "bg-accent/10 text-foreground hover:bg-accent/20"
                   }`}
                 >
@@ -645,7 +645,7 @@ export default function CrawlerPage() {
                   onClick={() => setTimeRange("custom")}
                   className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
                     timeRange === "custom"
-                      ? "bg-primary text-white"
+                      ? "bg-foreground text-background"
                       : "bg-accent/10 text-foreground hover:bg-accent/20"
                   }`}
                 >
@@ -682,19 +682,19 @@ export default function CrawlerPage() {
 
       <div className="grid grid-cols-1 gap-6 md:grid-cols-3 fade-in" style={{ animationDelay: "0.2s" }}>
         <div
-          className="backdrop-blur-md border border-border bg-card dark:bg-gradient-to-br dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] rounded-lg p-6"
+          className="backdrop-blur-md border border-border bg-card/95 dark:bg-card/95 rounded-lg p-6"
         >
           <p className="text-sm text-muted-foreground mb-2">Sources Crawled</p>
           <p className="text-2xl font-bold text-foreground">{stats?.sources ?? 0}</p>
         </div>
         <div
-          className="backdrop-blur-md border border-border bg-card dark:bg-gradient-to-br dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] rounded-lg p-6"
+          className="backdrop-blur-md border border-border bg-card/95 dark:bg-card/95 rounded-lg p-6"
         >
           <p className="text-sm text-muted mb-2">Items Collected</p>
           <p className="text-2xl font-bold text-foreground">{stats?.itemsTotal ?? 0}</p>
         </div>
         <div
-          className="backdrop-blur-md border border-border bg-card dark:bg-gradient-to-br dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] rounded-lg p-6"
+          className="backdrop-blur-md border border-border bg-card/95 dark:bg-card/95 rounded-lg p-6"
         >
           <p className="text-sm text-muted mb-2">Unique Findings</p>
           <p className="text-2xl font-bold text-foreground">{stats?.itemsUnique ?? 0}</p>
@@ -704,7 +704,7 @@ export default function CrawlerPage() {
       <div className="fade-in" style={{ animationDelay: "0.3s" }}>
         <button
           onClick={() => setShowCustomForm(!showCustomForm)}
-          className="flex items-center gap-2 px-4 py-2 rounded-lg bg-accent/10 text-accent hover:bg-accent/20 transition-colors duration-300 font-semibold"
+          className="flex items-center gap-2 px-4 py-2 rounded-lg border border-border/60 bg-muted/60 text-foreground hover:bg-muted/80 transition-colors duration-300 font-semibold"
         >
           <Search className="w-5 h-5" />
           {showCustomForm ? "Hide" : "Custom Site Crawl"}
@@ -712,7 +712,7 @@ export default function CrawlerPage() {
 
         {showCustomForm && (
         <div
-          className="backdrop-blur-md border border-border bg-card dark:bg-gradient-to-br dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] rounded-lg p-6 mt-4"
+          className="backdrop-blur-md border border-border bg-card/95 dark:bg-card/95 rounded-lg p-6 mt-4"
         >
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-lg font-semibold text-foreground">Search for Specific Threats</h3>
@@ -760,8 +760,8 @@ export default function CrawlerPage() {
                 disabled={isRunning || !customSite.trim() || !customThreat.trim()}
                 className={`w-full px-4 py-2 rounded-lg font-semibold transition-all duration-300 ${
                   isRunning || !customSite.trim() || !customThreat.trim()
-                    ? "bg-muted/20 text-muted cursor-not-allowed"
-                    : "bg-primary text-white hover:bg-cyan-500 hover:shadow-lg hover:shadow-cyan-500/30"
+                    ? "bg-muted/20 text-muted-foreground cursor-not-allowed"
+                    : "bg-foreground text-background hover:bg-foreground/80 hover:shadow-[0_12px_28px_rgba(0,0,0,0.25)]"
                 }`}
               >
                 Start Custom Crawl

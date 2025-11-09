@@ -6,10 +6,10 @@ import { Search, AlertCircle, CheckCircle, XCircle, ExternalLink, Shield, Server
 import { dispatchNotification } from "@/contexts/notification-context"
 
 const severityColors = {
-  critical: "bg-red-500/10 border-red-500/20 text-red-400",
-  high: "bg-orange-500/10 border-orange-500/20 text-orange-400",
-  medium: "bg-yellow-500/10 border-yellow-500/20 text-yellow-400",
-  low: "bg-blue-500/10 border-blue-500/20 text-blue-400",
+  critical: "bg-destructive/15 border border-destructive/30 text-destructive",
+  high: "bg-amber-500/10 border border-amber-500/20 text-amber-400",
+  medium: "bg-yellow-500/10 border border-yellow-500/20 text-yellow-400",
+  low: "bg-emerald-500/10 border border-emerald-500/20 text-emerald-400",
 }
 
 const confidenceColors = {
@@ -108,7 +108,7 @@ export default function WebsiteChecker() {
       </div>
 
       {/* Input Section */}
-      <div className="backdrop-blur-md border border-border bg-card dark:bg-gradient-to-br dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] rounded-lg p-6">
+      <div className="backdrop-blur-md border border-border bg-card/95 dark:bg-card/95 rounded-lg p-6">
         <div className="flex gap-4">
           <div className="flex-1">
             <input
@@ -168,7 +168,7 @@ export default function WebsiteChecker() {
 
           {/* Summary Cards */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-            <div className="backdrop-blur-md border border-border bg-card dark:bg-gradient-to-br dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] rounded-lg p-4">
+            <div className="backdrop-blur-md border border-border bg-card/95 dark:bg-card/95 rounded-lg p-4">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm text-muted-foreground">Total CVEs Checked</p>
@@ -177,7 +177,7 @@ export default function WebsiteChecker() {
                 <Shield className="w-8 h-8 text-primary" />
               </div>
             </div>
-            <div className="backdrop-blur-md border border-border bg-card dark:bg-gradient-to-br dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] rounded-lg p-4">
+            <div className="backdrop-blur-md border border-border bg-card/95 dark:bg-card/95 rounded-lg p-4">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm text-muted-foreground">Vulnerable</p>
@@ -186,7 +186,7 @@ export default function WebsiteChecker() {
                 <AlertCircle className="w-8 h-8 text-red-400" />
               </div>
             </div>
-            <div className="backdrop-blur-md border border-border bg-card dark:bg-gradient-to-br dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] rounded-lg p-4">
+            <div className="backdrop-blur-md border border-border bg-card/95 dark:bg-card/95 rounded-lg p-4">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm text-muted-foreground">Critical</p>
@@ -195,7 +195,7 @@ export default function WebsiteChecker() {
                 <XCircle className="w-8 h-8 text-red-500" />
               </div>
             </div>
-            <div className="backdrop-blur-md border border-border bg-card dark:bg-gradient-to-br dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] rounded-lg p-4">
+            <div className="backdrop-blur-md border border-border bg-card/95 dark:bg-card/95 rounded-lg p-4">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm text-muted-foreground">High</p>
@@ -208,7 +208,7 @@ export default function WebsiteChecker() {
 
           {/* Vulnerabilities List */}
           {result.vulnerabilities.length > 0 && (
-            <div className="backdrop-blur-md border border-border bg-card dark:bg-gradient-to-br dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] rounded-lg p-6">
+            <div className="backdrop-blur-md border border-border bg-card/95 dark:bg-card/95 rounded-lg p-6">
               <h2 className="text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
                 <Shield className="w-5 h-5" />
                 Vulnerabilities Found
@@ -294,7 +294,7 @@ export default function WebsiteChecker() {
 
           {/* Technologies Detected */}
           {Object.keys(result.technologies).length > 0 && (
-            <div className="backdrop-blur-md border border-border bg-card dark:bg-gradient-to-br dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] rounded-lg p-6">
+            <div className="backdrop-blur-md border border-border bg-card/95 dark:bg-card/95 rounded-lg p-6">
               <h2 className="text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
                 <Code className="w-5 h-5" />
                 Technologies Detected
@@ -350,7 +350,7 @@ export default function WebsiteChecker() {
 
           {/* CVE Check Status */}
           {result.summary.total_cves_in_database !== undefined && (
-            <div className="backdrop-blur-md border border-border bg-card dark:bg-gradient-to-br dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] rounded-lg p-6">
+            <div className="backdrop-blur-md border border-border bg-card/95 dark:bg-card/95 rounded-lg p-6">
               <h2 className="text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
                 <Shield className="w-5 h-5" />
                 CVE Database Status
@@ -372,8 +372,8 @@ export default function WebsiteChecker() {
                   </div>
                 )}
                 {result.summary.total_cves_in_database > 0 && result.summary.total_cves_checked === 0 && (
-                  <div className="mt-4 p-4 bg-blue-500/10 border border-blue-500/20 rounded-lg">
-                    <p className="text-sm text-blue-400">
+                  <div className="mt-4 p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-lg">
+                    <p className="text-sm text-emerald-400">
                       <strong>ℹ️ No Matches:</strong> Checked {result.summary.total_cves_in_database} CVEs in database, but none matched the detected technologies. This could mean the technologies are secure or not in the CVE database.
                     </p>
                   </div>
@@ -384,7 +384,7 @@ export default function WebsiteChecker() {
 
           {/* No Vulnerabilities */}
           {result.vulnerabilities.length === 0 && (
-            <div className="backdrop-blur-md border border-border bg-card dark:bg-gradient-to-br dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] rounded-lg p-6">
+            <div className="backdrop-blur-md border border-border bg-card/95 dark:bg-card/95 rounded-lg p-6">
               <div className="text-center mb-4">
                 <CheckCircle className="w-12 h-12 text-green-400 mx-auto mb-4" />
                 <h3 className="text-xl font-semibold text-foreground mb-2">No Vulnerabilities Found</h3>

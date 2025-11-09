@@ -30,7 +30,7 @@ export function Sidebar() {
         transform: "translateZ(0)",
         backfaceVisibility: "hidden"
       }}
-      className="border-r backdrop-blur-md py-6 flex flex-col relative overflow-hidden bg-white/90 dark:bg-gradient-to-b dark:from-[rgba(15,23,42,0.95)] dark:via-[rgba(8,16,30,0.98)] dark:to-[rgba(5,15,28,1)] border-slate-200 dark:border-[rgba(30,58,138,0.3)]"
+      className="border-r border-border/70 backdrop-blur-md py-6 flex flex-col relative overflow-hidden bg-card/95 dark:bg-card/95"
     >
       <div 
         className="flex items-center mb-8"
@@ -48,11 +48,11 @@ export function Sidebar() {
             willChange: "opacity, width"
           }}
         >
-          <h2 className="text-sm font-semibold text-slate-700 dark:text-slate-300 uppercase tracking-wider whitespace-nowrap">Navigation</h2>
+          <h2 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider whitespace-nowrap">Navigation</h2>
         </div>
         <button
           onClick={() => setIsCollapsed(!isCollapsed)}
-          className="p-2 hover:bg-slate-100 dark:hover:bg-slate-800/30 rounded-lg transition-colors duration-150 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-foreground flex-shrink-0"
+          className="p-2 rounded-lg transition-colors duration-150 text-muted-foreground hover:text-foreground hover:bg-muted/60 dark:hover:bg-muted/40 flex-shrink-0"
           style={{
             marginLeft: isCollapsed ? 0 : "auto",
             transition: "margin-left 150ms cubic-bezier(0.4, 0, 0.2, 1)"
@@ -76,10 +76,10 @@ export function Sidebar() {
             <div key={item.href}>
               <Link
                 href={item.href}
-                className={`flex items-center py-3 rounded-lg transition-colors duration-150 ${
+                className={`flex items-center py-3 rounded-lg transition-colors duration-150 border ${
                   isActive 
-                    ? "bg-gradient-to-r from-cyan-500/25 to-cyan-400/15 dark:from-cyan-500/25 dark:to-cyan-400/15 text-cyan-600 dark:text-cyan-400 border border-cyan-500/30 shadow-lg shadow-cyan-500/20" 
-                    : "text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800/30 hover:text-slate-900 dark:hover:text-slate-100"
+                    ? "bg-secondary text-foreground border-border/80 shadow-[0_12px_32px_rgba(0,0,0,0.18)]"
+                    : "border-transparent text-muted-foreground hover:bg-muted/60 dark:hover:bg-muted/40 hover:text-foreground"
                 }`}
                 style={{
                   justifyContent: isCollapsed ? "center" : "flex-start",
@@ -110,7 +110,7 @@ export function Sidebar() {
       </nav>
 
       <div
-        className="pt-6 border-t border-slate-200 dark:border-slate-700/50"
+        className="pt-6 border-t border-border/70"
         style={{
           opacity: isCollapsed ? 0 : 1,
           height: isCollapsed ? 0 : "auto",
@@ -119,7 +119,7 @@ export function Sidebar() {
           willChange: "opacity, height"
         }}
       >
-        <p className="text-xs text-slate-500 dark:text-slate-400">v1.0.0</p>
+        <p className="text-xs text-muted-foreground">v1.0.0</p>
       </div>
     </aside>
   )

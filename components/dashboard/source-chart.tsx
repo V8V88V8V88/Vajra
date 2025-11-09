@@ -45,12 +45,11 @@ const CustomLabel = ({ x, y, width, value }: any) => {
   return (
     <text
       x={x + width / 2}
-      y={value === 0 ? y - 15 : y - 5} // Position 0 labels higher
-      fill="currentColor"
+      y={value === 0 ? y - 15 : y - 5}
+      fill="var(--muted-foreground)"
       textAnchor="middle"
       fontSize={11}
-      className={value === 0 ? "fill-slate-500 dark:fill-slate-600" : "fill-slate-400 dark:fill-slate-500"}
-      opacity={value === 0 ? 0.7 : 1}
+      opacity={value === 0 ? 0.55 : 0.9}
     >
       {value === 0 ? "0" : value > 0 && value < 10 ? value : value > 1000 ? `${(value / 1000).toFixed(1)}k` : value}
     </text>
@@ -97,7 +96,7 @@ export function SourceChart({ data, onDateRangeChange }: SourceChartProps) {
   
   return (
     <div
-      className="backdrop-blur-md border border-border bg-card dark:bg-gradient-to-br dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] rounded-lg p-6"
+      className="backdrop-blur-md border border-border bg-card/95 dark:bg-card/95 rounded-lg p-6"
     >
       <div className="flex items-center justify-between mb-6">
         <h3 className="text-lg font-semibold text-foreground">Threat Sources</h3>
@@ -112,7 +111,7 @@ export function SourceChart({ data, onDateRangeChange }: SourceChartProps) {
           )}
           <button
             onClick={() => setUseLogScale(!useLogScale)}
-            className="flex items-center gap-2 px-3 py-1.5 text-xs rounded-lg border border-border bg-background hover:bg-accent transition-colors"
+            className="flex items-center gap-2 px-3 py-1.5 text-xs rounded-lg border border-border bg-background hover:bg-muted/60 transition-colors"
             title={useLogScale ? "Switch to linear scale (accurate)" : "Switch to logarithmic scale (better visualization)"}
           >
             {useLogScale ? (
@@ -144,10 +143,9 @@ export function SourceChart({ data, onDateRangeChange }: SourceChartProps) {
         >
           <defs>
             <linearGradient id="barGradient" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#38bdf8" stopOpacity={1} />
-              <stop offset="30%" stopColor="#0ea5e9" stopOpacity={1} />
-              <stop offset="70%" stopColor="#06b6d4" stopOpacity={1} />
-              <stop offset="100%" stopColor="#0284c7" stopOpacity={1} />
+              <stop offset="0%" stopColor="#ea580c" stopOpacity={1} />
+              <stop offset="50%" stopColor="#f97316" stopOpacity={0.95} />
+              <stop offset="100%" stopColor="#fb923c" stopOpacity={0.85} />
             </linearGradient>
             <filter id="barShadow">
               <feGaussianBlur in="SourceAlpha" stdDeviation="2" />
@@ -161,22 +159,22 @@ export function SourceChart({ data, onDateRangeChange }: SourceChartProps) {
               </feMerge>
             </filter>
           </defs>
-          <CartesianGrid strokeDasharray="3 3" className="stroke-slate-300 dark:stroke-slate-700" />
+          <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" strokeOpacity={0.35} />
           <XAxis 
             dataKey="name" 
-            className="text-slate-600 dark:text-slate-400"
+            className="text-muted-foreground"
             style={{ fontSize: "12px" }}
-            tick={{ fill: "currentColor" }}
-            axisLine={{ stroke: "currentColor", opacity: 0.2 }}
+            tick={{ fill: "var(--muted-foreground)" }}
+            axisLine={{ stroke: "var(--border)", opacity: 0.2 }}
             angle={-15}
             textAnchor="end"
             height={60}
           />
           <YAxis 
-            className="text-slate-600 dark:text-slate-400"
+            className="text-muted-foreground"
             style={{ fontSize: "12px" }}
-            tick={{ fill: "currentColor" }}
-            axisLine={{ stroke: "currentColor", opacity: 0.2 }}
+            tick={{ fill: "var(--muted-foreground)" }}
+            axisLine={{ stroke: "var(--border)", opacity: 0.2 }}
             domain={yAxisDomain}
             tickFormatter={(value) => {
               if (useLogScale) {
@@ -190,7 +188,7 @@ export function SourceChart({ data, onDateRangeChange }: SourceChartProps) {
               return value.toString()
             }}
           />
-          <Tooltip content={<CustomTooltip />} cursor={{ fill: "rgba(6, 182, 212, 0.1)" }} />
+          <Tooltip content={<CustomTooltip />} cursor={{ fill: "rgba(249, 115, 22, 0.08)" }} />
           <Bar 
             dataKey={useLogScale ? "logValue" : "value"} 
             fill="url(#barGradient)" 
@@ -214,7 +212,7 @@ export function SourceChart({ data, onDateRangeChange }: SourceChartProps) {
       
       <div className="mt-4 text-xs text-muted-foreground flex items-center justify-between">
         <span>Total: {chartData[0]?.total?.toLocaleString() || 0} threats</span>
-        <span className="text-cyan-500">
+        <span className="text-muted-foreground">
           {useLogScale ? "Logarithmic scale" : "Linear scale (accurate)"}
         </span>
       </div>

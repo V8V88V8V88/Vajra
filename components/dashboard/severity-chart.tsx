@@ -15,7 +15,7 @@ interface SeverityChartProps {
 
 export function SeverityChart({ data }: SeverityChartProps) {
   const { theme } = useTheme()
-  const textColor = theme === "dark" ? "#f1f5f9" : "#0f172a"
+  const textColor = theme === "dark" ? "var(--foreground)" : "var(--foreground)"
   
   // Map severity names to gradient IDs
   const getGradientId = (name: string) => {
@@ -30,7 +30,7 @@ export function SeverityChart({ data }: SeverityChartProps) {
 
   return (
     <div
-      className="backdrop-blur-md border border-border bg-card dark:bg-gradient-to-br dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] rounded-lg p-6"
+      className="backdrop-blur-md border border-border bg-card/95 dark:bg-card/95 rounded-lg p-6"
     >
       <h3 className="text-lg font-semibold text-foreground mb-6">Threat Severity</h3>
       <ResponsiveContainer width="100%" height={300}>
@@ -43,13 +43,13 @@ export function SeverityChart({ data }: SeverityChartProps) {
             </linearGradient>
             <linearGradient id="highGradient" x1="0" y1="0" x2="1" y2="1">
               <stop offset="0%" stopColor="#fbbf24" stopOpacity={1} />
-              <stop offset="50%" stopColor="#f59e0b" stopOpacity={1} />
-              <stop offset="100%" stopColor="#b45309" stopOpacity={1} />
+              <stop offset="50%" stopColor="#f97316" stopOpacity={1} />
+              <stop offset="100%" stopColor="#c2410c" stopOpacity={1} />
             </linearGradient>
             <linearGradient id="mediumGradient" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stopColor="#38bdf8" stopOpacity={1} />
-              <stop offset="50%" stopColor="#06b6d4" stopOpacity={1} />
-              <stop offset="100%" stopColor="#0284c7" stopOpacity={1} />
+              <stop offset="0%" stopColor="#fde047" stopOpacity={1} />
+              <stop offset="50%" stopColor="#eab308" stopOpacity={1} />
+              <stop offset="100%" stopColor="#a16207" stopOpacity={1} />
             </linearGradient>
             <linearGradient id="lowGradient" x1="0" y1="0" x2="1" y2="1">
               <stop offset="0%" stopColor="#34d399" stopOpacity={1} />
@@ -57,9 +57,9 @@ export function SeverityChart({ data }: SeverityChartProps) {
               <stop offset="100%" stopColor="#047857" stopOpacity={1} />
             </linearGradient>
             <linearGradient id="defaultGradient" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stopColor="#a78bfa" stopOpacity={1} />
-              <stop offset="50%" stopColor="#8884d8" stopOpacity={1} />
-              <stop offset="100%" stopColor="#6b6b9e" stopOpacity={1} />
+              <stop offset="0%" stopColor="#f5f5f5" stopOpacity={1} />
+              <stop offset="50%" stopColor="#d4d4d8" stopOpacity={1} />
+              <stop offset="100%" stopColor="#a1a1aa" stopOpacity={1} />
             </linearGradient>
           </defs>
           <Pie
@@ -101,12 +101,12 @@ export function SeverityChart({ data }: SeverityChartProps) {
           </Pie>
           <Tooltip
             contentStyle={{
-              backgroundColor: "hsl(var(--popover))",
-              border: "1px solid hsl(var(--border))",
+              backgroundColor: "var(--popover)",
+              border: "1px solid var(--border)",
               borderRadius: "8px",
             }}
-            labelStyle={{ color: "hsl(var(--popover-foreground))", fontSize: "12px" }}
-            itemStyle={{ color: "hsl(var(--popover-foreground))", fontSize: "12px" }}
+            labelStyle={{ color: "var(--popover-foreground)", fontSize: "12px" }}
+            itemStyle={{ color: "var(--popover-foreground)", fontSize: "12px" }}
           />
         </PieChart>
       </ResponsiveContainer>

@@ -16,11 +16,11 @@ const FORECAST_OPTIONS = [
 ]
 
 const COLORS = [
-  { line: "#38bdf8", area: "rgba(56, 189, 248, 0.3)" },
-  { line: "#0ea5e9", area: "rgba(14, 165, 233, 0.3)" },
-  { line: "#06b6d4", area: "rgba(6, 182, 212, 0.3)" },
-  { line: "#0284c7", area: "rgba(2, 132, 199, 0.3)" },
-  { line: "#0369a1", area: "rgba(3, 105, 161, 0.3)" },
+  { line: "#ef4444", area: "rgba(239, 68, 68, 0.3)" },
+  { line: "#f97316", area: "rgba(249, 115, 22, 0.3)" },
+  { line: "#eab308", area: "rgba(234, 179, 8, 0.3)" },
+  { line: "#22c55e", area: "rgba(34, 197, 94, 0.3)" },
+  { line: "#14b8a6", area: "rgba(20, 184, 166, 0.3)" },
 ]
 
 export function SourcesForecastChart({ className }: SourcesForecastChartProps) {
@@ -61,10 +61,10 @@ export function SourcesForecastChart({ className }: SourcesForecastChartProps) {
 
   if (isLoading) {
     return (
-      <div className={`backdrop-blur-md border border-border bg-card dark:bg-gradient-to-br dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] rounded-lg p-6 ${className}`}>
+      <div className={`backdrop-blur-md border border-border bg-card/95 dark:bg-card/95 rounded-lg p-6 ${className}`}>
         <div className="flex items-center justify-between mb-6">
           <h3 className="text-lg font-semibold text-foreground flex items-center gap-2">
-            <Globe className="w-5 h-5 text-primary" />
+            <Globe className="w-5 h-5 text-foreground" />
             Source Activity Forecast
           </h3>
         </div>
@@ -77,10 +77,10 @@ export function SourcesForecastChart({ className }: SourcesForecastChartProps) {
 
   if (error || !forecastData || forecastData.status !== 'success') {
     return (
-      <div className={`backdrop-blur-md border border-border bg-card dark:bg-gradient-to-br dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] rounded-lg p-6 ${className}`}>
+      <div className={`backdrop-blur-md border border-border bg-card/95 dark:bg-card/95 rounded-lg p-6 ${className}`}>
         <div className="flex items-center justify-between mb-6">
           <h3 className="text-lg font-semibold text-foreground flex items-center gap-2">
-            <Globe className="w-5 h-5 text-primary" />
+            <Globe className="w-5 h-5 text-foreground" />
             Source Activity Forecast
           </h3>
         </div>
@@ -102,16 +102,16 @@ export function SourcesForecastChart({ className }: SourcesForecastChartProps) {
   })
 
   return (
-    <div className={`backdrop-blur-md border border-border bg-card dark:bg-gradient-to-br dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] rounded-lg p-6 ${className}`}>
+    <div className={`backdrop-blur-md border border-border bg-card/95 dark:bg-card/95 rounded-lg p-6 ${className}`}>
       <div className="flex items-center justify-between mb-6">
         <h3 className="text-lg font-semibold text-foreground flex items-center gap-2">
-          <Globe className="w-5 h-5 text-primary" />
+          <Globe className="w-5 h-5 text-foreground" />
           Source Activity Forecast
         </h3>
         <div className="relative forecast-dropdown">
           <button
             onClick={() => setShowDropdown(!showDropdown)}
-            className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-accent/10 text-accent hover:bg-accent/20 transition-colors text-sm font-medium"
+            className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-muted/60 text-foreground hover:bg-muted/80 transition-colors text-sm font-medium"
           >
             <span>{selectedOption.label}</span>
             <ChevronDown className={`w-4 h-4 transition-transform ${showDropdown ? 'rotate-180' : ''}`} />
@@ -126,9 +126,9 @@ export function SourcesForecastChart({ className }: SourcesForecastChartProps) {
                     setForecastDays(option.value)
                     setShowDropdown(false)
                   }}
-                  className={`w-full px-4 py-2 text-left text-sm hover:bg-accent/10 transition-colors ${
+                  className={`w-full px-4 py-2 text-left text-sm hover:bg-muted/60 transition-colors ${
                     forecastDays === option.value 
-                      ? 'bg-primary/10 text-primary font-medium' 
+                      ? 'bg-foreground/10 text-foreground font-medium' 
                       : 'text-foreground'
                   }`}
                 >
@@ -145,34 +145,34 @@ export function SourcesForecastChart({ className }: SourcesForecastChartProps) {
           <defs>
             {forecastData.sources.map((source: string, index: number) => (
               <linearGradient key={source} id={`sourceForecastGradient${index}`} x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor={COLORS[index % COLORS.length].line} stopOpacity={0.3} />
+                <stop offset="0%" stopColor={COLORS[index % COLORS.length].line} stopOpacity={0.35} />
                 <stop offset="100%" stopColor={COLORS[index % COLORS.length].line} stopOpacity={0} />
               </linearGradient>
             ))}
           </defs>
-          <CartesianGrid strokeDasharray="3 3" className="stroke-slate-300 dark:stroke-slate-700" />
+          <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" strokeOpacity={0.35} />
           <XAxis 
             dataKey="date" 
-            className="text-slate-600 dark:text-slate-400" 
+            className="text-muted-foreground" 
             style={{ fontSize: "12px" }}
-            tick={{ fill: "currentColor" }}
+            tick={{ fill: "var(--muted-foreground)" }}
           />
           <YAxis 
-            className="text-slate-600 dark:text-slate-400"
+            className="text-muted-foreground"
             style={{ fontSize: "12px" }}
-            tick={{ fill: "currentColor" }}
+            tick={{ fill: "var(--muted-foreground)" }}
             domain={[0, 'auto']}
           />
           <Tooltip
             contentStyle={{
-              backgroundColor: "hsl(var(--popover))",
-              border: "1px solid hsl(var(--border))",
+              backgroundColor: "var(--popover)",
+              border: "1px solid var(--border)",
               borderRadius: "8px",
             }}
-            labelStyle={{ color: "hsl(var(--popover-foreground))" }}
-            itemStyle={{ color: "hsl(var(--popover-foreground))" }}
+            labelStyle={{ color: "var(--popover-foreground)" }}
+            itemStyle={{ color: "var(--popover-foreground)" }}
           />
-          <Legend wrapperStyle={{ color: "hsl(var(--foreground))" }} />
+          <Legend wrapperStyle={{ color: "var(--foreground)" }} />
           
           {forecastData.sources.map((source: string, index: number) => (
             <Area

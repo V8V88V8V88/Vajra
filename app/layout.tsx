@@ -41,7 +41,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body 
-        className={`${inter.className} text-foreground dark:bg-gradient-to-br dark:from-[#050f1a] dark:via-[#08101e] dark:to-[#0f172a] bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100`}
+        className={`${inter.className} text-foreground bg-gradient-to-br from-[#fafafa] via-[#f4f4f5] to-[#ededee] dark:bg-gradient-to-br dark:from-[#050505] dark:via-[#080808] dark:to-[#0c0c0c]`}
         style={{
           minHeight: "100vh"
         }}

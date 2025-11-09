@@ -121,7 +121,7 @@ export default function Dashboard() {
     <div className="p-8 space-y-8">
       {/* Header */}
       <div className="fade-in">
-        <h1 className="text-4xl font-bold text-foreground mb-2">VAJRA Threat Intelligence Dashboard</h1>
+        <h1 className="text-4xl font-bold text-foreground mb-2">Threat Intelligence Dashboard</h1>
         <p className="text-muted-foreground">Real-time AI-powered threat analysis and forecasting</p>
       </div>
 

@@ -11,9 +11,9 @@ interface ThreatDetailModalProps {
 
 const severityColors = {
   critical: "#ef4444",
-  high: "#f59e0b",
-  medium: "#06b6d4",
-  low: "#10b981",
+  high: "#f97316",
+  medium: "#eab308",
+  low: "#22c55e",
 }
 
 export function ThreatDetailModal({ threat, onClose }: ThreatDetailModalProps) {
@@ -48,6 +48,30 @@ export function ThreatDetailModal({ threat, onClose }: ThreatDetailModalProps) {
   }
   
   const cveUrl = getCveUrl()
+
+  const riskClasses = threat.ai_risk_score !== undefined
+    ? threat.ai_risk_score > 0.7
+      ? {
+          container: "border border-destructive/30 bg-destructive/10",
+          text: "text-destructive",
+          bar: "bg-destructive",
+        }
+      : threat.ai_risk_score > 0.4
+        ? {
+            container: "border border-amber-500/30 bg-amber-500/10",
+            text: "text-amber-400",
+            bar: "bg-amber-400",
+          }
+        : {
+            container: "border border-emerald-500/30 bg-emerald-500/10",
+            text: "text-emerald-400",
+            bar: "bg-emerald-400",
+          }
+    : {
+        container: "",
+        text: "",
+        bar: "",
+      }
   
   return (
     <motion.div
@@ -62,21 +86,16 @@ export function ThreatDetailModal({ threat, onClose }: ThreatDetailModalProps) {
         animate={{ scale: 1, opacity: 1 }}
         exit={{ scale: 0.95, opacity: 0 }}
         onClick={(e) => e.stopPropagation()}
-        className="w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-lg"
-        style={{
-          backgroundColor: "rgb(30 41 59 / 0.95)",
-          borderColor: "rgb(51 65 85 / 0.2)",
-          borderWidth: "1px",
-        }}
+        className="w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-lg border border-border/60 bg-card/95 shadow-[0_32px_64px_rgba(0,0,0,0.45)]"
       >
         {/* Header */}
-        <div className="flex items-start justify-between p-6 border-b" style={{ borderColor: "rgb(51 65 85 / 0.2)" }}>
+        <div className="flex items-start justify-between p-6 border-b border-border/60">
           <div className="flex-1">
             <div className="flex items-center gap-3 mb-2">
               <AlertCircle className="w-6 h-6" style={{ color: severityColors[threat.severity] }} />
               <h2 className="text-2xl font-bold text-foreground">{threat.title}</h2>
             </div>
-            <p style={{ color: "#94a3b8" }}>{threat.summary}</p>
+            <p className="text-muted-foreground">{threat.summary}</p>
           </div>
           <div className="flex items-center gap-2">
             {cveUrl && (
@@ -84,18 +103,7 @@ export function ThreatDetailModal({ threat, onClose }: ThreatDetailModalProps) {
                 href={cveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-4 py-2 rounded-lg transition-colors flex items-center gap-2"
-                style={{ 
-                  backgroundColor: "rgb(6 182 212 / 0.2)",
-                  color: "#06b6d4",
-                  border: "1px solid rgb(6 182 212 / 0.3)"
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = "rgb(6 182 212 / 0.3)"
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = "rgb(6 182 212 / 0.2)"
-                }}
+                className="px-4 py-2 rounded-lg transition-colors flex items-center gap-2 border border-border/60 bg-muted/60 text-sm font-medium text-foreground hover:bg-muted/80"
               >
                 <ExternalLink className="w-4 h-4" />
                 <span className="text-sm font-medium">Open CVE Site</span>
@@ -103,16 +111,9 @@ export function ThreatDetailModal({ threat, onClose }: ThreatDetailModalProps) {
             )}
             <button
               onClick={onClose}
-              className="p-2 rounded-lg transition-colors"
-              style={{ backgroundColor: "rgb(51 65 85 / 0.2)" }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = "rgb(51 65 85 / 0.4)"
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = "rgb(51 65 85 / 0.2)"
-              }}
+              className="p-2 rounded-lg transition-colors border border-border/60 text-muted-foreground hover:bg-muted/40"
             >
-              <X className="w-6 h-6" style={{ color: "#94a3b8" }} />
+              <X className="w-6 h-6" />
             </button>
           </div>
         </div>
@@ -122,28 +123,22 @@ export function ThreatDetailModal({ threat, onClose }: ThreatDetailModalProps) {
           {/* Description */}
           <div>
             <h3 className="text-lg font-semibold text-foreground mb-3">Description</h3>
-            <p style={{ color: "#94a3b8", lineHeight: "1.625" }}>{threat.description}</p>
+            <p className="text-muted-foreground leading-relaxed">{threat.description}</p>
           </div>
 
           {/* Indicators */}
           <div>
             <h3 className="text-lg font-semibold text-foreground mb-3 flex items-center gap-2">
-              <Zap className="w-5 h-5" style={{ color: "#06b6d4" }} />
+              <Zap className="w-5 h-5 text-muted-foreground" />
               Indicators of Compromise
             </h3>
             <div className="space-y-2">
               {threat.indicators.map((indicator, i) => (
                 <div
                   key={i}
-                  className="px-4 py-2 rounded-lg border"
-                  style={{
-                    backgroundColor: "rgb(30 41 59 / 0.5)",
-                    borderColor: "rgb(51 65 85 / 0.2)",
-                  }}
+                  className="px-4 py-2 rounded-lg border border-border/60 bg-muted/50"
                 >
-                  <code className="text-sm font-mono" style={{ color: "#06b6d4" }}>
-                    {indicator}
-                  </code>
+                  <code className="text-sm font-mono text-foreground">{indicator}</code>
                 </div>
               ))}
             </div>
@@ -159,11 +154,7 @@ export function ThreatDetailModal({ threat, onClose }: ThreatDetailModalProps) {
               {threat.affectedSystems.map((system, i) => (
                 <span
                   key={i}
-                  className="px-3 py-1 rounded-full text-sm font-medium"
-                  style={{
-                    backgroundColor: "rgb(245 158 11 / 0.1)",
-                    color: "#f59e0b",
-                  }}
+                  className="px-3 py-1 rounded-full text-sm font-medium border border-border/60 bg-muted/60 text-foreground"
                 >
                   {system}
                 </span>
@@ -175,57 +166,27 @@ export function ThreatDetailModal({ threat, onClose }: ThreatDetailModalProps) {
           {(threat.ai_risk_score !== undefined || threat.is_anomaly) && (
             <div className="space-y-4">
               <h3 className="text-lg font-semibold text-foreground mb-3 flex items-center gap-2">
-                <Brain className="w-5 h-5" style={{ color: "#8b5cf6" }} />
+                <Brain className="w-5 h-5 text-muted-foreground" />
                 AI Analysis
               </h3>
               
               {/* Risk Score */}
               {threat.ai_risk_score !== undefined && (
-                <div
-                  className="rounded-lg p-4 border"
-                  style={{
-                    backgroundColor: threat.ai_risk_score > 0.7 
-                      ? "rgb(239 68 68 / 0.1)" 
-                      : threat.ai_risk_score > 0.4 
-                      ? "rgb(245 158 11 / 0.1)" 
-                      : "rgb(6 182 212 / 0.1)",
-                    borderColor: threat.ai_risk_score > 0.7 
-                      ? "rgb(239 68 68 / 0.2)" 
-                      : threat.ai_risk_score > 0.4 
-                      ? "rgb(245 158 11 / 0.2)" 
-                      : "rgb(6 182 212 / 0.2)",
-                  }}
-                >
+                <div className={`rounded-lg p-4 ${riskClasses.container}`}>
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-sm font-medium" style={{ color: "#94a3b8" }}>AI Risk Score</span>
-                    <span 
-                      className="text-lg font-bold"
-                      style={{
-                        color: threat.ai_risk_score > 0.7 
-                          ? "#ef4444" 
-                          : threat.ai_risk_score > 0.4 
-                          ? "#f59e0b" 
-                          : "#06b6d4"
-                      }}
-                    >
+                    <span className="text-sm font-medium text-muted-foreground">AI Risk Score</span>
+                    <span className={`text-lg font-bold ${riskClasses.text}`}>
                       {(threat.ai_risk_score * 100).toFixed(0)}%
                     </span>
                   </div>
-                  <div className="w-full bg-gray-700 rounded-full h-2 mb-2">
+                  <div className="w-full bg-muted/30 rounded-full h-2 mb-2">
                     <div
-                      className="h-2 rounded-full transition-all"
-                      style={{
-                        width: `${threat.ai_risk_score * 100}%`,
-                        backgroundColor: threat.ai_risk_score > 0.7 
-                          ? "#ef4444" 
-                          : threat.ai_risk_score > 0.4 
-                          ? "#f59e0b" 
-                          : "#06b6d4"
-                      }}
+                      className={`h-2 rounded-full transition-all ${riskClasses.bar}`}
+                      style={{ width: `${threat.ai_risk_score * 100}%` }}
                     />
                   </div>
                   {threat.ai_sentiment && (
-                    <p className="text-xs" style={{ color: "#94a3b8" }}>
+                    <p className="text-xs text-muted-foreground">
                       Sentiment: <span className="font-medium capitalize">{threat.ai_sentiment}</span>
                     </p>
                   )}
@@ -234,13 +195,7 @@ export function ThreatDetailModal({ threat, onClose }: ThreatDetailModalProps) {
               
               {/* Anomaly Detection */}
               {threat.is_anomaly && (
-                <div
-                  className="rounded-lg p-4 border"
-                  style={{
-                    backgroundColor: "rgb(234 179 8 / 0.1)",
-                    borderColor: "rgb(234 179 8 / 0.3)",
-                  }}
-                >
+                <div className="rounded-lg border border-amber-500/30 bg-amber-500/10 p-4">
                   <div className="flex items-start gap-3">
                     <AlertTriangle className="w-5 h-5 flex-shrink-0" style={{ color: "#fbbf24" }} />
                     <div className="flex-1">
@@ -253,9 +208,7 @@ export function ThreatDetailModal({ threat, onClose }: ThreatDetailModalProps) {
                         )}
                       </div>
                       {threat.anomaly_explanation && (
-                        <p className="text-sm" style={{ color: "#94a3b8" }}>
-                          {threat.anomaly_explanation}
-                        </p>
+                        <p className="text-sm text-muted-foreground">{threat.anomaly_explanation}</p>
                       )}
                       <p className="text-xs mt-2 font-medium text-yellow-400">
                         ⚠️ This threat exhibits unusual patterns and may require immediate investigation.
@@ -270,16 +223,12 @@ export function ThreatDetailModal({ threat, onClose }: ThreatDetailModalProps) {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {threat.ai_analysis.ai_entities && Array.isArray(threat.ai_analysis.ai_entities) && threat.ai_analysis.ai_entities.length > 0 && (
                     <div>
-                      <h4 className="text-sm font-semibold mb-2" style={{ color: "#94a3b8" }}>Detected Entities</h4>
+                      <h4 className="text-sm font-semibold mb-2 text-muted-foreground">Detected Entities</h4>
                       <div className="flex flex-wrap gap-2">
                         {threat.ai_analysis.ai_entities.slice(0, 5).map((entity: any, i: number) => (
                           <span
                             key={i}
-                            className="text-xs px-2 py-1 rounded"
-                            style={{
-                              backgroundColor: "rgb(51 65 85 / 0.5)",
-                              color: "#06b6d4",
-                            }}
+                            className="text-xs px-2 py-1 rounded border border-border/60 bg-muted/50 text-foreground"
                           >
                             {entity.text} ({entity.type})
                           </span>
@@ -289,16 +238,12 @@ export function ThreatDetailModal({ threat, onClose }: ThreatDetailModalProps) {
                   )}
                   {threat.ai_analysis.ai_intents && Array.isArray(threat.ai_analysis.ai_intents) && threat.ai_analysis.ai_intents.length > 0 && (
                     <div>
-                      <h4 className="text-sm font-semibold mb-2" style={{ color: "#94a3b8" }}>Detected Intents</h4>
+                      <h4 className="text-sm font-semibold mb-2 text-muted-foreground">Detected Intents</h4>
                       <div className="flex flex-wrap gap-2">
                         {threat.ai_analysis.ai_intents.slice(0, 3).map((intent: any, i: number) => (
                           <span
                             key={i}
-                            className="text-xs px-2 py-1 rounded capitalize"
-                            style={{
-                              backgroundColor: "rgb(51 65 85 / 0.5)",
-                              color: "#f59e0b",
-                            }}
+                            className="text-xs px-2 py-1 rounded capitalize border border-border/60 bg-muted/50 text-foreground"
                           >
                             {intent.type}
                           </span>
@@ -312,31 +257,19 @@ export function ThreatDetailModal({ threat, onClose }: ThreatDetailModalProps) {
           )}
 
           {/* Recommendation */}
-          <div
-            className="rounded-lg p-4 border"
-            style={{
-              backgroundColor: "rgb(16 185 129 / 0.1)",
-              borderColor: "rgb(16 185 129 / 0.2)",
-            }}
-          >
-            <h3 className="text-lg font-semibold mb-2" style={{ color: "#10b981" }}>
-              Recommendation
-            </h3>
-            <p style={{ color: "#94a3b8" }}>{threat.recommendation}</p>
+          <div className="rounded-lg border border-border/60 bg-muted/40 p-4">
+            <h3 className="text-lg font-semibold mb-2 text-foreground">Recommendation</h3>
+            <p className="text-muted-foreground">{threat.recommendation}</p>
           </div>
 
           {/* Metadata */}
-          <div className="grid grid-cols-2 gap-4 pt-4 border-t" style={{ borderColor: "rgb(51 65 85 / 0.2)" }}>
+          <div className="grid grid-cols-2 gap-4 pt-4 border-t border-border/60">
             <div>
-              <p className="text-xs uppercase tracking-wider mb-1" style={{ color: "#94a3b8" }}>
-                Source
-              </p>
+              <p className="text-xs uppercase tracking-wider mb-1 text-muted-foreground">Source</p>
               <p className="text-foreground font-medium">{threat.source}</p>
             </div>
             <div>
-              <p className="text-xs uppercase tracking-wider mb-1" style={{ color: "#94a3b8" }}>
-                Timestamp
-              </p>
+              <p className="text-xs uppercase tracking-wider mb-1 text-muted-foreground">Timestamp</p>
               <p className="text-foreground font-medium">{new Date(threat.timestamp).toLocaleString()}</p>
             </div>
           </div>

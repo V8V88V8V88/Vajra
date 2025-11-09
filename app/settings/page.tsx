@@ -297,9 +297,9 @@ export default function SettingsPage() {
               <div className="flex justify-end mb-4">
                 <button
                   onClick={() => setIsEditingProfile(true)}
-                  className="flex items-center gap-2 px-6 py-3 bg-primary text-white rounded-lg font-semibold hover:bg-primary-dark transition-all duration-300 shadow-lg"
+                  className="flex items-center gap-2 px-4 py-2 rounded-lg border border-border/60 bg-muted/60 text-foreground hover:bg-muted/80 transition-colors"
                 >
-                  <Edit2 className="w-5 h-5" />
+                  <Edit2 className="w-4 h-4" />
                   Edit Profile
                 </button>
               </div>
@@ -308,7 +308,7 @@ export default function SettingsPage() {
             {/* Profile Picture Section */}
             <motion.div
               variants={itemVariants}
-              className="backdrop-blur-md border border-border bg-card dark:bg-gradient-to-br dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] rounded-lg p-6"
+              className="backdrop-blur-md border border-border bg-card/95 dark:bg-card/95 rounded-lg p-6"
             >
               <h3 className="text-lg font-semibold text-foreground mb-4">Profile Picture</h3>
               <div className="flex items-center gap-6">
@@ -352,7 +352,7 @@ export default function SettingsPage() {
             {/* Personal Information */}
             <motion.div
               variants={itemVariants}
-              className="backdrop-blur-md border border-border bg-card dark:bg-gradient-to-br dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] rounded-lg p-6"
+              className="backdrop-blur-md border border-border bg-card/95 dark:bg-card/95 rounded-lg p-6"
             >
               <h3 className="text-lg font-semibold text-foreground mb-6">Personal Information</h3>
               <div className="space-y-4">
@@ -366,7 +366,7 @@ export default function SettingsPage() {
                       type="text"
                       value={profile.name}
                       onChange={(e) => setProfile({ ...profile, name: e.target.value })}
-                      className="w-full px-4 py-2 bg-input dark:bg-[rgba(30,41,59,0.5)] border border-border rounded-lg focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-all text-foreground"
+                      className="w-full px-4 py-2 bg-input border border-border rounded-lg text-foreground focus:outline-none focus:border-foreground/40 focus:ring-1 focus:ring-foreground/20 transition-all"
                     />
                   ) : (
                     <p className="text-foreground px-4 py-2">{profile.name}</p>
@@ -383,7 +383,7 @@ export default function SettingsPage() {
                       type="email"
                       value={profile.email}
                       onChange={(e) => setProfile({ ...profile, email: e.target.value })}
-                      className="w-full px-4 py-2 bg-input dark:bg-[rgba(30,41,59,0.5)] border border-border rounded-lg focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-all text-foreground"
+                      className="w-full px-4 py-2 bg-input border border-border rounded-lg text-foreground focus:outline-none focus:border-foreground/40 focus:ring-1 focus:ring-foreground/20 transition-all"
                     />
                   ) : (
                     <p className="text-foreground px-4 py-2">{profile.email}</p>
@@ -397,7 +397,7 @@ export default function SettingsPage() {
                       type="text"
                       value={profile.role}
                       onChange={(e) => setProfile({ ...profile, role: e.target.value })}
-                      className="w-full px-4 py-2 bg-input dark:bg-[rgba(30,41,59,0.5)] border border-border rounded-lg focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-all text-foreground"
+                      className="w-full px-4 py-2 bg-input border border-border rounded-lg text-foreground focus:outline-none focus:border-foreground/40 focus:ring-1 focus:ring-foreground/20 transition-all"
                     />
                   ) : (
                     <p className="text-foreground px-4 py-2">{profile.role}</p>
@@ -441,7 +441,7 @@ export default function SettingsPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3 }}
-              className="backdrop-blur-md border border-border bg-card dark:bg-gradient-to-br dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] rounded-lg p-6"
+              className="backdrop-blur-md border border-border bg-card/95 dark:bg-card/95 rounded-lg p-6"
             >
               <h3 className="text-lg font-semibold text-foreground mb-6">Crawler Configuration</h3>
               <div className="space-y-4">
@@ -453,7 +453,7 @@ export default function SettingsPage() {
                     max="24"
                     value={settings.crawlerInterval}
                     onChange={(e) => setSettings({ ...settings, crawlerInterval: e.target.value })}
-                    className="w-full px-4 py-2 bg-input dark:bg-[rgba(30,41,59,0.5)] border border-border rounded-lg focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-all text-foreground"
+                    className="w-full px-4 py-2 bg-input border border-border rounded-lg text-foreground focus:outline-none focus:border-foreground/40 focus:ring-1 focus:ring-foreground/20 transition-all"
                   />
                   <p className="text-xs text-muted-foreground mt-2">How often the crawler syncs threat data</p>
                 </div>
@@ -464,7 +464,7 @@ export default function SettingsPage() {
                     type="text"
                     value={settings.apiUrl}
                     onChange={(e) => setSettings({ ...settings, apiUrl: e.target.value })}
-                    className="w-full px-4 py-2 bg-input dark:bg-[rgba(30,41,59,0.5)] border border-border rounded-lg focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-all text-foreground"
+                    className="w-full px-4 py-2 bg-input border border-border rounded-lg text-foreground focus:outline-none focus:border-foreground/40 focus:ring-1 focus:ring-foreground/20 transition-all"
                   />
                   <p className="text-xs text-muted mt-2">Backend API endpoint (TODO: implement backend integration)</p>
                 </div>
@@ -476,7 +476,7 @@ export default function SettingsPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3, delay: 0.1 }}
-              className="backdrop-blur-md border border-border bg-card dark:bg-gradient-to-br dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] rounded-lg p-6"
+              className="backdrop-blur-md border border-border bg-card/95 dark:bg-card/95 rounded-lg p-6"
             >
               <h3 className="text-lg font-semibold text-foreground mb-6">Display Settings</h3>
               <div className="space-y-4">
@@ -507,7 +507,7 @@ export default function SettingsPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3, delay: 0.2 }}
-              className="backdrop-blur-md border border-border bg-card dark:bg-gradient-to-br dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] rounded-lg p-6"
+              className="backdrop-blur-md border border-border bg-card/95 dark:bg-card/95 rounded-lg p-6"
             >
               <h3 className="text-lg font-semibold text-foreground mb-6">Data Management</h3>
               <div className="space-y-6">

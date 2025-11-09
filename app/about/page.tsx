@@ -25,7 +25,7 @@ export default function About() {
       </div>
 
       {/* Overview */}
-      <section className="backdrop-blur-md border border-border bg-card dark:bg-gradient-to-br dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] rounded-lg p-6">
+      <section className="backdrop-blur-md border border-border bg-card/95 dark:bg-card/95 rounded-lg p-6">
         <p className="text-foreground leading-relaxed">
           VAJRA is an enterprise-grade threat intelligence platform that combines advanced machine learning with 
           real-time OSINT data collection to predict, detect, and analyze cyber threats. The system automatically 
@@ -44,7 +44,7 @@ export default function About() {
           Key Features
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="backdrop-blur-md border border-border bg-card dark:bg-gradient-to-br dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] rounded-lg p-5">
+          <div className="backdrop-blur-md border border-border bg-card/95 dark:bg-card/95 rounded-lg p-5">
             <div className="flex items-start gap-3">
               <Shield className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
               <div>
@@ -58,7 +58,7 @@ export default function About() {
             </div>
           </div>
 
-          <div className="backdrop-blur-md border border-border bg-card dark:bg-gradient-to-br dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] rounded-lg p-5">
+          <div className="backdrop-blur-md border border-border bg-card/95 dark:bg-card/95 rounded-lg p-5">
             <div className="flex items-start gap-3">
               <Database className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
               <div>
@@ -72,7 +72,7 @@ export default function About() {
             </div>
           </div>
 
-          <div className="backdrop-blur-md border border-border bg-card dark:bg-gradient-to-br dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] rounded-lg p-5">
+          <div className="backdrop-blur-md border border-border bg-card/95 dark:bg-card/95 rounded-lg p-5">
             <div className="flex items-start gap-3">
               <TrendingUp className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
               <div>
@@ -86,7 +86,7 @@ export default function About() {
             </div>
           </div>
 
-          <div className="backdrop-blur-md border border-border bg-card dark:bg-gradient-to-br dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] rounded-lg p-5">
+          <div className="backdrop-blur-md border border-border bg-card/95 dark:bg-card/95 rounded-lg p-5">
             <div className="flex items-start gap-3">
               <Search className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
               <div>
@@ -100,7 +100,7 @@ export default function About() {
             </div>
           </div>
 
-          <div className="backdrop-blur-md border border-border bg-card dark:bg-gradient-to-br dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] rounded-lg p-5">
+          <div className="backdrop-blur-md border border-border bg-card/95 dark:bg-card/95 rounded-lg p-5">
             <div className="flex items-start gap-3">
               <Calendar className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
               <div>
@@ -114,7 +114,7 @@ export default function About() {
             </div>
           </div>
 
-          <div className="backdrop-blur-md border border-border bg-card dark:bg-gradient-to-br dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] rounded-lg p-5">
+          <div className="backdrop-blur-md border border-border bg-card/95 dark:bg-card/95 rounded-lg p-5">
             <div className="flex items-start gap-3">
               <Download className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
               <div>
@@ -128,7 +128,7 @@ export default function About() {
             </div>
           </div>
 
-          <div className="backdrop-blur-md border border-border bg-card dark:bg-gradient-to-br dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] rounded-lg p-5">
+          <div className="backdrop-blur-md border border-border bg-card/95 dark:bg-card/95 rounded-lg p-5">
             <div className="flex items-start gap-3">
               <Bell className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
               <div>
@@ -142,7 +142,7 @@ export default function About() {
             </div>
           </div>
 
-          <div className="backdrop-blur-md border border-border bg-card dark:bg-gradient-to-br dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] rounded-lg p-5">
+          <div className="backdrop-blur-md border border-border bg-card/95 dark:bg-card/95 rounded-lg p-5">
             <div className="flex items-start gap-3">
               <Globe className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
               <div>
@@ -156,7 +156,7 @@ export default function About() {
             </div>
           </div>
 
-          <div className="backdrop-blur-md border border-border bg-card dark:bg-gradient-to-br dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] rounded-lg p-5">
+          <div className="backdrop-blur-md border border-border bg-card/95 dark:bg-card/95 rounded-lg p-5">
             <div className="flex items-start gap-3">
               <Brain className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
               <div>
@@ -171,7 +171,7 @@ export default function About() {
             </div>
           </div>
 
-          <div className="backdrop-blur-md border border-border bg-card dark:bg-gradient-to-br dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] rounded-lg p-5">
+          <div className="backdrop-blur-md border border-border bg-card/95 dark:bg-card/95 rounded-lg p-5">
             <div className="flex items-start gap-3">
               <Filter className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
               <div>
@@ -185,7 +185,7 @@ export default function About() {
             </div>
           </div>
 
-          <div className="backdrop-blur-md border border-border bg-card dark:bg-gradient-to-br dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] rounded-lg p-5">
+          <div className="backdrop-blur-md border border-border bg-card/95 dark:bg-card/95 rounded-lg p-5">
             <div className="flex items-start gap-3">
               <FileText className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
               <div>
@@ -204,7 +204,7 @@ export default function About() {
       {/* Technical Stack */}
       <section className="space-y-4">
         <h2 className="text-2xl font-semibold mb-4">Technical Stack</h2>
-        <div className="backdrop-blur-md border border-border bg-card dark:bg-gradient-to-br dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] rounded-lg p-6">
+        <div className="backdrop-blur-md border border-border bg-card/95 dark:bg-card/95 rounded-lg p-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <h3 className="font-semibold text-foreground mb-3">Backend</h3>
@@ -293,7 +293,7 @@ export default function About() {
       {/* Data Sources */}
       <section className="space-y-4">
         <h2 className="text-2xl font-semibold mb-4">Threat Intelligence Sources</h2>
-        <div className="backdrop-blur-md border border-border bg-card dark:bg-gradient-to-br dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] rounded-lg p-6">
+        <div className="backdrop-blur-md border border-border bg-card/95 dark:bg-card/95 rounded-lg p-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-primary"></span>
@@ -334,7 +334,7 @@ export default function About() {
       {/* How It Works */}
       <section className="space-y-4">
         <h2 className="text-2xl font-semibold mb-4">How It Works</h2>
-        <div className="backdrop-blur-md border border-border bg-card dark:bg-gradient-to-br dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] rounded-lg p-6">
+        <div className="backdrop-blur-md border border-border bg-card/95 dark:bg-card/95 rounded-lg p-6">
           <ol className="list-decimal list-inside space-y-4 text-foreground">
             <li>
               <span className="font-semibold">OSINT Data Collection:</span> The crawler automatically fetches 

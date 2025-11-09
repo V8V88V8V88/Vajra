@@ -117,7 +117,7 @@ export function Navbar() {
       case "success":
         return <CheckCircle2 className="w-4 h-4 text-green-500" />
       case "info":
-        return <Info className="w-4 h-4 text-blue-500" />
+        return <Info className="w-4 h-4 text-muted-foreground" />
     }
   }
 
@@ -136,9 +136,9 @@ export function Navbar() {
 
   return (
     <nav 
-      className="border-b px-4 py-2 flex items-center justify-between h-14 backdrop-blur-md bg-white/80 dark:bg-gradient-to-r dark:from-[rgba(15,23,42,0.95)] dark:to-[rgba(8,16,30,0.98)] border-slate-200 dark:border-[rgba(30,58,138,0.3)]"
+      className="border-b border-border/70 px-4 py-2 flex items-center justify-between h-14 backdrop-blur-md bg-card/90 dark:bg-card/90"
       style={{
-        boxShadow: "0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)",
+        boxShadow: "0 1px 2px rgba(0, 0, 0, 0.08)",
       }}
     >
       <div className="flex items-center gap-2.5">
@@ -151,10 +151,10 @@ export function Navbar() {
             className="rounded-md transition-transform duration-200 group-hover:scale-110"
           />
         </div>
-        <div className="h-4 w-px bg-slate-300 dark:bg-slate-700/50" />
+        <div className="h-4 w-px bg-border/80" />
         <Tooltip>
           <TooltipTrigger asChild>
-            <span className="text-base font-bold text-slate-900 dark:text-foreground tracking-tight cursor-default">VAJRA</span>
+            <span className="text-base font-bold text-foreground tracking-tight cursor-default">VAJRA</span>
           </TooltipTrigger>
           <TooltipContent>
             <p>Vulnerability Analysis and Joint Risk Assessment</p>
@@ -166,7 +166,7 @@ export function Navbar() {
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <button 
-              className="relative p-1.5 hover:bg-slate-100 dark:hover:bg-slate-800/40 rounded-md transition-all duration-200 text-slate-600 dark:text-foreground/70 hover:text-slate-900 dark:hover:text-foreground hover:scale-105 active:scale-95"
+              className="relative p-1.5 rounded-md transition-all duration-200 text-muted-foreground hover:text-foreground hover:bg-muted/60 dark:hover:bg-muted/40 hover:scale-105 active:scale-95"
               title="Notifications"
             >
               <Bell className="w-4 h-4" />
@@ -215,9 +215,12 @@ export function Navbar() {
                   {notifications.map((notification) => (
                     <div
                       key={notification.id}
-                      className={`p-4 border-b hover:bg-accent dark:hover:bg-slate-800/40 transition-colors cursor-pointer ${
-                        !notification.read ? "bg-blue-500/5 dark:bg-blue-500/5" : ""
-                      } border-border`}
+                      className="p-4 border-b transition-colors cursor-pointer hover:bg-muted/60 dark:hover:bg-muted/30 border-border"
+                      style={
+                        !notification.read
+                          ? { backgroundColor: "var(--muted)" }
+                          : undefined
+                      }
                       onClick={() => {
                         if (notification.link) {
                           router.push(notification.link)
@@ -258,7 +261,7 @@ export function Navbar() {
                             e.stopPropagation()
                             markAsRead(notification.id)
                           }}
-                          className="flex-shrink-0 p-1 hover:bg-accent dark:hover:bg-slate-700/40 rounded transition-colors"
+                          className="flex-shrink-0 p-1 hover:bg-muted/40 dark:hover:bg-muted/30 rounded transition-colors"
                         >
                           <X className="w-3 h-3 text-foreground/40" />
                         </button>
@@ -268,7 +271,7 @@ export function Navbar() {
                   <div className="p-2 border-t border-border">
                     <button
                       onClick={clearAll}
-                      className="w-full text-xs text-muted-foreground hover:text-foreground text-center py-2 hover:bg-accent dark:hover:bg-slate-800/40 rounded transition-colors"
+                      className="w-full text-xs text-muted-foreground hover:text-foreground text-center py-2 hover:bg-muted/60 dark:hover:bg-muted/30 rounded transition-colors"
                     >
                       Clear all notifications
                     </button>
@@ -281,7 +284,7 @@ export function Navbar() {
         
         <button 
           onClick={() => setSettingsOpen(true)}
-          className="p-1.5 hover:bg-slate-100 dark:hover:bg-slate-800/40 rounded-md transition-all duration-200 text-slate-600 dark:text-foreground/70 hover:text-slate-900 dark:hover:text-foreground hover:scale-105 active:scale-95"
+          className="p-1.5 rounded-md transition-all duration-200 text-muted-foreground hover:text-foreground hover:bg-muted/60 dark:hover:bg-muted/40 hover:scale-105 active:scale-95"
           title="Settings"
         >
           <Settings className="w-4 h-4" />
@@ -290,7 +293,7 @@ export function Navbar() {
         {mounted && (
           <button
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            className="p-1.5 hover:bg-slate-100 dark:hover:bg-slate-800/40 rounded-md transition-all duration-200 text-slate-600 dark:text-foreground/70 hover:text-slate-900 dark:hover:text-foreground hover:scale-105 active:scale-95"
+            className="p-1.5 rounded-md transition-all duration-200 text-muted-foreground hover:text-foreground hover:bg-muted/60 dark:hover:bg-muted/40 hover:scale-105 active:scale-95"
             title={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
           >
             {theme === "dark" ? (
@@ -301,18 +304,18 @@ export function Navbar() {
           </button>
         )}
 
-        <div className="h-5 w-px bg-slate-300 dark:bg-slate-700/50 mx-1" />
+        <div className="h-5 w-px bg-border/80 mx-1" />
 
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <button className="flex items-center gap-1.5 p-1 pr-1.5 hover:bg-slate-100 dark:hover:bg-slate-800/40 rounded-md transition-all duration-200 text-slate-600 dark:text-foreground/70 hover:text-slate-900 dark:hover:text-foreground hover:scale-105 active:scale-95 group">
-              <Avatar className="w-7 h-7 ring-2 ring-slate-300 dark:ring-slate-700/50 group-hover:ring-primary/50 transition-all duration-200">
+            <button className="flex items-center gap-1.5 p-1 pr-1.5 rounded-md transition-all duration-200 text-muted-foreground hover:text-foreground hover:bg-muted/60 dark:hover:bg-muted/40 hover:scale-105 active:scale-95 group">
+              <Avatar className="w-7 h-7 ring-2 ring-border/60 group-hover:ring-foreground/40 transition-all duration-200">
                 <AvatarImage 
                   src={user.avatarUrl} 
                   alt={user.name}
                   className="object-cover"
                 />
-                <AvatarFallback className="bg-gradient-to-br from-primary/30 to-primary/10 text-primary text-[10px] font-semibold">
+                <AvatarFallback className="bg-muted text-foreground text-[10px] font-semibold">
                   {user.initials}
                 </AvatarFallback>
               </Avatar>
@@ -360,7 +363,7 @@ export function Navbar() {
               <Link 
                 href="/settings"
                 onClick={() => setSettingsOpen(false)}
-                className="block p-4 rounded-lg border border-border hover:bg-accent dark:hover:bg-slate-800/40 transition-colors"
+                className="block p-4 rounded-lg border border-border hover:bg-muted/60 dark:hover:bg-muted/30 transition-colors"
               >
                 <div className="flex items-center gap-3">
                   <Settings className="w-5 h-5 text-foreground/70" />
@@ -374,7 +377,7 @@ export function Navbar() {
               <div className="pt-2 space-y-2">
                 <h4 className="text-sm font-medium text-foreground/80 mb-2">Quick Actions</h4>
                 <button
-                  className="w-full text-left p-3 rounded-lg border border-border hover:bg-accent dark:hover:bg-slate-800/40 transition-colors"
+                  className="w-full text-left p-3 rounded-lg border border-border hover:bg-muted/60 dark:hover:bg-muted/30 transition-colors"
                   onClick={() => {
                     // TODO: Implement notification toggle
                     console.log("Toggle notifications")

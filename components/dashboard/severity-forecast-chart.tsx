@@ -53,10 +53,10 @@ export function SeverityForecastChart({ className }: SeverityForecastChartProps)
 
   if (isLoading) {
     return (
-      <div className={`backdrop-blur-md border border-border bg-card dark:bg-gradient-to-br dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] rounded-lg p-6 ${className}`}>
+      <div className={`backdrop-blur-md border border-border bg-card/95 dark:bg-card/95 rounded-lg p-6 ${className}`}>
         <div className="flex items-center justify-between mb-6">
           <h3 className="text-lg font-semibold text-foreground flex items-center gap-2">
-            <AlertTriangle className="w-5 h-5 text-primary" />
+            <AlertTriangle className="w-5 h-5 text-foreground" />
             Severity Forecast
           </h3>
         </div>
@@ -69,10 +69,10 @@ export function SeverityForecastChart({ className }: SeverityForecastChartProps)
 
   if (error || !forecastData || forecastData.status !== 'success') {
     return (
-      <div className={`backdrop-blur-md border border-border bg-card dark:bg-gradient-to-br dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] rounded-lg p-6 ${className}`}>
+      <div className={`backdrop-blur-md border border-border bg-card/95 dark:bg-card/95 rounded-lg p-6 ${className}`}>
         <div className="flex items-center justify-between mb-6">
           <h3 className="text-lg font-semibold text-foreground flex items-center gap-2">
-            <AlertTriangle className="w-5 h-5 text-primary" />
+            <AlertTriangle className="w-5 h-5 text-foreground" />
             Severity Forecast
           </h3>
         </div>
@@ -92,16 +92,16 @@ export function SeverityForecastChart({ className }: SeverityForecastChartProps)
   }))
 
   return (
-    <div className={`backdrop-blur-md border border-border bg-card dark:bg-gradient-to-br dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] rounded-lg p-6 ${className}`}>
+    <div className={`backdrop-blur-md border border-border bg-card/95 dark:bg-card/95 rounded-lg p-6 ${className}`}>
       <div className="flex items-center justify-between mb-6">
         <h3 className="text-lg font-semibold text-foreground flex items-center gap-2">
-          <AlertTriangle className="w-5 h-5 text-primary" />
+          <AlertTriangle className="w-5 h-5 text-foreground" />
           Severity Forecast
         </h3>
         <div className="relative forecast-dropdown">
           <button
             onClick={() => setShowDropdown(!showDropdown)}
-            className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-accent/10 text-accent hover:bg-accent/20 transition-colors text-sm font-medium"
+            className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-muted/60 text-foreground hover:bg-muted/80 transition-colors text-sm font-medium"
           >
             <span>{selectedOption.label}</span>
             <ChevronDown className={`w-4 h-4 transition-transform ${showDropdown ? 'rotate-180' : ''}`} />
@@ -116,9 +116,9 @@ export function SeverityForecastChart({ className }: SeverityForecastChartProps)
                     setForecastDays(option.value)
                     setShowDropdown(false)
                   }}
-                  className={`w-full px-4 py-2 text-left text-sm hover:bg-accent/10 transition-colors ${
+                  className={`w-full px-4 py-2 text-left text-sm hover:bg-muted/60 transition-colors ${
                     forecastDays === option.value 
-                      ? 'bg-primary/10 text-primary font-medium' 
+                      ? 'bg-foreground/10 text-foreground font-medium' 
                       : 'text-foreground'
                   }`}
                 >
@@ -134,45 +134,45 @@ export function SeverityForecastChart({ className }: SeverityForecastChartProps)
         <ComposedChart data={chartData}>
           <defs>
             <linearGradient id="criticalForecastGradient" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#ef4444" stopOpacity={0.4} />
+              <stop offset="0%" stopColor="#ef4444" stopOpacity={0.45} />
               <stop offset="100%" stopColor="#ef4444" stopOpacity={0} />
             </linearGradient>
             <linearGradient id="highForecastGradient" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#f59e0b" stopOpacity={0.4} />
-              <stop offset="100%" stopColor="#f59e0b" stopOpacity={0} />
+              <stop offset="0%" stopColor="#f97316" stopOpacity={0.45} />
+              <stop offset="100%" stopColor="#f97316" stopOpacity={0} />
             </linearGradient>
             <linearGradient id="mediumForecastGradient" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#06b6d4" stopOpacity={0.4} />
-              <stop offset="100%" stopColor="#06b6d4" stopOpacity={0} />
+              <stop offset="0%" stopColor="#eab308" stopOpacity={0.45} />
+              <stop offset="100%" stopColor="#eab308" stopOpacity={0} />
             </linearGradient>
             <linearGradient id="lowForecastGradient" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#10b981" stopOpacity={0.4} />
-              <stop offset="100%" stopColor="#10b981" stopOpacity={0} />
+              <stop offset="0%" stopColor="#22c55e" stopOpacity={0.45} />
+              <stop offset="100%" stopColor="#22c55e" stopOpacity={0} />
             </linearGradient>
           </defs>
-          <CartesianGrid strokeDasharray="3 3" className="stroke-slate-300 dark:stroke-slate-700" />
+          <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" strokeOpacity={0.35} />
           <XAxis 
             dataKey="date" 
-            className="text-slate-600 dark:text-slate-400" 
+            className="text-muted-foreground" 
             style={{ fontSize: "12px" }}
-            tick={{ fill: "currentColor" }}
+            tick={{ fill: "var(--muted-foreground)" }}
           />
           <YAxis 
-            className="text-slate-600 dark:text-slate-400"
+            className="text-muted-foreground"
             style={{ fontSize: "12px" }}
-            tick={{ fill: "currentColor" }}
+            tick={{ fill: "var(--muted-foreground)" }}
             domain={[0, 'auto']}
           />
           <Tooltip
             contentStyle={{
-              backgroundColor: "hsl(var(--popover))",
-              border: "1px solid hsl(var(--border))",
+              backgroundColor: "var(--popover)",
+              border: "1px solid var(--border)",
               borderRadius: "8px",
             }}
-            labelStyle={{ color: "hsl(var(--popover-foreground))" }}
-            itemStyle={{ color: "hsl(var(--popover-foreground))" }}
+            labelStyle={{ color: "var(--popover-foreground)" }}
+            itemStyle={{ color: "var(--popover-foreground)" }}
           />
-          <Legend wrapperStyle={{ color: "hsl(var(--foreground))" }} />
+          <Legend wrapperStyle={{ color: "var(--foreground)" }} />
           
           <Area type="monotone" dataKey="critical" fill="url(#criticalForecastGradient)" stroke="none" />
           <Area type="monotone" dataKey="high" fill="url(#highForecastGradient)" stroke="none" />
@@ -180,9 +180,9 @@ export function SeverityForecastChart({ className }: SeverityForecastChartProps)
           <Area type="monotone" dataKey="low" fill="url(#lowForecastGradient)" stroke="none" />
           
           <Line type="monotone" dataKey="critical" stroke="#ef4444" strokeWidth={2} dot={false} name="Critical" />
-          <Line type="monotone" dataKey="high" stroke="#f59e0b" strokeWidth={2} dot={false} name="High" />
-          <Line type="monotone" dataKey="medium" stroke="#06b6d4" strokeWidth={2} dot={false} name="Medium" />
-          <Line type="monotone" dataKey="low" stroke="#10b981" strokeWidth={2} dot={false} name="Low" />
+          <Line type="monotone" dataKey="high" stroke="#f97316" strokeWidth={2} dot={false} name="High" />
+          <Line type="monotone" dataKey="medium" stroke="#eab308" strokeWidth={2} dot={false} name="Medium" />
+          <Line type="monotone" dataKey="low" stroke="#22c55e" strokeWidth={2} dot={false} name="Low" />
         </ComposedChart>
       </ResponsiveContainer>
       

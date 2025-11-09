@@ -130,7 +130,7 @@ export default function ThreatsPage() {
             placeholder="Search threats..."
             value={searchInput}
             onChange={(e) => setSearchInput(e.target.value)}
-            className="w-full pl-12 pr-10 py-3 rounded-lg bg-input dark:bg-gradient-to-r dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-all"
+            className="w-full pl-12 pr-10 py-3 rounded-lg bg-input dark:bg-input/40 border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-foreground/40 focus:ring-1 focus:ring-foreground/20 transition-all"
           />
           {searchInput && (
             <button
@@ -155,7 +155,7 @@ export default function ThreatsPage() {
                 setSeverityFilter(e.target.value as SeverityFilter)
                 setPage(1)
               }}
-              className="px-3 py-2 rounded-lg bg-input dark:bg-gradient-to-r dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] border border-border text-foreground focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-all text-sm"
+              className="px-3 py-2 rounded-lg bg-input dark:bg-input/40 border border-border text-foreground focus:outline-none focus:border-foreground/40 focus:ring-1 focus:ring-foreground/20 transition-all text-sm"
             >
               <option value="all">All</option>
               <option value="critical">Critical</option>
@@ -175,7 +175,7 @@ export default function ThreatsPage() {
                 setDateSort(e.target.value as DateSort)
                 setPage(1)
               }}
-              className="px-3 py-2 rounded-lg bg-input dark:bg-gradient-to-r dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] border border-border text-foreground focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-all text-sm"
+              className="px-3 py-2 rounded-lg bg-input dark:bg-input/40 border border-border text-foreground focus:outline-none focus:border-foreground/40 focus:ring-1 focus:ring-foreground/20 transition-all text-sm"
             >
               <option value="newest">Newest First</option>
               <option value="oldest">Oldest First</option>
@@ -211,7 +211,7 @@ export default function ThreatsPage() {
             {[...Array(5)].map((_, i) => (
               <div
                 key={i}
-                className="h-32 rounded-lg animate-pulse bg-card dark:bg-gradient-to-r dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] border border-border"
+                className="h-32 rounded-lg animate-pulse bg-card/95 dark:bg-card/95 border border-border"
               />
             ))}
           </div>
@@ -222,7 +222,7 @@ export default function ThreatsPage() {
             </div>
           ))
         ) : (
-          <div className="text-center py-12 rounded-lg bg-card dark:bg-gradient-to-r dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] border border-border">
+          <div className="text-center py-12 rounded-lg bg-card/95 dark:bg-card/95 border border-border">
             <p className="text-muted-foreground">
               {debouncedSearch 
                 ? `No threats found matching "${debouncedSearch}"` 
@@ -238,7 +238,7 @@ export default function ThreatsPage() {
           <button
             onClick={() => setPage((p) => Math.max(1, p - 1))}
             disabled={page === 1}
-            className="px-4 py-2 rounded-lg bg-card dark:bg-gradient-to-r dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] border border-border text-foreground disabled:opacity-50 disabled:cursor-not-allowed hover:bg-accent dark:hover:bg-[rgba(15,23,42,0.95)] hover:border-primary/50 transition-colors"
+            className="px-4 py-2 rounded-lg bg-card/95 dark:bg-card/95 border border-border text-foreground disabled:opacity-50 disabled:cursor-not-allowed hover:bg-muted/60 dark:hover:bg-muted/40 hover:border-foreground/30 transition-colors"
           >
             Previous
           </button>
@@ -248,7 +248,7 @@ export default function ThreatsPage() {
           <button
             onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
             disabled={page === totalPages}
-            className="px-4 py-2 rounded-lg bg-card dark:bg-gradient-to-r dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] border border-border text-foreground disabled:opacity-50 disabled:cursor-not-allowed hover:bg-accent dark:hover:bg-[rgba(15,23,42,0.95)] hover:border-primary/50 transition-colors"
+            className="px-4 py-2 rounded-lg bg-card/95 dark:bg-card/95 border border-border text-foreground disabled:opacity-50 disabled:cursor-not-allowed hover:bg-muted/60 dark:hover:bg-muted/40 hover:border-foreground/30 transition-colors"
           >
             Next
           </button>

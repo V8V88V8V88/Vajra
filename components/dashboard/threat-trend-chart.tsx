@@ -61,7 +61,7 @@ export function ThreatTrendChart({ data, onDateRangeChange }: ThreatTrendChartPr
   
   return (
     <div
-      className="backdrop-blur-md border border-border bg-card dark:bg-gradient-to-br dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] rounded-lg p-6"
+      className="backdrop-blur-md border border-border bg-card/95 dark:bg-card/95 rounded-lg p-6"
     >
       <div className="flex items-center justify-between mb-6">
         <h3 className="text-lg font-semibold text-foreground">Threat Trend</h3>
@@ -75,69 +75,72 @@ export function ThreatTrendChart({ data, onDateRangeChange }: ThreatTrendChartPr
       <ResponsiveContainer width="100%" height={300}>
         <ComposedChart data={data}>
           <defs>
-            {/* Line gradients (horizontal) */}
             <linearGradient id="threatsGradient" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0%" stopColor="#38bdf8" stopOpacity={1} />
-              <stop offset="50%" stopColor="#0ea5e9" stopOpacity={1} />
-              <stop offset="100%" stopColor="#0284c7" stopOpacity={1} />
+              <stop offset="0%" stopColor="#f5f5f5" stopOpacity={1} />
+              <stop offset="50%" stopColor="#d4d4d8" stopOpacity={1} />
+              <stop offset="100%" stopColor="#a1a1aa" stopOpacity={1} />
             </linearGradient>
             <linearGradient id="criticalGradient" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0%" stopColor="#f87171" stopOpacity={1} />
+              <stop offset="0%" stopColor="#f97373" stopOpacity={1} />
               <stop offset="50%" stopColor="#ef4444" stopOpacity={1} />
               <stop offset="100%" stopColor="#b91c1c" stopOpacity={1} />
             </linearGradient>
             <linearGradient id="highGradient" x1="0" y1="0" x2="1" y2="0">
               <stop offset="0%" stopColor="#fbbf24" stopOpacity={1} />
-              <stop offset="50%" stopColor="#f59e0b" stopOpacity={1} />
-              <stop offset="100%" stopColor="#b45309" stopOpacity={1} />
+              <stop offset="50%" stopColor="#f97316" stopOpacity={1} />
+              <stop offset="100%" stopColor="#c2410c" stopOpacity={1} />
+            </linearGradient>
+            <linearGradient id="mediumGradient" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stopColor="#fde047" stopOpacity={1} />
+              <stop offset="50%" stopColor="#eab308" stopOpacity={1} />
+              <stop offset="100%" stopColor="#a16207" stopOpacity={1} />
+            </linearGradient>
+            <linearGradient id="lowGradient" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stopColor="#86efac" stopOpacity={1} />
+              <stop offset="50%" stopColor="#22c55e" stopOpacity={1} />
+              <stop offset="100%" stopColor="#0f766e" stopOpacity={1} />
             </linearGradient>
             
-            {/* Area fill gradients (vertical - from line color to transparent) */}
             <linearGradient id="threatsAreaGradient" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#38bdf8" stopOpacity={0.4} />
-              <stop offset="30%" stopColor="#0ea5e9" stopOpacity={0.25} />
-              <stop offset="70%" stopColor="#0284c7" stopOpacity={0.15} />
-              <stop offset="100%" stopColor="#0284c7" stopOpacity={0} />
+              <stop offset="0%" stopColor="#d4d4d8" stopOpacity={0.45} />
+              <stop offset="40%" stopColor="#d4d4d8" stopOpacity={0.25} />
+              <stop offset="100%" stopColor="#a1a1aa" stopOpacity={0} />
             </linearGradient>
             <linearGradient id="criticalAreaGradient" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#ef4444" stopOpacity={0.4} />
-              <stop offset="30%" stopColor="#ef4444" stopOpacity={0.25} />
-              <stop offset="70%" stopColor="#b91c1c" stopOpacity={0.15} />
+              <stop offset="0%" stopColor="#ef4444" stopOpacity={0.45} />
+              <stop offset="40%" stopColor="#ef4444" stopOpacity={0.25} />
               <stop offset="100%" stopColor="#b91c1c" stopOpacity={0} />
             </linearGradient>
             <linearGradient id="highAreaGradient" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#f59e0b" stopOpacity={0.4} />
-              <stop offset="30%" stopColor="#f59e0b" stopOpacity={0.25} />
-              <stop offset="70%" stopColor="#b45309" stopOpacity={0.15} />
-              <stop offset="100%" stopColor="#b45309" stopOpacity={0} />
+              <stop offset="0%" stopColor="#f97316" stopOpacity={0.45} />
+              <stop offset="40%" stopColor="#f97316" stopOpacity={0.25} />
+              <stop offset="100%" stopColor="#c2410c" stopOpacity={0} />
             </linearGradient>
             <linearGradient id="mediumAreaGradient" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#3b82f6" stopOpacity={0.4} />
-              <stop offset="30%" stopColor="#3b82f6" stopOpacity={0.25} />
-              <stop offset="70%" stopColor="#1e40af" stopOpacity={0.15} />
-              <stop offset="100%" stopColor="#1e40af" stopOpacity={0} />
+              <stop offset="0%" stopColor="#eab308" stopOpacity={0.45} />
+              <stop offset="40%" stopColor="#eab308" stopOpacity={0.25} />
+              <stop offset="100%" stopColor="#a16207" stopOpacity={0} />
             </linearGradient>
             <linearGradient id="lowAreaGradient" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#10b981" stopOpacity={0.4} />
-              <stop offset="30%" stopColor="#10b981" stopOpacity={0.25} />
-              <stop offset="70%" stopColor="#047857" stopOpacity={0.15} />
-              <stop offset="100%" stopColor="#047857" stopOpacity={0} />
+              <stop offset="0%" stopColor="#22c55e" stopOpacity={0.45} />
+              <stop offset="40%" stopColor="#22c55e" stopOpacity={0.25} />
+              <stop offset="100%" stopColor="#0f766e" stopOpacity={0} />
             </linearGradient>
           </defs>
-          <CartesianGrid strokeDasharray="3 3" className="stroke-slate-300 dark:stroke-slate-700" />
+          <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" strokeOpacity={0.35} />
           <XAxis 
             dataKey="date" 
-            className="text-slate-600 dark:text-slate-400" 
+            className="text-muted-foreground" 
             style={{ fontSize: "12px" }}
-            tick={{ fill: "currentColor" }}
+            tick={{ fill: "var(--muted-foreground)" }}
           />
           <YAxis 
-            className="text-slate-600 dark:text-slate-400"
+            className="text-muted-foreground"
             style={{ fontSize: "12px" }}
-            tick={{ fill: "currentColor" }}
+            tick={{ fill: "var(--muted-foreground)" }}
             domain={[0, maxValue]}
             allowDataOverflow={false}
-            label={{ value: 'Number of Threats', angle: -90, position: 'insideLeft', style: { textAnchor: 'middle', fill: 'currentColor' } }}
+            label={{ value: 'Number of Threats', angle: -90, position: 'insideLeft', style: { textAnchor: 'middle', fill: 'var(--muted-foreground)' } }}
           />
           <Tooltip
             content={({ active, payload, label }) => {
@@ -164,14 +167,14 @@ export function ThreatTrendChart({ data, onDateRangeChange }: ThreatTrendChartPr
               
               return (
                 <div style={{
-                  backgroundColor: "hsl(var(--popover))",
-                  border: "1px solid hsl(var(--border))",
+                  backgroundColor: "var(--popover)",
+                  border: `1px solid var(--border)`,
                   borderRadius: "8px",
                   padding: "12px",
                   boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)"
                 }}>
                   <p style={{ 
-                    color: "hsl(var(--popover-foreground))", 
+                    color: "var(--popover-foreground)", 
                     fontWeight: "bold", 
                     marginBottom: "8px",
                     fontSize: "14px"
@@ -183,7 +186,7 @@ export function ThreatTrendChart({ data, onDateRangeChange }: ThreatTrendChartPr
                     const displayName = entry.name || entry.dataKey || 'Unknown'
                     return (
                       <p key={`${entry.dataKey}-${index}`} style={{ 
-                        color: entry.color || "hsl(var(--popover-foreground))",
+                        color: entry.color || "var(--popover-foreground)",
                         margin: "4px 0",
                         fontSize: "13px",
                         display: 'flex',
@@ -209,7 +212,7 @@ export function ThreatTrendChart({ data, onDateRangeChange }: ThreatTrendChartPr
             }}
           />
           <Legend 
-            wrapperStyle={{ color: "hsl(var(--foreground))" }}
+            wrapperStyle={{ color: "var(--foreground)" }}
             content={({ payload }) => {
               // Filter to only show Line components (exclude Area components)
               const lineItems = payload?.filter((item: any) => item.stroke !== undefined) || []
@@ -224,7 +227,7 @@ export function ThreatTrendChart({ data, onDateRangeChange }: ThreatTrendChartPr
                         backgroundColor: entry.color || '#000',
                         borderRadius: '2px'
                       }}></span>
-                      <span style={{ fontSize: '12px', color: 'hsl(var(--foreground))' }}>
+                      <span style={{ fontSize: '12px', color: 'var(--foreground)' }}>
                         {entry.value}
                       </span>
                     </li>
@@ -308,9 +311,9 @@ export function ThreatTrendChart({ data, onDateRangeChange }: ThreatTrendChartPr
           <Line 
             type="monotone" 
             dataKey="high" 
-            stroke="#f59e0b" 
+            stroke="#f97316" 
             strokeWidth={3} 
-            dot={{ r: 4, fill: "#f59e0b", strokeWidth: 2, stroke: "#fff" }}
+            dot={{ r: 4, fill: "#f97316", strokeWidth: 2, stroke: "#fff" }}
             connectNulls={true}
             isAnimationActive={true}
             strokeOpacity={1}
@@ -320,9 +323,9 @@ export function ThreatTrendChart({ data, onDateRangeChange }: ThreatTrendChartPr
           <Line 
             type="monotone" 
             dataKey="medium" 
-            stroke="#3b82f6" 
+            stroke="url(#mediumGradient)"
             strokeWidth={2} 
-            dot={{ r: 3, fill: "#3b82f6", strokeWidth: 1, stroke: "#fff" }}
+            dot={{ r: 3, fill: "#eab308", strokeWidth: 1, stroke: "#fff" }}
             connectNulls={true}
             isAnimationActive={true}
             strokeOpacity={0.8}
@@ -332,9 +335,9 @@ export function ThreatTrendChart({ data, onDateRangeChange }: ThreatTrendChartPr
           <Line 
             type="monotone" 
             dataKey="low" 
-            stroke="#10b981" 
+            stroke="url(#lowGradient)" 
             strokeWidth={2} 
-            dot={{ r: 3, fill: "#10b981", strokeWidth: 1, stroke: "#fff" }}
+            dot={{ r: 3, fill: "#22c55e", strokeWidth: 1, stroke: "#fff" }}
             connectNulls={true}
             isAnimationActive={true}
             strokeOpacity={0.8}

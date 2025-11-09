@@ -18,10 +18,10 @@ const typeLabels: Record<CrawlerLog["type"], string> = {
 }
 
 const typeColors: Record<CrawlerLog["type"], string> = {
-  info: "text-sky-400",
+  info: "text-muted-foreground",
   success: "text-emerald-400",
   warning: "text-amber-400",
-  error: "text-rose-400",
+  error: "text-destructive",
 }
 
 const typeIcons = {
@@ -39,17 +39,17 @@ export function CrawlerLogs({ logs, isRunning }: CrawlerLogsProps) {
   }, [logs, isRunning])
 
   return (
-    <div className="rounded-lg border border-border bg-card dark:bg-slate-950/70 shadow-lg shadow-black/40">
+    <div className="rounded-lg border border-border bg-card/95 shadow-[0_16px_40px_rgba(0,0,0,0.35)]">
       <div className="flex items-center justify-between px-4 py-3 border-b border-border">
         <p className="font-mono text-xs uppercase tracking-wider text-foreground">Crawler Output</p>
         {isRunning && (
-          <span className="flex items-center gap-2 font-mono text-xs text-sky-400">
-            <span className="h-2 w-2 animate-ping rounded-full bg-sky-400" />
+          <span className="flex items-center gap-2 font-mono text-xs text-muted-foreground">
+            <span className="h-2 w-2 animate-ping rounded-full bg-foreground" />
             running...
           </span>
         )}
       </div>
-      <div className="h-72 overflow-y-auto bg-muted/30 dark:bg-slate-950/80 px-4 py-3 font-mono text-xs text-foreground">
+      <div className="h-72 overflow-y-auto bg-muted/30 px-4 py-3 font-mono text-xs text-foreground">
         {logs.length === 0 && !isRunning && (
           <p className="text-center text-muted-foreground">No logs yet. Start the crawler to begin.</p>
         )}
@@ -63,7 +63,7 @@ export function CrawlerLogs({ logs, isRunning }: CrawlerLogsProps) {
                 initial={{ opacity: 0, x: -10 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: index * 0.02 }}
-                className="flex items-start gap-3 rounded border border-border bg-accent/50 dark:bg-slate-900/30 px-3 py-2 mb-2"
+                className="flex items-start gap-3 rounded border border-border/80 bg-muted/50 px-3 py-2 mb-2"
               >
                 <Icon className={`mt-0.5 h-4 w-4 flex-shrink-0 ${typeColors[log.type]}`} />
                 <div className="space-y-1">
@@ -77,8 +77,8 @@ export function CrawlerLogs({ logs, isRunning }: CrawlerLogsProps) {
             )
           })}
         {isRunning && (
-          <div className="flex items-center gap-2 rounded border border-sky-500/20 bg-sky-500/5 px-3 py-2 text-sky-300">
-            <div className="h-2 w-2 animate-pulse rounded-full bg-sky-400" />
+          <div className="flex items-center gap-2 rounded border border-border/60 bg-muted/40 px-3 py-2 text-muted-foreground">
+            <div className="h-2 w-2 animate-pulse rounded-full bg-foreground" />
             waiting for output...
           </div>
         )}

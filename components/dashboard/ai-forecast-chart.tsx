@@ -59,10 +59,10 @@ export function AIForecastChart({ className }: AIForecastChartProps) {
 
   if (isLoading) {
     return (
-      <div className={`backdrop-blur-md border border-border bg-card dark:bg-gradient-to-br dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] rounded-lg p-6 ${className}`}>
+      <div className={`backdrop-blur-md border border-border bg-card/95 dark:bg-card/95 rounded-lg p-6 ${className}`}>
         <div className="flex items-center justify-between mb-6">
           <h3 className="text-lg font-semibold text-foreground flex items-center gap-2">
-            <Brain className="w-5 h-5 text-primary" />
+            <Brain className="w-5 h-5 text-foreground" />
             AI Threat Forecast
           </h3>
         </div>
@@ -78,10 +78,10 @@ export function AIForecastChart({ className }: AIForecastChartProps) {
     const isPyTorchError = errorMessage.toLowerCase().includes('torch') || errorMessage.toLowerCase().includes('pytorch')
     
     return (
-      <div className={`backdrop-blur-md border border-border bg-card dark:bg-gradient-to-br dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] rounded-lg p-6 ${className}`}>
+      <div className={`backdrop-blur-md border border-border bg-card/95 dark:bg-card/95 rounded-lg p-6 ${className}`}>
         <div className="flex items-center justify-between mb-6">
           <h3 className="text-lg font-semibold text-foreground flex items-center gap-2">
-            <Brain className="w-5 h-5 text-primary" />
+            <Brain className="w-5 h-5 text-foreground" />
             AI Threat Forecast
           </h3>
         </div>
@@ -105,22 +105,22 @@ export function AIForecastChart({ className }: AIForecastChartProps) {
   }))
 
   const trendIcon = forecastData.trend === 'increasing' 
-    ? <TrendingUp className="w-4 h-4 text-red-500" />
+    ? <TrendingUp className="w-4 h-4 text-destructive" />
     : forecastData.trend === 'decreasing'
-    ? <TrendingDown className="w-4 h-4 text-green-500" />
-    : <Minus className="w-4 h-4 text-blue-500" />
+    ? <TrendingDown className="w-4 h-4 text-emerald-500" />
+    : <Minus className="w-4 h-4 text-muted-foreground" />
 
   const trendColor = forecastData.trend === 'increasing' 
-    ? 'text-red-500'
+    ? 'text-destructive'
     : forecastData.trend === 'decreasing'
-    ? 'text-green-500'
-    : 'text-blue-500'
+    ? 'text-emerald-500'
+    : 'text-muted-foreground'
 
   return (
-    <div className={`backdrop-blur-md border border-border bg-card dark:bg-gradient-to-br dark:from-[rgba(15,23,42,0.8)] dark:to-[rgba(8,16,30,0.9)] rounded-lg p-6 ${className}`}>
+    <div className={`backdrop-blur-md border border-border bg-card/95 dark:bg-card/95 rounded-lg p-6 ${className}`}>
       <div className="flex items-center justify-between mb-6">
         <h3 className="text-lg font-semibold text-foreground flex items-center gap-2">
-          <Brain className="w-5 h-5 text-primary" />
+          <Brain className="w-5 h-5 text-foreground" />
           AI Threat Forecast ({selectedOption.label})
         </h3>
         <div className="flex items-center gap-3">
@@ -129,7 +129,7 @@ export function AIForecastChart({ className }: AIForecastChartProps) {
               {trendIcon}
               <span className="capitalize">{forecastData.trend} Trend</span>
               {forecastData.risk_level && (
-                <span className="ml-2 px-2 py-1 rounded text-xs bg-primary/10 text-primary capitalize">
+                <span className="ml-2 px-2 py-1 rounded text-xs bg-foreground/10 text-foreground capitalize">
                   {forecastData.risk_level} Risk
                 </span>
               )}
@@ -138,7 +138,7 @@ export function AIForecastChart({ className }: AIForecastChartProps) {
           <div className="relative forecast-dropdown">
             <button
               onClick={() => setShowDropdown(!showDropdown)}
-              className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-accent/10 text-accent hover:bg-accent/20 transition-colors text-sm font-medium"
+              className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-muted/60 text-foreground hover:bg-muted/80 transition-colors text-sm font-medium"
             >
               <span>{selectedOption.label}</span>
               <ChevronDown className={`w-4 h-4 transition-transform ${showDropdown ? 'rotate-180' : ''}`} />
@@ -150,9 +150,9 @@ export function AIForecastChart({ className }: AIForecastChartProps) {
                   <button
                     key={option.value}
                     onClick={() => handleForecastPeriodChange(option.value)}
-                    className={`w-full px-4 py-2 text-left text-sm hover:bg-accent/10 transition-colors ${
+                    className={`w-full px-4 py-2 text-left text-sm hover:bg-muted/60 transition-colors ${
                       forecastDays === option.value 
-                        ? 'bg-primary/10 text-primary font-medium' 
+                        ? 'bg-foreground/10 text-foreground font-medium' 
                         : 'text-foreground'
                     }`}
                   >
@@ -168,45 +168,44 @@ export function AIForecastChart({ className }: AIForecastChartProps) {
       <ResponsiveContainer width="100%" height={300}>
         <ComposedChart data={chartData}>
           <defs>
-            {/* Line gradient (horizontal) */}
             <linearGradient id="forecastGradient" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0%" stopColor="#8b5cf6" stopOpacity={1} />
-              <stop offset="50%" stopColor="#7c3aed" stopOpacity={1} />
-              <stop offset="100%" stopColor="#6d28d9" stopOpacity={1} />
+              <stop offset="0%" stopColor="#ea580c" stopOpacity={1} />
+              <stop offset="50%" stopColor="#f97316" stopOpacity={1} />
+              <stop offset="100%" stopColor="#fdba74" stopOpacity={1} />
             </linearGradient>
-            
-            {/* Area fill gradient (vertical - from line color to transparent) */}
             <linearGradient id="forecastAreaGradient" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#8b5cf6" stopOpacity={0.4} />
-              <stop offset="30%" stopColor="#7c3aed" stopOpacity={0.25} />
-              <stop offset="70%" stopColor="#6d28d9" stopOpacity={0.15} />
-              <stop offset="100%" stopColor="#6d28d9" stopOpacity={0} />
+              <stop offset="0%" stopColor="#f97316" stopOpacity={0.45} />
+              <stop offset="45%" stopColor="#fb923c" stopOpacity={0.25} />
+              <stop offset="100%" stopColor="#fed7aa" stopOpacity={0} />
             </linearGradient>
           </defs>
-          <CartesianGrid strokeDasharray="3 3" className="stroke-slate-300 dark:stroke-slate-700" />
+          <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" strokeOpacity={0.35} />
           <XAxis 
             dataKey="date" 
-            className="text-slate-600 dark:text-slate-400" 
+            className="text-muted-foreground" 
             style={{ fontSize: "12px" }}
-            tick={{ fill: "currentColor" }}
+            tick={{ fill: "var(--muted-foreground)" }}
           />
           <YAxis 
-            className="text-slate-600 dark:text-slate-400" 
+            className="text-muted-foreground" 
             style={{ fontSize: "12px" }}
-            tick={{ fill: "currentColor" }}
+            tick={{ fill: "var(--muted-foreground)" }}
             domain={[0, 'auto']}
             allowDataOverflow={false}
           />
           <Tooltip
             contentStyle={{
-              backgroundColor: "hsl(var(--popover))",
-              border: "1px solid hsl(var(--border))",
+              backgroundColor: "var(--popover)",
+              border: "1px solid var(--border)",
               borderRadius: "8px",
             }}
-            labelStyle={{ color: "hsl(var(--popover-foreground))" }}
-            itemStyle={{ color: "hsl(var(--popover-foreground))" }}
+            labelStyle={{ color: "var(--popover-foreground)", fontSize: "12px" }}
+            itemStyle={{ color: "var(--popover-foreground)", fontSize: "12px" }}
           />
-          <Legend wrapperStyle={{ color: "hsl(var(--foreground))" }} />
+          <Legend
+            wrapperStyle={{ color: "var(--foreground)" }}
+            formatter={(value) => <span className="text-sm text-foreground/80">{value}</span>}
+          />
           
           {/* Gradient fill underneath line */}
           <Area
@@ -224,7 +223,7 @@ export function AIForecastChart({ className }: AIForecastChartProps) {
             dataKey="predicted" 
             stroke="url(#forecastGradient)" 
             strokeWidth={3} 
-            dot={{ r: 4, fill: "#8b5cf6" }}
+            dot={{ r: 4, strokeWidth: 2, fill: "var(--background)", stroke: "var(--foreground)" }}
             activeDot={{ r: 6 }}
             name="Predicted Threats"
             connectNulls={true}

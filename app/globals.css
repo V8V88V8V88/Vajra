@@ -123,7 +123,16 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
-  
+
+  ::selection {
+    background: rgba(132, 71, 19, 0.6);
+    color: var(--foreground);
+  }
+
+  .dark ::selection {
+    background: rgba(249, 115, 22, 0.35);
+    color: var(--foreground);
+  }
 }
 
 ::-webkit-scrollbar {

@@ -416,14 +416,14 @@ export default function SettingsPage() {
               <div className="flex gap-4 pt-6 mt-6 border-t-2 border-border">
                 <button
                   onClick={handleCancelProfile}
-                  className="flex items-center gap-2 px-6 py-3 border-2 border-border bg-card dark:bg-[rgba(30,41,59,0.5)] rounded-lg font-semibold hover:bg-accent dark:hover:bg-slate-800/40 transition-all duration-300 text-foreground"
+                  className="flex items-center gap-2 px-6 py-3 rounded-lg border border-border bg-muted/50 text-foreground font-semibold hover:bg-muted/70 transition-all duration-300"
                 >
                   <X className="w-5 h-5" />
                   Cancel
                 </button>
                 <button
                   onClick={handleSaveProfile}
-                  className="flex items-center gap-2 px-6 py-3 bg-primary text-white rounded-lg font-semibold hover:bg-primary-dark transition-all duration-300 shadow-lg"
+                  className="flex items-center gap-2 px-6 py-3 rounded-lg bg-foreground text-background font-semibold hover:bg-foreground/85 transition-all duration-300 shadow-lg"
                 >
                   <Save className="w-5 h-5" />
                   Save Changes
@@ -485,7 +485,7 @@ export default function SettingsPage() {
                     type="checkbox"
                     checked={settings.darkMode}
                     onChange={(e) => setSettings({ ...settings, darkMode: e.target.checked })}
-                    className="w-4 h-4 rounded border-surface-light/20 bg-surface/50 cursor-pointer"
+                    className="w-4 h-4 rounded border border-border bg-muted/40 text-foreground focus:ring-foreground/30"
                   />
                   <span className="text-foreground font-medium">Dark Mode</span>
                 </label>
@@ -495,7 +495,7 @@ export default function SettingsPage() {
                     type="checkbox"
                     checked={settings.enableNotifications}
                     onChange={(e) => setSettings({ ...settings, enableNotifications: e.target.checked })}
-                    className="w-4 h-4 rounded border-surface-light/20 bg-surface/50 cursor-pointer"
+                    className="w-4 h-4 rounded border border-border bg-muted/40 text-foreground focus:ring-foreground/30"
                   />
                   <span className="text-foreground font-medium">Enable Notifications</span>
                 </label>
@@ -519,7 +519,7 @@ export default function SettingsPage() {
                   <button
                     onClick={handleExportThreats}
                     disabled={isExporting}
-                    className="flex items-center gap-2 px-6 py-3 bg-accent text-accent-foreground rounded-lg font-semibold hover:bg-accent/90 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300"
+                    className="flex items-center gap-2 px-6 py-3 rounded-lg bg-foreground text-background font-semibold hover:bg-foreground/85 disabled:opacity-40 disabled:cursor-not-allowed transition-all duration-300"
                   >
                     <Download className="w-5 h-5" />
                     {isExporting ? "Exporting..." : "Export All Threats"}
@@ -568,7 +568,7 @@ export default function SettingsPage() {
                             setDeleteError(null)
                           }}
                           disabled={isDeleting}
-                          className="flex items-center gap-2 px-6 py-3 bg-card dark:bg-[rgba(30,41,59,0.5)] border border-border rounded-lg font-semibold hover:bg-accent dark:hover:bg-slate-800/40 transition-all duration-300 text-foreground disabled:opacity-50 disabled:cursor-not-allowed"
+                          className="flex items-center gap-2 px-6 py-3 rounded-lg border border-border bg-muted/50 text-foreground font-semibold hover:bg-muted/70 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                         >
                           Cancel
                         </button>
@@ -591,14 +591,14 @@ export default function SettingsPage() {
             >
               <button
                 onClick={handleSaveSettings}
-                className="flex items-center gap-2 px-6 py-3 bg-primary text-white rounded-lg font-semibold hover:bg-primary-dark transition-all duration-300"
+                className="flex items-center gap-2 px-6 py-3 rounded-lg bg-foreground text-background font-semibold hover:bg-foreground/85 transition-all duration-300"
               >
                 <Save className="w-5 h-5" />
                 Save Settings
               </button>
               <button
                 onClick={handleReset}
-                className="flex items-center gap-2 px-6 py-3 bg-card dark:bg-[rgba(30,41,59,0.5)] border border-border rounded-lg font-semibold hover:bg-accent dark:hover:bg-slate-800/40 transition-all duration-300 text-foreground"
+                className="flex items-center gap-2 px-6 py-3 rounded-lg border border-border bg-muted/50 text-foreground font-semibold hover:bg-muted/70 transition-all duration-300"
               >
                 <RotateCcw className="w-5 h-5" />
                 Reset to Defaults

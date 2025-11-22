@@ -168,7 +168,7 @@ export function AIChat() {
             {message.role === "user" && (
               <div className="flex-shrink-0 w-8 h-8 rounded-full bg-muted text-foreground flex items-center justify-center border border-border/60 overflow-hidden">
                 <Image
-                  src="/VajraLogo.png"
+                  src="/VajraLogo.png?v=2"
                   alt="User"
                   width={20}
                   height={20}

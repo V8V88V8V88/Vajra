@@ -144,7 +144,7 @@ export function Navbar() {
       <div className="flex items-center gap-2.5">
         <div className="relative group">
           <Image
-            src="/VajraLogo.png"
+            src="/VajraLogo.png?v=2"
             alt="VAJRA Logo"
             width={24}
             height={24}

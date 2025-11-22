@@ -181,6 +181,7 @@ export function SourcesForecastChart({ className }: SourcesForecastChartProps) {
               dataKey={source}
               fill={`url(#sourceForecastGradient${index})`}
               stroke="none"
+              legendType="none"
             />
           ))}
           

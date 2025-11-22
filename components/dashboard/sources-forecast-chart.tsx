@@ -140,7 +140,7 @@ export function SourcesForecastChart({ className }: SourcesForecastChartProps) {
         </div>
       </div>
       
-      <ResponsiveContainer width="100%" height={300}>
+      <ResponsiveContainer width="100%" height={300} debounce={200}>
         <ComposedChart data={chartData}>
           <defs>
             {forecastData.sources.map((source: string, index: number) => (

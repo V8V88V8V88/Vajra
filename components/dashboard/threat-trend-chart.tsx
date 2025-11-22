@@ -72,7 +72,7 @@ export function ThreatTrendChart({ data, onDateRangeChange }: ThreatTrendChartPr
           onChange={handleDateRangeChange}
         />
       </div>
-      <ResponsiveContainer width="100%" height={300}>
+      <ResponsiveContainer width="100%" height={300} debounce={200}>
         <ComposedChart data={data}>
           <defs>
             <linearGradient id="threatsGradient" x1="0" y1="0" x2="1" y2="0">

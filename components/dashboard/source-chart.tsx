@@ -135,7 +135,7 @@ export function SourceChart({ data, onDateRangeChange }: SourceChartProps) {
         </div>
       )}
       
-      <ResponsiveContainer width="100%" height={300}>
+      <ResponsiveContainer width="100%" height={300} debounce={200}>
         <BarChart 
           data={chartData} 
           barCategoryGap="8%"

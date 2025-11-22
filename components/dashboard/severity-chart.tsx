@@ -33,7 +33,7 @@ export function SeverityChart({ data }: SeverityChartProps) {
       className="backdrop-blur-md border border-border bg-card/95 dark:bg-card/95 rounded-lg p-6"
     >
       <h3 className="text-lg font-semibold text-foreground mb-6">Threat Severity</h3>
-      <ResponsiveContainer width="100%" height={300}>
+      <ResponsiveContainer width="100%" height={300} debounce={200}>
         <PieChart>
           <defs>
             <linearGradient id="criticalGradient" x1="0" y1="0" x2="1" y2="1">

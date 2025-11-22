@@ -165,7 +165,7 @@ export function AIForecastChart({ className }: AIForecastChartProps) {
         </div>
       </div>
       
-      <ResponsiveContainer width="100%" height={300}>
+      <ResponsiveContainer width="100%" height={300} debounce={200}>
         <ComposedChart data={chartData}>
           <defs>
             <linearGradient id="forecastGradient" x1="0" y1="0" x2="1" y2="0">

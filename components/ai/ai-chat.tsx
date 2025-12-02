@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from "react"
 import { sendChatMessage } from "@/lib/api"
-import { Send, Bot, User, Loader2, Sparkles } from "lucide-react"
+import { Send, Bot, User, Loader2, Sparkles, Copy, Check } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import ReactMarkdown from "react-markdown"
 import Image from "next/image"
@@ -34,6 +34,7 @@ export function AIChat() {
   const [input, setInput] = useState("")
   const [isLoading, setIsLoading] = useState(false)
   const [isMounted, setIsMounted] = useState(false)
+  const [copiedMessageId, setCopiedMessageId] = useState<string | null>(null)
   const messagesEndRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
 
@@ -101,6 +102,18 @@ export function AIChat() {
     }
   }
 
+  const handleCopy = async (messageId: string, content: string) => {
+    try {
+      await navigator.clipboard.writeText(content)
+      setCopiedMessageId(messageId)
+      setTimeout(() => {
+        setCopiedMessageId(null)
+      }, 2000)
+    } catch (error) {
+      console.error("Failed to copy:", error)
+    }
+  }
+
   return (
     <div className="flex flex-col h-full backdrop-blur-md border border-border bg-card/95 dark:bg-card/95 rounded-lg overflow-hidden">
       {/* Messages Area */}
@@ -119,7 +132,7 @@ export function AIChat() {
             )}
             
             <div
-              className={`max-w-[80%] rounded-lg px-4 py-3 ${
+              className={`max-w-[80%] rounded-lg px-4 py-3 relative group ${
                 message.role === "user"
                   ? "bg-foreground text-background border border-foreground/40"
                   : "bg-muted/60 text-foreground border border-border/60"
@@ -156,13 +169,30 @@ export function AIChat() {
               ) : (
                 <p className="text-sm whitespace-pre-wrap break-words">{message.content}</p>
               )}
-              <p className={`text-xs mt-2 ${
-                message.role === "user" 
-                  ? "text-background/80" 
-                  : "text-muted-foreground"
-              }`}>
-                {isMounted ? message.timestamp.toLocaleTimeString() : ""}
-              </p>
+              <div className="flex items-center justify-between mt-2">
+                <p className={`text-xs ${
+                  message.role === "user" 
+                    ? "text-background/80" 
+                    : "text-muted-foreground"
+                }`}>
+                  {isMounted ? message.timestamp.toLocaleTimeString() : ""}
+                </p>
+                <button
+                  onClick={() => handleCopy(message.id, message.content)}
+                  className={`ml-2 p-1.5 rounded transition-colors ${
+                    message.role === "user"
+                      ? "text-background/70 hover:text-background hover:bg-background/20"
+                      : "text-muted-foreground hover:text-foreground hover:bg-muted/80"
+                  }`}
+                  title="Copy message"
+                >
+                  {copiedMessageId === message.id ? (
+                    <Check className="w-3.5 h-3.5" />
+                  ) : (
+                    <Copy className="w-3.5 h-3.5" />
+                  )}
+                </button>
+              </div>
             </div>
 
             {message.role === "user" && (

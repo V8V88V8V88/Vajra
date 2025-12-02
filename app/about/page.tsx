@@ -1,8 +1,11 @@
 "use client"
 
-import { Shield, Database, TrendingUp, Search, Download, Calendar, Zap, Bell, Filter, FileText, Globe, Brain } from "lucide-react"
+import { Shield, Database, TrendingUp, Search, Download, Calendar, Zap, Bell, Filter, FileText, Globe, Brain, ChevronDown, ChevronUp } from "lucide-react"
+import { useState } from "react"
 
 export default function About() {
+  const [isExpanded, setIsExpanded] = useState(false)
+
   return (
     <div className="p-8 max-w-4xl mx-auto space-y-8 text-foreground">
       {/* Header */}
@@ -24,25 +27,71 @@ export default function About() {
         </div>
       </div>
 
-      {/* Overview */}
+      {/* Simple Tech Stack - Always Visible */}
       <section className="backdrop-blur-md border border-border bg-card/95 dark:bg-card/95 rounded-lg p-6">
-        <p className="text-foreground leading-relaxed">
-          VAJRA is an enterprise-grade threat intelligence platform that combines advanced machine learning with 
-          real-time OSINT data collection to predict, detect, and analyze cyber threats. The system automatically 
-          crawls multiple threat intelligence sources, stores data persistently, and provides comprehensive 
-          visualization through an interactive dashboard. Features include real-time event-driven notifications, 
-          advanced filtering and sorting capabilities, website vulnerability scanning with AI-powered analysis, 
-          enhanced LSTM forecasting for short and long-term predictions, and consistent date range selectors 
-          across all visualizations. All features are production-ready with persistent logging and export capabilities.
-        </p>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div>
+            <h3 className="font-semibold text-foreground mb-2 text-lg">Backend</h3>
+            <p className="text-muted-foreground text-sm">Python 3.10+</p>
+            <p className="text-muted-foreground text-sm">FastAPI + Uvicorn</p>
+          </div>
+          <div>
+            <h3 className="font-semibold text-foreground mb-2 text-lg">Frontend</h3>
+            <p className="text-muted-foreground text-sm">Next.js 16</p>
+            <p className="text-muted-foreground text-sm">React + TypeScript</p>
+            <p className="text-muted-foreground text-sm">Tailwind CSS</p>
+          </div>
+          <div>
+            <h3 className="font-semibold text-foreground mb-2 text-lg">Database</h3>
+            <p className="text-muted-foreground text-sm">Neo4j (Graph DB)</p>
+            <p className="text-muted-foreground text-sm">JSON (Fallback)</p>
+          </div>
+          <div>
+            <h3 className="font-semibold text-foreground mb-2 text-lg">AI & ML</h3>
+            <p className="text-muted-foreground text-sm">Google Gemini AI (Chat)</p>
+            <p className="text-muted-foreground text-sm">PyTorch (GNN, LSTM)</p>
+            <p className="text-muted-foreground text-sm">BERT, scikit-learn</p>
+          </div>
+        </div>
       </section>
 
-      {/* Key Features */}
-      <section className="space-y-4">
-        <h2 className="text-2xl font-semibold mb-4 flex items-center gap-2">
-          <Zap className="w-6 h-6 text-primary" />
-          Key Features
-        </h2>
+      {/* Expandable Details */}
+      <section className="backdrop-blur-md border border-border bg-card/95 dark:bg-card/95 rounded-lg p-6">
+        <button
+          onClick={() => setIsExpanded(!isExpanded)}
+          className="w-full flex items-center justify-between text-left mb-4 hover:opacity-80 transition-opacity"
+        >
+          <h2 className="text-2xl font-semibold text-foreground">
+            {isExpanded ? "Project Details" : "Show Project Details"}
+          </h2>
+          {isExpanded ? (
+            <ChevronUp className="w-5 h-5 text-muted-foreground" />
+          ) : (
+            <ChevronDown className="w-5 h-5 text-muted-foreground" />
+          )}
+        </button>
+
+        {isExpanded && (
+          <div className="space-y-8 pt-4 border-t border-border">
+            {/* Overview */}
+            <div>
+              <p className="text-foreground leading-relaxed">
+                VAJRA is an enterprise-grade threat intelligence platform that combines advanced machine learning with 
+                real-time OSINT data collection to predict, detect, and analyze cyber threats. The system automatically 
+                crawls multiple threat intelligence sources, stores data persistently, and provides comprehensive 
+                visualization through an interactive dashboard. Features include real-time event-driven notifications, 
+                advanced filtering and sorting capabilities, website vulnerability scanning with AI-powered analysis, 
+                enhanced LSTM forecasting for short and long-term predictions, and consistent date range selectors 
+                across all visualizations. All features are production-ready with persistent logging and export capabilities.
+              </p>
+            </div>
+
+            {/* Key Features */}
+            <div className="space-y-4">
+              <h2 className="text-2xl font-semibold mb-4 flex items-center gap-2">
+                <Zap className="w-6 h-6 text-primary" />
+                Key Features
+              </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="backdrop-blur-md border border-border bg-card/95 dark:bg-card/95 rounded-lg p-5">
             <div className="flex items-start gap-3">
@@ -199,11 +248,11 @@ export default function About() {
             </div>
           </div>
         </div>
-      </section>
+            </div>
 
-      {/* Technical Stack */}
-      <section className="space-y-4">
-        <h2 className="text-2xl font-semibold mb-4">Technical Stack</h2>
+            {/* Technical Stack */}
+            <div className="space-y-4">
+              <h2 className="text-2xl font-semibold mb-4">Technical Stack</h2>
         <div className="backdrop-blur-md border border-border bg-card/95 dark:bg-card/95 rounded-lg p-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
@@ -288,11 +337,11 @@ export default function About() {
             </div>
           </div>
         </div>
-      </section>
+            </div>
 
-      {/* Data Sources */}
-      <section className="space-y-4">
-        <h2 className="text-2xl font-semibold mb-4">Threat Intelligence Sources</h2>
+            {/* Data Sources */}
+            <div className="space-y-4">
+              <h2 className="text-2xl font-semibold mb-4">Threat Intelligence Sources</h2>
         <div className="backdrop-blur-md border border-border bg-card/95 dark:bg-card/95 rounded-lg p-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
             <div className="flex items-center gap-2">
@@ -329,11 +378,11 @@ export default function About() {
             </div>
           </div>
         </div>
-      </section>
+            </div>
 
-      {/* How It Works */}
-      <section className="space-y-4">
-        <h2 className="text-2xl font-semibold mb-4">How It Works</h2>
+            {/* How It Works */}
+            <div className="space-y-4">
+              <h2 className="text-2xl font-semibold mb-4">How It Works</h2>
         <div className="backdrop-blur-md border border-border bg-card/95 dark:bg-card/95 rounded-lg p-6">
           <ol className="list-decimal list-inside space-y-4 text-foreground">
             <li>
@@ -388,15 +437,18 @@ export default function About() {
             </li>
           </ol>
         </div>
-      </section>
+            </div>
 
-      {/* Footer */}
-      <section className="text-center pt-6 border-t border-border">
-        <p className="text-muted-foreground text-sm">
-          This project demonstrates end-to-end engineering: full-stack data flow from real-world OSINT crawling 
-          to sophisticated AI processing and user-focused visualization. Built for cybersecurity professionals 
-          protecting critical infrastructure worldwide.
-        </p>
+            {/* Footer */}
+            <div className="text-center pt-6 border-t border-border">
+              <p className="text-muted-foreground text-sm">
+                This project demonstrates end-to-end engineering: full-stack data flow from real-world OSINT crawling 
+                to sophisticated AI processing and user-focused visualization. Built for cybersecurity professionals 
+                protecting critical infrastructure worldwide.
+              </p>
+            </div>
+          </div>
+        )}
       </section>
     </div>
   );

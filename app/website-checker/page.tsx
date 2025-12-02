@@ -1,9 +1,37 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { checkWebsite, type WebsiteCheckResult } from "@/lib/api"
-import { Search, AlertCircle, CheckCircle, XCircle, ExternalLink, Shield, Server, Code, Globe, Loader2, Download } from "lucide-react"
+import { Search, AlertCircle, CheckCircle, XCircle, ExternalLink, Shield, Server, Code, Globe, Loader2, Download, Clock, X } from "lucide-react"
 import { dispatchNotification } from "@/contexts/notification-context"
+
+const POPULAR_SITES = [
+  "https://github.com",
+  "https://stackoverflow.com",
+  "https://reddit.com",
+  "https://twitter.com",
+  "https://linkedin.com",
+  "https://youtube.com",
+  "https://amazon.com",
+  "https://microsoft.com",
+  "https://apple.com",
+  "https://google.com",
+  "https://facebook.com",
+  "https://netflix.com",
+]
+
+const STORAGE_KEY = "VAJRA-website-check-history"
+
+interface WebsiteCheckHistoryItem {
+  url: string
+  scan_date: string
+  summary: {
+    total_cves_checked: number
+    vulnerable_count: number
+    critical_count: number
+    high_count: number
+  }
+}
 
 const severityColors = {
   critical: "bg-destructive/15 border border-destructive/30 text-destructive",
@@ -18,11 +46,61 @@ const confidenceColors = {
   low: "text-red-400",
 }
 
+function saveToHistory(result: WebsiteCheckResult) {
+  if (typeof window === "undefined") return
+  
+  try {
+    const history = loadHistory()
+    const historyItem: WebsiteCheckHistoryItem = {
+      url: result.url,
+      scan_date: result.scan_date,
+      summary: result.summary,
+    }
+    
+    // Remove duplicate if exists and add to beginning
+    const filteredHistory = history.filter(item => item.url !== result.url)
+    const newHistory = [historyItem, ...filteredHistory].slice(0, 20) // Keep last 20
+    
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(newHistory))
+  } catch (error) {
+    console.error("Failed to save to history:", error)
+  }
+}
+
+function loadHistory(): WebsiteCheckHistoryItem[] {
+  if (typeof window === "undefined") return []
+  
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY)
+    if (saved) {
+      return JSON.parse(saved) as WebsiteCheckHistoryItem[]
+    }
+  } catch (error) {
+    console.error("Failed to load history:", error)
+  }
+  return []
+}
+
+function clearHistory() {
+  if (typeof window === "undefined") return
+  try {
+    localStorage.removeItem(STORAGE_KEY)
+  } catch (error) {
+    console.error("Failed to clear history:", error)
+  }
+}
+
 export default function WebsiteChecker() {
   const [url, setUrl] = useState("")
   const [loading, setLoading] = useState(false)
   const [result, setResult] = useState<WebsiteCheckResult | null>(null)
   const [error, setError] = useState<string | null>(null)
+  const [history, setHistory] = useState<WebsiteCheckHistoryItem[]>([])
+  const [showHistory, setShowHistory] = useState(false)
+
+  useEffect(() => {
+    setHistory(loadHistory())
+  }, [])
 
   const handleCheck = async () => {
     if (!url.trim()) {
@@ -37,6 +115,10 @@ export default function WebsiteChecker() {
     try {
       const data = await checkWebsite(url.trim())
       setResult(data)
+      
+      // Save to history
+      saveToHistory(data)
+      setHistory(loadHistory())
       
       // Dispatch notification for website check completion
       const vulnCount = data.summary.vulnerable_count || 0
@@ -98,7 +180,7 @@ export default function WebsiteChecker() {
   }
 
   return (
-    <div className="p-8 space-y-8">
+    <div className="p-8 space-y-8" onClick={() => setShowHistory(false)}>
       {/* Header */}
       <div>
         <h1 className="text-4xl font-bold text-foreground mb-2">Website Vulnerability Checker</h1>
@@ -110,16 +192,59 @@ export default function WebsiteChecker() {
       {/* Input Section */}
       <div className="backdrop-blur-md border border-border bg-card/95 dark:bg-card/95 rounded-lg p-6">
         <div className="flex gap-4">
-          <div className="flex-1">
+          <div className="flex-1 relative">
             <input
               type="text"
               value={url}
               onChange={(e) => setUrl(e.target.value)}
               onKeyPress={(e) => e.key === 'Enter' && handleCheck()}
+              onFocus={() => setShowHistory(true)}
+              onClick={(e) => e.stopPropagation()}
               placeholder="https://example.com"
               className="w-full px-4 py-3 rounded-lg bg-background border border-border text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
               disabled={loading}
             />
+            {showHistory && history.length > 0 && (
+              <div 
+                className="absolute top-full left-0 right-0 mt-2 bg-card border border-border rounded-lg shadow-lg z-50 max-h-64 overflow-y-auto"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <div className="p-2 border-b border-border flex items-center justify-between">
+                  <span className="text-sm font-medium text-foreground">Recent Checks</span>
+                  <button
+                    onClick={() => {
+                      clearHistory()
+                      setHistory([])
+                    }}
+                    className="text-xs text-muted-foreground hover:text-foreground"
+                  >
+                    Clear
+                  </button>
+                </div>
+                {history.map((item, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => {
+                      setUrl(item.url)
+                      setShowHistory(false)
+                    }}
+                    className="w-full text-left p-3 hover:bg-muted/50 transition-colors border-b border-border/50 last:border-0"
+                  >
+                    <div className="flex items-center justify-between">
+                      <span className="text-sm text-foreground truncate">{item.url}</span>
+                      <div className="flex items-center gap-2 ml-2">
+                        {item.summary.vulnerable_count > 0 && (
+                          <span className="text-xs px-2 py-0.5 rounded bg-red-500/20 text-red-400">
+                            {item.summary.vulnerable_count} vulns
+                          </span>
+                        )}
+                        <Clock className="w-3 h-3 text-muted-foreground" />
+                      </div>
+                    </div>
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
           <button
             onClick={handleCheck}
@@ -144,6 +269,26 @@ export default function WebsiteChecker() {
             {error}
           </div>
         )}
+        
+        {/* Popular Sites Suggestions */}
+        <div className="mt-4" onClick={(e) => e.stopPropagation()}>
+          <p className="text-sm text-muted-foreground mb-2">Popular sites to check:</p>
+          <div className="flex flex-wrap gap-2">
+            {POPULAR_SITES.map((site) => (
+              <button
+                key={site}
+                onClick={() => {
+                  setUrl(site)
+                  setShowHistory(false)
+                }}
+                className="px-3 py-1.5 rounded-full text-sm bg-muted/50 hover:bg-muted border border-border/50 text-foreground hover:text-foreground transition-colors flex items-center gap-2"
+              >
+                <Globe className="w-3.5 h-3.5" />
+                {site.replace(/https?:\/\//, '').replace(/^www\./, '')}
+              </button>
+            ))}
+          </div>
+        </div>
       </div>
 
       {/* Results */}

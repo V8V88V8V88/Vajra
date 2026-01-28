@@ -6,7 +6,8 @@
     "build": "next build",
     "dev": "next dev",
     "lint": "eslint .",
-    "start": "next start"
+    "start": "next start",
+    "postinstall": "node scripts/patch-recharts-cursor.cjs"
   },
   "dependencies": {
     "@emotion/is-prop-valid": "latest",
@@ -58,7 +59,7 @@
     "react-hook-form": "^7.67.0",
     "react-markdown": "^10.1.0",
     "react-resizable-panels": "3.0.6",
-    "recharts": "latest",
+    "recharts": "^3.7.0",
     "sonner": "2.0.7",
     "tailwind-merge": "3.3.1",
     "tailwindcss-animate": "^1.0.7",
